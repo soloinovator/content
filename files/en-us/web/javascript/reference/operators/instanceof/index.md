@@ -2,14 +2,6 @@
 title: instanceof
 slug: Web/JavaScript/Reference/Operators/instanceof
 page-type: javascript-operator
-tags:
-  - JavaScript
-  - Language feature
-  - Object
-  - Operator
-  - Prototype
-  - Relational Operators
-  - instanceof
 browser-compat: javascript.operators.instanceof
 ---
 
@@ -35,7 +27,7 @@ object instanceof constructor
 ### Exceptions
 
 - {{jsxref("TypeError")}}
-  - : Thrown if `constructor` is not an object. If `constructor` doesn't have a [`@@hasInstance`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/hasInstance) method, it must also be a function.
+  - : Thrown if `constructor` is not an object. If `constructor` doesn't have a [`[Symbol.hasInstance]()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/hasInstance) method, it must also be a function.
 
 ## Description
 
@@ -103,7 +95,7 @@ const BoundBase = Base.bind(null, 1, 2);
 console.log(new Base() instanceof BoundBase); // true
 ```
 
-### instanceof and @@hasInstance
+### instanceof and Symbol.hasInstance
 
 If `constructor` has a [`Symbol.hasInstance`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/hasInstance) method, the method will be called in priority, with `object` as its only argument and `constructor` as `this`.
 
@@ -121,6 +113,8 @@ class Forgeable {
 const obj = { [Forgeable.isInstanceFlag]: true };
 console.log(obj instanceof Forgeable); // true
 ```
+
+Because all functions inherit from `Function.prototype` by default, most of the time, the [`Function.prototype[Symbol.hasInstance]()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Symbol.hasInstance) method specifies the behavior of `instanceof` when the right-hand side is a function. See the {{jsxref("Symbol.hasInstance")}} page for the exact algorithm of `instanceof`.
 
 ### instanceof and multiple realms
 
@@ -188,7 +182,7 @@ const nullObject = Object.create(null);
 nullObject.name = "My object";
 
 literalObject instanceof Object; // true, every object literal has Object.prototype as prototype
-({} instanceof Object); // true, same case as above
+({}) instanceof Object; // true, same case as above
 nullObject instanceof Object; // false, prototype is end of prototype chain (null)
 ```
 
@@ -220,7 +214,7 @@ if (!(mycar instanceof Car)) {
 
 This is really different from:
 
-```js example-bad
+```js-nolint example-bad
 if (!mycar instanceof Car) {
   // unreachable code
 }
@@ -230,7 +224,7 @@ This will always be `false`. (`!mycar` will be evaluated before `instanceof`, so
 
 ### Overriding the behavior of instanceof
 
-A common pitfall of using `instanceof` is believing that, if `x instanceof C`, then `x` was created using `C` as constructor. This is not true, because `x` could be directly assigned with `C.prototype` as its prototype. In this case, if your code reads [private fields](/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields) of `C` from `x`, it would still fail:
+A common pitfall of using `instanceof` is believing that, if `x instanceof C`, then `x` was created using `C` as constructor. This is not true, because `x` could be directly assigned with `C.prototype` as its prototype. In this case, if your code reads [private fields](/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties) of `C` from `x`, it would still fail:
 
 ```js
 class C {
@@ -274,7 +268,7 @@ Note that you may want to limit this behavior to the current class; otherwise, i
 
 ```js
 class D extends C {}
-console.log(new C() instanceof D); // true; because D inherits @@hasInstance from C
+console.log(new C() instanceof D); // true; because D inherits [Symbol.hasInstance] from C
 ```
 
 You could do this by checking that `this` is the current constructor:

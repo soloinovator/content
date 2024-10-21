@@ -1,9 +1,7 @@
 ---
 title: Use HTML to solve common problems
 slug: Learn/HTML/Howto
-tags:
-  - CodingScripting
-  - HTML
+page-type: landing-page
 ---
 
 {{LearnSidebar}}

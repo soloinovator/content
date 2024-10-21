@@ -1,12 +1,7 @@
 ---
 title: "CSP: base-uri"
 slug: Web/HTTP/Headers/Content-Security-Policy/base-uri
-tags:
-  - CSP
-  - Directive
-  - Document directive
-  - HTTP
-  - Security
+page-type: http-csp-directive
 browser-compat: http.headers.Content-Security-Policy.base-uri
 ---
 
@@ -33,18 +28,24 @@ The HTTP {{HTTPHeader("Content-Security-Policy")}} **`base-uri`** directive rest
 
 ## Syntax
 
-One or more _sources_ can be allowed for the base-uri policy:
-
 ```http
-Content-Security-Policy: base-uri <source>;
-Content-Security-Policy: base-uri <source> <source>;
+Content-Security-Policy: base-uri 'none';
+Content-Security-Policy: base-uri <source-expression-list>;
 ```
 
-### Sources
+This directive may have one of the following values:
 
-This directive uses most of the same source values for arguments as other CSP directives: [CSP Source Values](/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources#sources).
+- `'none'`
+  - : No base URI may be set using a `<base>` element. The single quotes are mandatory.
+- `<source-expression-list>`
 
-Note however that some of the values don't make sense for `base-uri`, such as the keywords `'unsafe-inline'` and `'strict-dynamic'`.
+  - : A space-separated list of _source expression_ values. A `<base>` element may set a base URI if its value matches any of the given source expressions.
+
+    Source expressions are specified as keyword values or URL patterns: the syntax for each source expression is given in [CSP Source Values](/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources). However, only the following subset of those values apply to `base-uri`:
+
+    - `<host-source>`
+    - `<scheme-source>`
+    - the keyword value `'self'`.
 
 ## Examples
 
@@ -56,7 +57,7 @@ Note however that some of the values don't make sense for `base-uri`, such as th
 
 ### Apache configuration
 
-```
+```apacheconf
 <IfModule mod_headers.c>
 Header set Content-Security-Policy "base-uri 'self'";
 </IfModule>
@@ -64,7 +65,7 @@ Header set Content-Security-Policy "base-uri 'self'";
 
 ### Nginx configuration
 
-```
+```nginx
 add_header Content-Security-Policy "base-uri 'self';"
 ```
 

@@ -2,19 +2,16 @@
 title: mask-type
 slug: Web/CSS/mask-type
 page-type: css-property
-tags:
-  - CSS
-  - CSS Masking
-  - CSS Property
-  - Reference
-  - SVG
-  - recipe:css-property
 browser-compat: css.properties.mask-type
 ---
 
 {{CSSRef}}
 
 The **`mask-type`** [CSS](/en-US/docs/Web/CSS) property sets whether an SVG {{svgElement("mask")}} element is used as a _luminance_ or an _alpha_ mask. It applies to the `<mask>` element itself.
+
+This property may be overridden by the {{cssxref("mask-mode")}} property, which has the same effect but applies to the element where the mask is used. Alpha masks will generally be faster to render.
+
+## Syntax
 
 ```css
 /* Keyword values */
@@ -28,10 +25,6 @@ mask-type: revert;
 mask-type: revert-layer;
 mask-type: unset;
 ```
-
-This property may be overridden by the {{cssxref("mask-mode")}} property, which has the same effect but applies to the element where the mask is used. Alpha masks will generally be faster to render.
-
-## Syntax
 
 The `mask-type` property is specified as one of the keyword values listed below.
 
@@ -57,7 +50,7 @@ The `mask-type` property is specified as one of the keyword values listed below.
 #### HTML
 
 ```html
-<div class="redsquare"></div>
+<div class="red-square"></div>
 <svg
   version="1.1"
   xmlns="http://www.w3.org/2000/svg"
@@ -81,10 +74,10 @@ The `mask-type` property is specified as one of the keyword values listed below.
 #### CSS
 
 ```css
-.redsquare {
+.red-square {
   height: 100px;
   width: 100px;
-  background-color: rgb(128, 128, 128);
+  background-color: rgb(128 128 128);
   border: solid 1px black;
   mask: url("#m");
 }
@@ -99,7 +92,7 @@ The `mask-type` property is specified as one of the keyword values listed below.
 #### HTML
 
 ```html
-<div class="redsquare"></div>
+<div class="red-square"></div>
 <svg
   version="1.1"
   xmlns="http://www.w3.org/2000/svg"
@@ -126,10 +119,10 @@ The `mask-type` property is specified as one of the keyword values listed below.
 #### CSS
 
 ```css
-.redsquare {
+.red-square {
   height: 100px;
   width: 100px;
-  background-color: rgb(128, 128, 128);
+  background-color: rgb(128 128 128);
   border: solid 1px black;
   mask: url("#m");
 }

@@ -2,22 +2,15 @@
 title: ":blank"
 slug: Web/CSS/:blank
 page-type: css-pseudo-class
-tags:
-  - ":blank"
-  - CSS
-  - CSS Selectors
-  - Draft
-  - Experimental
-  - NeedsContent
-  - NeedsExample
-  - Pseudo-class
-  - Selector
+status:
+  - experimental
 browser-compat: css.selectors.blank
 ---
 
 {{CSSRef}}{{SeeCompatTable}}
 
-> **Note:** The `:blank` selector is considered at risk, as the CSSWG keeps changing it.
+> [!NOTE]
+> The `:blank` selector is considered at risk, as the CSSWG keeps changing it.
 >
 > See [CSSWG issue #1967](https://github.com/w3c/csswg-drafts/issues/1967).
 

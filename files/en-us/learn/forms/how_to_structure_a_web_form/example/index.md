@@ -1,23 +1,18 @@
 ---
 title: Example
 slug: Learn/Forms/How_to_structure_a_web_form/Example
-tags:
-  - Beginner
-  - CSS
-  - Example
-  - Guide
-  - HTML
-  - Intro
-  - Reference
+page-type: learn-module-chapter
 ---
+
+{{LearnSidebar}}
 
 This the example for a basic payment form for the article [How to structure an HTML form](/en-US/docs/Learn/Forms/How_to_structure_a_web_form).
 
 ## A payment form
 
-### HTML Content
+### HTML
 
-```html
+```html-nolint
 <form method="post">
   <h1>Payment form</h1>
   <p>
@@ -54,21 +49,21 @@ This the example for a basic payment form for the article [How to structure an H
         <span>Name: </span>
         <strong><span aria-label="required">*</span></strong>
       </label>
-      <input type="text" id="name" name="username" />
+      <input type="text" id="name" name="username" required />
     </p>
     <p>
       <label for="mail">
         <span>Email: </span>
         <strong><span aria-label="required">*</span></strong>
       </label>
-      <input type="email" id="mail" name="usermail" />
+      <input type="email" id="mail" name="usermail" required />
     </p>
     <p>
       <label for="pwd">
         <span>Password: </span>
         <strong><span aria-label="required">*</span></strong>
       </label>
-      <input type="password" id="pwd" name="password" />
+      <input type="password" id="pwd" name="password" required />
     </p>
   </section>
   <section>
@@ -109,7 +104,7 @@ This the example for a basic payment form for the article [How to structure an H
 </form>
 ```
 
-### CSS Content
+### CSS
 
 ```css
 h1 {
@@ -136,7 +131,6 @@ div + div {
 
 label span {
   display: inline-block;
-  width: 120px;
   text-align: right;
 }
 
@@ -168,22 +162,19 @@ textarea {
 fieldset {
   width: 250px;
   box-sizing: border-box;
-  margin-left: 136px;
   border: 1px solid #999;
 }
 
 button {
-  margin: 20px 0 0 124px;
+  margin: 20px 0 0 0;
 }
 
 label {
-  position: relative;
+  display: inline-block;
 }
 
-label em {
-  position: absolute;
-  right: 5px;
-  top: 20px;
+p label {
+  width: 100%;
 }
 ```
 

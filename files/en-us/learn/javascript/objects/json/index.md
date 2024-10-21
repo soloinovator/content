@@ -1,21 +1,7 @@
 ---
 title: Working with JSON
 slug: Learn/JavaScript/Objects/JSON
-tags:
-  - Article
-  - Beginner
-  - CodingScripting
-  - Guide
-  - JSON
-  - JSON API
-  - JSON Arrays
-  - JSON parsing
-  - JSON structure
-  - JavaScript
-  - Learn
-  - Objects
-  - Tutorial
-  - "l10n:priority"
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/JavaScript/Objects/Classes_in_JavaScript", "Learn/JavaScript/Objects/Object_building_practice", "Learn/JavaScript/Objects")}}
@@ -27,7 +13,7 @@ JavaScript Object Notation (JSON) is a standard text-based format for representi
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy, a basic understanding of HTML and CSS, familiarity with JavaScript basics (see <a href="/en-US/docs/Learn/JavaScript/First_steps">First steps</a> and <a href="/en-US/docs/Learn/JavaScript/Building_blocks">Building blocks</a>) and OOJS basics (see <a href="/en-US/docs/Learn/JavaScript/Objects/Basics">Introduction to objects</a>).
+        A basic understanding of HTML and CSS, familiarity with JavaScript basics (see <a href="/en-US/docs/Learn/JavaScript/First_steps">First steps</a> and <a href="/en-US/docs/Learn/JavaScript/Building_blocks">Building blocks</a>) and OOJS basics (see <a href="/en-US/docs/Learn/JavaScript/Objects/Basics">Introduction to objects</a>).
       </td>
     </tr>
     <tr>
@@ -48,7 +34,8 @@ JSON exists as a string — useful when you want to transmit data across a netwo
 It needs to be converted to a native JavaScript object when you want to access the data.
 This is not a big issue — JavaScript provides a global [JSON](/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) object that has methods available for converting between the two.
 
-> **Note:** Converting a string to a native object is called _deserialization_, while converting a native object to a string so it can be transmitted across the network is called _serialization_.
+> [!NOTE]
+> Converting a string to a native object is called _deserialization_, while converting a native object to a string so it can be transmitted across the network is called _serialization_.
 
 A JSON string can be stored in its own file, which is basically just a text file with an extension of `.json`, and a {{glossary("MIME type")}} of `application/json`.
 
@@ -102,14 +89,14 @@ If we loaded this string into a JavaScript program and parsed it into a variable
 For example:
 
 ```js
-superHeroes.homeTown
-superHeroes['active']
+superHeroes.homeTown;
+superHeroes["active"];
 ```
 
 To access data further down the hierarchy, you have to chain the required property names and array indexes together. For example, to access the third superpower of the second hero listed in the members list, you'd do this:
 
 ```js
-superHeroes['members'][1]['powers'][2]
+superHeroes["members"][1]["powers"][2];
 ```
 
 1. First, we have the variable name — `superHeroes`.
@@ -118,7 +105,8 @@ superHeroes['members'][1]['powers'][2]
 4. Inside this object, we want to access the `powers` property, so we use `["powers"]`.
 5. Inside the `powers` property is an array containing the selected hero's superpowers. We want the third one, so we use `[2]`.
 
-> **Note:** We've made the JSON seen above available inside a variable in our [JSONTest.html](https://mdn.github.io/learning-area/javascript/oojs/json/JSONTest.html) example (see the [source code](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/JSONTest.html)).
+> [!NOTE]
+> We've made the JSON seen above available inside a variable in our [JSONTest.html](https://mdn.github.io/learning-area/javascript/oojs/json/JSONTest.html) example (see the [source code](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/JSONTest.html)).
 > Try loading this up and then accessing data inside the variable via your browser's JavaScript console.
 
 ### Arrays as JSON
@@ -170,17 +158,17 @@ So, let's work through an example to show how we could make use of some JSON for
 To begin with, make local copies of our [heroes.html](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/heroes.html) and [style.css](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/style.css) files.
 The latter contains some simple CSS to style our page, while the former contains some very simple body HTML, plus a {{HTMLElement("script")}} element to contain the JavaScript code we will be writing in this exercise:
 
-```html
+```html-nolint
 <header>
-
+...
 </header>
 
 <section>
-
+...
 </section>
 
 <script>
-
+...
 </script>
 ```
 
@@ -196,8 +184,8 @@ The top-level function looks like this:
 
 ```js
 async function populate() {
-
-  const requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+  const requestURL =
+    "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
   const request = new Request(requestURL);
 
   const response = await fetch(request);
@@ -205,7 +193,6 @@ async function populate() {
 
   populateHeader(superHeroes);
   populateHeroes(superHeroes);
-
 }
 ```
 
@@ -216,10 +203,11 @@ In our function, the first four lines use the Fetch API to fetch the JSON from t
 
 - we declare the `requestURL` variable to store the GitHub URL
 - we use the URL to initialize a new {{domxref("Request")}} object.
-- we make the network request using the {{domxref("fetch", "fetch()")}} function, and this returns a {{domxref("Response")}} object
+- we make the network request using the {{domxref("Window/fetch", "fetch()")}} function, and this returns a {{domxref("Response")}} object
 - we retrieve the response as JSON using the {{domxref("Response/json", "json()")}} function of the `Response` object.
 
-> **Note:** The `fetch()` API is **asynchronous**. We'll learn a lot about asynchronous functions in [the next module](/en-US/docs/Learn/JavaScript/Asynchronous), but for now, we'll just say that we need to add the keyword {{jsxref("Statements/async_function", "async")}} before the name of the function that uses the fetch API, and add the keyword {{jsxref("Operators/await", "await")}} before the calls to any asynchronous functions.
+> [!NOTE]
+> The `fetch()` API is **asynchronous**. We'll learn a lot about asynchronous functions in [the next module](/en-US/docs/Learn/JavaScript/Asynchronous), but for now, we'll just say that we need to add the keyword {{jsxref("Statements/async_function", "async")}} before the name of the function that uses the fetch API, and add the keyword {{jsxref("Operators/await", "await")}} before the calls to any asynchronous functions.
 
 After all that, the `superHeroes` variable will contain the JavaScript object based on the JSON. We are then passing that object to two function calls — the first one fills the `<header>` with the correct data, while the second one creates an information card for each hero on the team, and inserts it into the `<section>`.
 
@@ -229,18 +217,18 @@ Now that we've retrieved the JSON data and converted it into a JavaScript object
 
 ```js
 function populateHeader(obj) {
-  const header = document.querySelector('header');
-  const myH1 = document.createElement('h1');
+  const header = document.querySelector("header");
+  const myH1 = document.createElement("h1");
   myH1.textContent = obj.squadName;
   header.appendChild(myH1);
 
-  const myPara = document.createElement('p');
+  const myPara = document.createElement("p");
   myPara.textContent = `Hometown: ${obj.homeTown} // Formed: ${obj.formed}`;
   header.appendChild(myPara);
 }
 ```
 
-Here we first create an {{HTMLElement("h1")}} element with [`createElement()`](/en-US/docs/Web/API/Document/createElement), set its [`textContent`](/en-US/docs/Web/API/Node/textContent) to equal the `squadName` property of the object, then append it to the header using [`appendChild()`](/en-US/docs/Web/API/Node/appendChild). We then do a very similar operation with a paragraph: create it, set its text content and append it to the header. The only difference is that its text is set to a [template literal](/en-US/docs/Web/JavaScript/Reference/Template_literals) containing both the `homeTown` and `formed` properties of the object.
+Here we first create an {{HTMLElement("Heading_Elements", "h1")}} element with [`createElement()`](/en-US/docs/Web/API/Document/createElement), set its [`textContent`](/en-US/docs/Web/API/Node/textContent) to equal the `squadName` property of the object, then append it to the header using [`appendChild()`](/en-US/docs/Web/API/Node/appendChild). We then do a very similar operation with a paragraph: create it, set its text content and append it to the header. The only difference is that its text is set to a [template literal](/en-US/docs/Web/JavaScript/Reference/Template_literals) containing both the `homeTown` and `formed` properties of the object.
 
 ### Creating the hero information cards
 
@@ -248,25 +236,25 @@ Next, add the following function at the bottom of the code, which creates and di
 
 ```js
 function populateHeroes(obj) {
-  const section = document.querySelector('section');
+  const section = document.querySelector("section");
   const heroes = obj.members;
 
   for (const hero of heroes) {
-    const myArticle = document.createElement('article');
-    const myH2 = document.createElement('h2');
-    const myPara1 = document.createElement('p');
-    const myPara2 = document.createElement('p');
-    const myPara3 = document.createElement('p');
-    const myList = document.createElement('ul');
+    const myArticle = document.createElement("article");
+    const myH2 = document.createElement("h2");
+    const myPara1 = document.createElement("p");
+    const myPara2 = document.createElement("p");
+    const myPara3 = document.createElement("p");
+    const myList = document.createElement("ul");
 
     myH2.textContent = hero.name;
     myPara1.textContent = `Secret identity: ${hero.secretIdentity}`;
     myPara2.textContent = `Age: ${hero.age}`;
-    myPara3.textContent = 'Superpowers:';
+    myPara3.textContent = "Superpowers:";
 
     const superPowers = hero.powers;
     for (const power of superPowers) {
-      const listItem = document.createElement('li');
+      const listItem = document.createElement("li");
       listItem.textContent = power;
       myList.appendChild(listItem);
     }
@@ -293,9 +281,11 @@ Next, we use a [for...of loop](/en-US/docs/Learn/JavaScript/Building_blocks/Loop
 5. Use another `for...of` loop to loop through the current hero's superpowers — for each one we create an `<li>` element, put the superpower inside it, then put the `listItem` inside the `<ul>` element (`myList`) using `appendChild()`.
 6. The very last thing we do is to append the `<h2>`, `<p>`s, and `<ul>` inside the `<article>` (`myArticle`), then append the `<article>` inside the `<section>`. The order in which things are appended is important, as this is the order they will be displayed inside the HTML.
 
-> **Note:** If you are having trouble getting the example to work, try referring to our [heroes-finished.html](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/heroes-finished.html) source code (see it [running live](https://mdn.github.io/learning-area/javascript/oojs/json/heroes-finished.html) also.)
+> [!NOTE]
+> If you are having trouble getting the example to work, try referring to our [heroes-finished.html](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/heroes-finished.html) source code (see it [running live](https://mdn.github.io/learning-area/javascript/oojs/json/heroes-finished.html) also.)
 
-> **Note:** If you are having trouble following the dot/bracket notation we are using to access the JavaScript object, it can help to have the [superheroes.json](https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json) file open in another tab or your text editor, and refer to it as you look at our JavaScript.
+> [!NOTE]
+> If you are having trouble following the dot/bracket notation we are using to access the JavaScript object, it can help to have the [superheroes.json](https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json) file open in another tab or your text editor, and refer to it as you look at our JavaScript.
 > You should also refer back to our [JavaScript object basics](/en-US/docs/Learn/JavaScript/Objects/Basics) article for more information on dot and bracket notation.
 
 ### Calling the top-level function
@@ -324,8 +314,8 @@ The key snippet of code is here:
 
 ```js
 async function populate() {
-
-  const requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+  const requestURL =
+    "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
   const request = new Request(requestURL);
 
   const response = await fetch(request);
@@ -334,7 +324,6 @@ async function populate() {
   const superHeroes = JSON.parse(superHeroesText);
   populateHeader(superHeroes);
   populateHeroes(superHeroes);
-
 }
 ```
 
@@ -342,9 +331,9 @@ As you might guess, `stringify()` works the opposite way. Try entering the follo
 
 ```js
 let myObj = { name: "Chris", age: 38 };
-myObj
+myObj;
 let myString = JSON.stringify(myObj);
-myString
+myString;
 ```
 
 Here we're creating a JavaScript object, then checking what it contains, then converting it to a JSON string using `stringify()` — saving the return value in a new variable — then checking it again.
@@ -363,16 +352,6 @@ In this article, we've given you a simple guide to using JSON in your programs, 
 - [Fetch API overview](/en-US/docs/Web/API/Fetch_API)
 - [Using Fetch](/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 - [HTTP request methods](/en-US/docs/Web/HTTP/Methods)
-- [Official JSON web site with link to ECMA standard](https://json.org)
+- [Official JSON website with link to ECMA standard](https://json.org/)
 
 {{PreviousMenuNext("Learn/JavaScript/Objects/Classes_in_JavaScript", "Learn/JavaScript/Objects/Object_building_practice", "Learn/JavaScript/Objects")}}
-
-## In this module
-
-- [Object basics](/en-US/docs/Learn/JavaScript/Objects/Basics)
-- [Object prototypes](/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
-- [Object-oriented programming concepts](/en-US/docs/Learn/JavaScript/Objects/Object-oriented_programming)
-- [Classes in JavaScript](/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
-- **Working with JSON data**
-- [Object building practice](/en-US/docs/Learn/JavaScript/Objects/Object_building_practice)
-- [Adding features to our bouncing balls demo](/en-US/docs/Learn/JavaScript/Objects/Adding_bouncing_balls_features)

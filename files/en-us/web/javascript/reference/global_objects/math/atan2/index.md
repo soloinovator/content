@@ -2,11 +2,6 @@
 title: Math.atan2()
 slug: Web/JavaScript/Reference/Global_Objects/Math/atan2
 page-type: javascript-static-method
-tags:
-  - JavaScript
-  - Math
-  - Method
-  - Reference
 browser-compat: javascript.builtins.Math.atan2
 ---
 
@@ -93,9 +88,9 @@ function format(template, ...args) {
     ...args.map((num) =>
       (Object.is(num, -0)
         ? "-0"
-        : formattedNumbers.get(num) ?? String(num)
-      ).padEnd(5)
-    )
+        : (formattedNumbers.get(num) ?? String(num))
+      ).padEnd(5),
+    ),
   );
 }
 
@@ -115,7 +110,7 @@ for (const x of [-Infinity, -1, -0, 0, 1, Infinity]) {
 
 The output is:
 
-```
+```plain
 | x     | y     | atan2 | atan  |
 |-------|-------|-------|-------|
 | -∞    | -∞    | -3π/4 | NaN   |

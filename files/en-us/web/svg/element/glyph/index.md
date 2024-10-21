@@ -2,12 +2,8 @@
 title: <glyph>
 slug: Web/SVG/Element/glyph
 page-type: svg-element
-tags:
-  - Element
-  - Reference
-  - SVG
-  - SVG Text Content
-  - Deprecated
+status:
+  - deprecated
 browser-compat: svg.elements.glyph
 ---
 
@@ -20,15 +16,6 @@ A **`<glyph>`** defines a single glyph in an SVG font.
 {{svginfo}}
 
 ## Attributes
-
-### Global attributes
-
-- [Core attributes](/en-US/docs/Web/SVG/Attribute#core_attributes)
-- [Presentation attributes](/en-US/docs/Web/SVG/Attribute#presentation_attributes)
-- {{SVGAttr("class")}}
-- {{SVGAttr("style")}}
-
-### Specific attributes
 
 - {{SVGAttr("d")}} {{Deprecated_Inline}}
 - {{SVGAttr("horiz-adv-x")}} {{Deprecated_Inline}}

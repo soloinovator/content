@@ -1,14 +1,7 @@
 ---
 title: Desktop gamepad controls
 slug: Games/Techniques/Control_mechanisms/Desktop_with_gamepad
-tags:
-  - Controls
-  - Desktop
-  - Gamepad API
-  - Gamepads
-  - Games
-  - JavaScript
-  - controllers
+page-type: guide
 ---
 
 {{GamesSidebar}}
@@ -111,7 +104,8 @@ function draw() {
 
 In this case, we are checking the four D-Pad buttons (0-3) and the A button (11).
 
-> **Note:** Please remember that different devices may have different key mappings, i.e. the D-Pad Right button have an index of 3 on the wireless XBox 360, but may have a different one on another device.
+> [!NOTE]
+> Please remember that different devices may have different key mappings, i.e. the D-Pad Right button have an index of 3 on the wireless XBox 360, but may have a different one on another device.
 
 You could also create a helper function that would assign proper names to the listed buttons, so for example instead of checking out if `gamepadButtonPressedHandler(3)` is pressed, you could do a more descriptive check: `gamepadButtonPressedHandler('DPad-Right')`.
 

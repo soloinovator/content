@@ -1,19 +1,11 @@
 ---
 title: "ARIA: grid role"
 slug: Web/Accessibility/ARIA/Roles/grid_role
-tags:
-  - ARIA
-  - HTML
-  - Accessibility
-  - roles
-  - Reference
-  - ARIA roles
-  - grid role
-  - composite widget role
-  - NeedsContent
-spec-urls:
-  - https://w3c.github.io/aria/#grid
+page-type: aria-role
+spec-urls: https://w3c.github.io/aria/#grid
 ---
+
+{{AccessibilitySidebar}}
 
 The grid role is for a widget that contains one or more rows of cells. The position of each cell is significant and can be focused using keyboard input.
 
@@ -82,7 +74,8 @@ If the grid is used as an interactive widget, [keyboard interactions](#keyboard_
 - [aria-readonly](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-readonly)
   - : If the user can navigate the grid but not change the value or values of the grid, the [`aria-readonly`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-readonly) should be set to `true`. The default value is `false`.
 
-> **Note:** For many use cases, an HTML {{HTMLElement('table')}} element is sufficient as it and the various table elements already include many ARIA roles.
+> [!NOTE]
+> For many use cases, an HTML {{HTMLElement('table')}} element is sufficient as it and the various table elements already include many ARIA roles.
 
 ### Keyboard interactions
 
@@ -262,7 +255,7 @@ trs.forEach((gridrow) => {
 
 function moveto(newrow, newcol) {
   const tgt = document.querySelector(
-    `[data-row="${newrow}"][data-col="${newcol}"]`
+    `[data-row="${newrow}"][data-col="${newcol}"]`,
   );
   if (tgt?.getAttribute("role") === "gridcell") {
     document.querySelectorAll("[role=gridcell]").forEach((el) => {
@@ -331,8 +324,8 @@ document.querySelector("table").addEventListener("keydown", (event) => {
         moveto(
           row,
           document.querySelector(
-            `[data-row="${event.target.dataset.row}"]:last-of-type`
-          ).dataset.col
+            `[data-row="${event.target.dataset.row}"]:last-of-type`,
+          ).dataset.col,
         );
       }
       break;
@@ -392,11 +385,3 @@ Even if the keyboard use is properly implemented, some users might not be aware 
 - [`aria-level`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-level)
 - [`aria-multiselectable`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-multiselectable)
 - [`aria-readonly`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-readonly)
-
-<section id="Quick_links">
-
-1. [**WAI-ARIA roles**](/en-US/docs/Web/Accessibility/ARIA/Roles)
-
-   {{ListSubpagesForSidebar("/en-US/docs/Web/Accessibility/ARIA/Roles")}}
-
-</section>

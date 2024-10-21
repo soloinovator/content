@@ -2,15 +2,7 @@
 title: "@color-profile"
 slug: Web/CSS/@color-profile
 page-type: css-at-rule
-tags:
-  - At-rule
-  - CSS
-  - Reference
-  - Web
-  - Property
-  - Color
-  - color-profile
-browser-compat: css.at-rules.color-profile
+spec-urls: https://www.w3.org/TR/css-color-5/#at-profile
 ---
 
 {{CSSRef}}
@@ -69,4 +61,4 @@ The `src` descriptor specifies the URL to retrieve the color-profile information
 
 ## Browser compatibility
 
-{{Compat}}
+There is no browser implementing this feature.

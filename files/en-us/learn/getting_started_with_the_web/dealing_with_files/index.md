@@ -1,15 +1,7 @@
 ---
 title: Dealing with files
 slug: Learn/Getting_started_with_the_web/Dealing_with_files
-tags:
-  - Beginner
-  - CodingScripting
-  - Files
-  - Guide
-  - HTML
-  - "l10n:priority"
-  - theory
-  - website
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/Getting_started_with_the_web/What_will_your_website_look_like", "Learn/Getting_started_with_the_web/HTML_basics", "Learn/Getting_started_with_the_web")}}
@@ -28,9 +20,15 @@ When you are working on a website locally on your computer, you should keep all 
 You'll notice that throughout this article, we ask you to name folders and files completely in lowercase with no spaces. This is because:
 
 1. Many computers, particularly web servers, are case-sensitive. So for example, if you put an image on your website at `test-site/MyImage.jpg` and then in a different file you try to invoke the image as `test-site/myimage.jpg`, it may not work.
-2. Browsers, web servers, and programming languages do not handle spaces consistently. For example, if you use spaces in your filename, some systems may treat the filename as two filenames. Some servers will replace the areas in your filenames with "%20" (the character code for spaces in URLs), resulting in all your links being broken. It's better to separate words with hyphens, rather than underscores: `my-file.html` vs. `my_file.html`.
+2. There are many ways in which using spaces in file names create issues:
+   - When you invoke commands in the terminal, you have to put quotes around file names with spaces in them, or the path will be interpreted as two separate items.
+   - Some programming languages (e.g. Python) do not work well with spaces in file names if these files are modules to be imported.
 
-The short answer is that you should use a hyphen for your file names. The Google search engine treats a hyphen as a word separator but does not regard an underscore that way. For these reasons, it is best to get into the habit of writing your folder and file names lowercase with no spaces and with words separated by hyphens, at least until you know what you're doing. That way you'll bump into fewer problems later down the road.
+File names also map to URLs. For example, if you have a file called `my_file.html` at the root of your server-served directory, generally it will be accessible at `https://example.com/my_file.html` by most web servers' default behavior. Some servers will replace the spaces in your filenames with "%20" (the character code for spaces in URLs), which can create subtle bugs with some server-side logic if they assume that file names and URLs match perfectly.
+
+It's also advisable to separate words with hyphens, rather than underscores: `my-file.html` vs. `my_file.html`. The [Google search engine treats a hyphen as a word separator but does not regard an underscore that way](https://developers.google.com/search/docs/crawling-indexing/url-structure). This can be remedied by configuring your server to replace underscores with hyphens, but that's extra work and more bug-prone with diverging file names and URLs.
+
+For these reasons, it is best to get into the habit of writing your folder and file names in lowercase with no spaces and with words separated by hyphens, at least until you know what you're doing. That way, you'll encounter fewer problems down the road.
 
 ## What structure should your website have?
 
@@ -41,7 +39,8 @@ Next, let's look at what structure our test site should have. The most common th
 3. **`styles` folder**: This folder will contain the CSS code used to style your content (for example, setting text and background colors). Create a folder called `styles`, inside your `test-site` folder.
 4. **`scripts` folder**: This folder will contain all the JavaScript code used to add interactive functionality to your site (e.g. buttons that load data when clicked). Create a folder called `scripts`, inside your `test-site` folder.
 
-> **Note:** On Windows computers, you might have trouble seeing the file names, because Windows has an option called **Hide extensions for known file types** turned on by default. Generally, you can turn this off by going to Windows Explorer, selecting the **Folder options…** option, unchecking the **Hide extensions for known file types** check box, then clicking **OK**. For more specific information covering your version of Windows, you can search on the web.
+> [!NOTE]
+> On Windows computers, you might have trouble seeing the file names, because Windows has an option called **Hide extensions for known file types** turned on by default. Generally, you can turn this off by going to Windows Explorer, selecting the **Folder options…** option, unchecking the **Hide extensions for known file types** check box, then clicking **OK**. For more specific information covering your version of Windows, you can search on the web.
 
 ## File paths
 
@@ -51,7 +50,7 @@ To make files talk to one another, you have to provide a file path between them 
 2. Open up your `index.html` file, and insert the following code into the file exactly as shown. Don't worry about what it all means for now — we'll look at the structures in more detail later in the series.
 
    ```html
-   <!DOCTYPE html>
+   <!doctype html>
    <html lang="en-US">
      <head>
        <meta charset="utf-8" />
@@ -80,7 +79,8 @@ Some general rules for file paths:
 
 For now, this is about all you need to know.
 
-> **Note:** The Windows file system tends to use backslashes, not forward slashes, e.g. `C:\Windows`. This doesn't matter in HTML — even if you are developing your website on Windows, you should still use forward slashes in your code.
+> [!NOTE]
+> The Windows file system tends to use backslashes, not forward slashes, e.g. `C:\Windows`. This doesn't matter in HTML — even if you are developing your website on Windows, you should still use forward slashes in your code.
 
 ## What else should be done?
 

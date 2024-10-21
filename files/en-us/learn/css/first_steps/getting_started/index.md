@@ -1,16 +1,7 @@
 ---
 title: Getting started with CSS
 slug: Learn/CSS/First_steps/Getting_started
-tags:
-  - Beginner
-  - CSS
-  - Classes
-  - Elements
-  - Example
-  - Learn
-  - Selectors
-  - Syntax
-  - state
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/CSS/First_steps/What_is_CSS", "Learn/CSS/First_steps/How_CSS_is_structured", "Learn/CSS/First_steps")}}
@@ -22,18 +13,9 @@ In this article, we will take a simple HTML document and apply CSS to it, learni
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy,
-        <a
-          href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
-          >basic software installed</a
-        >, basic knowledge of
-        <a
-          href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
-          >working with files</a
-        >, and HTML basics (study
-        <a href="/en-US/docs/Learn/HTML/Introduction_to_HTML"
-          >Introduction to HTML</a
-        >.)
+        <a href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software">Basic software installed</a>, basic knowledge of
+        <a href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files">working with files</a>, and HTML basics (study
+        <a href="/en-US/docs/Learn/HTML/Introduction_to_HTML">Introduction to HTML</a>.)
       </td>
     </tr>
     <tr>
@@ -51,7 +33,7 @@ In this article, we will take a simple HTML document and apply CSS to it, learni
 Our starting point is an HTML document. You can copy the code from below if you want to work on your own computer. Save the code below as `index.html` in a folder on your machine.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -80,7 +62,8 @@ Our starting point is an HTML document. You can copy the code from below if you 
 </html>
 ```
 
-> **Note:** If you are reading this on a device or an environment where you can't easily create files, then don't worry — live code editors are provided below to allow you to write example code right here in the page.
+> [!NOTE]
+> If you are reading this on a device or an environment where you can't easily create files, then don't worry — live code editors are provided below to allow you to write example code right here in the page.
 
 ## Adding CSS to our document
 
@@ -153,22 +136,22 @@ So far, we have styled elements based on their HTML element names. This works as
 
 1. In your HTML document, add a [class attribute](/en-US/docs/Web/HTML/Global_attributes/class) to the second list item. Your list will now look like this:
 
-    ```html
-    <ul>
-      <li>Item one</li>
-      <li class="special">Item two</li>
-      <li>Item <em>three</em></li>
-    </ul>
-    ```
+   ```html
+   <ul>
+     <li>Item one</li>
+     <li class="special">Item two</li>
+     <li>Item <em>three</em></li>
+   </ul>
+   ```
 
-2. In your CSS, you can target the class of `special` by creating a selector that starts with a full stop character. Add the following to your CSS file:
+2. In your CSS, you can target the class of `special` by creating a selector that starts with a period. Add the following to your CSS file:
 
-    ```css
-    .special {
-      color: orange;
-      font-weight: bold;
-    }
-    ```
+   ```css
+   .special {
+     color: orange;
+     font-weight: bold;
+   }
+   ```
 
 3. Save and refresh to see what the result is.
 
@@ -209,7 +192,7 @@ li em {
 
 This selector will select any `<em>` element that is inside (a descendant of) an `<li>`. So in your example document, you should find that the `<em>` in the third list item is now purple, but the one inside the paragraph is unchanged.
 
-Something else you might like to try is styling a paragraph when it comes directly after a heading at the same hierarchy level in the HTML. To do so, place a `+` (an **adjacent sibling combinator**) between the selectors.
+Something else you might like to try is styling a paragraph when it comes directly after a heading at the same hierarchy level in the HTML. To do so, place a `+` (an **next-sibling combinator**) between the selectors.
 
 Try adding this rule to your stylesheet as well:
 
@@ -223,7 +206,8 @@ The live example below includes the two rules above. Try adding a rule to make a
 
 {{EmbedGHLiveSample("css-examples/learn/getting-started/started2.html", '100%', 1100)}}
 
-> **Note:** As you can see, CSS gives us several ways to target elements, and we've only scratched the surface so far! We will be taking a proper look at all of these selectors and many more in our [Selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors) articles later on in the course.
+> [!NOTE]
+> As you can see, CSS gives us several ways to target elements, and we've only scratched the surface so far! We will be taking a proper look at all of these selectors and many more in our [Selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors) articles later on in the course.
 
 ## Styling things based on state
 
@@ -247,13 +231,14 @@ a:hover {
 }
 ```
 
-In the live example below, you can play with different values for the various states of a link. I have added the rules above to it, and now realize that the pink color is quite light and hard to read — why not change that to a better color? Can you make the links bold?
+In the live example below, you can play with different values for the various states of a link. We have added the rules above to it, and now realize that the pink color is quite light and hard to read — why not change that to a better color? Can you make the links bold?
 
 {{EmbedGHLiveSample("css-examples/learn/getting-started/started3.html", '100%', 1000)}}
 
 We have removed the underline on our link on hover. You could remove the underline from all states of a link. It is worth remembering however that in a real site, you want to ensure that visitors know that a link is a link. Leaving the underline in place can be an important clue for people to realize that some text inside a paragraph can be clicked on — this is the behavior they are used to. As with everything in CSS, there is the potential to make the document less accessible with your changes — we will aim to highlight potential pitfalls in appropriate places.
 
-> **Note:** you will often see mention of [accessibility](/en-US/docs/Learn/Accessibility) in these lessons and across MDN. When we talk about accessibility we are referring to the requirement for our webpages to be understandable and usable by everyone.
+> [!NOTE]
+> You will often see mention of [accessibility](/en-US/docs/Learn/Accessibility) in these lessons and across MDN. When we talk about accessibility we are referring to the requirement for our webpages to be understandable and usable by everyone.
 >
 > Your visitor may well be on a computer with a mouse or trackpad, or a phone with a touchscreen. Or they might be using a screen reader, which reads out the content of the document, or they may need to use much larger text, or be navigating the site using the keyboard only.
 >
@@ -296,11 +281,3 @@ In this article, we have taken a look at a number of ways in which you can style
 In the next lesson, we'll be taking a look at [how CSS is structured](/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured).
 
 {{PreviousMenuNext("Learn/CSS/First_steps/What_is_CSS", "Learn/CSS/First_steps/How_CSS_is_structured", "Learn/CSS/First_steps")}}
-
-## In this module
-
-- [What is CSS?](/en-US/docs/Learn/CSS/First_steps/What_is_CSS)
-- [Getting started with CSS](/en-US/docs/Learn/CSS/First_steps/Getting_started)
-- [How CSS is structured](/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured)
-- [How CSS works](/en-US/docs/Learn/CSS/First_steps/How_CSS_works)
-- [Styling a biography page](/en-US/docs/Learn/CSS/First_steps/Styling_a_biography_page)

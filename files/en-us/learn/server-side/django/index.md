@@ -1,14 +1,7 @@
 ---
 title: Django Web Framework (Python)
 slug: Learn/Server-side/Django
-tags:
-  - Beginner
-  - CodingScripting
-  - Intro
-  - Learn
-  - Python
-  - Server-side programming
-  - django
+page-type: learn-module
 ---
 
 {{LearnSidebar}}
@@ -21,7 +14,8 @@ Before starting this module you don't need to have any knowledge of Django. Idea
 
 A general knowledge of programming concepts and [Python](/en-US/docs/Glossary/Python) is recommended, but is not essential to understanding the core concepts.
 
-> **Note:** Python is one of the easiest programming languages for novices to read and understand. That said, if you want to understand this module better, there are numerous free books and tutorials available on the internet to help you out (new programmers might want to check out the [Python for Non Programmers](https://wiki.python.org/moin/BeginnersGuide/NonProgrammers) page on the python.org wiki).
+> [!NOTE]
+> Python is one of the easiest programming languages for novices to read and understand. That said, if you want to understand this module better, there are numerous free books and tutorials available on the internet to help you out (new programmers might want to check out the [Python for Non Programmers](https://wiki.python.org/moin/BeginnersGuide/NonProgrammers) page on the python.org wiki).
 
 ## Guides
 

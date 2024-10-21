@@ -1,9 +1,7 @@
 ---
 title: Challenge solutions
 slug: Web/Guide/CSS/Getting_started/Challenge_solutions
-tags:
-  - Beginner
-  - NeedsUpdate
+page-type: guide
 ---
 
 This page provides solutions to the challenges posed in the [CSS Getting Started](/en-US/docs/Learn/CSS/First_steps) tutorial. These are not the only possible solutions. The sections below correspond to the titles of the tutorial sections.
@@ -17,7 +15,7 @@ The challenges on page [Why use CSS](/en-US/docs/Learn/CSS/First_steps/How_CSS_w
 - Challenge
   - : Without looking up a reference, find five more color names that work in your stylesheet.
 - Solution
-  - : CSS supports common color names like `orange`, `yellow`, `blue`, `green`, or `black`. It also supports some more exotic color names like `chartreuse`, `fuschia`, or `burlywood`. See [CSS Color value](/en-US/docs/Web/CSS/color_value) for a complete list as well as other ways of specifying colors.
+  - : CSS supports common color names like `orange`, `yellow`, `blue`, `green`, or `black`. It also supports some more exotic color names like `chartreuse`, `fuchsia`, or `burlywood`. See [CSS Color value](/en-US/docs/Web/CSS/color_value) for a complete list as well as other ways of specifying colors.
 
 ## How CSS works
 
@@ -201,11 +199,11 @@ The challenges on page [Lists](/en-US/docs/Learn/CSS/Styling_text/Styling_lists)
     ```css
     /* numbered headings */
     body {
-      counter-reset: headnum;
+      counter-reset: head-num;
     }
     h3::before {
-      content: "(" counter(headnum, upper-latin) ") ";
-      counter-increment: headnum;
+      content: "(" counter(head-num, upper-latin) ") ";
+      counter-increment: head-num;
     }
     ```
 
@@ -275,7 +273,7 @@ The challenges on page [Tables](/en-US/docs/Learn/CSS/Building_blocks/Styling_ta
 
 ## Media
 
-The challenges on page [Media](/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) are:
+The challenges on page [Media](/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries) are:
 
 ### Separate print style file
 

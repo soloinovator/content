@@ -2,18 +2,12 @@
 title: empty-cells
 slug: Web/CSS/empty-cells
 page-type: css-property
-tags:
-  - CSS
-  - CSS Property
-  - CSS Tables
-  - Reference
-  - recipe:css-property
 browser-compat: css.properties.empty-cells
 ---
 
 {{CSSRef}}
 
-The **`empty-cells`** CSS property sets whether borders and backgrounds appear around {{htmlelement("table")}} cells that have no visible content.
+The **`empty-cells`** [CSS](/en-US/docs/Web/CSS) property sets whether borders and backgrounds appear around {{htmlelement("table")}} cells that have no visible content.
 
 {{EmbedInteractiveExample("pages/css/empty-cells.html")}}
 
@@ -51,7 +45,7 @@ The `empty-cells` property is specified as one of the keyword values listed belo
 
 {{csssyntax}}
 
-## Example
+## Examples
 
 ### Showing and hiding empty table cells
 
@@ -115,3 +109,4 @@ th {
 
 - {{cssxref("border-collapse")}}
 - [Styling tables](/en-US/docs/Learn/CSS/Building_blocks/Styling_tables)
+- [CSS table](/en-US/docs/Web/CSS/CSS_table) module

@@ -1,17 +1,7 @@
 ---
 title: Function return values
 slug: Learn/JavaScript/Building_blocks/Return_values
-tags:
-  - Article
-  - Beginner
-  - CodingScripting
-  - Functions
-  - Guide
-  - JavaScript
-  - Learn
-  - Return
-  - Return values
-  - "l10n:priority"
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/JavaScript/Building_blocks/Build_your_own_function","Learn/JavaScript/Building_blocks/Events", "Learn/JavaScript/Building_blocks")}}
@@ -24,7 +14,7 @@ There's one last essential concept about functions for us to discuss — return 
       <th scope="row">Prerequisites:</th>
       <td>
         <p>
-          Basic computer literacy, a basic understanding of HTML and CSS,
+          A basic understanding of HTML and CSS,
           <a href="/en-US/docs/Learn/JavaScript/First_steps"
             >JavaScript first steps</a
           >,
@@ -67,7 +57,7 @@ When the function completes (finishes running), it returns a value, which is a n
 
 If you look at the [`replace()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) function MDN reference page, you'll see a section called [return value](/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#return_value). It is very useful to know and understand what values are returned by functions, so we try to include this information wherever possible.
 
-Some functions don't return any value. (In these cases, our reference pages list the return value as [`void`](/en-US/docs/Web/JavaScript/Reference/Operators/void) or [`undefined`](/en-US/docs/Glossary/undefined).) For example, in the [`displayMessage()`](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/functions/function-stage-4.html#L50) function we built in the previous article, no specific value is returned when the function is invoked. It just makes a box appear somewhere on the screen — that's it!
+Some functions don't return any value. (In these cases, our reference pages list the return value as [`void`](/en-US/docs/Web/JavaScript/Reference/Operators/void) or [`undefined`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined).) For example, in the [`displayMessage()`](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/functions/function-stage-4.html#L50) function we built in the previous article, no specific value is returned when the function is invoked. It just makes a box appear somewhere on the screen — that's it!
 
 Generally, a return value is used where the function is an intermediate step in a calculation of some kind. You want to get to a final result, which involves some values that need to be calculated by a function. After the function calculates the value, it can return the result so it can be stored in a variable; and you can use this variable in the next stage of the calculation.
 
@@ -80,7 +70,7 @@ function draw() {
   ctx.clearRect(0, 0, WIDTH, HEIGHT);
   for (let i = 0; i < 100; i++) {
     ctx.beginPath();
-    ctx.fillStyle = "rgba(255,0,0,0.5)";
+    ctx.fillStyle = "rgb(255 0 0 / 50%)";
     ctx.arc(random(WIDTH), random(HEIGHT), random(50), 0, 2 * Math.PI);
     ctx.fill();
   }
@@ -176,7 +166,8 @@ Here are some explanations for the `addEventListener` function in step 3 above:
 - The if statement prints an error message if the entered value is not a number. The condition checks if the expression `isNaN(num)` returns `true`. The [`isNaN()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN) function tests whether the `num` value is not a number — if so, it returns `true`, and if not, it returns `false`.
 - If the condition returns `false`, the `num` value is a number and the function prints out a sentence inside the paragraph element that states the square, cube, and factorial values of the number. The sentence calls the `squared()`, `cubed()`, and `factorial()` functions to calculate the required values.
 
-> **Note:** If you have trouble getting the example to work, check your code against the [finished version on GitHub](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/functions/function-library-finished.html) ([see it running live](https://mdn.github.io/learning-area/javascript/building-blocks/functions/function-library-finished.html) also), or ask us for help.
+> [!NOTE]
+> If you have trouble getting the example to work, check your code against the [finished version on GitHub](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/functions/function-library-finished.html) ([see it running live](https://mdn.github.io/learning-area/javascript/building-blocks/functions/function-library-finished.html) also), or ask us for help.
 
 ## Now it's your turn!
 
@@ -203,13 +194,3 @@ If there is anything you didn't understand, feel free to read through the articl
 - [Callback functions in JavaScript](https://www.impressivewebs.com/callback-functions-javascript/) — a common JavaScript pattern is to pass a function into another function _as an argument_. It is then called inside the first function. This is a little beyond the scope of this course, but worth studying before too long.
 
 {{PreviousMenuNext("Learn/JavaScript/Building_blocks/Build_your_own_function","Learn/JavaScript/Building_blocks/Events", "Learn/JavaScript/Building_blocks")}}
-
-## In this module
-
-- [Making decisions in your code — conditionals](/en-US/docs/Learn/JavaScript/Building_blocks/conditionals)
-- [Looping code](/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code)
-- [Functions — reusable blocks of code](/en-US/docs/Learn/JavaScript/Building_blocks/Functions)
-- [Build your own function](/en-US/docs/Learn/JavaScript/Building_blocks/Build_your_own_function)
-- **Function return values**
-- [Introduction to events](/en-US/docs/Learn/JavaScript/Building_blocks/Events)
-- [Image gallery](/en-US/docs/Learn/JavaScript/Building_blocks/Image_gallery)

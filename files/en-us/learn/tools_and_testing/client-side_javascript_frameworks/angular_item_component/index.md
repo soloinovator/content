@@ -1,17 +1,7 @@
 ---
 title: Creating an item component
-slug: >-
-  Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Angular_item_component
-tags:
-  - Beginner
-  - Frameworks
-  - JavaScript
-  - Learn
-  - client-side
-  - Angular
-  - Components
-  - Events
-  - Data
+slug: Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Angular_item_component
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Angular_styling","Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Angular_filtering", "Learn/Tools_and_testing/Client-side_JavaScript_frameworks")}}
@@ -53,21 +43,32 @@ ng generate component item
 
 The `ng generate component` command creates a component and folder with the name you specify.
 Here, the folder and component name is `item`.
-You can find the `item` directory within the `app` folder.
+You can find the `item` directory within the `app` folder:
+
+```plain
+src/app/item
+├── item.component.css
+├── item.component.html
+├── item.component.spec.ts
+└── item.component.ts
+```
 
 Just as with the `AppComponent`, the `ItemComponent` is made up of the following files:
 
 - `item.component.html` for HTML
 - `item.component.ts` for logic
 - `item.component.css` for styles
+- `item.component.spec.ts` for testing the component
 
 You can see a reference to the HTML and CSS files in the `@Component()` decorator metadata in `item.component.ts`.
 
 ```js
 @Component({
   selector: 'app-item',
+  standalone: true,
+  imports: [],
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.css'],
+  styleUrl: './item.component.css'
 })
 ```
 
@@ -79,8 +80,11 @@ Add markup for managing items by replacing the placeholder content in `item.comp
 
 ```html
 <div class="item">
-
-  <input [id]="item.description" type="checkbox" (change)="item.done = !item.done" [checked]="item.done" />
+  <input
+    [id]="item.description"
+    type="checkbox"
+    (change)="item.done = !item.done"
+    [checked]="item.done" />
   <label [for]="item.description">\{{item.description}}</label>
 
   <div class="btn-wrapper" *ngIf="!editable">
@@ -90,14 +94,20 @@ Add markup for managing items by replacing the placeholder content in `item.comp
 
   <!-- This section shows only if user clicks Edit button -->
   <div *ngIf="editable">
-    <input class="sm-text-input" placeholder="edit item" [value]="item.description" #editedItem (keyup.enter)="saveItem(editedItem.value)">
+    <input
+      class="sm-text-input"
+      placeholder="edit item"
+      [value]="item.description"
+      #editedItem
+      (keyup.enter)="saveItem(editedItem.value)" />
 
     <div class="btn-wrapper">
       <button class="btn" (click)="editable = !editable">Cancel</button>
-      <button class="btn btn-save" (click)="saveItem(editedItem.value)">Save</button>
+      <button class="btn btn-save" (click)="saveItem(editedItem.value)">
+        Save
+      </button>
     </div>
   </div>
-
 </div>
 ```
 
@@ -108,7 +118,6 @@ The next section explains how components share data in detail.
 
 The next two buttons for editing and deleting the current item are within a `<div>`.
 On this `<div>` is an `*ngIf`, a built-in Angular directive that you can use to dynamically change the structure of the DOM.
-
 This `*ngIf` means that if `editable` is `false`, this `<div>` is in the DOM. If `editable` is `true`, Angular removes this `<div>` from the DOM.
 
 ```html
@@ -127,11 +136,18 @@ In this case, if `editable` is `true`, Angular puts the `<div>` and its child `<
 ```html
 <!-- This section shows only if user clicks Edit button -->
 <div *ngIf="editable">
-  <input class="sm-text-input" placeholder="edit item" [value]="item.description" #editedItem (keyup.enter)="saveItem(editedItem.value)">
+  <input
+    class="sm-text-input"
+    placeholder="edit item"
+    [value]="item.description"
+    #editedItem
+    (keyup.enter)="saveItem(editedItem.value)" />
 
   <div class="btn-wrapper">
     <button class="btn" (click)="editable = !editable">Cancel</button>
-    <button class="btn btn-save" (click)="saveItem(editedItem.value)">Save</button>
+    <button class="btn btn-save" (click)="saveItem(editedItem.value)">
+      Save
+    </button>
   </div>
 </div>
 ```
@@ -153,11 +169,11 @@ The `saveItem()` method takes the value from the `#editedItem` element and chang
 ## Prepare the AppComponent
 
 In the next section, you will add code that relies on communication between the `AppComponent` and the `ItemComponent`.
-
 Add the following line near the top of the `app.component.ts` file to import the `Item`:
 
 ```ts
 import { Item } from "./item";
+import { ItemComponent } from "./item/item.component";
 ```
 
 Then, configure the AppComponent by adding the following to the same file's class:
@@ -170,21 +186,32 @@ remove(item: Item) {
 
 The `remove()` method uses the JavaScript `Array.splice()` method to remove one item at the `indexOf` the relevant item.
 In plain English, this means that the `splice()` method removes the item from the array.
-For more information on the `splice()` method, see the MDN Web Docs article on [`Array.prototype.splice()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice).
+For more information on the `splice()` method, see the [`Array.prototype.splice()` documentation](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice).
 
 ## Add logic to ItemComponent
 
 To use the `ItemComponent` UI, you must add logic to the component such as functions, and ways for data to go in and out.
-
 In `item.component.ts`, edit the JavaScript imports as follows:
 
 ```js
 import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { Item } from "../item";
 ```
 
 The addition of `Input`, `Output`, and `EventEmitter` allows `ItemComponent` to share data with `AppComponent`.
-By importing `Item`, `ItemComponent` can understand what an `item` is.
+By importing `Item`, the `ItemComponent` can understand what an `item` is.
+You can update the `@Component` to use [`CommonModule`](https://angular.io/api/common/CommonModule) in `app/item/item.component.ts` so that we can use the `ngIf` directives:
+
+```js
+@Component({
+  selector: 'app-item',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './item.component.html',
+  styleUrl: './item.component.css',
+})
+```
 
 Further down `item.component.ts`, replace the generated `ItemComponent` class with the following:
 
@@ -194,11 +221,11 @@ export class ItemComponent {
   editable = false;
 
   @Input() item!: Item;
-  @Input() newItem!: string;
   @Output() remove = new EventEmitter<Item>();
 
   saveItem(description: string) {
     if (!description) return;
+
     this.editable = false;
     this.item.description = description;
   }
@@ -213,7 +240,8 @@ When you use a property in the template, you must also declare it in the class.
 An `@Input()` serves as a doorway for data to come into the component, and an `@Output()` acts as a doorway for data to go out of the component.
 An `@Output()` has to be of type `EventEmitter`, so that a component can raise an event when there's data ready to share with another component.
 
-> **Note**: The `!` in the class's property declaration is called a [definite assignment assertion](https://www.typescriptlang.org/docs/handbook/2/classes.html#--strictpropertyinitialization). This operator tells Typescript that the `item` and `newItem` inputs are always initialized and not `undefined`, even when TypeScript cannot tell from the constructor's definition. If this operator is not included in your code and you have strict TypeScript compilation settings, the app will fail to compile.
+> [!NOTE]
+> The `!` in the class's property declaration is called a [definite assignment assertion](https://www.typescriptlang.org/docs/handbook/2/classes.html#--strictpropertyinitialization). This operator tells TypeScript that the `item` field is always initialized and not `undefined`, even when TypeScript cannot tell from the constructor's definition. If this operator is not included in your code and you have strict TypeScript compilation settings, the app will fail to compile.
 
 Use `@Input()` to specify that the value of a property can come from outside of the component.
 Use `@Output()` in conjunction with `EventEmitter` to specify that the value of a property can leave the component so that another component can receive that data.
@@ -237,28 +265,41 @@ The `AppComponent` serves as a shell for the application where you can include o
 
 To use the `ItemComponent` in `AppComponent`, put the `ItemComponent` selector in the `AppComponent` template.
 Angular specifies the selector of a component in the metadata of the `@Component()` decorator.
-In this example, the selector is `app-item`:
+In this example, we've defined the selector as `app-item`:
 
 ```js
 @Component({
   selector: 'app-item',
-  templateUrl: './item.component.html',
-  styleUrls: ['./item.component.css']
-})
+  // ...
 ```
 
 To use the `ItemComponent` selector within the `AppComponent`, you add the element, `<app-item>`, which corresponds to the selector you defined for the component class to `app.component.html`.
-Replace the current unordered list in `app.component.html` with the following updated version:
+Replace the current unordered list `<ul>` in `app.component.html` with the following updated version:
 
 ```html
-<h2>\{{items.length}} <span *ngIf="items.length === 1; else elseBlock">item</span>
-<ng-template #elseBlock>items</ng-template></h2>
+<h2>
+  \{{items.length}}
+  <span *ngIf="items.length === 1; else elseBlock">item</span>
+  <ng-template #elseBlock>items</ng-template>
+</h2>
 
 <ul>
   <li *ngFor="let i of items">
     <app-item (remove)="remove(i)" [item]="i"></app-item>
   </li>
 </ul>
+```
+
+Change the `imports` in `app.component.ts` to include `ItemComponent` as well as `CommonModule`:
+
+```js
+@Component({
+  standalone: true,
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  imports: [CommonModule, ItemComponent],
+})
 ```
 
 The double curly brace syntax, `\{{}}`, in the `<h2>` interpolates the length of the `items` array and displays the number.

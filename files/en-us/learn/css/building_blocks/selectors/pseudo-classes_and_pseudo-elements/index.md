@@ -1,14 +1,7 @@
 ---
 title: Pseudo-classes and pseudo-elements
 slug: Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements
-tags:
-  - Beginner
-  - CSS
-  - Learn
-  - Pseudo
-  - Pseudo-class
-  - Pseudo-element
-  - Selectors
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/CSS/Building_blocks/Selectors/Attribute_selectors", "Learn/CSS/Building_blocks/Selectors/Combinators", "Learn/CSS/Building_blocks")}}
@@ -20,10 +13,9 @@ The next set of selectors we will look at are referred to as **pseudo-classes** 
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy,
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
-          >basic software installed</a
+          >Basic software installed</a
         >, basic knowledge of
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
@@ -64,7 +56,8 @@ All pseudo-classes behave in this same kind of way. They target some bit of your
 - [`:only-child`](/en-US/docs/Web/CSS/:only-child)
 - [`:invalid`](/en-US/docs/Web/CSS/:invalid)
 
-> **Note:** It is valid to write pseudo-classes and elements without any element selector preceding them. In the example above, you could write `:first-child` and the rule would apply to _any_ element that is the first child of an `<article>` element, not just a paragraph first child — `:first-child` is equivalent to `*:first-child`. However, usually you want more control than that, so you need to be more specific.
+> [!NOTE]
+> It is valid to write pseudo-classes and elements without any element selector preceding them. In the example above, you could write `:first-child` and the rule would apply to _any_ element that is the first child of an `<article>` element, not just a paragraph first child — `:first-child` is equivalent to `*:first-child`. However, usually you want more control than that, so you need to be more specific.
 
 ### User-action pseudo classes
 
@@ -81,7 +74,8 @@ Pseudo-elements behave in a similar way. However, they act as if you had added a
 
 Pseudo-elements start with a double colon `::`. `::before` is an example of a pseudo-element.
 
-> **Note:** Some early pseudo-elements used the single colon syntax, so you may sometimes see this in code or examples. Modern browsers support the early pseudo-elements with single- or double-colon syntax for backwards compatibility.
+> [!NOTE]
+> Some early pseudo-elements used the single colon syntax, so you may sometimes see this in code or examples. Modern browsers support the early pseudo-elements with single- or double-colon syntax for backwards compatibility.
 
 For example, if you wanted to select the first line of a paragraph you could wrap it in a `<span>` element and use an element selector; however, that would fail if the number of words you had wrapped were longer or shorter than the parent element's width. As we tend not to know how many words will fit on a line — as that will change if the screen width or font-size changes — it is impossible to robustly do this by adding HTML.
 
@@ -140,27 +134,3 @@ In the next article, we'll learn about [combinators](/en-US/docs/Learn/CSS/Build
 - [Pseudo-elements reference](/en-US/docs/Web/CSS/Pseudo-elements)
 
 {{PreviousMenuNext("Learn/CSS/Building_blocks/Selectors/Attribute_selectors", "Learn/CSS/Building_blocks/Selectors/Combinators", "Learn/CSS/Building_blocks")}}
-
-## In this module
-
-- [Cascade, specificity, and inheritance](/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)
-- [CSS selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors)
-
-  - [Type, class, and ID selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors)
-  - [Attribute selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors)
-  - [Pseudo-classes and pseudo-elements](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements)
-  - [Combinators](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators)
-
-- [The box model](/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
-- [Backgrounds and borders](/en-US/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders)
-- [Handling different text directions](/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions)
-- [Overflowing content](/en-US/docs/Learn/CSS/Building_blocks/Overflowing_content)
-- [Values and units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
-- [Sizing items in CSS](/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS)
-- [Images, media, and form elements](/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements)
-- [Styling tables](/en-US/docs/Learn/CSS/Building_blocks/Styling_tables)
-- [Debugging CSS](/en-US/docs/Learn/CSS/Building_blocks/Debugging_CSS)
-- [Organizing your CSS](/en-US/docs/Learn/CSS/Building_blocks/Organizing)
-- [Fundamental CSS comprehension](/en-US/docs/Learn/CSS/Building_blocks/Fundamental_CSS_comprehension)
-- [Creating fancy letterheaded paper](/en-US/docs/Learn/CSS/Building_blocks/Creating_fancy_letterheaded_paper)
-- [A cool-looking box](/en-US/docs/Learn/CSS/Building_blocks/A_cool_looking_box)

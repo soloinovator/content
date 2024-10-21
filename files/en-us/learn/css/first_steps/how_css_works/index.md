@@ -1,11 +1,7 @@
 ---
 title: How CSS works
 slug: Learn/CSS/First_steps/How_CSS_works
-tags:
-  - Beginner
-  - CSS
-  - DOM
-  - Learn
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}
@@ -18,18 +14,9 @@ We have learned the basics of CSS, what it is for and how to write simple styles
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy,
-        <a
-          href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
-          >basic software installed</a
-        >, basic knowledge of
-        <a
-          href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
-          >working with files</a
-        >, and HTML basics (study
-        <a href="/en-US/docs/Learn/HTML/Introduction_to_HTML"
-          >Introduction to HTML</a
-        >.)
+        <a href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software">Basic software installed</a>, basic knowledge of
+        <a href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files">working with files</a>, and HTML basics (study
+        <a href="/en-US/docs/Learn/HTML/Introduction_to_HTML">Introduction to HTML</a>.)
       </td>
     </tr>
     <tr>
@@ -80,7 +67,7 @@ Take the following HTML code:
 
 In the DOM, the node corresponding to our `<p>` element is a parent. Its children are a text node and the three nodes corresponding to our `<span>` elements. The `SPAN` nodes are also parents, with text nodes as their children:
 
-```
+```plain
 P
 ├─ "Let's use:"
 ├─ SPAN
@@ -175,11 +162,3 @@ We will look at many more ways to support various browsers in later lessons.
 You've nearly finished this module — we only have one more thing to do. In the [Styling a biography page assessment](/en-US/docs/Learn/CSS/First_steps/Styling_a_biography_page) you'll use your new knowledge to restyle an example, testing out some CSS in the process.
 
 {{PreviousMenuNext("Learn/CSS/First_steps/How_CSS_is_structured", "Learn/CSS/First_steps/Styling_a_biography_page", "Learn/CSS/First_steps")}}
-
-## In this module
-
-- [What is CSS?](/en-US/docs/Learn/CSS/First_steps/What_is_CSS)
-- [Getting started with CSS](/en-US/docs/Learn/CSS/First_steps/Getting_started)
-- [How CSS is structured](/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured)
-- [How CSS works](/en-US/docs/Learn/CSS/First_steps/How_CSS_works)
-- [Styling a biography page](/en-US/docs/Learn/CSS/First_steps/Styling_a_biography_page)

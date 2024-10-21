@@ -1,16 +1,7 @@
 ---
 title: Third-party APIs
 slug: Learn/JavaScript/Client-side_web_APIs/Third_party_APIs
-tags:
-  - 3rd party
-  - API
-  - Beginner
-  - CodingScripting
-  - Google Maps
-  - Learn
-  - NYTimes
-  - Third party
-  - youtube
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/JavaScript/Client-side_web_APIs/Fetching_data", "Learn/JavaScript/Client-side_web_APIs/Drawing_graphics", "Learn/JavaScript/Client-side_web_APIs")}}
@@ -50,7 +41,8 @@ Third party APIs are APIs provided by third parties — generally companies such
 
 Let's look at a [Simple Mapquest API example](https://github.com/mdn/learning-area/tree/main/javascript/apis/third-party-apis/mapquest), and use it to illustrate how third-party APIs differ from browser APIs.
 
-> **Note:** You might want to just [get all our code examples](/en-US/docs/Learn#getting_our_code_examples) at once, in which case you can then just search the repo for the example files you need in each section.
+> [!NOTE]
+> You might want to just [get all our code examples](/en-US/docs/Learn#getting_our_code_examples) at once, in which case you can then just search the repo for the example files you need in each section.
 
 ### They are found on third-party servers
 
@@ -59,7 +51,7 @@ Browser APIs are built into the browser — you can access them from JavaScript 
 ```js
 const audioCtx = new AudioContext();
 // …
-const audioElement = document.querySelector('audio');
+const audioElement = document.querySelector("audio");
 // …
 const audioSource = audioCtx.createMediaElementSource(audioElement);
 // etc.
@@ -79,10 +71,10 @@ Third party APIs, on the other hand, are located on third party servers. To acce
 You can then start using the objects available in that library. For example:
 
 ```js
-const map = L.mapquest.map('map', {
+const map = L.mapquest.map("map", {
   center: [53.480759, -2.242631],
-  layers: L.mapquest.tileLayer('map'),
-  zoom: 12
+  layers: L.mapquest.tileLayer("map"),
+  zoom: 12,
 });
 ```
 
@@ -90,7 +82,8 @@ Here we are creating a variable to store the map information in, then creating a
 
 This is all the information the Mapquest API needs to plot a simple map. The server you are connecting to handles all the complicated stuff, like displaying the correct map tiles for the area being shown, etc.
 
-> **Note:** Some APIs handle access to their functionality slightly differently, requiring the developer to make an HTTP request to a specific URL pattern to retrieve data. These are called [RESTful APIs — we'll show an example later on](#a_restful_api_%e2%80%94_nytimes).
+> [!NOTE]
+> Some APIs handle access to their functionality slightly differently, requiring the developer to make an HTTP request to a specific URL pattern to retrieve data. These are called [RESTful APIs — we'll show an example later on](#a_restful_api_%e2%80%94_nytimes).
 
 ### They usually require API keys
 
@@ -101,12 +94,13 @@ Third party APIs have a slightly different permissions system — they tend to u
 You'll find a line similar to the following in the Mapquest API example:
 
 ```js
-L.mapquest.key = 'YOUR-API-KEY-HERE';
+L.mapquest.key = "YOUR-API-KEY-HERE";
 ```
 
 This line specifies an API or developer key to use in your application — the developer of the application must apply to get a key, and then include it in their code to be allowed access to the API's functionality. In our example we've just provided a placeholder.
 
-> **Note:** When creating your own examples, you'll use your own API key in place of any placeholder.
+> [!NOTE]
+> When creating your own examples, you'll use your own API key in place of any placeholder.
 
 Other APIs may require that you include the key in a slightly different way, but the pattern is relatively similar for most of them.
 
@@ -125,7 +119,7 @@ Let's add some more functionality to the Mapquest example to show how to use som
 There are a number of different types of map that can be shown with the Mapquest API. To do this, find the following line:
 
 ```js
-layers: L.mapquest.tileLayer('map')
+layers: L.mapquest.tileLayer("map");
 ```
 
 Try changing `'map'` to `'hybrid'` to show a hybrid-style map. Try some other values too. The [`tileLayer` reference page](https://developer.mapquest.com/documentation/mapquest-js/v1.3/l-mapquest-tile-layer/) shows the different available options, plus a lot more information.
@@ -141,7 +135,7 @@ map.addControl(L.mapquest.control());
 The [`mapquest.control()` method](https://developer.mapquest.com/documentation/mapquest-js/v1.3/l-mapquest-control/) just creates a simple full-featured control set, and it is placed in the top-right-hand corner by default. You can adjust the position by specifying an options object as a parameter for the control containing a `position` property, the value of which is a string specifying a position for the control. Try this, for example:
 
 ```js
-  map.addControl(L.mapquest.control({ position: 'bottomright' }));
+map.addControl(L.mapquest.control({ position: "bottomright" }));
 ```
 
 There are other types of control available, for example [`mapquest.searchControl()`](https://developer.mapquest.com/documentation/mapquest-js/v1.3/l-mapquest-search-control/) and [`mapquest.satelliteControl()`](https://developer.mapquest.com/documentation/mapquest-js/v1.3/l-mapquest-satellite-control/), and some are quite complex and powerful. Have a play around and see what you can come up with.
@@ -153,15 +147,15 @@ Adding a marker (icon) at a certain point on the map is easy — you just use th
 ```js
 L.marker([53.480759, -2.242631], {
   icon: L.mapquest.icons.marker({
-    primaryColor: '#22407F',
-    secondaryColor: '#3B5998',
+    primaryColor: "#22407F",
+    secondaryColor: "#3B5998",
     shadow: true,
-    size: 'md',
-    symbol: 'A'
-  })
+    size: "md",
+    symbol: "A",
+  }),
 })
-.bindPopup('This is Manchester!')
-.addTo(map);
+  .bindPopup("This is Manchester!")
+  .addTo(map);
 ```
 
 As you can see, this at its simplest takes two parameters, an array containing the coordinates at which to display the marker, and an options object containing an `icon` property that defines the icon to display at that point.
@@ -174,13 +168,12 @@ Finally, we chain `.addTo(map)` to the end of the chain to actually add the mark
 
 Have a play with the other options shown in the documentation and see what you can come up with! Mapquest provides some pretty advanced functionality, such as directions, searching, etc.
 
-> **Note:** If you have trouble getting the example to work, check your code against our [finished version](https://github.com/mdn/learning-area/blob/main/javascript/apis/third-party-apis/mapquest/finished/script.js).
+> [!NOTE]
+> If you have trouble getting the example to work, check your code against our [finished version](https://github.com/mdn/learning-area/blob/main/javascript/apis/third-party-apis/mapquest/finished/script.js).
 
 ## A RESTful API — NYTimes
 
-Now let's look at another API example — the [New York Times API](https://developer.nytimes.com). This API allows you to retrieve New York Times news story information and display it on your site. This type of API is known as a **RESTful API** — instead of getting data using the features of a JavaScript library like we did with Mapquest, we get data by making HTTP requests to specific URLs, with data like search terms and other properties encoded in the URL (often as URL parameters). This is a common pattern you'll encounter with APIs.
-
-## An approach for using third-party APIs
+Now let's look at another API example — the [New York Times API](https://developer.nytimes.com/). This API allows you to retrieve New York Times news story information and display it on your site. This type of API is known as a **RESTful API** — instead of getting data using the features of a JavaScript library like we did with Mapquest, we get data by making HTTP requests to specific URLs, with data like search terms and other properties encoded in the URL (often as URL parameters). This is a common pattern you'll encounter with APIs.
 
 Below we'll take you through an exercise to show you how to use the NYTimes API, which also provides a more general set of steps to follow that you can use as an approach for working with new APIs.
 
@@ -207,15 +200,15 @@ First, you'll need to make a connection between the API and your app. In the cas
 1. Find the following line:
 
    ```js
-   const key = 'INSERT-YOUR-API-KEY-HERE';
+   const key = "INSERT-YOUR-API-KEY-HERE";
    ```
 
    Replace the existing API key with the actual API key you got in the previous section.
 
-2. Add the following line to your JavaScript, below the "`// Event listeners to control the functionality`" comment. This runs a function called `submitSearch()` when the form is submitted (the button is pressed).
+2. Add the following line to your JavaScript, below the `// Event listeners to control the functionality` comment. This runs a function called `submitSearch()` when the form is submitted (the button is pressed).
 
    ```js
-   searchForm.addEventListener('submit', submitSearch);
+   searchForm.addEventListener("submit", submitSearch);
    ```
 
 3. Now add the `submitSearch()` and `fetchResults()` function definitions, below the previous line:
@@ -233,13 +226,13 @@ First, you'll need to make a connection between the API and your app. In the cas
      // Assemble the full URL
      let url = `${baseURL}?api-key=${key}&page=${pageNumber}&q=${searchTerm.value}&fq=document_type:("article")`;
 
-     if (startDate.value !== '') {
+     if (startDate.value !== "") {
        url = `${url}&begin_date=${startDate.value}`;
-     };
+     }
 
-     if (endDate.value !== '') {
+     if (endDate.value !== "") {
        url = `${url}&end_date=${endDate.value}`;
-     };
+     }
    }
    ```
 
@@ -255,13 +248,15 @@ Next, we use a couple of [`if ()`](/en-US/docs/Web/JavaScript/Reference/Statemen
 
 So, a complete URL would end up looking something like this:
 
-```
+```url
 https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=YOUR-API-KEY-HERE&page=0&q=cats&fq=document_type:("article")&begin_date=20170301&end_date=20170312
 ```
 
-> **Note:** You can find more details of what URL parameters can be included at the [NYTimes developer docs](https://developer.nytimes.com/).
+> [!NOTE]
+> You can find more details of what URL parameters can be included at the [NYTimes developer docs](https://developer.nytimes.com/).
 
-> **Note:** The example has rudimentary form data validation — the search term field has to be filled in before the form can be submitted (achieved using the `required` attribute), and the date fields have `pattern` attributes specified, which means they won't submit unless their values consist of 8 numbers (`pattern="[0-9]{8}"`). See [Form data validation](/en-US/docs/Learn/Forms/Form_validation) for more details on how these work.
+> [!NOTE]
+> The example has rudimentary form data validation — the search term field has to be filled in before the form can be submitted (achieved using the `required` attribute), and the date fields have `pattern` attributes specified, which means they won't submit unless their values consist of 8 numbers (`pattern="[0-9]{8}"`). See [Form data validation](/en-US/docs/Learn/Forms/Form_validation) for more details on how these work.
 
 ### Requesting data from the API
 
@@ -277,7 +272,7 @@ fetch(url)
   .catch((error) => console.error(`Error fetching data: ${error.message}`));
 ```
 
-Here we run the request by passing our `url` variable to [`fetch()`](/en-US/docs/Web/API/fetch), convert the response body to JSON using the [`json()`](/en-US/docs/Web/API/Response/json) function, then pass the resulting JSON to the `displayResults()` function so the data can be displayed in our UI. We also catch and log any errors that might be thrown.
+Here we run the request by passing our `url` variable to [`fetch()`](/en-US/docs/Web/API/Window/fetch), convert the response body to JSON using the [`json()`](/en-US/docs/Web/API/Response/json) function, then pass the resulting JSON to the `displayResults()` function so the data can be displayed in our UI. We also catch and log any errors that might be thrown.
 
 ### Displaying the data
 
@@ -291,30 +286,30 @@ function displayResults(json) {
 
   const articles = json.response.docs;
 
-  nav.style.display = articles.length === 10 ? 'block' : 'none';
+  nav.style.display = articles.length === 10 ? "block" : "none";
 
   if (articles.length === 0) {
-    const para = document.createElement('p');
-    para.textContent = 'No results returned.'
+    const para = document.createElement("p");
+    para.textContent = "No results returned.";
     section.appendChild(para);
   } else {
     for (const current of articles) {
-      const article = document.createElement('article');
-      const heading = document.createElement('h2');
-      const link = document.createElement('a');
-      const img = document.createElement('img');
-      const para1 = document.createElement('p');
-      const keywordPara = document.createElement('p');
-      keywordPara.classList.add('keywords');
+      const article = document.createElement("article");
+      const heading = document.createElement("h2");
+      const link = document.createElement("a");
+      const img = document.createElement("img");
+      const para1 = document.createElement("p");
+      const keywordPara = document.createElement("p");
+      keywordPara.classList.add("keywords");
 
       console.log(current);
 
       link.href = current.web_url;
       link.textContent = current.headline.main;
       para1.textContent = current.snippet;
-      keywordPara.textContent = 'Keywords: ';
+      keywordPara.textContent = "Keywords: ";
       for (const keyword of current.keywords) {
-        const span = document.createElement('span');
+        const span = document.createElement("span");
         span.textContent = `${keyword.value} `;
         keywordPara.appendChild(span);
       }
@@ -332,7 +327,7 @@ function displayResults(json) {
       section.appendChild(article);
     }
   }
-};
+}
 ```
 
 There's a lot of code here; let's explain it step by step:
@@ -355,8 +350,8 @@ This allows us to write a simplistic pagination function.
 1. Below the existing [`addEventListener()`](/en-US/docs/Web/API/EventTarget/addEventListener) call, add these two new ones, which cause the `nextPage()` and `previousPage()` functions to be invoked when the relevant buttons are clicked:
 
    ```js
-   nextBtn.addEventListener('click', nextPage);
-   previousBtn.addEventListener('click', previousPage);
+   nextBtn.addEventListener("click", nextPage);
+   previousBtn.addEventListener("click", previousPage);
    ```
 
 2. Below your previous addition, let's define the two functions — add this code now:
@@ -365,7 +360,7 @@ This allows us to write a simplistic pagination function.
    function nextPage(e) {
      pageNumber++;
      fetchResults(e);
-   };
+   }
 
    function previousPage(e) {
      if (pageNumber > 0) {
@@ -374,14 +369,15 @@ This allows us to write a simplistic pagination function.
        return;
      }
      fetchResults(e);
-   };
+   }
    ```
 
    The first function increments the `pageNumber` variable, then run the `fetchResults()` function again to display the next page's results.
 
    The second function works nearly exactly the same way in reverse, but we also have to take the extra step of checking that `pageNumber` is not already zero before decrementing it — if the fetch request runs with a minus `page` URL parameter, it could cause errors. If the `pageNumber` is already 0, we [`return`](/en-US/docs/Web/JavaScript/Reference/Statements/return) out of the function — if we are already at the first page, we don't need to load the same results again.
 
-> **Note:** You can find our [finished NYTimes API example code on GitHub](https://github.com/mdn/learning-area/blob/main/javascript/apis/third-party-apis/nytimes/finished/index.html) (also [see it running live here](https://mdn.github.io/learning-area/javascript/apis/third-party-apis/nytimes/finished/)).
+> [!NOTE]
+> You can find our [finished NYTimes API example code on GitHub](https://github.com/mdn/learning-area/blob/main/javascript/apis/third-party-apis/nytimes/finished/index.html) (also [see it running live here](https://mdn.github.io/learning-area/javascript/apis/third-party-apis/nytimes/finished/)).
 
 ## YouTube example
 
@@ -409,13 +405,3 @@ To get it running, you'll need to:
 This article has given you a useful introduction to using third-party APIs to add functionality to your websites.
 
 {{PreviousMenuNext("Learn/JavaScript/Client-side_web_APIs/Fetching_data", "Learn/JavaScript/Client-side_web_APIs/Drawing_graphics", "Learn/JavaScript/Client-side_web_APIs")}}
-
-## In this module
-
-- [Introduction to web APIs](/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction)
-- [Manipulating documents](/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)
-- [Fetching data from the server](/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data)
-- **Third party APIs**
-- [Drawing graphics](/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics)
-- [Video and audio APIs](/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Video_and_audio_APIs)
-- [Client-side storage](/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage)

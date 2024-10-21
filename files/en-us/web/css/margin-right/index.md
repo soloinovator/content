@@ -2,21 +2,16 @@
 title: margin-right
 slug: Web/CSS/margin-right
 page-type: css-property
-tags:
-  - CSS
-  - CSS Property
-  - Reference
-  - recipe:css-property
 browser-compat: css.properties.margin-right
 ---
 
 {{CSSRef}}
 
-The **`margin-right`** [CSS](/en-US/docs/Web/CSS) property sets the [margin area](/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#margin_area) on the right side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+The **`margin-right`** [CSS](/en-US/docs/Web/CSS) property sets the [margin area](/en-US/docs/Web/CSS/CSS_box_model/Introduction_to_the_CSS_box_model#margin_area) on the right side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
 
 {{EmbedInteractiveExample("pages/css/margin-right.html")}}
 
-The vertical margins of two adjacent boxes may fuse. This is called [_margin collapsing_](/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing).
+The vertical margins of two adjacent boxes may fuse. This is called [_margin collapsing_](/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing).
 
 ## Syntax
 
@@ -156,7 +151,7 @@ The `margin-right` property is specified as the keyword `auto`, or a `<length>`,
 .content {
   margin-right: 5%;
 }
-.sidebox {
+.side-box {
   margin-right: 10px;
 }
 .logo {
@@ -174,5 +169,8 @@ The `margin-right` property is specified as the keyword `auto`, or a `<length>`,
 
 ## See also
 
-- {{cssxref("margin-top")}}, {{cssxref("margin-bottom")}}, and {{cssxref("margin-left")}} and the {{cssxref("margin")}} shorthand
-- The mapped logical properties: {{cssxref("margin-block-start")}}, {{cssxref("margin-block-end")}}, {{cssxref("margin-inline-start")}}, and {{cssxref("margin-inline-end")}} and the shorthands {{cssxref("margin-block")}} and {{cssxref("margin-inline")}}
+- {{cssxref("margin-top")}}, {{cssxref("margin-bottom")}}, and {{cssxref("margin-left")}}
+- {{cssxref("margin")}} shorthand
+- {{cssxref("margin-block-start")}}, {{cssxref("margin-block-end")}}, {{cssxref("margin-inline-start")}}, and {{cssxref("margin-inline-end")}}
+- {{cssxref("margin-block")}} and {{cssxref("margin-inline")}} shorthands
+- [CSS box model](/en-US/docs/Web/CSS/CSS_box_model) module

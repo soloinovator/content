@@ -1,25 +1,8 @@
 ---
-title: RTCRtpStreamStats.pliCount
+title: "RTCRtpStreamStats: pliCount property"
+short-title: pliCount
 slug: Web/API/RTCRtpStreamStats/pliCount
 page-type: web-api-instance-property
-tags:
-  - API
-  - Data Loss
-  - Media
-  - PLI
-  - Packet Loss
-  - Packet Loss Indication
-  - Property
-  - RTCRtpStreamStats
-  - RTP
-  - Reference
-  - Statistics
-  - Stats
-  - Streams
-  - WebRTC
-  - WebRTC API
-  - pliCount
-  - rtc
 browser-compat: api.RTCRtpStreamStats.pliCount
 ---
 
@@ -49,7 +32,8 @@ techniques to mitigate network performance issues. This is often achieved by met
 such as increasing the compression, lowering resolution, or finding other ways to reduce
 the bit rate of the stream.
 
-> **Note:** This value is only available on the receiver, and only for
+> [!NOTE]
+> This value is only available on the receiver, and only for
 > video media.
 
 ## Specifications

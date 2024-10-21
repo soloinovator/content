@@ -1,16 +1,8 @@
 ---
-title: Window.frames
+title: "Window: frames property"
+short-title: frames
 slug: Web/API/Window/frames
 page-type: web-api-instance-property
-tags:
-  - API
-  - Gecko
-  - HTML DOM
-  - NeedsContent
-  - NeedsUpdate
-  - Property
-  - Reference
-  - Window
 browser-compat: api.Window.frames
 ---
 
@@ -31,7 +23,7 @@ using the `[i]` notation.
   {{HTMLElement("iframe")}}'s content, not the `frame` or `iframe` DOM element (i.e.,
   `window.frames[0]` is the same thing as
   `document.getElementsByTagName("iframe")[0].contentWindow`).
-- For more details about the returned value, refer to this [thread on mozilla.dev.platform](https://groups.google.com/d/topic/mozilla.dev.platform/VijG80aFnU8?hl=en&pli=1).
+- For more details about the returned value, refer to this [thread on mozilla.dev.platform](https://groups.google.com/g/mozilla.dev.platform/c/VijG80aFnU8).
 
 ## Examples
 

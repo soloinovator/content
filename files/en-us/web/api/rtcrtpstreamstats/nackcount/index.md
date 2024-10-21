@@ -1,23 +1,8 @@
 ---
-title: RTCRtpStreamStats.nackCount
+title: "RTCRtpStreamStats: nackCount property"
+short-title: nackCount
 slug: Web/API/RTCRtpStreamStats/nackCount
 page-type: web-api-instance-property
-tags:
-  - API
-  - Acknowledgement
-  - Generic NACK
-  - NACK
-  - Negative Acknowledgement
-  - Property
-  - RTCRtpStreamStats
-  - RTP
-  - Reference
-  - Statistics
-  - Stats
-  - WebRTC
-  - WebRTC API
-  - nackCount
-  - rtc
 browser-compat: api.RTCRtpStreamStats.nackCount
 ---
 
@@ -36,7 +21,8 @@ or more of the {{Glossary("RTP")}} packets it sent were lost in transport.
 An integer value indicating how many times the receiver sent a NACK packet to the
 sender after detecting that one or more packets were lost during transport.
 
-> **Note:** This value is only available on the receiver.
+> [!NOTE]
+> This value is only available on the receiver.
 
 ## Specifications
 

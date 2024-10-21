@@ -1,20 +1,15 @@
 ---
-title: HTMLMetaElement.content
+title: "HTMLMetaElement: content property"
+short-title: content
 slug: Web/API/HTMLMetaElement/content
 page-type: web-api-instance-property
-tags:
-  - API
-  - HTML DOM
-  - HTMLMetaElement
-  - Property
-  - Reference
 browser-compat: api.HTMLMetaElement.content
 ---
 
 {{APIRef("HTML DOM")}}
 
 The **`HTMLMetaElement.content`** property gets or sets the `content` attribute of pragma directives and named {{htmlelement("meta")}} data in conjunction with {{domxref("HTMLMetaElement.name")}} or {{domxref("HTMLMetaElement.httpEquiv")}}.
-For more information, see the [content](/en-US/docs/Web/HTML/Element/meta#attr-content) attribute.
+For more information, see the [content](/en-US/docs/Web/HTML/Element/meta#content) attribute.
 
 ## Value
 
@@ -29,7 +24,7 @@ The `content` value is logged to the console to display the [keywords](/en-US/do
 
 ```js
 // given <meta name="keywords" content="documentation, HTML, web">
-let meta = document.querySelector("meta[name='keywords']");
+const meta = document.querySelector("meta[name='keywords']");
 console.log(meta.content);
 // "documentation, HTML, web"
 ```
@@ -40,7 +35,7 @@ The following example creates a new `<meta>` element with a `name` attribute set
 The `content` attribute sets a description of the document and is appended to the document `<head>`:
 
 ```js
-let meta = document.createElement("meta");
+const meta = document.createElement("meta");
 meta.name = "description";
 meta.content =
   "The <meta> element can be used to provide document metadata in terms of name-value pairs, with the name attribute giving the metadata name, and the content attribute giving the value.";

@@ -2,10 +2,9 @@
 title: Main thread
 slug: Glossary/Main_thread
 page-type: glossary-definition
-tags:
-  - Reference
-  - Web Performance
 ---
+
+{{GlossarySidebar}}
 
 The **main thread** is where a browser processes user events and paints. By default, the browser uses a single thread to run all the JavaScript in your page, as well as to perform layout, reflows, and garbage collection. This means that long-running JavaScript functions can block the thread, leading to an unresponsive page and a bad user experience.
 
@@ -16,6 +15,5 @@ Unless intentionally using a [web worker](/en-US/docs/Web/API/Web_Workers_API/Us
 - [Asynchronous JavaScript](/en-US/docs/Learn/JavaScript/Asynchronous)
 - [Web worker API](/en-US/docs/Web/API/Web_Workers_API)
 - [Service worker API](/en-US/docs/Web/API/Service_Worker_API)
-- [Glossary](/en-US/docs/Glossary)
-
+- Related glossary terms:
   - {{Glossary("Thread")}}

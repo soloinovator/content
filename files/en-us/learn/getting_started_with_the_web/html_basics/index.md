@@ -1,14 +1,7 @@
 ---
 title: HTML basics
 slug: Learn/Getting_started_with_the_web/HTML_basics
-tags:
-  - Beginner
-  - CodingScripting
-  - Doctype html
-  - HTML
-  - Learn
-  - Web
-  - "l10n:priority"
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/Getting_started_with_the_web/Dealing_with_files", "Learn/Getting_started_with_the_web/CSS_basics", "Learn/Getting_started_with_the_web")}}
@@ -19,7 +12,7 @@ HTML (**H**yper**T**ext **M**arkup **L**anguage) is the code that is used to str
 
 HTML is a _markup language_ that defines the structure of your content. HTML consists of a series of **{{Glossary("element", "elements")}}**, which you use to enclose, or wrap, different parts of the content to make it appear a certain way, or act a certain way. The enclosing {{Glossary("tag", "tags")}} can make a word or image hyperlink to somewhere else, can italicize words, can make the font bigger or smaller, and so on. For example, take the following line of content:
 
-```
+```plain
 My cat is very grumpy
 ```
 
@@ -55,7 +48,8 @@ Attributes that set a value always have:
 2. The attribute name followed by an equal sign.
 3. The attribute value wrapped by opening and closing quotation marks.
 
-> **Note:** Simple attribute values that don't contain ASCII whitespace (or any of the characters `"` `'` `` ` `` `=` `<` `>`) can remain unquoted, but it is recommended that you quote all attribute values, as it makes the code more consistent and understandable.
+> [!NOTE]
+> Simple attribute values that don't contain {{Glossary("ASCII")}} whitespace (or any of the characters `"` `'` `` ` `` `=` `<` `>`) can remain unquoted, but it is recommended that you quote all attribute values, as it makes the code more consistent and understandable.
 
 ### Nesting elements
 
@@ -88,7 +82,7 @@ This contains two attributes, but there is no closing `</img>` tag and no inner 
 That wraps up the basics of individual HTML elements, but they aren't handy on their own. Now we'll look at how individual elements are combined to form an entire HTML page. Let's revisit the code we put into our `index.html` example (which we first met in the [Dealing with files](/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files) article):
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
@@ -103,7 +97,7 @@ That wraps up the basics of individual HTML elements, but they aren't handy on t
 
 Here, we have the following:
 
-- `<!DOCTYPE html>` — [doctype](/en-US/docs/Glossary/Doctype). It is a required preamble. In the mists of time, when HTML was young (around 1991/92), doctypes were meant to act as links to a set of rules that the HTML page had to follow to be considered good HTML, which could mean automatic error checking and other useful things. However, these days, they don't do much and are basically just needed to make sure your document behaves correctly. That's all you need to know for now.
+- `<!doctype html>` — [doctype](/en-US/docs/Glossary/Doctype). It is a required preamble. In the mists of time, when HTML was young (around 1991/92), doctypes were meant to act as links to a set of rules that the HTML page had to follow to be considered good HTML, which could mean automatic error checking and other useful things. However, these days, they don't do much and are basically just needed to make sure your document behaves correctly. That's all you need to know for now.
 - `<html></html>` — the {{htmlelement("html")}} element. This element wraps all the content on the entire page and is sometimes known as the root element. It also includes the `lang` attribute, setting the primary language of the document.
 - `<head></head>` — the {{htmlelement("head")}} element. This element acts as a container for all the stuff you want to include on the HTML page that _isn't_ the content you are showing to your page's viewers. This includes things like {{Glossary("keyword", "keywords")}} and a page description that you want to appear in search results, CSS to style our content, character set declarations, and more.
 - `<meta charset="utf-8">` — This element sets the character set your document should use to UTF-8 which includes most characters from the vast majority of written languages. Essentially, it can now handle any textual content you might put on it. There is no reason not to set this, and it can help avoid some problems later on.
@@ -132,7 +126,8 @@ The keywords for alt text are "descriptive text". The alt text you write should 
 
 Try coming up with some better alt text for your image now.
 
-> **Note:** Find out more about accessibility in our [accessibility learning module](/en-US/docs/Learn/Accessibility).
+> [!NOTE]
+> Find out more about accessibility in our [accessibility learning module](/en-US/docs/Learn/Accessibility).
 
 ## Marking up text
 
@@ -150,11 +145,13 @@ Heading elements allow you to specify that certain parts of your content are hea
 <h4>My sub-subheading</h4>
 ```
 
-> **Note:** Anything in HTML between `<!--` and `-->` is an **HTML comment**. The browser ignores comments as it renders the code. In other words, they are not visible on the page - just in the code. HTML comments are a way for you to write helpful notes about your code or logic.
+> [!NOTE]
+> Anything in HTML between `<!--` and `-->` is an **HTML comment**. The browser ignores comments as it renders the code. In other words, they are not visible on the page - just in the code. HTML comments are a way for you to write helpful notes about your code or logic.
 
 Now try adding a suitable title to your HTML page just above your {{htmlelement("img")}} element.
 
-> **Note:** You'll see that your heading level 1 has an implicit style. Don't use heading elements to make text bigger or bold, because they are used for [accessibility](/en-US/docs/Learn/Accessibility/HTML#text_content) and [other reasons such as SEO](/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals#why_do_we_need_structure). Try to create a meaningful sequence of headings on your pages, without skipping levels.
+> [!NOTE]
+> You'll see that your heading level 1 has an implicit style. Don't use heading elements to make text bigger or bold, because they are used for [accessibility](/en-US/docs/Learn/Accessibility/HTML#text_content) and [other reasons such as SEO](/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals#why_do_we_need_structure). Try to create a meaningful sequence of headings on your pages, without skipping levels.
 
 ### Paragraphs
 
@@ -217,10 +214,12 @@ Links are very important — they are what makes the web a web! To add a link, w
    <a href="">Mozilla Manifesto</a>
    ```
 
-4. Fill in the value of this attribute with the web address that you want the link to:
+4. Fill in the value of this attribute with the web address that you want the link to point to:
 
    ```html
-   <a href="https://www.mozilla.org/en-US/about/manifesto/">Mozilla Manifesto</a>
+   <a href="https://www.mozilla.org/en-US/about/manifesto/">
+     Mozilla Manifesto
+   </a>
    ```
 
 You might get unexpected results if you omit the `https://` or `http://` part, called the _protocol_, at the beginning of the web address. After making a link, click it to make sure it is sending you where you wanted it to.
@@ -235,7 +234,7 @@ If you have followed all the instructions in this article, you should end up wit
 
 ![A web page screenshot showing a Firefox logo, a heading saying Mozilla is cool, and two paragraphs of filler text](finished-test-page-small.png)
 
-If you get stuck, you can always compare your work with our [finished example code](https://github.com/mdn/beginner-html-site/blob/gh-pages/index.html) on GitHub.
+If you get stuck, you can always compare your work with our [finished example code](https://github.com/mdn/beginner-html-site/blob/main/index.html) on GitHub.
 
 Here, we have only really scratched the surface of HTML. To find out more, go to our [Learning HTML](/en-US/docs/Learn/HTML) topic.
 

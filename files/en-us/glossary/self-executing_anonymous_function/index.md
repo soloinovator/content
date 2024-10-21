@@ -2,8 +2,9 @@
 title: Self-Executing Anonymous Function
 slug: Glossary/Self-Executing_Anonymous_Function
 page-type: glossary-definition
-tags:
 ---
+
+{{GlossarySidebar}}
 
 A {{glossary("JavaScript")}} {{glossary("function")}} that runs as soon as it is defined. Also known as an {{glossary("IIFE")}} (Immediately Invoked Function Expression).
 

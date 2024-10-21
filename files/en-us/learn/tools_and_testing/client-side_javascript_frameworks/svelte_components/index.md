@@ -1,16 +1,7 @@
 ---
 title: Componentizing our Svelte app
 slug: Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Svelte_components
-tags:
-  - Beginner
-  - Components
-  - Frameworks
-  - JavaScript
-  - Learn
-  - Svelte
-  - client-side
-  - conditional rendering
-  - passing data
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}
@@ -109,7 +100,8 @@ In this article we will concentrate on creating the `FilterButton` and `Todo` co
 
 Let's get started.
 
-> **Note:** In the process of creating our first couple of components, we will also learn different techniques to communicate between components, and the pros and cons of each.
+> [!NOTE]
+> In the process of creating our first couple of components, we will also learn different techniques to communicate between components, and the pros and cons of each.
 
 ## Extracting our filter component
 
@@ -118,7 +110,7 @@ We'll begin by creating our `FilterButton.svelte`.
 1. First of all, create a new file, `components/FilterButton.svelte`.
 2. Inside this file we will declare a `filter` prop, and then copy the relevant markup over to it from `Todos.svelte`. Add the following content into the file:
 
-   ```html
+   ```svelte
    <script>
      export let filter = 'all'
    </script>
@@ -145,16 +137,17 @@ We'll begin by creating our `FilterButton.svelte`.
 3. Back in our `Todos.svelte` component, we want to make use of our `FilterButton` component. First of all, we need to import it. Add the following line at the top of the `Todos.svelte <script>` section:
 
    ```js
-   import FilterButton from './FilterButton.svelte'
+   import FilterButton from "./FilterButton.svelte";
    ```
 
 4. Now replace the `<div class="filters...` element with a call to the `FilterButton` component, which takes the current filter as a prop. The below line is all you need:
 
-   ```html
+   ```svelte
    <FilterButton {filter} />
    ```
 
-> **Note:** Remember that when the HTML attribute name and variable match, they can be replaced with `{variable}`. That's why we could replace `<FilterButton filter={filter} />` with `<FilterButton {filter} />`.
+> [!NOTE]
+> Remember that when the HTML attribute name and variable match, they can be replaced with `{variable}`. That's why we could replace `<FilterButton filter={filter} />` with `<FilterButton {filter} />`.
 
 So far so good! Let's try out the app now. You'll notice that when you click on the filter buttons, they are selected and the style updates appropriately. But we have a problem: the to-dos aren't filtered. That's because the `filter` variable flows down from the `Todos` component to the `FilterButton` component through the prop, but changes occurring in the `FilterButton` component don't flow back up to its parent — the data binding is one-way by default. Let's look at a way to solve this.
 
@@ -167,7 +160,7 @@ In our case, the `FilterButton` component will receive an `onclick` handler from
 We will just declare the `onclick` prop assigning a dummy handler to prevent errors, like this:
 
 ```js
-export let onclick = (clicked) => {}
+export let onclick = (clicked) => {};
 ```
 
 And we'll declare the reactive statement `$: onclick(filter)` to call the `onclick` handler whenever the `filter` variable is updated.
@@ -175,14 +168,14 @@ And we'll declare the reactive statement `$: onclick(filter)` to call the `oncli
 1. The `<script>` section of our `FilterButton` component should end up looking like this. Update it now:
 
    ```js
-   export let filter = 'all'
-   export let onclick = (clicked) => {}
-   $: onclick(filter)
+   export let filter = "all";
+   export let onclick = (clicked) => {};
+   $: onclick(filter);
    ```
 
 2. Now when we call `FilterButton` inside `Todos.svelte`, we'll need to specify the handler. Update it like this:
 
-   ```html
+   ```svelte
    <FilterButton {filter} onclick={ (clicked) => filter = clicked }/>
    ```
 
@@ -192,13 +185,13 @@ When any filter button is clicked, we just update the filter variable with the n
 
 In the previous example we realized that our `FilterButton` component wasn't working because our application state was flowing down from parent to child through the `filter` prop, but it wasn't going back up. So we added an `onclick` prop to let the child component communicate the new `filter` value to its parent.
 
-It works OK, but Svelte provides us with an easier and more straightforward way to achieve two-way data binding. Data ordinarily flows down from parent to child using props. If we want it to also flow the other way, from child to parent, we can use [the `bind:` directive](https://svelte.dev/docs#bind_element_property).
+It works OK, but Svelte provides us with an easier and more straightforward way to achieve two-way data binding. Data ordinarily flows down from parent to child using props. If we want it to also flow the other way, from child to parent, we can use [the `bind:` directive](https://svelte.dev/docs/element-directives#bind-property).
 
 Using `bind`, we will tell Svelte that any changes made to the `filter` prop in the `FilterButton` component should propagate back up to the parent component, `Todos`. That is, we will bind the `filter` variable's value in the parent to its value in the child.
 
 1. In `Todos.svelte`, update the call to the `FilterButton` component as follows:
 
-   ```html
+   ```svelte
    <FilterButton bind:filter={filter} />
    ```
 
@@ -206,7 +199,7 @@ Using `bind`, we will tell Svelte that any changes made to the `filter` prop in 
 
 2. The child component can now modify the value of the parent's filter variable, so we no longer need the `onclick` prop. Modify the `<script>` element of your `FilterButton` like this:
 
-   ```html
+   ```svelte
    <script>
      export let filter = "all";
    </script>
@@ -223,7 +216,7 @@ Our `Todo` component will receive a single `todo` object as a prop. Let's declar
 1. Create a new component file, `components/Todo.svelte`.
 2. Put the following contents inside this file:
 
-   ```html
+   ```svelte
    <script>
      export let todo
    </script>
@@ -250,14 +243,14 @@ Our `Todo` component will receive a single `todo` object as a prop. Let's declar
 3. Now we need to import our `Todo` component into `Todos.svelte`. Go to this file now, and add the following `import` statement below your previous one:
 
    ```js
-   import Todo from './Todo.svelte'
+   import Todo from "./Todo.svelte";
    ```
 
 4. Next we need to update our `{#each}` block to include a `<Todo>` component for each to-do, rather than the code that has been moved out to `Todo.svelte`. We are also passing the current `todo` object into the component as a prop.
 
    Update the `{#each}` block inside `Todos.svelte` like so:
 
-   ```html
+   ```svelte
    <ul role="list" class="todo-list stack-large" aria-labelledby="list-heading">
      {#each filterTodos(filter, todos) as todo (todo.id)}
      <li class="todo">
@@ -281,20 +274,21 @@ Let's look at how to emit our own events to re-implement the missing _Delete_ bu
 
 To create custom events, we'll use the `createEventDispatcher` utility. This will return a `dispatch()` function that will allow us to emit custom events. When you dispatch an event, you have to pass the name of the event and, optionally, an object with additional information that you want to pass to every listener. This additional data will be available on the `detail` property of the event object.
 
-> **Note:** Custom events in Svelte share the same API as regular DOM events. Moreover, you can bubble up an event to your parent component by specifying `on:event` without any handler.
+> [!NOTE]
+> Custom events in Svelte share the same API as regular DOM events. Moreover, you can bubble up an event to your parent component by specifying `on:event` without any handler.
 
 We'll edit our `Todo` component to emit a `remove` event, passing the to-do being removed as additional information.
 
 1. First of all, add the following lines to the top of the `Todo` component's `<script>` section:
 
    ```js
-   import { createEventDispatcher } from 'svelte'
-   const dispatch = createEventDispatcher()
+   import { createEventDispatcher } from "svelte";
+   const dispatch = createEventDispatcher();
    ```
 
 2. Now update the _Delete_ button in the markup section of the same file to look like so:
 
-   ```html
+   ```svelte
    <button type="button" class="btn btn__danger" on:click={() => dispatch('remove', todo)}>
      Delete <span class="visually-hidden">{todo.name}</span>
    </button>
@@ -304,7 +298,7 @@ We'll edit our `Todo` component to emit a `remove` event, passing the to-do bein
 
 3. Now we have to listen to that event from inside `Todos.svelte` and act accordingly. Go back to this file and update your `<Todo>` component call like so:
 
-   ```html
+   ```svelte
    <Todo {todo} on:remove={(e) => removeTodo(e.detail)} />
    ```
 
@@ -323,8 +317,8 @@ We still have to implement functionality to allow us to edit existing to-dos. We
 1. We'll need one variable to track whether we are in editing mode and another to store the name of the task being updated. Add the following variable definitions at the bottom of the `<script>` section of the `Todo` component:
 
    ```js
-   let editing = false                     // track editing mode
-   let name = todo.name                    // hold the name of the to-do being edited
+   let editing = false; // track editing mode
+   let name = todo.name; // hold the name of the to-do being edited
    ```
 
 2. We have to decide what events our `Todo` component will emit:
@@ -338,8 +332,8 @@ We still have to implement functionality to allow us to edit existing to-dos. We
 
    ```js
    function update(updatedTodo) {
-     todo = { ...todo, ...updatedTodo }    // applies modifications to todo
-     dispatch('update', todo)              // emit update event
+     todo = { ...todo, ...updatedTodo }; // applies modifications to todo
+     dispatch("update", todo); // emit update event
    }
    ```
 
@@ -351,25 +345,25 @@ We still have to implement functionality to allow us to edit existing to-dos. We
 
    ```js
    function onCancel() {
-     name = todo.name                      // restores name to its initial value and
-     editing = false                       // and exit editing mode
+     name = todo.name; // restores name to its initial value and
+     editing = false; // and exit editing mode
    }
 
    function onSave() {
-     update({ name })                      // updates todo name
-     editing = false                       // and exit editing mode
+     update({ name }); // updates todo name
+     editing = false; // and exit editing mode
    }
 
    function onRemove() {
-     dispatch('remove', todo)              // emit remove event
+     dispatch("remove", todo); // emit remove event
    }
 
    function onEdit() {
-     editing = true                        // enter editing mode
+     editing = true; // enter editing mode
    }
 
    function onToggle() {
-     update({ completed: !todo.completed}) // updates todo status
+     update({ completed: !todo.completed }); // updates todo status
    }
    ```
 
@@ -379,13 +373,13 @@ Now we need to update our `Todo` component's markup to call the above functions 
 
 To handle the editing mode, we are using the `editing` variable, which is a boolean. When it's `true`, it should display the `<input>` field for editing the to-do name, and the _Cancel_ and _Save_ buttons. When it's not in editing mode, it will display the checkbox, the to-do name, and the buttons to edit and delete the to-do.
 
-To achieve this we will use an [`if` block](https://svelte.dev/docs#if). The `if` block conditionally renders some markup. Take into account that it won't just show or hide the markup based on the condition — it will dynamically add and remove the elements from the DOM, depending on the condition.
+To achieve this we will use an [`if` block](https://svelte.dev/docs/logic-blocks#if). The `if` block conditionally renders some markup. Take into account that it won't just show or hide the markup based on the condition — it will dynamically add and remove the elements from the DOM, depending on the condition.
 
 When `editing` is `true`, for example, Svelte will show the update form; when it's `false`, it will remove it from the DOM and add in the checkbox. Thanks to Svelte reactivity, assigning the value of the editing variable will be enough to display the correct HTML elements.
 
 The following gives you an idea of what the basic `if` block structure looks like:
 
-```html
+```svelte
 <div class="stack-small">
   {#if editing}
   <!-- markup for editing to-do: label, input text, Cancel and Save Button -->
@@ -397,7 +391,7 @@ The following gives you an idea of what the basic `if` block structure looks lik
 
 The non-editing section — that is, the `{:else}` part (lower half) of the `if` block — will be very similar to the one we had in our `Todos` component. The only difference is that we are calling `onToggle()`, `onEdit()`, and `onRemove()`, depending on the user action.
 
-```html
+```svelte
 {:else}
   <div class="c-cb">
     <input type="checkbox" id="todo-{todo.id}"
@@ -426,7 +420,7 @@ It is worth noting that:
 
 The editing UI (the upper half) will contain an `<input>` field and two buttons to cancel or save the changes:
 
-```html
+```svelte
 <div class="stack-small">
 {#if editing}
   <form on:submit|preventDefault={onSave} class="stack-small" on:keydown={(e) => e.key === 'Escape' && onCancel()}>
@@ -456,7 +450,7 @@ The `<input>`'s `value` property will be bound to the `name` variable, and the b
 
 We also disable the _Save_ button when the `<input>` is empty, using the `disabled={!name}` attribute, and allow the user to cancel the edit using the <kbd>Escape</kbd> key, like this:
 
-```
+```plain
 on:keydown={(e) => e.key === 'Escape' && onCancel()}
 ```
 
@@ -464,7 +458,7 @@ We also use `todo.id` to create unique ids for the new input controls and labels
 
 1. The complete updated markup of our `Todo` component looks like the following. Update yours now:
 
-   ```html
+   ```svelte
    <div class="stack-small">
    {#if editing}
      <!-- markup for editing todo: label, input text, Cancel and Save Button -->
@@ -502,14 +496,15 @@ We also use `todo.id` to create unique ids for the new input controls and labels
    </div>
    ```
 
-   > **Note:** We could further split this into two different components, one for editing the to-do and the other for displaying it. In the end, it boils down to how comfortable you feel dealing with this level of complexity in a single component. You should also consider whether splitting it further would enable reusing this component in a different context.
+   > [!NOTE]
+   > We could further split this into two different components, one for editing the to-do and the other for displaying it. In the end, it boils down to how comfortable you feel dealing with this level of complexity in a single component. You should also consider whether splitting it further would enable reusing this component in a different context.
 
 2. To get the update functionality working, we have to handle the `update` event from the `Todos` component. In its `<script>` section, add this handler:
 
    ```js
    function updateTodo(todo) {
-     const i = todos.findIndex((t) => t.id === todo.id)
-     todos[i] = { ...todos[i], ...todo }
+     const i = todos.findIndex((t) => t.id === todo.id);
+     todos[i] = { ...todos[i], ...todo };
    }
    ```
 
@@ -517,7 +512,7 @@ We also use `todo.id` to create unique ids for the new input controls and labels
 
 3. Next we have to listen for the `update` event on our `<Todo>` component call, and run our `updateTodo()` function when this occurs to change the `name` and `completed` status. Update your \<Todo> call like this:
 
-   ```html
+   ```svelte
    {#each filterTodos(filter, todos) as todo (todo.id)}
    <li class="todo">
      <Todo {todo} on:update={(e) => updateTodo(e.detail)} on:remove={(e) =>
@@ -529,7 +524,8 @@ We also use `todo.id` to create unique ids for the new input controls and labels
 
 As you can see, it's easy to implement the "props-down, events-up" pattern in Svelte. Nevertheless, for simple components `bind` can be a good choice; Svelte will let you choose.
 
-> **Note:** Svelte provides more advanced mechanisms to share information among components: the [Context API](https://svelte.dev/docs#setContext) and [Stores](https://svelte.dev/docs#svelte_store). The Context API provides a mechanism for components and their descendants to "talk" to each other without passing around data and functions as props, or dispatching lots of events. Stores allows you to share reactive data among components that are not hierarchically related. We will look at Stores later on in the series.
+> [!NOTE]
+> Svelte provides more advanced mechanisms to share information among components: the [Context API](https://svelte.dev/docs/svelte#setcontext) and [Stores](https://svelte.dev/docs/svelte-store). The Context API provides a mechanism for components and their descendants to "talk" to each other without passing around data and functions as props, or dispatching lots of events. Stores allows you to share reactive data among components that are not hierarchically related. We will look at Stores later on in the series.
 
 ## The code so far
 

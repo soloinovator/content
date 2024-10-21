@@ -1,12 +1,7 @@
 ---
 title: Beginner's guide to media queries
 slug: Learn/CSS/CSS_layout/Media_queries
-tags:
-  - Beginner
-  - CSS
-  - Layout
-  - Learn
-  - media query
+page-type: learn-module-chapter
 ---
 
 {{learnsidebar}}{{PreviousMenuNext("Learn/CSS/CSS_layout/Responsive_Design", "Learn/CSS/CSS_layout/Legacy_Layout_Methods", "Learn/CSS/CSS_layout")}}
@@ -71,11 +66,14 @@ The following media query will only set the body to 12pt if the page is printed.
 }
 ```
 
-> **Note:** The media type here is different from the so-called {{glossary("MIME type")}}.
+> [!NOTE]
+> The media type here is different from the so-called {{glossary("MIME type")}}.
 
-> **Note:** There were a number of other media types defined in the Level 3 Media Queries specification; these have been deprecated and should be avoided.
+> [!NOTE]
+> There were a number of other media types defined in the Level 3 Media Queries specification; these have been deprecated and should be avoided.
 
-> **Note:** Media types are optional; if you do not indicate a media type in your media query, then the media query will default to being for all media types.
+> [!NOTE]
+> Media types are optional; if you do not indicate a media type in your media query, then the media query will default to being for all media types.
 
 ### Media feature rules
 
@@ -111,7 +109,7 @@ The `width` (and `height`) media features can be used as ranges, and therefore b
 
 In practice, using minimum or maximum values is much more useful for responsive design so you will rarely see `width` or `height` used alone.
 
-There are a number of other media features that you can test for, although some of the newer features introduced in Level 4 and 5 of the media queries specification have limited browser support. Each feature is documented on MDN along with browser support information, and you can find a full list at [Using Media Queries: Media Features](/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features).
+There are many other media features that you can test for, although some of the newer features introduced in Levels 4 and 5 of the media queries specification have limited browser support. Each feature is documented on MDN along with browser support information, and you can find a complete list at [Using Media Queries: Syntax](/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries#syntax).
 
 #### Orientation
 
@@ -148,6 +146,26 @@ If we know the user cannot hover, we could display some interactive features by 
 Also in Level 4 is the `pointer` media feature. This takes three possible values, `none`, `fine` and `coarse`. A `fine` pointer is something like a mouse or trackpad. It enables the user to precisely target a small area. A `coarse` pointer is your finger on a touchscreen. The value `none` means the user has no pointing device; perhaps they are navigating with the keyboard only or with voice commands.
 
 Using `pointer` can help you to design better interfaces that respond to the type of interaction a user is having with a screen. For example, you could create larger hit areas if you know that the user is interacting with the device as a touchscreen.
+
+#### Using ranged syntax
+
+One common case is to check if the viewport width is between two values:
+
+```css
+@media (min-width: 30em) and (max-width: 50em) {
+  /* … */
+}
+```
+
+If you want to improve the readability of this, you can use "range" syntax:
+
+```css
+@media (30em <= width <= 50em) {
+  /* … */
+}
+```
+
+So in this case, styles are applied when the viewport width is between `30em` and `50em`.
 
 ## More complex media queries
 
@@ -186,7 +204,7 @@ If you have a set of queries, any of which could match, then you can comma separ
 You can negate an entire media query by using the `not` operator. This reverses the meaning of the entire media query. Therefore in this next example the text will only be blue if the orientation is portrait.
 
 ```css
-@media not all and (orientation: landscape) {
+@media not (orientation: landscape) {
   body {
     color: blue;
   }
@@ -194,6 +212,18 @@ You can negate an entire media query by using the `not` operator. This reverses 
 ```
 
 [Open this example](https://mdn.github.io/css-examples/learn/media-queries/not.html) in the browser, or [view the source](https://github.com/mdn/css-examples/blob/main/learn/media-queries/not.html).
+
+You can also use `not` to negate specific expressions.
+
+```css
+@media (not (width < 600px)) and (not (width > 1000px)) {
+  body {
+    color: blue;
+  }
+}
+```
+
+This will apply the styles if the viewport width is between 600 and 1000 pixels. This is equivalent to `(600px <= width <= 1000px)`.
 
 ## How to choose breakpoints
 
@@ -225,7 +255,10 @@ Our starting point is an HTML document with some CSS applied to add background c
 body {
   width: 90%;
   margin: 2em auto;
-  font: 1em/1.3 Arial, Helvetica, sans-serif;
+  font:
+    1em/1.3 Arial,
+    Helvetica,
+    sans-serif;
 }
 
 a:link,
@@ -241,8 +274,8 @@ aside ul {
 
 nav a:link,
 nav a:visited {
-  background-color: rgba(207, 232, 220, 0.2);
-  border: 2px solid rgb(79, 185, 227);
+  background-color: rgb(207 232 220 / 20%);
+  border: 2px solid rgb(79 185 227);
   text-decoration: none;
   display: block;
   padding: 10px;
@@ -251,17 +284,17 @@ nav a:visited {
 }
 
 nav a:hover {
-  background-color: rgba(207, 232, 220, 0.7);
+  background-color: rgb(207 232 220 / 70%);
 }
 
 .related {
-  background-color: rgba(79, 185, 227, 0.3);
-  border: 1px solid rgb(79, 185, 227);
+  background-color: rgb(79 185 227 / 30%);
+  border: 1px solid rgb(79 185 227);
   padding: 10px;
 }
 
 .sidebar {
-  background-color: rgba(207, 232, 220, 0.5);
+  background-color: rgb(207 232 220 / 50%);
   padding: 10px;
 }
 
@@ -448,18 +481,3 @@ You could use the starting point that we have created to test out more media que
 You could also experiment with adding different components and seeing whether the addition of a media query, or using a layout method like flexbox or grid is the most appropriate way to make the components responsive. Very often there is no right or wrong way — you should experiment and see which works best for your design and content.
 
 {{PreviousMenuNext("Learn/CSS/CSS_layout/Responsive_Design", "Learn/CSS/CSS_layout/Legacy_Layout_Methods", "Learn/CSS/CSS_layout")}}
-
-## In this module
-
-- [Introduction to CSS layout](/en-US/docs/Learn/CSS/CSS_layout/Introduction)
-- [Normal flow](/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow)
-- [Flexbox](/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
-- [Grid](/en-US/docs/Learn/CSS/CSS_layout/Grids)
-- [Floats](/en-US/docs/Learn/CSS/CSS_layout/Floats)
-- [Positioning](/en-US/docs/Learn/CSS/CSS_layout/Positioning)
-- [Multiple-column layout](/en-US/docs/Learn/CSS/CSS_layout/Multiple-column_Layout)
-- [Responsive design](/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
-- [Beginner's guide to media queries](/en-US/docs/Learn/CSS/CSS_layout/Media_queries)
-- [Legacy layout methods](/en-US/docs/Learn/CSS/CSS_layout/Legacy_Layout_Methods)
-- [Supporting older browsers](/en-US/docs/Learn/CSS/CSS_layout/Supporting_Older_Browsers)
-- [Fundamental layout comprehension](/en-US/docs/Learn/CSS/CSS_layout/Fundamental_Layout_Comprehension)

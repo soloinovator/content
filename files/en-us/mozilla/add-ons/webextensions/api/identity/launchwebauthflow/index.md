@@ -2,19 +2,10 @@
 title: identity.launchWebAuthFlow
 slug: Mozilla/Add-ons/WebExtensions/API/identity/launchWebAuthFlow
 page-type: webextension-api-function
-tags:
-  - API
-  - Add-ons
-  - Extensions
-  - Identity
-  - Method
-  - Reference
-  - WebExtensions
-  - launchWebAuthFlow
 browser-compat: webextensions.api.identity.launchWebAuthFlow
 ---
 
-{{AddonSidebar()}}
+{{AddonSidebar}}
 
 Performs the first part of an [OAuth2](https://oauth.net/2/) flow, including user authentication and client authorization.
 
@@ -76,7 +67,7 @@ A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). If t
 
 ## Examples
 
-This function authorizes an extension to access a user's Google data, according to the documentation at <https://developers.google.com/identity/protocols/OAuth2UserAgent>. Validation of the returned access token isn't shown here:
+This function authorizes an extension to access a user's Google data, according to the documentation at <https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow>. Validation of the returned access token isn't shown here:
 
 ```js
 function validate(redirectURL) {
@@ -85,17 +76,18 @@ function validate(redirectURL) {
 
 function authorize() {
   const redirectURL = browser.identity.getRedirectURL();
-  const clientID = "664583959686-fhvksj46jkd9j5v96vsmvs406jgndmic.apps.googleusercontent.com";
+  const clientID =
+    "664583959686-fhvksj46jkd9j5v96vsmvs406jgndmic.apps.googleusercontent.com";
   const scopes = ["openid", "email", "profile"];
   let authURL = "https://accounts.google.com/o/oauth2/auth";
   authURL += `?client_id=${clientID}`;
   authURL += `&response_type=token`;
   authURL += `&redirect_uri=${encodeURIComponent(redirectURL)}`;
-  authURL += `&scope=${encodeURIComponent(scopes.join(' '))}`;
+  authURL += `&scope=${encodeURIComponent(scopes.join(" "))}`;
 
   return browser.identity.launchWebAuthFlow({
     interactive: true,
-    url: authURL
+    url: authURL,
   });
 }
 
@@ -106,4 +98,5 @@ function getAccessToken() {
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`identity`](https://developer.chrome.com/docs/extensions/reference/identity/) API.
+> [!NOTE]
+> This API is based on Chromium's [`identity`](https://developer.chrome.com/docs/extensions/reference/api/identity) API.

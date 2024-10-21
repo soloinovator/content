@@ -1,21 +1,12 @@
 ---
 title: Responsive design
 slug: Learn/CSS/CSS_layout/Responsive_Design
-tags:
-  - Images
-  - Media Queries
-  - RWD
-  - Responsive web design
-  - flexbox
-  - fluid grids
-  - grid
-  - multicol
-  - typography
+page-type: learn-module-chapter
 ---
 
 {{learnsidebar}}{{PreviousMenuNext("Learn/CSS/CSS_layout/Multiple-column_Layout", "Learn/CSS/CSS_layout/Media_queries", "Learn/CSS/CSS_layout")}}
 
-_Responsive web design_ (RWD) is a web design approach to make web pages that render well on all screen sizes and resolutions while ensuring good usability. It is the way to design for a multi-device web. In this article, we'll help you understand some techniques that can be used to master it.
+_Responsive web design_ (RWD) is a web design approach to make web pages render well on all screen sizes and resolutions while ensuring good usability. It is the way to design for a multi-device web. In this article, we'll help you understand some techniques that can be used to master it.
 
 <table>
   <tbody>
@@ -40,6 +31,20 @@ _Responsive web design_ (RWD) is a web design approach to make web pages that re
   </tbody>
 </table>
 
+## Precursor to responsive design: mobile web design
+
+Before responsive web design became the standard approach for making websites work across different device types, web developers used to talk about mobile web design, mobile web development, or sometimes, mobile-friendly design. These are basically the same as responsive web design — the goals are to make sure that websites work well across devices with different physical attributes (screen size, resolution) in terms of layout, content (text and media), and performance.
+
+The difference is mainly to do with the devices involved, and the technologies available to create solutions:
+
+- We used to talk about desktop or mobile, but now there are many different types of device available such as desktop, laptop, mobile, tablets, watches, etc. Instead of catering for a few different screen sizes, we now need to design sites defensively to cater for common screen sizes and resolutions, plus unknowns.
+- Mobile devices used to be low-powered in terms of CPU/GPU and available bandwidth. Some didn't support CSS or even HTML, and as a result, it was common to perform server-side browser sniffing to determine device/browser type before then serving a site that the device would be able to cope with. Mobile devices often had really simple, basic experiences served to them because it was all they could handle. These days, mobile devices are able to handle the same technologies as desktop computers, so such techniques are less common.
+  - You should still use the techniques discussed in this article to serve mobile users a suitable experience, as there are still constraints such as battery life and bandwidth to worry about.
+  - User experience is also a concern. A mobile user of a travel site might just want to check flight times and delay information, for example, and not be presented with a 3D animated globe showing flight paths and your company history. This can be handled using responsive design techniques, however.
+- Modern technologies are much better for creating responsive experiences. For example, [responsive images/media technologies](#responsive_imagesmedia) now allow appropriate media to be served to different devices without having to rely on techniques like server-side sniffing.
+
+## Introducing responsive web design
+
 HTML is fundamentally responsive, or _fluid_. If you create a web page containing only HTML, with no CSS, and resize the window, the browser will automatically reflow the text to fit the viewport.
 
 While the default responsive behavior may sound like no solution is needed, long lines of text displayed full screen on a wide monitor can be difficult to read. If wide screen line length is reduced with CSS, such as by creating columns or adding significant padding, the site may look squashed for the user who narrows their browser window or opens the site on a mobile device.
@@ -52,9 +57,9 @@ Responsive web design, or RWD, is a design approach that addresses the range of 
 
 Responsive web design isn't a separate technology — it is an approach. It is a term used to describe a set of best practices used to create a layout that can _respond_ to any device being used to view the content.
 
-The term _responsive design_, [coined by Ethan Marcotte in 2010](https://alistapart.com/article/responsive-web-design/), described using fluid grids, fluid images, and media queries to create responsive content, as discussed in Zoe Mickley Gillenwater's book [Flexible Web Design](http://flexiblewebbook.com/).
+The term _responsive design_, [coined by Ethan Marcotte in 2010](https://alistapart.com/article/responsive-web-design/), described using fluid grids, fluid images, and media queries to create responsive content, as discussed in Zoe Mickley Gillenwater's book [Flexible Web Design](https://flexiblewebbook.com/).
 
-At the time, the recommendation was to use CSS `float` for layout and media queries to query the browser width, creating layouts for different breakpoints. Fluid images are set to not exceed the width of their container; they have their `max-width` property set to `100%`. Fluid images scale down when their containing column narrow but do not grow larger than their intrinsic size when the column grows. This enables an image to scale down to fit its content, rather than overflow it, but not grow larger and become pixelated if the container becomes wider than the image.
+At the time, the recommendation was to use CSS `float` for layout and media queries to query the browser width, creating layouts for different breakpoints. Fluid images are set to not exceed the width of their container; they have their `max-width` property set to `100%`. Fluid images scale down when their containing column narrows but do not grow larger than their intrinsic size when the column grows. This enables an image to scale down to fit its content, rather than overflow it, but not grow larger and become pixelated if the container becomes wider than the image.
 
 Modern CSS layout methods are inherently responsive, and, since the publication of Gillenwater's book and Marcotte's article, we have a multitude of features built into the web platform to make designing responsive sites easier.
 
@@ -62,7 +67,7 @@ The rest of this article will point you to the various web platform features you
 
 ## Media Queries
 
-[Media queries](/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) allow us to run a series of tests (e.g. whether the user's screen is greater than a certain width, or a certain resolution) and apply CSS selectively to style the page appropriately for the user's needs.
+[Media queries](/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries) allow us to run a series of tests (e.g. whether the user's screen is greater than a certain width, or a certain resolution) and apply CSS selectively to style the page appropriately for the user's needs.
 
 For example, the following media query tests to see if the current web page is being displayed as screen media (therefore not a printed document) and the viewport is at least `80rem` wide. The CSS for the `.container` selector will only be applied if these two things are true.
 
@@ -82,7 +87,7 @@ If using breakpoints, best practices encourage defining media query breakpoints 
 
 There are different approaches to the styles defined within a media query block; ranging from using media queries to {{htmlelement("link")}} style sheets based on browser size ranges to only including custom properties variables to store values associated with each breakpoint.
 
-Find out more in the MDN documentation for [Media Queries](/en-US/docs/Web/CSS/Media_Queries).
+Find out more in the MDN documentation for [Media Queries](/en-US/docs/Web/CSS/CSS_media_queries).
 
 Media queries can help with RWD, but are not a requirement. Flexible grids, relative units, and minimum and maximum unit values can be used without queries.
 
@@ -112,11 +117,11 @@ If you instead specify a `column-width`, you are specifying a _minimum_ width. T
 }
 ```
 
-You can use the {{cssxref('columns')}} shorthand to provides a maximum number of columns and a minimum column width. This can ensure line lengths don't become unreadably long as the screen size increases or too narrow as the screen size decreases.
+You can use the {{cssxref('columns')}} shorthand to provide a maximum number of columns and a minimum column width. This can ensure line lengths don't become unreadably long as the screen size increases or too narrow as the screen size decreases.
 
 ### Flexbox
 
-In Flexbox, flex items shrink or grow, distributing space between the items according to the space in their container. By changing the values for `flex-grow` and `flex-shrink` you can indicate how you want the items to behave when they encounter more or less space around them.
+In flexbox, flex items shrink or grow, distributing space between the items according to the space in their container. By changing the values for `flex-grow` and `flex-shrink` you can indicate how you want the items to behave when they encounter more or less space around them.
 
 In the example below the flex items will each take an equal amount of space in the flex container, using the shorthand of `flex: 1` as described in the layout topic [Flexbox: Flexible sizing of flex items](/en-US/docs/Learn/CSS/CSS_layout/Flexbox#flexible_sizing_of_flex_items).
 
@@ -130,11 +135,12 @@ In the example below the flex items will each take an equal amount of space in t
 }
 ```
 
-> **Note:** As an example, we have built a simple responsive layout above using flexbox. We use a breakpoint to switch to multiple columns when the screen grows, and limit the size of the main content with {{cssxref('max-width')}}: [example](https://mdn.github.io/css-examples/learn/rwd/flex-based-rwd.html), [source code](https://github.com/mdn/css-examples/blob/main/learn/rwd/flex-based-rwd.html).
+> [!NOTE]
+> As an example, we have built a simple responsive layout above using flexbox. We use a breakpoint to switch to multiple columns when the screen grows, and limit the size of the main content with {{cssxref('max-width')}}: [example](https://mdn.github.io/css-examples/learn/rwd/flex-based-rwd.html), [source code](https://github.com/mdn/css-examples/blob/main/learn/rwd/flex-based-rwd.html).
 
 ### CSS grid
 
-In CSS Grid Layout the `fr` unit allows the distribution of available space across grid tracks. The next example creates a grid container with three tracks sized at `1fr`. This will create three column tracks, each taking one part of the available space in the container. You can find out more about this approach to create a grid in the Learn Layout Grids topic, under [Flexible grids with the fr unit](/en-US/docs/Learn/CSS/CSS_layout/Grids#flexible_grids_with_the_fr_unit).
+In CSS grid layout the `fr` unit allows the distribution of available space across grid tracks. The next example creates a grid container with three tracks sized at `1fr`. This will create three column tracks, each taking one part of the available space in the container. You can find out more about this approach to create a grid in the Learn Layout grids topic, under [Flexible grids with the fr unit](/en-US/docs/Learn/CSS/CSS_layout/Grids#flexible_grids_with_the_fr_unit).
 
 ```css
 .container {
@@ -143,9 +149,10 @@ In CSS Grid Layout the `fr` unit allows the distribution of available space acro
 }
 ```
 
-> **Note:** The grid layout version is even simpler as we can define the columns on the .wrapper: [example](https://mdn.github.io/css-examples/learn/rwd/grid-based-rwd.html), [source code](https://github.com/mdn/css-examples/blob/main/learn/rwd/grid-based-rwd.html).
+> [!NOTE]
+> The grid layout version is even simpler as we can define the columns on the .wrapper: [example](https://mdn.github.io/css-examples/learn/rwd/grid-based-rwd.html), [source code](https://github.com/mdn/css-examples/blob/main/learn/rwd/grid-based-rwd.html).
 
-## Responsive images
+## Responsive images/media
 
 To ensure media is never larger than its responsive container, the following approach can be used:
 
@@ -161,11 +168,17 @@ This scales media to ensure they never overflow their containers. Using a single
 
 Responsive Images, using the {{htmlelement("picture")}} element and the {{htmlelement("img")}} `srcset` and `sizes` attributes enables serving images targeted to the user's viewport and the device's resolution. For example, you can include a square image for mobile, but show the same scene as a landscape image on desktop.
 
-The `<picture>` element enables providing multiple sizes along with "hints" (metadata that describes the screen size and resolution the image is best suited for), and the browser will choose the most appropriate image for each device, ensuring that a user will download an image size appropriate for the device they are using. Using `<picture>` along with `max-width` removes the need for sizing images with media queries. It enables targeting images with different aspect ratios to different viewport sizes.
+The `<picture>` element enables providing multiple sizes along with "hints" (metadata that describes the screen size and resolution the image is best suited for), and the browser will choose the most appropriate image for each device, ensuring that a user will download an image size appropriate for the device they are using. Using `<picture>` along with `max-width` removes the need for sizing images with media queries. It enables targeting images with different {{glossary("aspect ratio", "aspect ratios")}} to different viewport sizes.
 
 You can also _art direct_ images used at different sizes, thus providing a different crop or completely different image to different screen sizes.
 
 You can find a detailed [guide to Responsive Images in the Learn HTML section](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) here on MDN.
+
+Other useful tips:
+
+- Always make sure to use an appropriate image format for your website images (such as PNG or JPG), and make sure to optimize the file size using a graphics editor before you put them on your website.
+- You can make use of CSS features like [gradients](/en-US/docs/Web/CSS/CSS_images/Using_CSS_gradients) and [shadows](/en-US/docs/Web/CSS/box-shadow) to implement visual effects without using images.
+- You can use media queries inside the media attribute on {{htmlelement("source")}} elements nested inside {{htmlelement("video")}}/{{htmlelement("audio")}} elements to serve video/audio files as appropriate for different devices (responsive video/audio).
 
 ## Responsive typography
 
@@ -201,7 +214,8 @@ On desktop, however, we see the larger heading size:
 
 ![A two column layout with a large heading.](mdn-rwd-font-desktop.png)
 
-> **Note:** See this example in action: [example](https://mdn.github.io/css-examples/learn/rwd/type-rwd.html), [source code](https://github.com/mdn/css-examples/blob/main/learn/rwd/type-rwd.html).
+> [!NOTE]
+> See this example in action: [example](https://mdn.github.io/css-examples/learn/rwd/type-rwd.html), [source code](https://github.com/mdn/css-examples/blob/main/learn/rwd/type-rwd.html).
 
 As this approach to typography shows, you do not need to restrict media queries to only changing the layout of the page. They can be used to tweak any element to make it more usable or attractive at alternate screen sizes.
 
@@ -227,7 +241,8 @@ h1 {
 
 This means that we only need to specify the font size for the heading once, rather than set it up for mobile and redefine it in the media queries. The font then gradually increases as you increase the size of the viewport.
 
-> **Note:** See an example of this in action: [example](https://mdn.github.io/css-examples/learn/rwd/type-vw.html), [source code](https://github.com/mdn/css-examples/blob/main/learn/rwd/type-vw.html).
+> [!NOTE]
+> See an example of this in action: [example](https://mdn.github.io/css-examples/learn/rwd/type-vw.html), [source code](https://github.com/mdn/css-examples/blob/main/learn/rwd/type-vw.html).
 
 ## The viewport meta tag
 
@@ -255,21 +270,9 @@ It has also become much easier to achieve responsive designs with the help of th
 
 ## See also
 
-- [CSS-Tricks Guide to Media Queries](https://css-tricks.com/a-complete-guide-to-css-media-queries/)
+- Working with touchscreen devices:
+  - [Touch events](/en-US/docs/Web/API/Touch_events) provide the ability to interpret finger (or stylus) activity on touch screens or trackpads, enabling quality support for complex touch-based user interfaces.
+  - Use the [pointer](/en-US/docs/Web/CSS/@media/pointer) or [any-pointer](/en-US/docs/Web/CSS/@media/any-pointer) media queries to load different CSS on touch-enabled devices.
+- [CSS-Tricks guide to media queries](https://css-tricks.com/a-complete-guide-to-css-media-queries/)
 
 {{PreviousMenuNext("Learn/CSS/CSS_layout/Multiple-column_Layout", "Learn/CSS/CSS_layout/Media_queries", "Learn/CSS/CSS_layout")}}
-
-## In this module
-
-- [Introduction to CSS layout](/en-US/docs/Learn/CSS/CSS_layout/Introduction)
-- [Normal flow](/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow)
-- [Flexbox](/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
-- [Grid](/en-US/docs/Learn/CSS/CSS_layout/Grids)
-- [Floats](/en-US/docs/Learn/CSS/CSS_layout/Floats)
-- [Positioning](/en-US/docs/Learn/CSS/CSS_layout/Positioning)
-- [Multiple-column layout](/en-US/docs/Learn/CSS/CSS_layout/Multiple-column_Layout)
-- [Media queries](/en-US/docs/Learn/CSS/CSS_layout/Media_queries)
-- [Beginner's guide to media queries](/en-US/docs/Learn/CSS/CSS_layout/Media_queries)
-- [Legacy layout methods](/en-US/docs/Learn/CSS/CSS_layout/Legacy_Layout_Methods)
-- [Supporting older browsers](/en-US/docs/Learn/CSS/CSS_layout/Supporting_Older_Browsers)
-- [Fundamental layout comprehension](/en-US/docs/Learn/CSS/CSS_layout/Fundamental_Layout_Comprehension)

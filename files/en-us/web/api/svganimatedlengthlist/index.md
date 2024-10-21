@@ -2,12 +2,6 @@
 title: SVGAnimatedLengthList
 slug: Web/API/SVGAnimatedLengthList
 page-type: web-api-interface
-tags:
-  - API
-  - NeedsExample
-  - Reference
-  - SVG
-  - SVG DOM
 browser-compat: api.SVGAnimatedLengthList
 ---
 
@@ -93,6 +87,10 @@ The `SVGAnimatedLengthList` interface is used for attributes of type {{ domxref(
 ## Instance methods
 
 The `SVGAnimatedLengthList` interface do not provide any specific methods.
+
+## Specifications
+
+{{Specifications}}
 
 ## Browser compatibility
 

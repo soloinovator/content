@@ -1,9 +1,7 @@
 ---
 title: How to use promises
 slug: Learn/JavaScript/Asynchronous/Promises
-tags:
-  - JavaScript
-  - Learn
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/JavaScript/Asynchronous/Introducing", "Learn/JavaScript/Asynchronous/Implementing_a_promise-based_API", "Learn/JavaScript/Asynchronous")}}
@@ -15,7 +13,7 @@ tags:
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy, a reasonable understanding of JavaScript
+        A reasonable understanding of JavaScript
         fundamentals, including event handling.
       </td>
     </tr>
@@ -26,26 +24,29 @@ tags:
   </tbody>
 </table>
 
-In the last article, we talked about the use of callbacks to implement asynchronous functions. With that design, you call the asynchronous function, passing in your callback function. The function returns immediately and calls your callback when the operation is finished.
+In the [previous article](/en-US/docs/Learn/JavaScript/Asynchronous/Introducing), we talked about the use of callbacks to implement asynchronous functions. With that design, you call the asynchronous function, passing in your callback function. The function returns immediately and calls your callback when the operation is finished.
 
 With a promise-based API, the asynchronous function starts the operation and returns a {{jsxref("Promise")}} object. You can then attach handlers to this promise object, and these handlers will be executed when the operation has succeeded or failed.
 
 ## Using the fetch() API
 
-> **Note:** In this article, we will explore promises by copying code samples from the page into your browser's JavaScript console. To set this up:
+> [!NOTE]
+> In this article, we will explore promises by copying code samples from the page into your browser's JavaScript console. To set this up:
 >
 > 1. open a browser tab and visit <https://example.org>
-> 2. in that tab, open the JavaScript console in your [browser's developer tools](/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)
+> 2. in that tab, open the JavaScript console in your [browser's developer tools](/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools)
 > 3. when we show an example, copy it into the console. You will have to reload the page each time you enter a new example, or the console will complain that you have redeclared `fetchPromise`.
 
 In this example, we'll download the JSON file from <https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json>, and log some information about it.
 
-To do this, we'll make an **HTTP request** to the server. In an HTTP request, we send a request message to a remote server, and it sends us back a response. In this case, we'll send a request to get a JSON file from the server. Remember in the last article, where we made HTTP requests using the {{domxref("XMLHttpRequest")}} API? Well, in this article, we'll use the {{domxref("fetch", "fetch()")}} API, which is the modern, promise-based replacement for `XMLHttpRequest`.
+To do this, we'll make an **HTTP request** to the server. In an HTTP request, we send a request message to a remote server, and it sends us back a response. In this case, we'll send a request to get a JSON file from the server. Remember in the last article, where we made HTTP requests using the {{domxref("XMLHttpRequest")}} API? Well, in this article, we'll use the {{domxref("Window/fetch", "fetch()")}} API, which is the modern, promise-based replacement for `XMLHttpRequest`.
 
 Copy this into your browser's JavaScript console:
 
 ```js
-const fetchPromise = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+const fetchPromise = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+);
 
 console.log(fetchPromise);
 
@@ -82,7 +83,9 @@ With the `fetch()` API, once you get a `Response` object, you need to call anoth
 Try this:
 
 ```js
-const fetchPromise = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+const fetchPromise = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+);
 
 fetchPromise.then((response) => {
   const jsonPromise = response.json();
@@ -101,7 +104,9 @@ But wait! Remember the last article, where we said that by calling a callback in
 It is, of course. But the elegant feature of promises is that _`then()` itself returns a promise, which will be completed with the result of the function passed to it_. This means that we can (and certainly should) rewrite the above code like this:
 
 ```js
-const fetchPromise = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+const fetchPromise = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+);
 
 fetchPromise
   .then((response) => response.json())
@@ -115,7 +120,9 @@ Instead of calling the second `then()` inside the handler for the first `then()`
 Before we move on to the next step, there's one more piece to add. We need to check that the server accepted and was able to handle the request, before we try to read it. We'll do this by checking the status code in the response and throwing an error if it wasn't "OK":
 
 ```js
-const fetchPromise = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+const fetchPromise = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+);
 
 fetchPromise
   .then((response) => {
@@ -137,12 +144,14 @@ In the last article, we saw that error handling can get very difficult with nest
 
 To support error handling, `Promise` objects provide a {{jsxref("Promise/catch", "catch()")}} method. This is a lot like `then()`: you call it and pass in a handler function. However, while the handler passed to `then()` is called when the asynchronous operation _succeeds_, the handler passed to `catch()` is called when the asynchronous operation _fails_.
 
-If you add `catch()` to the end of a promise chain, then it will be called when any of the asynchronous function calls fails. So you can implement an operation as several consecutive asynchronous function calls, and have a single place to handle all errors.
+If you add `catch()` to the end of a promise chain, then it will be called when any of the asynchronous function calls fail. So you can implement an operation as several consecutive asynchronous function calls, and have a single place to handle all errors.
 
 Try this version of our `fetch()` code. We've added an error handler using `catch()`, and also modified the URL so the request will fail.
 
 ```js
-const fetchPromise = fetch('bad-scheme://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+const fetchPromise = fetch(
+  "bad-scheme://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+);
 
 fetchPromise
   .then((response) => {
@@ -171,7 +180,7 @@ First, a promise can be in one of three states:
 - **fulfilled**: the asynchronous function has succeeded. When a promise is fulfilled, its `then()` handler is called.
 - **rejected**: the asynchronous function has failed. When a promise is rejected, its `catch()` handler is called.
 
-Note that what "succeeded" or "failed" means here is up to the API in question: for example, `fetch()` considers a request successful if the server returned an error like [404 Not Found](/en-US/docs/Web/HTTP/Status/404), but not if a network error prevented the request being sent.
+Note that what "succeeded" or "failed" means here is up to the API in question. For example, `fetch()` rejects the returned promise if (among other reasons) a network error prevented the request being sent, but fulfills the promise if the server sent a response, even if the response was an error like [404 Not Found](/en-US/docs/Web/HTTP/Status/404).
 
 Sometimes, we use the term **settled** to cover both **fulfilled** and **rejected**.
 
@@ -193,9 +202,15 @@ The promise returned by `Promise.all()` is:
 For example:
 
 ```js
-const fetchPromise1 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
-const fetchPromise2 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found');
-const fetchPromise3 = fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json');
+const fetchPromise1 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+);
+const fetchPromise2 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found",
+);
+const fetchPromise3 = fetch(
+  "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json",
+);
 
 Promise.all([fetchPromise1, fetchPromise2, fetchPromise3])
   .then((responses) => {
@@ -204,7 +219,7 @@ Promise.all([fetchPromise1, fetchPromise2, fetchPromise3])
     }
   })
   .catch((error) => {
-    console.error(`Failed to fetch: ${error}`)
+    console.error(`Failed to fetch: ${error}`);
   });
 ```
 
@@ -221,9 +236,15 @@ https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json: 200
 If we try the same code with a badly formed URL, like this:
 
 ```js
-const fetchPromise1 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
-const fetchPromise2 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found');
-const fetchPromise3 = fetch('bad-scheme://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json');
+const fetchPromise1 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+);
+const fetchPromise2 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found",
+);
+const fetchPromise3 = fetch(
+  "bad-scheme://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json",
+);
 
 Promise.all([fetchPromise1, fetchPromise2, fetchPromise3])
   .then((responses) => {
@@ -232,7 +253,7 @@ Promise.all([fetchPromise1, fetchPromise2, fetchPromise3])
     }
   })
   .catch((error) => {
-    console.error(`Failed to fetch: ${error}`)
+    console.error(`Failed to fetch: ${error}`);
   });
 ```
 
@@ -245,16 +266,22 @@ Failed to fetch: TypeError: Failed to fetch
 Sometimes, you might need any one of a set of promises to be fulfilled, and don't care which one. In that case, you want {{jsxref("Promise/any", "Promise.any()")}}. This is like `Promise.all()`, except that it is fulfilled as soon as any of the array of promises is fulfilled, or rejected if all of them are rejected:
 
 ```js
-const fetchPromise1 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
-const fetchPromise2 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found');
-const fetchPromise3 = fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json');
+const fetchPromise1 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+);
+const fetchPromise2 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found",
+);
+const fetchPromise3 = fetch(
+  "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json",
+);
 
 Promise.any([fetchPromise1, fetchPromise2, fetchPromise3])
   .then((response) => {
     console.log(`${response.url}: ${response.status}`);
   })
   .catch((error) => {
-    console.error(`Failed to fetch: ${error}`)
+    console.error(`Failed to fetch: ${error}`);
   });
 ```
 
@@ -281,7 +308,9 @@ async function fetchProducts() {
   try {
     // after this line, our function will wait for the `fetch()` call to be settled
     // the `fetch()` call will either return a Response or throw an error
-    const response = await fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+    const response = await fetch(
+      "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+    );
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
@@ -289,8 +318,7 @@ async function fetchProducts() {
     // the `response.json()` call will either return the parsed JSON object or throw an error
     const data = await response.json();
     console.log(data[0].name);
-  }
-  catch (error) {
+  } catch (error) {
     console.error(`Could not get products: ${error}`);
   }
 }
@@ -307,57 +335,65 @@ Note though that async functions always return a promise, so you can't do someth
 ```js example-bad
 async function fetchProducts() {
   try {
-    const response = await fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+    const response = await fetch(
+      "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+    );
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
     const data = await response.json();
     return data;
-  }
-  catch (error) {
+  } catch (error) {
     console.error(`Could not get products: ${error}`);
   }
 }
 
 const promise = fetchProducts();
-console.log(promise[0].name);   // "promise" is a Promise object, so this will not work
+console.log(promise[0].name); // "promise" is a Promise object, so this will not work
 ```
 
 Instead, you'd need to do something like:
 
 ```js
 async function fetchProducts() {
-  try {
-    const response = await fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
-    const data = await response.json();
-    return data;
+  const response = await fetch(
+    "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+  );
+  if (!response.ok) {
+    throw new Error(`HTTP error: ${response.status}`);
   }
-  catch (error) {
-    console.error(`Could not get products: ${error}`);
-  }
+  const data = await response.json();
+  return data;
 }
 
 const promise = fetchProducts();
-promise.then((data) => console.log(data[0].name));
+promise
+  .then((data) => {
+    console.log(data[0].name);
+  })
+  .catch((error) => {
+    console.error(`Could not get products: ${error}`);
+  });
 ```
+
+Here, we moved the `try...catch` back to the `catch` handler on the returned promise. This means our `then` handler doesn't have to deal with the case where an error got caught inside the `fetchProducts` function, causing `data` to be `undefined`. Handle errors as the last step of your promise chain.
 
 Also, note that you can only use `await` inside an `async` function, unless your code is in a [JavaScript module](/en-US/docs/Web/JavaScript/Guide/Modules). That means you can't do this in a normal script:
 
 ```js
 try {
   // using await outside an async function is only allowed in a module
-  const response = await fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+  const response = await fetch(
+    "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+  );
   if (!response.ok) {
     throw new Error(`HTTP error: ${response.status}`);
   }
   const data = await response.json();
   console.log(data[0].name);
-}
-catch(error) {
+} catch (error) {
   console.error(`Could not get products: ${error}`);
+  throw error;
 }
 ```
 
@@ -385,11 +421,3 @@ Many modern Web APIs are promise-based, including [WebRTC](/en-US/docs/Web/API/W
 - [Let's talk about how to talk about promises](https://thenewtoys.dev/blog/2021/02/08/lets-talk-about-how-to-talk-about-promises/)
 
 {{PreviousMenuNext("Learn/JavaScript/Asynchronous/Introducing", "Learn/JavaScript/Asynchronous/Implementing_a_promise-based_API", "Learn/JavaScript/Asynchronous")}}
-
-## In this module
-
-- [Introducing asynchronous JavaScript](/en-US/docs/Learn/JavaScript/Asynchronous/Introducing)
-- **How to use promises**
-- [Implementing a promise-based API](/en-US/docs/Learn/JavaScript/Asynchronous/Implementing_a_promise-based_API)
-- [Introducing workers](/en-US/docs/Learn/JavaScript/Asynchronous/Introducing_workers)
-- [Assessment: sequencing animations](/en-US/docs/Learn/JavaScript/Asynchronous/Sequencing_animations)

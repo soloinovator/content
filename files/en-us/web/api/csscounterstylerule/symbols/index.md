@@ -1,17 +1,12 @@
 ---
-title: CSSCounterStyleRule.symbols
+title: "CSSCounterStyleRule: symbols property"
+short-title: symbols
 slug: Web/API/CSSCounterStyleRule/symbols
 page-type: web-api-instance-property
-tags:
-  - API
-  - Property
-  - Reference
-  - symbols
-  - CSSCounterStyleRule
 browser-compat: api.CSSCounterStyleRule.symbols
 ---
 
-{{DefaultAPISidebar("CSS Counter Styles")}}
+{{APIRef("CSS Counter Styles")}}
 
 The **`symbols`** property of the {{domxref("CSSCounterStyleRule")}} interface gets and sets the value of the {{cssxref("@counter-style/symbols","symbols")}} descriptor. If the descriptor does not have a value set, this attribute returns an empty string.
 

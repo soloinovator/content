@@ -2,13 +2,6 @@
 title: "@layer"
 slug: Web/CSS/@layer
 page-type: css-at-rule
-tags:
-  - At-rule
-  - CSS
-  - Reference
-  - Web
-  - layer
-  - cascade
 browser-compat: css.at-rules.layer
 ---
 
@@ -21,10 +14,13 @@ The **`@layer`** [CSS](/en-US/docs/Web/CSS) [at-rule](/en-US/docs/Web/CSS/At-rul
 ## Syntax
 
 ```css
-@layer layer-name {rules}
+/* statement at-rules */
 @layer layer-name;
 @layer layer-name, layer-name, layer-name;
+
+/* block at-rules */
 @layer {rules}
+@layer layer-name {rules}
 ```
 
 where:
@@ -36,11 +32,17 @@ where:
 
 ## Description
 
-Rules within a cascade layer cascade together, giving more control over the cascade to web developers. Any styles not in a layer are gathered together and placed into a single anonymous layer that comes after all the declared layers, named and anonymous. This means that any styles declared outside of a layer will override styles declared in a layer, regardless of specificity.
+Rules within a cascade layer cascade together, giving more control over the cascade to web developers. Styles that are not defined in a layer always override styles declared in named and anonymous layers.
+
+The following diagram shows layer priorities where layers are declared in 1, 2, ..., N order.
+
+![Diagram showing cascade layer priorities](https://mdn.github.io/shared-assets/images/diagrams/css/at-rules/layer-cascade.svg)
+
+The declaration order matters. The first declared layer gets the lowest priority and the last declared layer gets the highest priority. However, the priority is reversed when the [`!important`](/en-US/docs/Web/CSS/important) flag is used.
 
 The `@layer` at-rule is used to create a cascade layer in one of three ways.
 
-The first way is to create a named cascade layer with the CSS rules for that layer inside, like so:
+The first way is to use a `@layer` block at-rule to create a named cascade layer with the CSS rules for that layer inside, like so:
 
 ```css
 @layer utilities {
@@ -54,7 +56,7 @@ The first way is to create a named cascade layer with the CSS rules for that lay
 }
 ```
 
-The second way is to create a named cascade layer without assigning any styles. This can be a single layer, as shown below:
+The second way is to use a `@layer` statement at-rule to create one or more comma-separated named cascade layers without assigning any styles. This can be a single layer, as shown below:
 
 ```css
 @layer utilities;
@@ -70,9 +72,10 @@ This is useful because the initial order in which layers are declared indicates 
 
 A rule in `utilities` would be applied _even if it has lower specificity_ than the rule in `theme`. This is because once the layer order has been established, specificity and order of appearance are ignored. This enables the creation of simpler CSS selectors because you do not have to ensure that a selector will have high enough specificity to override competing rules; all you need to ensure is that it appears in a later layer.
 
-> **Note:** Having declared your layer names, thus setting their order, you can add CSS rules to the layer by re-declaring the name. The styles are then appended to the layer and the layer order will not be changed.
+> [!NOTE]
+> Having declared your layer names, thus setting their order, you can add CSS rules to the layer by re-declaring the name. The styles are then appended to the layer and the layer order will not be changed.
 
-The third way is to create a cascade layer with no name. For example:
+The third way is to create an unnamed layer using a `@layer` block at-rule without including a layer name. For example:
 
 ```css
 @layer {
@@ -203,9 +206,11 @@ In the following example, two layers are created with no rules applied, then CSS
 ## See also
 
 - [`@import`](/en-US/docs/Web/CSS/@import)
-- [The `!important` flag](/en-US/docs/Web/CSS/important)
-- [The `revert-layer` keyword](/en-US/docs/Web/CSS/revert-layer)
-- [Introducing the CSS Cascade](/en-US/docs/Web/CSS/Cascade)
-- [CSS building block: cascade and inheritance](/en-US/docs/Web/Learn/CSS/Building_blocks/Cascade_and_inheritance)
-- [CSS building block: cascade layers](/en-US/docs/Web/Learn/CSS/Building_blocks/Cascade_layers)
-- [The Future of CSS: Cascade Layers](https://www.bram.us/2021/09/15/the-future-of-css-cascade-layers-css-at-layer/)
+- {{domxref("CSSLayerBlockRule")}}
+- {{domxref("CSSLayerStatementRule")}}
+- [`!important`](/en-US/docs/Web/CSS/important)
+- [`revert-layer`](/en-US/docs/Web/CSS/revert-layer)
+- [Introducing the CSS cascade](/en-US/docs/Web/CSS/Cascade)
+- [Cascade, specificity, and inheritance](/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)
+- [Cascade layers](/en-US/docs/Learn/CSS/Building_blocks/Cascade_layers)
+- [The future of CSS: Cascade layers](https://www.bram.us/2021/09/15/the-future-of-css-cascade-layers-css-at-layer/) on bram.us (2021)

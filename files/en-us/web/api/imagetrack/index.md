@@ -2,16 +2,12 @@
 title: ImageTrack
 slug: Web/API/ImageTrack
 page-type: web-api-interface
-tags:
-  - API
-  - Interface
-  - Reference
-  - ImageTrack
-  - Experimental
+status:
+  - experimental
 browser-compat: api.ImageTrack
 ---
 
-{{APIRef("WebCodecs API")}}{{SeeCompatTable}}
+{{APIRef("WebCodecs API")}}{{SeeCompatTable}}{{AvailableInWorkers("window_and_dedicated")}}
 
 The **`ImageTrack`** interface of the {{domxref('WebCodecs API','','','true')}} represents an individual image track.
 

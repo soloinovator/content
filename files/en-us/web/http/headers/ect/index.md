@@ -1,15 +1,10 @@
 ---
 title: ECT
 slug: Web/HTTP/Headers/ECT
-tags:
-  - ect
-  - Client hints
-  - HTTP
-  - HTTP Header
-  - Request header
-  - Client hints
-  - Experimental
-browser-compat: http.headers.ect
+page-type: http-header
+status:
+  - experimental
+browser-compat: http.headers.ECT
 ---
 
 {{HTTPSidebar}} {{SeeCompatTable}}
@@ -36,7 +31,8 @@ The value represents the "network profile" that best matches the connection's la
 
 The hint allows a server to choose what information is sent based on the broad characteristics of the network. For example, a server might choose to send smaller versions of images and other resources on less capable connections. The value might also be used as a starting point for determining what information is sent, which is further refined using information in {{HTTPHeader("RTT")}} and {{HTTPHeader("Downlink")}} hints.
 
-> **Note:** A server that specifies {{HTTPHeader("ECT")}} in {{HTTPHeader("Accept-CH")}} may also specify it in {{HTTPHeader("Vary")}} to indicate that responses should be cached for different ECT values.
+> [!NOTE]
+> A server that specifies `ECT` in {{HTTPHeader("Accept-CH")}} may also specify it in {{HTTPHeader("Vary")}} to indicate that responses should be cached for different ECT values.
 
 ## Syntax
 
@@ -73,7 +69,7 @@ ECT: 2g
 
 ## See also
 
-- [Improving user privacy and developer experience with User-Agent Client Hints](https://web.dev/user-agent-client-hints/) (web.dev)
+- [Improving user privacy and developer experience with User-Agent Client Hints](https://developer.chrome.com/docs/privacy-security/user-agent-client-hints) (developer.chrome.com)
 - Network client hints
 
   - {{HTTPHeader("Downlink")}}
@@ -81,5 +77,5 @@ ECT: 2g
   - {{HTTPHeader("Save-Data")}}
 
 - {{HTTPHeader("Accept-CH")}}
-- [HTTP Caching > Varying responses](/en-US/docs/Web/HTTP/Caching#varying_responses) and {{HTTPHeader("Vary")}}
+- [HTTP Caching > Vary](/en-US/docs/Web/HTTP/Caching#vary) and {{HTTPHeader("Vary")}}
 - {{domxref("NetworkInformation.effectiveType")}}

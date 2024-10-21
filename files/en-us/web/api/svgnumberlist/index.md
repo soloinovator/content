@@ -2,11 +2,6 @@
 title: SVGNumberList
 slug: Web/API/SVGNumberList
 page-type: web-api-interface
-tags:
-  - API
-  - Reference
-  - SVG
-  - SVG DOM
 browser-compat: api.SVGNumberList
 ---
 
@@ -312,6 +307,10 @@ An `SVGNumberList` is indexable and can be accessed like an array.
     </tr>
   </tbody>
 </table>
+
+## Specifications
+
+{{Specifications}}
 
 ## Browser compatibility
 

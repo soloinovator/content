@@ -1,21 +1,12 @@
 ---
-title: MediaSource.duration
+title: "MediaSource: duration property"
+short-title: duration
 slug: Web/API/MediaSource/duration
 page-type: web-api-instance-property
-tags:
-  - API
-  - Audio
-  - MSE
-  - Media Source Extensions
-  - MediaSource
-  - Property
-  - Reference
-  - Video
-  - duration
 browser-compat: api.MediaSource.duration
 ---
 
-{{APIRef("Media Source Extensions")}}
+{{APIRef("Media Source Extensions")}}{{AvailableInWorkers("window_and_dedicated")}}
 
 The **`duration`** property of the {{domxref("MediaSource")}}
 interface gets and sets the duration of the current media being presented.
@@ -49,7 +40,7 @@ function sourceOpen() {
   console.log(this.readyState); // open
   const sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
   fetchAB(assetURL, (buf) => {
-    sourceBuffer.addEventListener('updateend', () => {
+    sourceBuffer.addEventListener("updateend", () => {
       mediaSource.endOfStream();
       mediaSource.duration = 120;
       video.play();
@@ -57,7 +48,7 @@ function sourceOpen() {
     });
     sourceBuffer.appendBuffer(buf);
   });
-};
+}
 
 // …
 ```

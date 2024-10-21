@@ -1,14 +1,7 @@
 ---
 title: How can we design for all types of users?
 slug: Learn/Common_questions/Design_and_accessibility/Design_for_all_types_of_users
-tags:
-  - Accessibility
-  - Beginner
-  - Design
-  - Example
-  - Intro
-  - Mobile
-  - NeedsActiveLearning
+page-type: learn-faq
 ---
 
 {{QuicklinksWithSubPages("Learn/Common_questions")}}
@@ -21,7 +14,7 @@ This article provides basic tips to help you design websites for any kind of use
       <th scope="row">Prerequisites:</th>
       <td>
         You should first read
-        <a href="/en-US/docs/Learn/Common_questions/What_is_accessibility"
+        <a href="/en-US/docs/Learn/Common_questions/Design_and_accessibility/What_is_accessibility"
           >What is accessibility?</a
         >, since we don't cover accessibility in detail here.
       </td>
@@ -55,7 +48,8 @@ The {{Glossary("W3C")}} defines a good color mix with an algorithm that calculat
 
 Let's download and install the Paciello Group's [Color Contrast Analyser](https://www.tpgi.com/color-contrast-checker/).
 
-> **Note:** Alternatively you can find a number of contrast checkers online, such as WebAIM's [Color Contrast Checker](https://webaim.org/resources/contrastchecker/). We suggest a local checker because it comes packaged with an on-screen color picker to find out a color value.
+> [!NOTE]
+> Alternatively you can find a number of contrast checkers online, such as WebAIM's [Color Contrast Checker](https://webaim.org/resources/contrastchecker/). We suggest a local checker because it comes packaged with an on-screen color picker to find out a color value.
 
 For instance, let's test the colors on this page and see how we fare in the color Contrast Analyser:
 
@@ -79,8 +73,6 @@ body {
 
 … you are telling the browser that whatever happens, the font size must be 16 pixels. Modern browsers get around this rule by pretending that you're asking for "16 pixels when the user sets a zoom factor of 100%".
 
-Yet, for many years Internet Explorer adamantly displayed 16 pixels as 16 pixels. In this case, zooming did nothing, even as late as Internet Explorer 8, which we still have to cater to because it's still around.
-
 #### Relative units
 
 Also called _proportional units,_ relative units are computed relative to a parent element. Relative units are friendlier to accessibility because they respect the settings on the user's system.
@@ -99,7 +91,7 @@ Suppose we wanted a base font size of 16px and an h1 (main heading) at the equiv
 Here is the HTML we're using:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -167,9 +159,10 @@ span.subheading {
 }
 ```
 
-Easier, isn't it? This works as of [Internet Explorer 9 and in every other current browser](https://caniuse.com/#search=rem), so please feel free to use this unit.
+Easier, isn't it? This works as of [every current browser](https://caniuse.com/#search=rem), so please feel free to use this unit.
 
-> **Note:** You may notice Opera Mini does not support font sizing in rem. It will end up setting its own font size, so don't bother feeding it font units.
+> [!NOTE]
+> You may notice Opera Mini does not support font sizing in rem. It will end up setting its own font size, so don't bother feeding it font units.
 
 #### Why would I want to use proportional units?
 
@@ -180,7 +173,8 @@ We would advise the following:
 - Describe fonts in `rem` units, most browsers will be very happy with them;
 - Let older browsers display fonts with their own internal engine. Browser's engines will ignore any property or value in the CSS if they can't cope with them, so that your website is still usable if not true to your designer's vision. Older browsers are on the way out anyway.
 
-> **Note:** Your mileage may vary. If you have to cater to older browsers, you'll have to use `em`s and do a bit more math.
+> [!NOTE]
+> Your mileage may vary. If you have to cater to older browsers, you'll have to use `em`s and do a bit more math.
 
 ### Line width
 
@@ -191,7 +185,7 @@ Of course the problem doesn't go away when we switch to the Web. The reader's ey
 To achieve this, you can specify a size for your text's container. Let's consider this HTML:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -239,7 +233,8 @@ Images can be either decorative or informative, but there's no guarantee that yo
 
 If the image can be described succinctly, you can provide an `alt` attribute and nothing more. If the image cannot be described succinctly, you will have to either provide the same content in another form in the same page (e.g., complement a pie chart with a table providing the same data), or resort to a `longdesc` attribute. This attribute's value is a URL pointing towards a resource explicitly describing in detail the image's content.
 
-> **Note:** The use and even the existence of `longdesc` has been debated for quite some time. Please refer to the W3C's [Image Description Extension (longdesc)](https://www.w3.org/TR/html-longdesc/) for the full explanation and thorough examples.
+> [!NOTE]
+> The use and even the existence of `longdesc` has been debated for quite some time. Please refer to the W3C's [Image Description Extension (longdesc)](https://www.w3.org/TR/html-longdesc/) for the full explanation and thorough examples.
 
 #### Audio/video
 
@@ -254,5 +249,5 @@ You must also provide alternatives to multimedia content.
 
 Some users may choose to display images, but still have limited bandwidth available, especially in developing countries and on mobile devices. If you want a successful website, please compress your images. There are various tools to help you, either online or local:
 
-- **Installed software.** [ImageOptim](https://imageoptim.com/api) (Mac), [OptiPNG](http://optipng.sourceforge.net/) (all platforms), [PNGcrush](https://pmt.sourceforge.io/pngcrush/) (DOS, Unix/Linux)
+- **Installed software.** [ImageOptim](https://imageoptim.com/api) (Mac), [OptiPNG](https://optipng.sourceforge.net/) (all platforms), [PNGcrush](https://pmt.sourceforge.io/pngcrush/) (DOS, Unix/Linux)
 - **Online tools.** Dynamic drive's [Online Image Optimizer](https://tools.dynamicdrive.com/imageoptimizer/) (which can convert automatically from one format to another if it's more bandwidth-efficient)

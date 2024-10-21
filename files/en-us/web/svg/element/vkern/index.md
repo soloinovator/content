@@ -2,13 +2,8 @@
 title: <vkern>
 slug: Web/SVG/Element/vkern
 page-type: svg-element
-tags:
-  - Deprecated
-  - Element
-  - NeedsExample
-  - Reference
-  - SVG
-  - SVG Font
+status:
+  - deprecated
 browser-compat: svg.elements.vkern
 ---
 
@@ -21,12 +16,6 @@ The **`<vkern>`** SVG element allows to fine-tweak the vertical distance between
 {{svginfo}}
 
 ## Attributes
-
-### Global attributes
-
-- [Core attributes](/en-US/docs/Web/SVG/Attribute#core_attributes)
-
-### Specific attributes
 
 - {{SVGAttr("u1")}} {{Deprecated_Inline}}
 - {{SVGAttr("g1")}} {{Deprecated_Inline}}

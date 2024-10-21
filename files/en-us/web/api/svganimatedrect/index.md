@@ -2,12 +2,6 @@
 title: SVGAnimatedRect
 slug: Web/API/SVGAnimatedRect
 page-type: web-api-interface
-tags:
-  - API
-  - NeedsExample
-  - Reference
-  - SVG
-  - SVG DOM
 browser-compat: api.SVGAnimatedRect
 ---
 
@@ -88,6 +82,10 @@ The `SVGAnimatedRect` interface is used for attributes of basic {{ domxref("SVGR
 ## Instance methods
 
 _The `SVGAnimatedRect` interface do not provide any specific methods._
+
+## Specifications
+
+{{Specifications}}
 
 ## Browser compatibility
 

@@ -29,7 +29,7 @@ Like other Performance APIs, this API extends {{domxref("PerformanceEntry")}}.
 This interface has no properties but it extends the following {{domxref("PerformanceEntry")}} properties by qualifying and constraining the properties as follows:
 
 - {{domxref("PerformanceEntry.entryType")}}
-  - : Returns "`paint`".
+  - : Returns `"paint"`.
 - {{domxref("PerformanceEntry.name")}}
   - : Returns either `"first-paint"` or `"first-contentful-paint"`.
 - {{domxref("PerformanceEntry.startTime")}}
@@ -51,7 +51,7 @@ Example using a {{domxref("PerformanceObserver")}}, which notifies of new `paint
 const observer = new PerformanceObserver((list) => {
   list.getEntries().forEach((entry) => {
     console.log(
-      `The time to ${entry.name} was ${entry.startTime} milliseconds.`
+      `The time to ${entry.name} was ${entry.startTime} milliseconds.`,
     );
     // Logs "The time to first-paint was 386.7999999523163 milliseconds."
     // Logs "The time to first-contentful-paint was 400.6999999284744 milliseconds."

@@ -1,17 +1,7 @@
 ---
 title: How do you host your website on Google App Engine?
-slug: >-
-  Learn/Common_questions/Tools_and_setup/How_do_you_host_your_website_on_Google_App_Engine
-tags:
-  - Beginner
-  - Google App Engine
-  - Google Cloud Platform
-  - Guide
-  - Host
-  - Learn
-  - Web
-  - publish
-  - website
+slug: Learn/Common_questions/Tools_and_setup/How_do_you_host_your_website_on_Google_App_Engine
+page-type: learn-faq
 ---
 
 {{QuicklinksWithSubPages("Learn/Common_questions")}}
@@ -45,7 +35,7 @@ Each Cloud Platform project can contain one App Engine application. Let's prepar
 
 Now that we've got our project made and sample app files collected together, let's publish our app.
 
-1. Open [Google Cloud Shell](https://shell.cloud.google.com).
+1. Open [Google Cloud Shell](https://shell.cloud.google.com/).
 2. Drag and drop the `sample-app` folder into the left pane of the code editor.
 3. Run the following in the command line to select your project:
 

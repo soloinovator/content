@@ -1,10 +1,7 @@
 ---
 title: From
 slug: Web/HTTP/Headers/From
-tags:
-  - HTTP
-  - Reference
-  - header
+page-type: http-header
 browser-compat: http.headers.From
 ---
 
@@ -17,7 +14,8 @@ If you are running a robotic user agent (e.g. a crawler), the `From` header
 must be sent, so you can be contacted if problems occur on servers, such as if the
 robot is sending excessive, unwanted, or invalid requests.
 
-> **Warning:** You must not use the `From` header for access control or authentication.
+> [!WARNING]
+> You must not use the `From` header for access control or authentication.
 
 <table class="properties">
   <tbody>

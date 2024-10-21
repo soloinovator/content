@@ -2,11 +2,6 @@
 title: commands
 slug: Mozilla/Add-ons/WebExtensions/manifest.json/commands
 page-type: webextension-manifest-key
-tags:
-  - Add-ons
-  - Extensions
-  - Keyboard Shortcuts
-  - WebExtensions
 browser-compat: webextensions.manifest.commands
 ---
 
@@ -145,8 +140,8 @@ browser.commands.onCommand.addListener((command) => {
 
 There are these 4 **special shortcuts with default actions** for which the {{WebExtAPIRef("commands.onCommand")}} event does not fire:
 
-- `_execute_browser_action`: works like a click on a [toolbar button](/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Browser_action) created with {{WebExtAPIRef("browserAction")}} or specified in the [browser_action](/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_action) key in the manifest.json key.
-- `_execute_action`: works like a click on a [toolbar button](/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Browser_action) created with {{WebExtAPIRef("action")}} or specified in the [action](/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/action) key in the manifest.json key.
+- `_execute_browser_action`: works like a click on a [toolbar button](/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Toolbar_button) created with {{WebExtAPIRef("browserAction")}} or specified in the [browser_action](/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_action) key in the manifest.json key.
+- `_execute_action`: works like a click on a [toolbar button](/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Toolbar_button) created with {{WebExtAPIRef("action")}} or specified in the [action](/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/action) key in the manifest.json key.
 - `_execute_page_action`: works like a click on an [address bar button](/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Page_actions) created with {{WebExtAPIRef("pageAction")}} or specified in the [page_action](/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/page_action) key in the manifest.json key.
 - `_execute_sidebar_action`: opens the extension's [sidebar](/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Sidebars) specified in the [sidebar_action](/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/sidebar_action) manifest.json key.
 
@@ -174,7 +169,7 @@ The availability of these special shortcuts varies between manifest versions and
   <tr>
     <td><code>_execute_page_action</code></td>
     <td>Yes</td>
-    <td>Not available in Chromium-based browsers</td>
+    <td>Firefox only</td>
   </tr>
   <tr>
     <td><code>_execute_sidebar_action</code></td>
@@ -183,6 +178,9 @@ The availability of these special shortcuts varies between manifest versions and
   </tr>
 </tbody>
 </table>
+
+> [!NOTE]
+> If the user changes the shortcut of the `_execute_browser_action` command, it is automatically carried over to the `_execute_action` command when the extension migrates from Manifest V2 to V3. This was implemented in Chrome 111 and Firefox 127.
 
 For example, this JSON defines a key combination that clicks the extension's browser action:
 
@@ -202,7 +200,8 @@ There are two valid formats for shortcut keys: as a **key combination** or as a 
 
 ### Key combinations
 
-> **Note:** On Macs, `"Ctrl"` is interpreted as `"Command"`, so if you actually need `"Ctrl"`, specify `"MacCtrl"`.
+> [!NOTE]
+> On Macs, `"Ctrl"` is interpreted as `"Command"`, so if you actually need `"Ctrl"`, specify `"MacCtrl"`.
 
 Key combinations must consist of 2 or 3 keys:
 

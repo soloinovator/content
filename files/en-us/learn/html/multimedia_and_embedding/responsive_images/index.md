@@ -1,26 +1,7 @@
 ---
 title: Responsive images
 slug: Learn/HTML/Multimedia_and_embedding/Responsive_images
-tags:
-  - Article
-  - Beginner
-  - CodingScripting
-  - Design
-  - Graphics
-  - Guide
-  - HTML
-  - Image
-  - Intermediate
-  - JPEG
-  - PNG
-  - Pictures
-  - captions
-  - hyperlinks
-  - img
-  - picture
-  - sizes
-  - src
-  - srcset
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web", "Learn/HTML/Multimedia_and_embedding/Mozilla_splash_page", "Learn/HTML/Multimedia_and_embedding")}}
@@ -44,7 +25,7 @@ In this article, we'll learn about the concept of responsive images — images t
       <th scope="row">Objective:</th>
       <td>
         Learn how to use features like
-        {{htmlattrxref("srcset", "img")}} and the
+         <a href="/en-US/docs/Web/HTML/Element/img#srcset"><code>srcset</code></a> and the
         {{htmlelement("picture")}} element to implement responsive
         image solutions on websites.
       </td>
@@ -78,7 +59,8 @@ You might think that vector images would solve these problems, and they do to a 
 
 This kind of problem didn't exist when the web first existed, in the early to mid 90s — back then the only devices in existence to browse the Web were desktops and laptops, so browser engineers and spec writers didn't even think to implement solutions. _Responsive image technologies_ were implemented recently to solve the problems indicated above by letting you offer the browser several image files, either all showing the same thing but containing different numbers of pixels (_resolution switching_), or different images suitable for different space allocations (_art direction_).
 
-> **Note:** The new features discussed in this article — {{htmlattrxref("srcset", "img")}}/{{htmlattrxref("sizes", "img")}}/{{htmlelement("picture")}} — are all supported in modern desktop and mobile browsers (including Microsoft's Edge browser, although not Internet Explorer.)
+> [!NOTE]
+> The new features discussed in this article — [`srcset`](/en-US/docs/Web/HTML/Element/img#srcset)/[`sizes`](/en-US/docs/Web/HTML/Element/img#sizes)/{{htmlelement("picture")}} — are all supported in modern desktop and mobile browsers.
 
 ## How do you create responsive images?
 
@@ -92,7 +74,7 @@ So, what is the problem that we want to solve with resolution switching? We want
 <img src="elva-fairy-800w.jpg" alt="Elva dressed as a fairy" />
 ```
 
-We can however use two attributes — {{htmlattrxref("srcset", "img")}} and {{htmlattrxref("sizes", "img")}} — to provide several additional source images along with hints to help the browser pick the right one. You can see an example of this in our [responsive.html](https://mdn.github.io/learning-area/html/multimedia-and-embedding/responsive-images/responsive.html) example on GitHub (see also [the source code](https://github.com/mdn/learning-area/blob/main/html/multimedia-and-embedding/responsive-images/responsive.html)):
+We can however use two attributes — [`srcset`](/en-US/docs/Web/HTML/Element/img#srcset) and [`sizes`](/en-US/docs/Web/HTML/Element/img#sizes) — to provide several additional source images along with hints to help the browser pick the right one. You can see an example of this in our [responsive.html](https://mdn.github.io/learning-area/html/multimedia-and-embedding/responsive-images/responsive.html) example on GitHub (see also [the source code](https://github.com/mdn/learning-area/blob/main/html/multimedia-and-embedding/responsive-images/responsive.html)):
 
 ```html
 <img
@@ -125,28 +107,33 @@ The `srcset` and `sizes` attributes look complicated, but they're not too hard t
 2. A space
 3. The **width of the slot** the image will fill when the media condition is true (`480px`)
 
-> **Note:** For the slot width, rather than providing an absolute width (for example, `480px`), you can alternatively provide a width relative to the viewport (for example, `50vw`) — but not a percentage. You may have noticed that the last slot width has no media condition (this is the default that is chosen when none of the media conditions are true). The browser ignores everything after the first matching condition, so be careful how you order the media conditions.
+> [!NOTE]
+> In `sizes`, you can use any [length value](/en-US/docs/Web/CSS/length). For example, rather than providing an absolute width (for example, `480px`), you can alternatively provide a width relative to the viewport (for example, `50vw`). However, you cannot use a percentage as the slot width. You may have noticed that the last slot width has no media condition (this is the default that is chosen when none of the media conditions are true). The browser ignores everything after the first matching condition, so be careful how you order the media conditions.
 
 So, with these attributes in place, the browser will:
 
-1. Look at its device width.
+1. Look at screen size, pixel density, zoom level, screen orientation, and network speed.
 2. Work out which media condition in the `sizes` list is the first one to be true.
 3. Look at the slot size given to that media query.
 4. Load the image referenced in the `srcset` list that has the same size as the slot or, if there isn't one, the first image that is bigger than the chosen slot size.
 
 And that's it! At this point, if a supporting browser with a viewport width of 480px loads the page, the `(max-width: 600px)` media condition will be true, and so the browser chooses the `480px` slot. The `elva-fairy-480w.jpg` will be loaded, as its inherent width (`480w`) is closest to the slot size. The 800px picture is 128KB on disk, whereas the 480px version is only 63KB — a saving of 65KB. Now, imagine if this was a page that had many pictures on it. Using this technique could save mobile users a lot of bandwidth.
 
-> **Note:** When testing this with a desktop browser, if the browser fails to load the narrower images when you've got its window set to the narrowest width, have a look at what the viewport is (you can approximate it by going into the browser's JavaScript console and typing in `document.querySelector('html').clientWidth`). Different browsers have minimum sizes that they'll let you reduce the window width to, and they might be wider than you'd think. When testing it with a mobile browser, you can use tools like Firefox's `about:debugging` page to inspect the page loaded on the mobile using the desktop developer tools.
+> [!NOTE]
+> When testing this with a desktop browser, if the browser fails to load the narrower images when you've got its window set to the narrowest width, have a look at what the viewport is (you can approximate it by going into the browser's JavaScript console and typing in `document.querySelector('html').clientWidth`). Different browsers have minimum sizes that they'll let you reduce the window width to, and they might be wider than you'd think. When testing it with a mobile browser, you can use tools like Firefox's `about:debugging` page to inspect the page loaded on the mobile using the desktop developer tools.
 >
 > To see which images were loaded, you can use Firefox DevTools's [Network Monitor](https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/index.html) tab or Chrome DevTools's [Network](https://developer.chrome.com/docs/devtools/network/) panel. For Chrome, you may also want to [disable cache](https://stackoverflow.com/a/7000899/13725861) to prevent it from picking already downloaded images.
 
-Older browsers that don't support these features will just ignore them. Instead, those browsers will go ahead and load the image referenced in the {{htmlattrxref("src", "img")}} attribute as normal.
+Older browsers that don't support these features will just ignore them. Instead, those browsers will go ahead and load the image referenced in the [`src`](/en-US/docs/Web/HTML/Element/img#src) attribute as normal.
 
-> **Note:** In the {{htmlelement("head")}} of the example linked above, you'll find the line `<meta name="viewport" content="width=device-width">`: this forces mobile browsers to adopt their real viewport width for loading web pages (some mobile browsers lie about their viewport width, and instead load pages at a larger viewport width then shrink the loaded page down, which is not very helpful for responsive images or design).
+> [!NOTE]
+> In the {{htmlelement("head")}} of the example linked above, you'll find the line `<meta name="viewport" content="width=device-width">`: this forces mobile browsers to adopt their real viewport width for loading web pages (some mobile browsers lie about their viewport width, and instead load pages at a larger viewport width then shrink the loaded page down, which is not very helpful for responsive images or design).
 
 ### Resolution switching: Same size, different resolutions
 
-If you're supporting multiple display resolutions, but everyone sees your image at the same real-world size on the screen, you can allow the browser to choose an appropriate resolution image by using `srcset` with x-descriptors and without `sizes` — a somewhat easier syntax! You can find an example of what this looks like in [srcset-resolutions.html](https://mdn.github.io/learning-area/html/multimedia-and-embedding/responsive-images/srcset-resolutions.html) (see also [the source code](https://github.com/mdn/learning-area/blob/main/html/multimedia-and-embedding/responsive-images/srcset-resolutions.html)):
+Suppose you have an image that will be rendered at the same real-world size on displays that have different screen resolutions. You can provide a better user experience on high resolution displays by serving a higher resolution version of the image.
+
+To achieve this you can allow the browser to choose an appropriate resolution image by using `srcset` with x-descriptors and without `sizes` — a somewhat easier syntax! You can find an example of what this looks like in [srcset-resolutions.html](https://mdn.github.io/learning-area/html/multimedia-and-embedding/responsive-images/srcset-resolutions.html) (see also [the source code](https://github.com/mdn/learning-area/blob/main/html/multimedia-and-embedding/responsive-images/srcset-resolutions.html)):
 
 ```html
 <img
@@ -155,7 +142,11 @@ If you're supporting multiple display resolutions, but everyone sees your image 
   alt="Elva dressed as a fairy" />
 ```
 
-![A picture of a little girl dressed up as a fairy, with an old camera film effect applied to the image](resolution-example.png)In this example, the following CSS is applied to the image so that it will have a width of 320 pixels on the screen (also called CSS pixels):
+Note that even though the image is always displayed with the same size, on higher resolution displays you get to see more details.
+
+![A picture of a little girl dressed up as a fairy, with an old camera film effect applied to the image](resolution-example.png)
+
+In this example, the following CSS is applied to the image so that it will have a width of 320 pixels on the screen (also called CSS pixels):
 
 ```css
 img {
@@ -193,31 +184,12 @@ This code allows us to display a suitable image on both wide screen and narrow s
 
 ![Our example site as viewed on a wide screen - here the first image works OK, as it is big enough to see the detail in the center.](picture-element-wide.png)![Our example site as viewed on a narrow screen with the picture element used to switch the first image to a portrait close up of the detail, making it a lot more useful on a narrow screen](picture-element-narrow.png)
 
-> **Note:** You should use the `media` attribute only in art direction scenarios; when you do use `media`, don't also offer media conditions within the `sizes` attribute.
+> [!NOTE]
+> You should use the `media` attribute only in art direction scenarios; when you do use `media`, don't also offer media conditions within the `sizes` attribute.
 
 ### Why can't we just do this using CSS or JavaScript?
 
 When the browser starts to load a page, it starts to download (preload) any images before the main parser has started to load and interpret the page's CSS and JavaScript. That mechanism is useful in general for reducing page load times, but it is not helpful for responsive images — hence the need to implement solutions like `srcset`. For example, you couldn't load the {{htmlelement("img")}} element, then detect the viewport width with JavaScript, and then dynamically change the source image to a smaller one if desired. By then, the original image would already have been loaded, and you would load the small image as well, which is even worse in responsive image terms.
-
-### Use modern image formats boldly
-
-New image formats like [WebP](/en-US/docs/Web/Media/Formats/Image_types#webp_image) and [AVIF](/en-US/docs/Web/Media/Formats/Image_types#avif_image) can maintain a low file size and high quality at the same time. These formats now have relatively broad browser support but little "historical depth".
-
-`<picture>` lets us continue catering to older browsers. You can supply MIME types inside `type` attributes so the browser can immediately reject unsupported file types:
-
-```html
-<picture>
-  <source type="image/svg+xml" srcset="pyramid.svg" />
-  <source type="image/webp" srcset="pyramid.webp" />
-  <img
-    src="pyramid.png"
-    alt="regular pyramid built from four equilateral triangles" />
-</picture>
-```
-
-- Do _not_ use the `media` attribute, unless you also need art direction.
-- In a `<source>` element, you can only refer to images of the type declared in `type`.
-- Use comma-separated lists with `srcset` and `sizes`, as needed.
 
 ## Active learning: Implementing your own responsive images
 
@@ -227,14 +199,14 @@ For this active learning, we're expecting you to be brave and do it alone, mostl
 2. Find a nice wide screen landscape image with some kind of detail contained in it somewhere. Create a web-sized version of it using a graphics editor, then crop it to show a smaller part that zooms in on the detail, and create a second image (about 480px wide is good for this).
 3. Use the `<picture>` element to implement an art direction picture switcher!
 4. Create multiple image files of different sizes, each showing the same picture.
-5. Use `srcset`/`size` to create a resolution switcher example, either to serve the same size image at different resolutions, or different image sizes at different viewport widths.
+5. Use `srcset`/`sizes` to create a resolution switcher example, either to serve the same size image at different resolutions depending on the device resolution or to serve different image sizes depending on the viewport widths.
 
 ## Summary
 
 That's a wrap for responsive images — we hope you enjoyed playing with these new techniques. As a recap, there are two distinct problems we've been discussing here:
 
 - **Art direction**: The problem whereby you want to serve cropped images for different layouts — for example a landscape image showing a full scene for a desktop layout, and a portrait image showing the main subject zoomed in for a mobile layout. You can solve this problem using the {{htmlelement("picture")}} element.
-- **Resolution switching**: The problem whereby you want to serve smaller image files to narrow-screen devices, as they don't need huge images like desktop displays do — and to serve different resolution images to high density/low density screens. You can solve this problem using [vector graphics](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web) (SVG images) and the {{htmlattrxref("srcset", "img")}} with {{htmlattrxref("sizes", "img")}} attributes.
+- **Resolution switching**: The problem whereby you want to serve smaller image files to narrow-screen devices, as they don't need huge images like desktop displays do — and to serve different resolution images to high density/low density screens. You can solve this problem using [vector graphics](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web) (SVG images) and the [`srcset`](/en-US/docs/Web/HTML/Element/img#srcset) with [`sizes`](/en-US/docs/Web/HTML/Element/img#sizes) attributes.
 
 This also draws to a close the entire [Multimedia and embedding](/en-US/docs/Learn/HTML/Multimedia_and_embedding) module! The only thing to do now before moving on is to try our [Multimedia and embedding assessment](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Mozilla_splash_page), and see how you get on. Have fun!
 
@@ -247,12 +219,3 @@ This also draws to a close the entire [Multimedia and embedding](/en-US/docs/Lea
 - {{htmlelement("source")}}
 
 {{PreviousMenuNext("Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web", "Learn/HTML/Multimedia_and_embedding/Mozilla_splash_page", "Learn/HTML/Multimedia_and_embedding")}}
-
-## In this module
-
-- [Images in HTML](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML)
-- [Video and audio content](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content)
-- [From \<object> to \<iframe> — other embedding technologies](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies)
-- [Adding vector graphics to the Web](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web)
-- [Responsive images](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
-- [Mozilla splash page](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Mozilla_splash_page)

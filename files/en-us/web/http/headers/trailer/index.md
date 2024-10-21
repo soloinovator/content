@@ -1,12 +1,7 @@
 ---
 title: Trailer
 slug: Web/HTTP/Headers/Trailer
-tags:
-  - HTTP
-  - HTTP Header
-  - Request header
-  - Response header
-  - Payload header
+page-type: http-header
 browser-compat: http.headers.Trailer
 ---
 
@@ -17,7 +12,8 @@ fields at the end of chunked messages in order to supply metadata that might be
 dynamically generated while the message body is sent, such as a message integrity check,
 digital signature, or post-processing status.
 
-> **Note:** The {{HTTPHeader("TE")}} request header needs to be set to "trailers" to allow
+> [!NOTE]
+> The {{HTTPHeader("TE")}} request header needs to be set to "trailers" to allow
 > trailer fields.
 
 <table class="properties">
@@ -27,7 +23,7 @@ digital signature, or post-processing status.
       <td>
         {{Glossary("Request header")}},
         {{Glossary("Response header")}},
-        {{Glossary("Payload header")}}
+        {{Glossary("Content header")}}
       </td>
     </tr>
     <tr>

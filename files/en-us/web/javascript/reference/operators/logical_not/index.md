@@ -2,12 +2,6 @@
 title: Logical NOT (!)
 slug: Web/JavaScript/Reference/Operators/Logical_NOT
 page-type: javascript-operator
-tags:
-  - JavaScript
-  - Language feature
-  - Logical Operator
-  - Operator
-  - Reference
 browser-compat: javascript.operators.logical_not
 ---
 
@@ -23,7 +17,7 @@ operand can be converted to `true`; otherwise, returns `true`.
 ## Syntax
 
 ```js-nolint
-!expr
+!x
 ```
 
 ## Description
@@ -43,7 +37,7 @@ Examples of expressions that can be converted to false are:
 - empty string (`""` or `''` or ` `` `);
 - `undefined`.
 
-Even though the `!` operator can be used with operands that are not Boolean values, it can still be considered a boolean operator since its return value can always be converted to a [boolean primitive](/en-US/docs/Web/JavaScript/Data_structures#boolean_type). To explicitly convert its return value (or any expression in general) to the corresponding boolean value, use a double NOT operator (`!!`) or the {{jsxref("Global_Objects/Boolean/Boolean", "Boolean")}} constructor.
+Even though the `!` operator can be used with operands that are not Boolean values, it can still be considered a boolean operator since its return value can always be converted to a [boolean primitive](/en-US/docs/Web/JavaScript/Data_structures#boolean_type). To explicitly convert its return value (or any expression in general) to the corresponding boolean value, use a double NOT operator (`!!`) or the {{jsxref("Boolean/Boolean", "Boolean")}} constructor.
 
 ## Examples
 
@@ -65,8 +59,7 @@ conversion of any value to the corresponding [boolean primitive](/en-US/docs/Web
 The conversion is based on the "truthyness" or "falsyness" of the value (see
 {{Glossary("truthy")}} and {{Glossary("falsy")}}).
 
-The same conversion can be done through the {{jsxref("Global_Objects/Boolean/Boolean",
-  "Boolean")}} function.
+The same conversion can be done through the {{jsxref("Boolean/Boolean", "Boolean()")}} function.
 
 ```js
 !!true; // !!truthy returns true

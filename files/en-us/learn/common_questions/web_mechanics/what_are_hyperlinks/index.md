@@ -1,11 +1,7 @@
 ---
 title: What are hyperlinks?
 slug: Learn/Common_questions/Web_mechanics/What_are_hyperlinks
-tags:
-  - Beginner
-  - Infrastructure
-  - Navigation
-  - NeedsActiveLearning
+page-type: learn-faq
 ---
 
 {{QuicklinksWithSubPages("Learn/Common_questions")}}
@@ -21,7 +17,7 @@ In this article, we'll go over what hyperlinks are and why they matter.
         <a href="/en-US/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work"
           >how the Internet works</a
         >
-        and be familiar with<a
+        and be familiar with <a
           href="/en-US/docs/Learn/Common_questions/Web_mechanics/Pages_sites_servers_and_search_engines"
         >
           the difference between a webpage, a website, a web server, and a

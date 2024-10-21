@@ -1,14 +1,7 @@
 ---
 title: Introduction to the server side
 slug: Learn/Server-side/First_steps/Introduction
-tags:
-  - Beginner
-  - CodingScripting
-  - Guide
-  - Intro
-  - Learn
-  - Server
-  - Server-side programming
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{NextMenu("Learn/Server-side/First_steps/Client-Server_overview", "Learn/Server-side/First_steps")}}
@@ -20,7 +13,7 @@ Welcome to the MDN beginner's server-side programming course! In this first arti
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy. A basic understanding of what a web server is.
+        A basic understanding of what a web server is.
       </td>
     </tr>
     <tr>
@@ -43,7 +36,7 @@ In the modern world of web development, learning about server-side development i
 
 ## What is server-side website programming?
 
-Web browsers communicate with [web servers](/en-US/docs/Learn/Common_questions/What_is_a_web_server) using the **H**yper**T**ext **T**ransfer **P**rotocol ({{glossary("HTTP")}}). When you click a link on a web page, submit a form, or run a search, an **HTTP request** is sent from your browser to the target server.
+Web browsers communicate with [web servers](/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server) using the **H**yper**T**ext **T**ransfer **P**rotocol ({{glossary("HTTP")}}). When you click a link on a web page, submit a form, or run a search, an **HTTP request** is sent from your browser to the target server.
 
 The request includes a URL identifying the affected resource, a method that defines the required action (for example to get, delete, or post the resource), and may include additional information encoded in URL parameters (the field-value pairs sent via a [query string](https://en.wikipedia.org/wiki/Query_string)), as POST data (data sent by the [HTTP POST method](/en-US/docs/Web/HTTP/Methods/POST)), or in associated {{glossary("Cookie", "cookies")}}.
 
@@ -61,7 +54,7 @@ The server retrieves the requested document from its file system and returns an 
 
 ### Dynamic sites
 
-A dynamic website is one where some of the response content is generated _dynamically_, only when needed. On a dynamic website HTML pages are normally created by inserting data from a database into placeholders in HTML templates (this is a much more efficient way of storing large amounts of content than using static websites).
+A dynamic website is one where some of the response content is generated _dynamically_, only when needed. On a dynamic website, HTML pages are normally created by inserting data from a database into placeholders in HTML templates (this is a much more efficient way of storing large amounts of content than using static websites).
 
 A dynamic site can return different data for a URL based on information provided by the user or stored preferences and can perform other operations as part of returning a response (e.g. sending notifications).
 
@@ -95,7 +88,8 @@ Developers typically write their code using **web frameworks**. Web frameworks a
 
 Again, while both client and server-side code use frameworks, the domains are very different, and hence so are the frameworks. Client-side web frameworks simplify layout and presentation tasks while server-side web frameworks provide a lot of "common" web server functionality that you might otherwise have to implement yourself (e.g. support for sessions, support for users and authentication, easy database access, templating libraries, etc.).
 
-> **Note:** Client-side frameworks are often used to help speed up development of client-side code, but you can also choose to write all the code by hand; in fact, writing your code by hand can be quicker and more efficient if you only need a small, simple web site UI.
+> [!NOTE]
+> Client-side frameworks are often used to help speed up development of client-side code, but you can also choose to write all the code by hand; in fact, writing your code by hand can be quicker and more efficient if you only need a small, simple website UI.
 >
 > In contrast, you would almost never consider writing the server-side component of a web app without a framework — implementing a vital feature like an HTTP server is really hard to do from scratch in say Python, but Python web frameworks like Django provide one out of the box, along with other very useful tools.
 
@@ -119,9 +113,10 @@ The server is not limited to sending information from databases, and might alter
 
 Because the information is in a database, it can also more easily be shared and updated with other business systems (for example, when products are sold either online or in a shop, the shop might update its database of inventory).
 
-> **Note:** Your imagination doesn't have to work hard to see the benefit of server-side code for efficient storage and delivery of information:
+> [!NOTE]
+> Your imagination doesn't have to work hard to see the benefit of server-side code for efficient storage and delivery of information:
 >
-> 1. Go to [Amazon](https://www.amazon.com) or some other e-commerce site.
+> 1. Go to [Amazon](https://www.amazon.com/) or some other e-commerce site.
 > 2. Search for a number of keywords and note how the page structure doesn't change, even though the results do.
 > 3. Open two or three different products. Note again how they have a common structure and layout, but the content for different products has been pulled from the database.
 >
@@ -149,15 +144,17 @@ Server-side programming allows sites to restrict access to authorized users and 
 
 Real-world examples include social-networking sites which allow users to determine who can see the content they post to the site, and whose content appears in their feed.
 
-> **Note:** Consider other real examples where access to content is controlled. For example, what can you see if you go to the online site for your bank? Log in to your account — what additional information can you see and modify? What information can you see that only the bank can change?
+> [!NOTE]
+> Consider other real examples where access to content is controlled. For example, what can you see if you go to the online site for your bank? Log in to your account — what additional information can you see and modify? What information can you see that only the bank can change?
 
 ### Store session/state information
 
-Server-side programming allows developers to make use of **sessions** — basically, a mechanism that allows a server to store information on the current user of a site and send different responses based on that information.
+Server-side programming allows developers to make use of **sessions** — basically, a mechanism that allows a server to store information associated with the current user of a site and send different responses based on that information.
 
 This allows, for example, a site to know that a user has previously logged in and display links to their emails or order history, or perhaps save the state of a simple game so that the user can go to a site again and carry on where they left it.
 
-> **Note:** Visit a newspaper site that has a subscription model and open a bunch of tabs (e.g. [The Age](https://www.theage.com.au/)). Continue to visit the site over a few hours/days. Eventually, you will start to be redirected to pages explaining how to subscribe, and you will be unable to access articles. This information is an example of session information stored in cookies.
+> [!NOTE]
+> Visit a newspaper site that has a subscription model and open a bunch of tabs (e.g. [The Age](https://www.theage.com.au/)). Continue to visit the site over a few hours/days. Eventually, you will start to be redirected to pages explaining how to subscribe, and you will be unable to access articles. This information is an example of session information stored in cookies.
 
 ### Notifications and communication
 
@@ -169,7 +166,8 @@ A few examples include:
 - Amazon regularly sends product emails that suggest products similar to those already bought or viewed that you might be interested in.
 - A web server might send warning messages to site administrators alerting them to low memory on the server, or suspicious user activity.
 
-> **Note:** The most common type of notification is a "confirmation of registration". Pick almost any large site that you are interested in (Google, Amazon, Instagram, etc.) and create a new account using your email address. You will shortly receive an email confirming your registration, or requiring acknowledgment to activate your account.
+> [!NOTE]
+> The most common type of notification is a "confirmation of registration". Pick almost any large site that you are interested in (Google, Amazon, Instagram, etc.) and create a new account using your email address. You will shortly receive an email confirming your registration, or requiring acknowledgment to activate your account.
 
 ### Data analysis
 
@@ -177,7 +175,8 @@ A website may collect a lot of data about users: what they search for, what they
 
 For example, Amazon and Google both advertise products based on previous searches (and purchases).
 
-> **Note:** If you're a Facebook user, go to your main feed and look at the stream of posts. Note how some of the posts are out of numerical order - in particular, posts with more "likes" are often higher on the list than more recent posts.
+> [!NOTE]
+> If you're a Facebook user, go to your main feed and look at the stream of posts. Note how some of the posts are out of numerical order - in particular, posts with more "likes" are often higher on the list than more recent posts.
 >
 > Also look at what kind of ads you are being shown — you might see ads for things you looked at on other sites. Facebook's algorithm for highlighting content and advertising can be a bit of a mystery, but it is clear that it does depend on your likes and viewing habits!
 

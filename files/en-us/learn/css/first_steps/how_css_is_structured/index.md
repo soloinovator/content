@@ -1,18 +1,7 @@
 ---
 title: How CSS is structured
 slug: Learn/CSS/First_steps/How_CSS_is_structured
-tags:
-  - Beginner
-  - CSS
-  - HTML
-  - Learn
-  - Selectors
-  - Structure
-  - comments
-  - properties
-  - shorthand
-  - values
-  - whitespace
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/CSS/First_steps/Getting_started", "Learn/CSS/First_steps/How_CSS_works", "Learn/CSS/First_steps")}}
@@ -24,21 +13,9 @@ Now that you are beginning to understand the purpose and use of CSS, let's exami
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy,
-        <a
-          href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
-          >basic software installed</a
-        >, basic knowledge of
-        <a
-          href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
-          >working with files</a
-        >, HTML basics (study
-        <a href="/en-US/docs/Learn/HTML/Introduction_to_HTML"
-          >Introduction to HTML</a
-        >), and an idea of
-        <a href="/en-US/docs/Learn/CSS/First_steps/How_CSS_works"
-          >How CSS works</a
-        >.
+        <a href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software">Basic software installed</a>, basic knowledge of
+        <a href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files">working with files</a> and HTML basics (study
+        <a href="/en-US/docs/Learn/HTML/Introduction_to_HTML">Introduction to HTML</a>).
       </td>
     </tr>
     <tr>
@@ -59,7 +36,7 @@ An external stylesheet contains CSS in a separate file with a `.css` extension. 
 You reference an external CSS stylesheet from an HTML `<link>` element:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
   <head>
     <meta charset="utf-8" />
@@ -107,7 +84,7 @@ An internal stylesheet resides within an HTML document. To create an internal st
 The HTML for an internal stylesheet might look like this:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
   <head>
     <meta charset="utf-8" />
@@ -140,7 +117,7 @@ But for sites with more than one page, an internal stylesheet becomes a less eff
 Inline styles are CSS declarations that affect a single HTML element, contained within a `style` attribute. The implementation of an inline style in an HTML document might look like this:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
   <head>
     <meta charset="utf-8" />
@@ -166,10 +143,11 @@ For the exercise that follows, create a folder on your computer. You can name th
 **index.html:**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>My CSS experiments</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -216,7 +194,8 @@ h1, h2, .intro
 
 Try creating some CSS rules that use the selectors above. Add HTML to be styled by the selectors. If any of the syntax above is not familiar, try searching MDN.
 
-> **Note:** You will learn more about selectors in the next module: [CSS selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors).
+> [!NOTE]
+> You will learn more about selectors in the next module: [CSS selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors).
 
 ### Specificity
 
@@ -281,17 +260,19 @@ Setting CSS properties to specific values is the primary way of defining layout 
 
 CSS properties and values are case-insensitive. The property and value in a property-value pair are separated by a colon (`:`).
 
-**Look up different values of properties listed below. Write CSS rules that apply styling to different HTML elements:**
+Look up different values of properties listed below. Write CSS rules that apply styling to different HTML elements:
 
-- **{{cssxref("font-size")}}**
-- **{{cssxref("width")}}**
-- **{{cssxref("background-color")}}**
-- **{{cssxref("color")}}**
-- **{{cssxref("border")}}**
+- {{cssxref("font-size")}}
+- {{cssxref("width")}}
+- {{cssxref("background-color")}}
+- {{cssxref("color")}}
+- {{cssxref("border")}}
 
-> **Warning:** If a property is unknown, or if a value is not valid for a given property, the declaration is processed as _invalid_. It is completely ignored by the browser's CSS engine.
+> [!WARNING]
+> If a property is unknown, or if a value is not valid for a given property, the declaration is processed as _invalid_. It is completely ignored by the browser's CSS engine.
 
-> **Warning:** In CSS (and other web standards), it has been agreed that US spelling is the standard where there is language variation or uncertainty. For example, `colour` should be spelled `color`, as `colour` will not work.
+> [!WARNING]
+> In CSS (and other web standards), it has been agreed that US spelling is the standard where there is language variation or uncertainty. For example, `colour` should be spelled `color`, as `colour` will not work.
 
 ### Functions
 
@@ -346,11 +327,11 @@ The output from the above code looks like this:
 
 {{EmbedLiveSample('Transform_functions', '100%', 200)}}
 
-**Look up different values of properties listed below. Write CSS rules that apply styling to different HTML elements:**
+Look up different values of properties listed below. Write CSS rules that apply styling to different HTML elements:
 
-- **{{cssxref("transform")}}**
-- **{{cssxref("background-image")}}, in particular gradient values**
-- **{{cssxref("color")}}, in particular rgb and hsl values**
+- {{cssxref("transform")}}
+- {{cssxref("background-image")}}, in particular gradient values
+- {{cssxref("color")}}, in particular rgb and hsl values
 
 ## @rules
 
@@ -360,7 +341,7 @@ CSS [@rules](/en-US/docs/Web/CSS/At-rule) (pronounced "at-rules") provide instru
 @import "styles2.css";
 ```
 
-One common @rule that you are likely to encounter is `@media`, which is used to create [media queries](/en-US/docs/Web/CSS/Media_Queries). Media queries use conditional logic for applying CSS styling.
+One common @rule that you are likely to encounter is `@media`, which is used to create [media queries](/en-US/docs/Web/CSS/CSS_media_queries). Media queries use conditional logic for applying CSS styling.
 
 In the example below, the stylesheet defines a default pink background for the `<body>` element. However, a media query follows that defines a blue background if the browser viewport is wider than 30em.
 
@@ -378,11 +359,11 @@ body {
 
 You will encounter other @rules throughout these tutorials.
 
-**See if you can add a media query that changes styles based on the viewport width. Change the width of your browser window to see the result.**
+See if you can add a media query that changes styles based on the viewport width. Change the width of your browser window to see the result.
 
 ## Shorthands
 
-Some properties like {{cssxref("font")}}, {{cssxref("background")}}, {{cssxref("padding")}}, {{cssxref("border")}}, and {{cssxref("margin")}} are called **shorthand properties.** This is because shorthand properties set several values in a single line.
+Some properties like {{cssxref("font")}}, {{cssxref("background")}}, {{cssxref("padding")}}, {{cssxref("border")}}, and {{cssxref("margin")}} are called **shorthand properties**. This is because shorthand properties set several values in a single line.
 
 For example, this one line of code:
 
@@ -421,9 +402,10 @@ background-attachment: fixed;
 
 Later in the course, you will encounter many other examples of shorthand properties. MDN's [CSS reference](/en-US/docs/Web/CSS/Reference) is a good resource for more information about any shorthand property.
 
-**Try using the declarations (above) in your own CSS exercise to become more familiar with how it works. You can also experiment with different values.**
+Try using the declarations (above) in your own CSS exercise to become more familiar with how it works. You can also experiment with different values.
 
-> **Warning:** One less obvious aspect of using CSS shorthand is how omitted values reset. A value not specified in CSS shorthand reverts to its initial value. This means an omission in CSS shorthand can **override previously set values**.
+> [!WARNING]
+> One less obvious aspect of using CSS shorthand is how omitted values reset. A value not specified in CSS shorthand reverts to its initial value. This means an omission in CSS shorthand can **override previously set values**.
 
 ## Comments
 
@@ -433,9 +415,12 @@ CSS comments begin with `/*` and end with `*/`. In the example below, comments m
 
 ```css
 /* Handle basic element styling */
-/* -------------------------------------------------------------------------------------------- */
+/* ---------------------------- */
 body {
-  font: 1em/150% Helvetica, Arial, sans-serif;
+  font:
+    1em/150% Helvetica,
+    Arial,
+    sans-serif;
   padding: 1em;
   margin: 0 auto;
   max-width: 33em;
@@ -482,17 +467,20 @@ p {
 }
 ```
 
-**Add comments to your CSS.**
+Try adding comments in your CSS.
 
 ## White space
 
-White space means actual spaces, tabs and new lines. Just as browsers ignore white space in HTML, browsers ignore white space inside CSS. The value of white space is how it can improve readability.
+White space means actual spaces, tabs and new lines. Just as browsers ignore extra white space in HTML, browsers ignore extra white space inside CSS. The benefit of white space is that it improves readability.
 
 In the example below, each declaration (and rule start/end) has its own line. This is arguably a good way to write CSS. It makes it easier to maintain and understand CSS.
 
 ```css
 body {
-  font: 1em/150% Helvetica, Arial, sans-serif;
+  font:
+    1em/150% Helvetica,
+    Arial,
+    sans-serif;
   padding: 1em;
   margin: 0 auto;
   max-width: 33em;
@@ -524,22 +512,23 @@ div p + p {
 }
 ```
 
-The next example shows the equivalent CSS in a more compressed format. Although the two examples work the same, the one below is more difficult to read.
+The next example shows the equivalent CSS in a more compressed format, with all extra white space removed. Although the two examples work the same, the one below is more difficult to read.
 
 ```css-nolint
-body {font: 1em/150% Helvetica, Arial, sans-serif; padding: 1em; margin: 0 auto; max-width: 33em;}
-@media (min-width: 70em) { body { font-size: 130%;}}
+body{font:1em/150% Helvetica,Arial,sans-serif;padding:1em;margin:0 auto;max-width:33em;}
+@media(min-width:70em){body{font-size:130%;}}
 
-h1 {font-size: 1.5em;}
+h1{font-size:1.5em;}
 
-div p, #id:first-line {background-color: red; border-radius: 3px;}
-div p {margin: 0; padding: 1em;}
-div p + p {padding-top: 0;}
+div p,#id:first-line{background-color:red;border-radius:3px;}
+div p{margin:0;padding:1em;}
+div p+p{padding-top:0;}
 ```
 
 For your own projects, you will format your code according to personal preference. For team projects, you may find that a team or project has its own style guide.
 
-> **Warning:** Though white space separates values in CSS declarations, **property names never have white space**.
+> [!WARNING]
+> Though white space separates values in CSS declarations, **property names never have white space**.
 
 For example, these declarations are valid CSS:
 
@@ -559,18 +548,10 @@ Do you see the spacing errors? First, `0auto` is not recognized as a valid value
 
 You should always make sure to separate distinct values from one another by at least one space. Keep property names and property values together as single unbroken strings.
 
-**To find out how spacing can break CSS, try playing with spacing inside your test CSS.**
+To find out how spacing can break CSS, try playing with spacing inside your test CSS.
 
 ## Summary
 
 At this point, you should have a better idea about how CSS is structured. It's also useful to understand how the browser uses HTML and CSS to display a webpage. The next article, [How CSS works](/en-US/docs/Learn/CSS/First_steps/How_CSS_works), explains the process.
 
 {{PreviousMenuNext("Learn/CSS/First_steps/Getting_started", "Learn/CSS/First_steps/How_CSS_works", "Learn/CSS/First_steps")}}
-
-## In this module
-
-- [What is CSS?](/en-US/docs/Learn/CSS/First_steps/What_is_CSS)
-- [Getting started with CSS](/en-US/docs/Learn/CSS/First_steps/Getting_started)
-- [How CSS is structured](/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured)
-- [How CSS works](/en-US/docs/Learn/CSS/First_steps/How_CSS_works)
-- [Styling a biography page](/en-US/docs/Learn/CSS/First_steps/Styling_a_biography_page)

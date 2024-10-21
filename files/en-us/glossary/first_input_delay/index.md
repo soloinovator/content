@@ -2,10 +2,9 @@
 title: First input delay
 slug: Glossary/First_input_delay
 page-type: glossary-definition
-tags:
-  - Reference
-  - Web Performance
 ---
+
+{{GlossarySidebar}}
 
 **First input delay** (FID) measures the time from when a user first interacts with your site (i.e. when they click a link, tap on a button, or use a custom, JavaScript-powered control) to the time when the browser is actually able to respond to that interaction.
 

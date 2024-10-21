@@ -1,13 +1,7 @@
 ---
 title: How to fade a button on hover
 slug: Learn/CSS/Howto/Transition_button
-tags:
-  - Basic
-  - Beginner
-  - CSS
-  - CSS:Getting_Started
-  - Guide
-  - Web
+page-type: learn-faq
 ---
 
 {{LearnSidebar}}
@@ -26,8 +20,9 @@ In the example the transition takes 1 second, you can try changing this to see t
 
 {{EmbedGHLiveSample("css-examples/howto/transition-button.html", '100%', 720)}}
 
-> **Note:** The {{cssxref("transition")}} property is a shorthand for {{cssxref("transition-delay")}}, {{cssxref("transition-duration")}}, {{cssxref("transition-property")}}, and {{cssxref("transition-timing-function")}}. See the pages for these properties on MDN to find ways to tweak your transitions.
+> [!NOTE]
+> The {{cssxref("transition")}} property is a shorthand for {{cssxref("transition-delay")}}, {{cssxref("transition-duration")}}, {{cssxref("transition-property")}}, and {{cssxref("transition-timing-function")}}. See the pages for these properties on MDN to find ways to tweak your transitions.
 
 ## See also
 
-- [Using CSS transitions](/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)
+- [Using CSS transitions](/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions)

@@ -1,9 +1,7 @@
 ---
 title: How to implement a promise-based API
 slug: Learn/JavaScript/Asynchronous/Implementing_a_promise-based_API
-tags:
-  - JavaScript
-  - Learn
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/JavaScript/Asynchronous/Promises", "Learn/JavaScript/Asynchronous/Introducing_workers", "Learn/JavaScript/Asynchronous")}}
@@ -15,7 +13,7 @@ In the last article we discussed how to use APIs that return promises. In this a
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy, a reasonable understanding of JavaScript
+        A reasonable understanding of JavaScript
         fundamentals, including event handling and the basics of promises.
       </td>
     </tr>
@@ -34,7 +32,7 @@ In this example we'll implement a promise-based alarm API, called `alarm()`. It 
 
 ### Wrapping setTimeout()
 
-We'll use the {{domxref("setTimeout()")}} API to implement our `alarm()` function. The `setTimeout()` API takes as arguments a callback function and a delay, given in milliseconds. When `setTimeout()` is called, it starts a timer set to the given delay, and when the time expires, it calls the given function.
+We'll use the {{domxref("Window.setTimeout", "setTimeout()")}} API to implement our `alarm()` function. The `setTimeout()` API takes as arguments a callback function and a delay, given in milliseconds. When `setTimeout()` is called, it starts a timer set to the given delay, and when the time expires, it calls the given function.
 
 In the example below, we call `setTimeout()` with a callback function and a delay of 1000 milliseconds:
 
@@ -50,16 +48,16 @@ div {
 ```
 
 ```js
-const output = document.querySelector('#output');
-const button = document.querySelector('#set-alarm');
+const output = document.querySelector("#output");
+const button = document.querySelector("#set-alarm");
 
 function setAlarm() {
   setTimeout(() => {
-    output.textContent = 'Wake up!';
+    output.textContent = "Wake up!";
   }, 1000);
 }
 
-button.addEventListener('click', setAlarm);
+button.addEventListener("click", setAlarm);
 ```
 
 {{EmbedLiveSample("Wrapping setTimeout()", 600, 100)}}
@@ -78,7 +76,7 @@ So we can implement `alarm()` like this:
 function alarm(person, delay) {
   return new Promise((resolve, reject) => {
     if (delay < 0) {
-      throw new Error('Alarm delay must not be negative');
+      throw new Error("Alarm delay must not be negative");
     }
     setTimeout(() => {
       resolve(`Wake up, ${person}!`);
@@ -124,15 +122,15 @@ button {
 ```
 
 ```js
-const name = document.querySelector('#name');
-const delay = document.querySelector('#delay');
-const button = document.querySelector('#set-alarm');
-const output = document.querySelector('#output');
+const name = document.querySelector("#name");
+const delay = document.querySelector("#delay");
+const button = document.querySelector("#set-alarm");
+const output = document.querySelector("#output");
 
 function alarm(person, delay) {
   return new Promise((resolve, reject) => {
     if (delay < 0) {
-      throw new Error('Alarm delay must not be negative');
+      throw new Error("Alarm delay must not be negative");
     }
     setTimeout(() => {
       resolve(`Wake up, ${person}!`);
@@ -140,10 +138,10 @@ function alarm(person, delay) {
   });
 }
 
-button.addEventListener('click', () => {
+button.addEventListener("click", () => {
   alarm(name.value, delay.value)
-    .then((message) => output.textContent = message)
-    .catch((error) => output.textContent = `Couldn't set alarm: ${error}`);
+    .then((message) => (output.textContent = message))
+    .catch((error) => (output.textContent = `Couldn't set alarm: ${error}`));
 });
 ```
 
@@ -182,15 +180,15 @@ button {
 ```
 
 ```js
-const name = document.querySelector('#name');
-const delay = document.querySelector('#delay');
-const button = document.querySelector('#set-alarm');
-const output = document.querySelector('#output');
+const name = document.querySelector("#name");
+const delay = document.querySelector("#delay");
+const button = document.querySelector("#set-alarm");
+const output = document.querySelector("#output");
 
 function alarm(person, delay) {
   return new Promise((resolve, reject) => {
     if (delay < 0) {
-      throw new Error('Alarm delay must not be negative');
+      throw new Error("Alarm delay must not be negative");
     }
     setTimeout(() => {
       resolve(`Wake up, ${person}!`);
@@ -198,12 +196,11 @@ function alarm(person, delay) {
   });
 }
 
-button.addEventListener('click', async () => {
+button.addEventListener("click", async () => {
   try {
     const message = await alarm(name.value, delay.value);
     output.textContent = message;
-  }
-  catch (error) {
+  } catch (error) {
     output.textContent = `Couldn't set alarm: ${error}`;
   }
 });
@@ -217,11 +214,3 @@ button.addEventListener('click', async () => {
 - [Using promises](/en-US/docs/Web/JavaScript/Guide/Using_promises)
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/JavaScript/Asynchronous/Promises", "Learn/JavaScript/Asynchronous/Introducing_workers", "Learn/JavaScript/Asynchronous")}}
-
-## In this module
-
-- [Introducing asynchronous JavaScript](/en-US/docs/Learn/JavaScript/Asynchronous/Introducing)
-- [How to use promises](/en-US/docs/Learn/JavaScript/Asynchronous/Promises)
-- **Implementing a promise-based API**
-- [Introducing workers](/en-US/docs/Learn/JavaScript/Asynchronous/Introducing_workers)
-- [Assessment: sequencing animations](/en-US/docs/Learn/JavaScript/Asynchronous/Sequencing_animations)
