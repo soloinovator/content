@@ -2,11 +2,6 @@
 title: SVGRect
 slug: Web/API/SVGRect
 page-type: web-api-interface
-tags:
-  - API
-  - Reference
-  - SVG
-  - SVG DOM
 browser-compat: api.SVGRect
 ---
 
@@ -24,7 +19,7 @@ An **`SVGRect`** object can be designated as read only, which means that attempt
   - : The exact effect of this coordinate depends on each element. If the attribute is not specified, the effect is as if a value of `0` were specified.
 - {{domxref("SVGRect.width")}}
   - : This represents the width of the rectangle. A value that is negative results to an error. A value of `0` disables rendering of the element
-- {{SVGAttr("SVGRect.height")}}
+- {{domxref("SVGRect.height")}}
   - : This represents the height of the rectangle. A value that is negative results to an error. A value of `0` disables rendering of the element.
 
 ## Instance methods

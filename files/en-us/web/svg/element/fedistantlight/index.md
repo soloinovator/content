@@ -2,13 +2,6 @@
 title: <feDistantLight>
 slug: Web/SVG/Element/feDistantLight
 page-type: svg-element
-tags:
-  - Element
-  - Filters
-  - NeedsExample
-  - Reference
-  - SVG
-  - SVG Light Source
 browser-compat: svg.elements.feDistantLight
 ---
 
@@ -21,12 +14,6 @@ The **`<feDistantLight>`** filter primitive defines a distant light source that 
 {{svginfo}}
 
 ## Attributes
-
-### Global attributes
-
-- [Core attributes](/en-US/docs/Web/SVG/Attribute#core_attributes)
-
-### Specific attributes
 
 - {{SVGAttr("azimuth")}}
 - {{SVGAttr("elevation")}}

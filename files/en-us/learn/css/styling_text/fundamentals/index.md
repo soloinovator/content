@@ -1,19 +1,7 @@
 ---
 title: Fundamental text and font styling
 slug: Learn/CSS/Styling_text/Fundamentals
-tags:
-  - Article
-  - Beginner
-  - CSS
-  - Guide
-  - Style
-  - Text
-  - alignment
-  - family
-  - font
-  - shorthand
-  - spacing
-  - weight
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{NextMenu("Learn/CSS/Styling_text/Styling_lists", "Learn/CSS/Styling_text")}}
@@ -25,7 +13,7 @@ In this article we'll start you on your journey towards mastering text styling w
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy, HTML basics (study
+        HTML basics (study
         <a href="/en-US/docs/Learn/HTML/Introduction_to_HTML"
           >Introduction to HTML</a
         >), CSS basics (study
@@ -44,16 +32,18 @@ In this article we'll start you on your journey towards mastering text styling w
 
 ## What is involved in styling text in CSS?
 
-If you have worked with HTML or CSS already, e.g., by working through these tutorials in order, then you know that text inside an element is laid out inside the element's content box. It starts at the top left of the content area (or the top right, in the case of RTL language content), and flows towards the end of the line. Once it reaches the end, it goes down to the next line and flows to the end again. This pattern repeats until all the content has been placed in the box. Text content effectively behaves like a series of inline elements, being laid out on lines adjacent to one another, and not creating line breaks until the end of the line is reached, or unless you force a line break manually using the {{htmlelement("br")}} element.
+Text inside an element is laid out inside the element's [content box](/en-US/docs/Learn/CSS/Building_blocks/The_box_model#parts_of_a_box). It starts at the top left of the content area (or the top right, in the case of RTL language content), and flows towards the end of the line. Once it reaches the end, it goes down to the next line and flows to the end again. This pattern repeats until all the content has been placed in the box. Text content effectively behaves like a series of inline elements, being laid out on lines adjacent to one another, and not creating line breaks until the end of the line is reached, or unless you force a line break manually using the {{htmlelement("br")}} element.
 
-> **Note:** If the above paragraph leaves you feeling confused, then no matter — go back and review our [Box model](/en-US/docs/Learn/CSS/Building_blocks/The_box_model) article to brush up on the box model theory before carrying on.
+> [!NOTE]
+> If the above paragraph leaves you feeling confused, then no matter — go back and review our [Box model](/en-US/docs/Learn/CSS/Building_blocks/The_box_model) article to brush up on the box model theory before carrying on.
 
 The CSS properties used to style text generally fall into two categories, which we'll look at separately in this article:
 
 - **Font styles**: Properties that affect a text's font, e.g., which font gets applied, its size, and whether it's bold, italic, etc.
 - **Text layout styles**: Properties that affect the spacing and other layout features of the text, allowing manipulation of, for example, the space between lines and letters, and how the text is aligned within the content box.
 
-> **Note:** Bear in mind that the text inside an element is all affected as one single entity. You can't select and style subsections of text unless you wrap them in an appropriate element (such as a {{htmlelement("span")}} or {{htmlelement("strong")}}), or use a text-specific pseudo-element like [::first-letter](/en-US/docs/Web/CSS/::first-letter) (selects the first letter of an element's text), [::first-line](/en-US/docs/Web/CSS/::first-line) (selects the first line of an element's text), or [::selection](/en-US/docs/Web/CSS/::selection) (selects the text currently highlighted by the cursor).
+> [!NOTE]
+> Bear in mind that the text inside an element is all affected as one single entity. You can't select and style subsections of text unless you wrap them in an appropriate element (such as a {{htmlelement("span")}} or {{htmlelement("strong")}}), or use a text-specific pseudo-element like [::first-letter](/en-US/docs/Web/CSS/::first-letter) (selects the first letter of an element's text), [::first-line](/en-US/docs/Web/CSS/::first-line) (selects the first line of an element's text), or [::selection](/en-US/docs/Web/CSS/::selection) (selects the text currently highlighted by the cursor).
 
 ## Fonts
 
@@ -79,7 +69,7 @@ You can find the [finished example on GitHub](https://mdn.github.io/learning-are
 
 The {{cssxref("color")}} property sets the color of the foreground content of the selected elements, which is usually the text, but can also include a couple of other things, such as an underline or overline placed on text using the {{cssxref("text-decoration")}} property.
 
-`color` can accept any [CSS color unit](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#colors), for example:
+`color` can accept any [CSS color unit](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#color), for example:
 
 ```css
 p {
@@ -111,7 +101,7 @@ To set a different font for your text, you use the {{cssxref("font-family")}} pr
 
 ```css
 p {
-  font-family: arial;
+  font-family: Arial;
 }
 ```
 
@@ -185,9 +175,11 @@ The list of actual web safe fonts will change as operating systems evolve, but i
   </tbody>
 </table>
 
-> **Note:** Among various resources, the [cssfontstack.com](https://www.cssfontstack.com/) website maintains a list of web safe fonts available on Windows and macOS operating systems, which can help you make your decision about what you consider safe for your usage.
+> [!NOTE]
+> Among various resources, the [cssfontstack.com](https://www.cssfontstack.com/) website maintains a list of web safe fonts available on Windows and macOS operating systems, which can help you make your decision about what you consider safe for your usage.
 
-> **Note:** There is a way to download a custom font along with a webpage, to allow you to customize your font usage in any way you want: **web fonts**. This is a little bit more complex, and we will discuss it in a [separate article](/en-US/docs/Learn/CSS/Styling_text/Web_fonts) later on in the module.
+> [!NOTE]
+> There is a way to download a custom font along with a webpage, to allow you to customize your font usage in any way you want: **web fonts**. This is a little bit more complex, and we will discuss it in a [separate article](/en-US/docs/Learn/CSS/Styling_text/Web_fonts) later on in the module.
 
 #### Default fonts
 
@@ -295,7 +287,11 @@ In such a case, the browser starts at the beginning of the list and looks to see
 
 It is a good idea to provide a suitable generic font name at the end of the stack so that if none of the listed fonts are available, the browser can at least provide something approximately suitable. To emphasize this point, paragraphs are given the browser's default serif font if no other option is available — which is usually Times New Roman — this is no good for a sans-serif font!
 
-> **Note:** Font names that have more than one word — like `Trebuchet MS` — need to be surrounded by quotes, for example `"Trebuchet MS"`.
+> [!NOTE]
+> While you can use font family names that contain a space, such as `Trebuchet MS`, without quoting the name, to avoid mistakes in escaping, it is recommended to quote font family names that contain white space, digits, or punctuation characters other than hyphens.
+
+> [!WARNING]
+> Any font family name which could be misinterpreted as a generic family name or a CSS-wide keyword must be quoted. While the font-family names can be included as a {{cssxref("custom-ident")}} or a {{cssxref("string")}}, font family names that happen to be the same as a CSS-wide property value, like `initial`, or `inherit`, or CSS have the same name as one to the generic font family names, like `sans-serif` or `fantasy`, must be included as a quoted string. Otherwise, the font family name will be interpreted as being the equivalent CSS keyword or generic family name. When used as keywords, the generic font family names —`serif`, `sans-serif`, `monospace`, `cursive`, and `fantasy` — and the global CSS keywords MUST NOT be quoted, as strings are not interpreted as CSS keywords.
 
 #### A font-family example
 
@@ -332,9 +328,9 @@ In our previous module's [CSS values and units](/en-US/docs/Learn/CSS/Building_b
 
 - `px` (pixels): The number of pixels high you want the text to be. This is an absolute unit — it results in the same final computed value for the font on the page in pretty much any situation.
 - `em`s: 1 `em` is equal to the font size set on the parent element of the current element we are styling (more specifically, the width of a capital letter M contained inside the parent element). This can become tricky to work out if you have a lot of nested elements with different font sizes set, but it is doable, as you'll see below. Why bother? It is quite natural once you get used to it, and you can use `em` to size everything, not just text. You can have an entire website sized using `em`, which makes maintenance easy.
-- `rem`s: These work just like `em`, except that 1 `rem` is equal to the font size set on the root element of the document (i.e. {{htmlelement("html")}}), not the parent element. This makes doing the maths to work out your font sizes much easier, although if you want to support really old browsers, you might struggle — `rem` is not supported in Internet Explorer 8 and below.
+- `rem`s: These work just like `em`, except that 1 `rem` is equal to the font size set on the root element of the document (i.e. {{htmlelement("html")}}), not the parent element. This makes doing the maths to work out your font sizes much easier.
 
-The `font-size` of an element is inherited from that element's parent element. This all starts with the root element of the entire document — {{htmlelement("html")}} — the standard `font-size` of which is set to `16px` across browsers. Any paragraph (or another element that doesn't have a different size set by the browser) inside the root element will have a final size of `16px`. Other elements may have different default sizes. For example, an {{htmlelement("h1")}} element has a size of `2em` set by default, so it will have a final size of `32px`.
+The `font-size` of an element is inherited from that element's parent element. This all starts with the root element of the entire document — {{htmlelement("html")}} — the standard `font-size` of which is set to `16px` across browsers. Any paragraph (or another element that doesn't have a different size set by the browser) inside the root element will have a final size of `16px`. Other elements may have different default sizes. For example, an {{htmlelement("Heading_Elements", "h1")}} element has a size of `2em` set by default, so it will have a final size of `32px`.
 
 Things become more tricky when you start altering the font size of nested elements. For example, if you had an {{htmlelement("article")}} element in your page, and set its `font-size` to 1.5 `em` (which would compute to 24 `px` final size), and then wanted the paragraphs inside the `<article>` elements to have a computed font size of 20 `px`, what `em` value would you use?
 
@@ -433,10 +429,10 @@ text-shadow: 4px 4px 5px red;
 
 The four properties are as follows:
 
-1. The horizontal offset of the shadow from the original text — this can take most available CSS [length and size units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#length_and_size), but you'll most commonly use `px`; positive values move the shadow right, and negative values left. This value has to be included.
+1. The horizontal offset of the shadow from the original text — this can take most available CSS [length and size units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#lengths), but you'll most commonly use `px`; positive values move the shadow right, and negative values left. This value has to be included.
 2. The vertical offset of the shadow from the original text. This behaves similarly to the horizontal offset, except that it moves the shadow up/down, not left/right. This value has to be included.
-3. The blur radius: a higher value means the shadow is dispersed more widely. If this value is not included, it defaults to 0, which means no blur. This can take most available CSS [length and size units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#length_and_size).
-4. The base color of the shadow, which can take any [CSS color unit](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#colors). If not included, it defaults to [`currentcolor`](/en-US/docs/Web/CSS/color_value#currentcolor_keyword), i.e. the shadow's color is taken from the element's [`color`](/en-US/docs/Web/CSS/color) property.
+3. The blur radius: a higher value means the shadow is dispersed more widely. If this value is not included, it defaults to 0, which means no blur. This can take most available CSS [length and size units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#lengths).
+4. The base color of the shadow, which can take any [CSS color unit](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#color). If not included, it defaults to [`currentcolor`](/en-US/docs/Web/CSS/color_value#currentcolor_keyword), i.e. the shadow's color is taken from the element's [`color`](/en-US/docs/Web/CSS/color) property.
 
 #### Multiple shadows
 
@@ -444,11 +440,13 @@ You can apply multiple shadows to the same text by including multiple shadow val
 
 ```css
 h1 {
-  text-shadow: 1px 1px 1px red, 2px 2px 1px red;
+  text-shadow:
+    1px 1px 1px red,
+    2px 2px 1px red;
 }
 ```
 
-If we applied this to the {{htmlelement("h1")}} element in our Tommy The Cat example, we'd end up with this:
+If we applied this to the {{htmlelement("Heading_Elements", "h1")}} element in our Tommy The Cat example, we'd end up with this:
 
 ```html hidden
 <h1>Tommy the cat</h1>
@@ -487,7 +485,8 @@ p {
 
 {{ EmbedLiveSample('Multiple_shadows', '100%', 260) }}
 
-> **Note:** You can see more interesting examples of `text-shadow` usage in the Sitepoint article [Moonlighting with CSS text-shadow](https://www.sitepoint.com/moonlighting-css-text-shadow/).
+> [!NOTE]
+> You can see more interesting examples of `text-shadow` usage in the Sitepoint article [Moonlighting with CSS text-shadow](https://www.sitepoint.com/moonlighting-css-text-shadow/).
 
 ## Text layout
 
@@ -502,7 +501,7 @@ The {{cssxref("text-align")}} property is used to control how text is aligned wi
 - `center`: Centers the text.
 - `justify`: Makes the text spread out, varying the gaps in between the words so that all lines of text are the same width. You need to use this carefully — it can look terrible, especially when applied to a paragraph with lots of long words in it. If you are going to use this, you should also think about using something else along with it, such as {{cssxref("hyphens")}}, to break some of the longer words across lines.
 
-If we applied `text-align: center;` to the {{htmlelement("h1")}} in our example, we'd end up with this:
+If we applied `text-align: center;` to the {{htmlelement("Heading_Elements", "h1")}} in our example, we'd end up with this:
 
 ```html hidden
 <h1>Tommy the cat</h1>
@@ -526,7 +525,9 @@ html {
 h1 {
   font-size: 5rem;
   text-transform: capitalize;
-  text-shadow: 1px 1px 1px red, 2px 2px 1px red;
+  text-shadow:
+    1px 1px 1px red,
+    2px 2px 1px red;
   text-align: center;
 }
 
@@ -545,7 +546,7 @@ p {
 
 ### Line height
 
-The {{cssxref("line-height")}} property sets the height of each line of text. This property can not only take most [length and size units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#length_and_size), but can also take a unitless value, which acts as a multiplier and is generally considered the best option. With a unitless value, the {{cssxref("font-size")}} gets multiplied and results in the `line-height`. Body text generally looks nicer and is easier to read when the lines are spaced apart. The recommended line height is around 1.5 – 2 (double spaced). To set our lines of text to 1.6 times the height of the font, we'd use:
+The {{cssxref("line-height")}} property sets the height of each line of text. This property can not only take most [length and size units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#lengths), but can also take a unitless value, which acts as a multiplier and is generally considered the best option. With a unitless value, the {{cssxref("font-size")}} gets multiplied and results in the `line-height`. Body text generally looks nicer and is easier to read when the lines are spaced apart. The recommended line height is around 1.5 – 2 (double spaced). To set our lines of text to 1.6 times the height of the font, we'd use:
 
 ```css
 p {
@@ -577,7 +578,9 @@ html {
 h1 {
   font-size: 5rem;
   text-transform: capitalize;
-  text-shadow: 1px 1px 1px red, 2px 2px 1px red;
+  text-shadow:
+    1px 1px 1px red,
+    2px 2px 1px red;
   text-align: center;
 }
 
@@ -597,7 +600,7 @@ p {
 
 ### Letter and word spacing
 
-The {{cssxref("letter-spacing")}} and {{cssxref("word-spacing")}} properties allow you to set the spacing between letters and words in your text. You won't use these very often, but might find a use for them to obtain a specific look, or to improve the legibility of a particularly dense font. They can take most [length and size units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#length_and_size).
+The {{cssxref("letter-spacing")}} and {{cssxref("word-spacing")}} properties allow you to set the spacing between letters and words in your text. You won't use these very often, but might find a use for them to obtain a specific look, or to improve the legibility of a particularly dense font. They can take most [length units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#lengths).
 
 To illustrate, we could apply some word- and letter-spacing to the first line of each {{htmlelement("p")}} element in our HTML sample with:
 
@@ -632,7 +635,9 @@ html {
 h1 {
   font-size: 5rem;
   text-transform: capitalize;
-  text-shadow: 1px 1px 1px red, 2px 2px 1px red;
+  text-shadow:
+    1px 1px 1px red,
+    2px 2px 1px red;
   text-align: center;
   letter-spacing: 2px;
 }
@@ -697,7 +702,10 @@ A forward slash has to be put in between the {{cssxref("font-size")}} and {{cssx
 A full example would look like this:
 
 ```css
-font: italic normal bold normal 3em/1.5 Helvetica, Arial, sans-serif;
+font:
+  italic normal bold normal 3em/1.5 Helvetica,
+  Arial,
+  sans-serif;
 ```
 
 ## Active learning: Playing with styling text
@@ -726,7 +734,7 @@ If you make a mistake, you can always reset it using the _Reset_ button.
 p {
 
 }
-</textarea>
+  </textarea>
 
   <h2>Output</h2>
   <div
@@ -777,11 +785,3 @@ window.addEventListener("load", drawOutput);
 We hope you enjoyed playing with text in this article! The next article will provide you with all you need to know about [styling HTML lists](/en-US/docs/Learn/CSS/Styling_text/Styling_lists).
 
 {{NextMenu("Learn/CSS/Styling_text/Styling_lists", "Learn/CSS/Styling_text")}}
-
-## In this module
-
-- [Fundamental text and font styling](/en-US/docs/Learn/CSS/Styling_text/Fundamentals)
-- [Styling lists](/en-US/docs/Learn/CSS/Styling_text/Styling_lists)
-- [Styling links](/en-US/docs/Learn/CSS/Styling_text/Styling_links)
-- [Web fonts](/en-US/docs/Learn/CSS/Styling_text/Web_fonts)
-- [Typesetting a community school homepage](/en-US/docs/Learn/CSS/Styling_text/Typesetting_a_homepage)

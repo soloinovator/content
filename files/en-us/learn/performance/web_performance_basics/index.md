@@ -1,14 +1,12 @@
 ---
 title: Web performance resources
 slug: Learn/Performance/Web_Performance_Basics
-tags:
-  - Best practices
-  - Website performance
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenu("Learn/Performance/business_case_for_performance", "Learn/Performance")}}
 
-There are many [reasons](https://web.dev/why-speed-matters/) why your website should perform as well as possible.
+There are many [reasons](https://web.dev/learn/performance/why-speed-matters) why your website should perform as well as possible.
 Below is a quick review of best practices, tools, APIs with links to provide more information about each topic.
 
 ## Best practices
@@ -21,7 +19,7 @@ Below is a quick review of best practices, tools, APIs with links to provide mor
 - Use a CDN for resources which can reduce load times significantly.
 - Compress your resources using [gzip](https://www.gnu.org/software/gzip/), [Brotli](https://github.com/google/brotli), and [Zopfli](https://github.com/google/zopfli).
 - Image optimization (use CSS animation, or SVG if possible).
-- Lazy loading parts of your application outside the viewport. If you do, have a backup plan for SEO (e.g., render full page for bot traffic); for example, by using the {{htmlattrxref("loading", "img")}} attribute on the {{HTMLElement("img")}} element
+- Lazy loading parts of your application outside the viewport. If you do, have a backup plan for SEO (e.g., render full page for bot traffic); for example, by using the [`loading`](/en-US/docs/Web/HTML/Element/img#loading) attribute on the {{HTMLElement("img")}} element
 - It is also crucial to realize what is really important to your users. It might not be absolute timing, but [user perception](/en-US/docs/Learn/Performance/Perceived_performance).
 
 ## Quick Wins
@@ -68,7 +66,7 @@ If possible avoid icon web fonts and use compressed SVGs. To further optimize in
 - Learn to use the [Firefox Dev Tools](https://firefox-source-docs.mozilla.org/devtools-user/performance/index.html) to profile your site.
 - [PageSpeed Insights](https://pagespeed.web.dev/) can analyze your page and give some general hints to improve performance.
 - [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) can give you a detailed breakdown of many aspects of your site including performance, SEO and accessibility.
-- Test your page's speed using [WebPageTest.org](https://webpagetest.org/), where you can use different real device types and locations.
+- Test your page's speed using [WebPageTest.org](https://www.webpagetest.org/), where you can use different real device types and locations.
 - Try the [Chrome User Experience Report](https://developer.chrome.com/docs/crux/) which quantifies real user metrics.
 - Define a [performance budget](/en-US/docs/Web/Performance/Performance_budgets).
 

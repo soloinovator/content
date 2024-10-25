@@ -2,18 +2,10 @@
 title: Trailing commas
 slug: Web/JavaScript/Reference/Trailing_commas
 page-type: javascript-language-feature
-tags:
-  - Comma
-  - ECMAScript2017
-  - ECMAScript5
-  - JavaScript
-  - Language feature
-  - Syntax
-  - Trailing comma
 browser-compat: javascript.grammar.trailing_commas
 ---
 
-{{JsSidebar("More")}}
+{{jsSidebar("More")}}
 
 **Trailing commas** (sometimes called "final commas") can be useful when adding new elements, parameters, or properties to JavaScript code. If you want to add a new property, you can add a new line without modifying the previously last line if that line already uses a trailing comma. This makes version-control diffs cleaner and editing code might be less troublesome.
 
@@ -31,6 +23,7 @@ JavaScript allows trailing commas wherever a comma-separated list of values is a
 - [Function calls](#function_calls)
 - [Named imports](#named_imports)
 - [Named exports](#named_exports)
+- [Dynamic import](#trailing_commas_in_dynamic_import)
 - [Array and object destructuring](#trailing_commas_in_destructuring)
 
 In all these cases, the trailing comma is entirely optional and doesn't change the program's semantics in any way.
@@ -130,7 +123,7 @@ Math.max(10, 20,);
 
 Function parameter definitions or function invocations only containing a comma will throw a {{jsxref("SyntaxError")}}. Furthermore, when using [rest parameters](/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters), trailing commas are not allowed:
 
-```js example-bad
+```js-nolint example-bad
 function f(,) {} // SyntaxError: missing formal parameter
 (,) => {};       // SyntaxError: expected expression, got ','
 f(,)             // SyntaxError: expected expression, got ','
@@ -214,9 +207,22 @@ export { A, B, C, };
 export { A as B, C as D, E as F, };
 ```
 
+### Trailing commas in dynamic import
+
+Trailing commas are only allowed in [dynamic imports](/en-US/docs/Web/JavaScript/Reference/Operators/import) if the runtime also implements the second `options` parameter.
+
+```js-nolint
+import("D",);
+import(
+  "D",
+  { with: { type: "json" } },
+);
+```
+
 ### Quantifier prefix
 
-> **Note:** The trailing comma in a [quantifier](/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers) actually changes its semantics from matching "exactly `n`" to matching "at least `n`".
+> [!NOTE]
+> The trailing comma in a [quantifier](/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Quantifiers) actually changes its semantics from matching "exactly `n`" to matching "at least `n`".
 
 ```js
 /x{2}/; // Exactly 2 occurrences of "x"; equivalent to /xx/
@@ -234,4 +240,4 @@ export { A as B, C as D, E as F, };
 
 ## See also
 
-- Initial ECMAScript proposal: [trailing function commas](https://github.com/tc39/proposal-trailing-function-commas) by Jeff Morrison
+- [Grammar and types](/en-US/docs/Web/JavaScript/Guide/Grammar_and_types) guide

@@ -1,14 +1,7 @@
 ---
 title: How do I use GitHub Pages?
-slug: Learn/Common_questions/Tools_and_setup/Using_Github_pages
-tags:
-  - Beginner
-  - GitHub
-  - Guide
-  - Web
-  - gh-pages
-  - git
-  - publish
+slug: Learn/Common_questions/Tools_and_setup/Using_GitHub_pages
+page-type: learn-faq
 ---
 
 {{QuicklinksWithSubPages("Learn/Common_questions")}}
@@ -22,8 +15,8 @@ GitHub is a very important and useful community to get involved in, and Git/GitH
 ### Basic GitHub setup
 
 1. First of all, [install Git](https://git-scm.com/downloads) on your machine. This is the underlying version control system software that GitHub works on top of.
-2. Next, [sign up for a GitHub account](https://github.com/join). It's simple and easy.
-3. Once you've signed up, log in to [github.com](https://github.com) with your username and password.
+2. Next, [sign up for a GitHub account](https://github.com/signup). It's simple and easy.
+3. Once you've signed up, log in to [github.com](https://github.com/) with your username and password.
 
 ### Preparing your code for upload
 
@@ -49,12 +42,13 @@ The best way to upload your code to GitHub is via the command line — this is a
 
 ![Terminal/command prompt opened. No command has been entered.](command-line.png)
 
-> **Note:** You could also consider using a [Git graphical user interface](https://git-scm.com/downloads/guis) to do the same work, if you feel uncomfortable with the command line.
+> [!NOTE]
+> You could also consider using a [Git graphical user interface](https://git-scm.com/downloads/guis) to do the same work, if you feel uncomfortable with the command line.
 
 Every operating system comes with a command line tool:
 
 - **Windows**: **Command Prompt** can be accessed by pressing the Windows key, typing _Command Prompt_, and choosing it from the list that appears. Note that Windows has its own command conventions differing from Linux and macOS, so the commands below may vary on your machine.
-- **OS X**: **Terminal** can be found in _Applications > Utilities_.
+- **macOS**: **Terminal** can be found in _Applications > Utilities_.
 - **Linux**: Usually you can pull up a terminal with _Ctrl + Alt + T_. If that doesn't work, look for **Terminal** in an app bar or menu.
 
 This may seem a bit scary at first, but don't worry — you'll soon get the hang of the basics. You tell the computer to do something in the terminal by typing in a command and hitting Enter, as seen above.
@@ -66,7 +60,7 @@ This may seem a bit scary at first, but don't worry — you'll soon get the hang
 3. Also fill in a description to say what your repository is going to contain. Your screen should look like this:
    ![New repository page opened in browser, repository owner input and the repository name are filled, same for the optional description input. The public check-box is selected, the private check-box is not, same goes for the initialize this repository with a readme.](create-new-repo.png)
 4. Click _Create repository_; this should bring you to the following page:
-   ![The repository page is opened in browser, below the github header composed of search bar and navigation links to the repository's pull request, issues and gist. Next to the navigation links, a bell notification and a link to your account. Below, the name of the owner's repository follow by a slash with the repository's name. Below a horizontal navigation bar composed of different tabs relating to your repository, the code tab selected displaying a documentation explaining how to create a repository or how to push from using command line.](github-repo.png)
+   ![The repository page is opened in browser, below the GitHub header composed of search bar and navigation links to the repository's pull request, issues and gist. Next to the navigation links, a bell notification and a link to your account. Below, the name of the owner's repository follow by a slash with the repository's name. Below a horizontal navigation bar composed of different tabs relating to your repository, the code tab selected displaying a documentation explaining how to create a repository or how to push from using command line.](github-repo.png)
 
 ### Uploading your files to GitHub
 

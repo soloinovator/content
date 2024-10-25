@@ -2,18 +2,14 @@
 title: SerialPort
 slug: Web/API/SerialPort
 page-type: web-api-interface
-tags:
-  - API
-  - Interface
-  - Reference
-  - SerialPort
-  - Experimental
+status:
+  - experimental
 browser-compat: api.SerialPort
 ---
 
-{{securecontext_header}}{{APIRef("Serial API")}}{{SeeCompatTable}}
+{{securecontext_header}}{{APIRef("Web Serial API")}}{{SeeCompatTable}}{{AvailableInWorkers("window_and_dedicated")}}
 
-The `SerialPort` interface of the {{domxref("Web_Serial_API", "Web Serial API")}} provides access to a serial port on the host device.
+The `SerialPort` interface of the [Web Serial API](/en-US/docs/Web/API/Web_Serial_API) provides access to a serial port on the host device.
 
 {{InheritanceDiagram}}
 

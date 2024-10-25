@@ -1,15 +1,11 @@
 ---
 title: "ARIA: note role"
 slug: Web/Accessibility/ARIA/Roles/note_role
-tags:
-  - Accessibility
-  - ARIA
-  - roles
-  - Reference
-  - ARIA roles
-  - document structure role
+page-type: aria-role
 spec-urls: https://w3c.github.io/aria/#note
 ---
+
+{{AccessibilitySidebar}}
 
 A `note` role suggests a section whose content is parenthetic or ancillary to the main content.
 
@@ -48,14 +44,6 @@ In the above Wikipedia style entry for Madam C.J. Walker, the `hilitebox` with r
 
 {{Specifications}}
 
-## See Also
+## See also
 
-- [Document structure roles](/en-US/docs/Web/Accessibility/ARIA/Roles#document_structure_roles)
-
-<section id="Quick_links">
-
-1. [**WAI-ARIA roles**](/en-US/docs/Web/Accessibility/ARIA/Roles)
-
-   {{ListSubpagesForSidebar("/en-US/docs/Web/Accessibility/ARIA/Roles")}}
-
-</section>
+- [Document structure roles](/en-US/docs/Web/Accessibility/ARIA/Roles#1._document_structure_roles)

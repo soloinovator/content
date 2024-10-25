@@ -1,15 +1,7 @@
 ---
 title: CSS selectors
 slug: Learn/CSS/Building_blocks/Selectors
-tags:
-  - Attribute
-  - Beginner
-  - CSS
-  - Class
-  - Learn
-  - Pseudo
-  - Selectors
-  - id
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{NextMenu("Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors", "Learn/CSS/Building_blocks")}}
@@ -21,10 +13,9 @@ In {{Glossary("CSS")}}, selectors are used to target the {{glossary("HTML")}} el
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy,
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
-          >basic software installed</a
+          >Basic software installed</a
         >, basic knowledge of
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
@@ -86,7 +77,7 @@ h1,
 
 In the live example below try combining the two selectors which have identical declarations. The visual display should be the same after combining them.
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/selector-list.html", '100%', 1100)}}
+{{EmbedGHLiveSample("css-examples/learn/selectors/selector-list.html", '100%', 1150)}}
 
 When you group selectors in this way, if any selector is syntactically invalid, the whole rule will be ignored.
 
@@ -116,21 +107,21 @@ There are a few different groupings of selectors, and knowing which type of sele
 
 ### Type, class, and ID selectors
 
-This group includes selectors that target an HTML element such as an `<h1>`.
+Type selectors target an HTML element such as an [`<h1>`](/en-US/docs/Web/HTML/Element/Heading_Elements):
 
 ```css
 h1 {
 }
 ```
 
-It also includes selectors which target a class:
+Class selectors target an element that has a specific value for its [`class`](/en-US/docs/Web/HTML/Global_attributes/class) attribute:
 
 ```css
 .box {
 }
 ```
 
-or, an ID:
+ID selectors target an element that has a specific value for its [`id`](/en-US/docs/Web/HTML/Global_attributes/id) attribute:
 
 ```css
 #unique {
@@ -183,30 +174,6 @@ article > p {
 
 In this article we've introduced CSS selectors, which enable you to target particular HTML elements. Next, we'll take a closer look at [type, class, and ID selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors).
 
-For a complete list of selectors, see our [CSS selectors reference](/en-US/docs/Web/CSS/CSS_Selectors).
+For a complete list of selectors, see our [CSS selectors reference](/en-US/docs/Web/CSS/CSS_selectors).
 
 {{NextMenu("Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors", "Learn/CSS/Building_blocks")}}
-
-## In this module
-
-- [Cascade, specificity, and inheritance](/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)
-- [CSS selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors)
-
-  - [Type, class, and ID selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors)
-  - [Attribute selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors)
-  - [Pseudo-classes and pseudo-elements](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements)
-  - [Combinators](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators)
-
-- [The box model](/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
-- [Backgrounds and borders](/en-US/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders)
-- [Handling different text directions](/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions)
-- [Overflowing content](/en-US/docs/Learn/CSS/Building_blocks/Overflowing_content)
-- [Values and units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
-- [Sizing items in CSS](/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS)
-- [Images, media, and form elements](/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements)
-- [Styling tables](/en-US/docs/Learn/CSS/Building_blocks/Styling_tables)
-- [Debugging CSS](/en-US/docs/Learn/CSS/Building_blocks/Debugging_CSS)
-- [Organizing your CSS](/en-US/docs/Learn/CSS/Building_blocks/Organizing)
-- [Fundamental CSS comprehension](/en-US/docs/Learn/CSS/Building_blocks/Fundamental_CSS_comprehension)
-- [Creating fancy letterheaded paper](/en-US/docs/Learn/CSS/Building_blocks/Creating_fancy_letterheaded_paper)
-- [A cool-looking box](/en-US/docs/Learn/CSS/Building_blocks/A_cool_looking_box)

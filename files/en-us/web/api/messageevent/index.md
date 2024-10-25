@@ -2,35 +2,25 @@
 title: MessageEvent
 slug: Web/API/MessageEvent
 page-type: web-api-interface
-tags:
-  - API
-  - Channels
-  - Interface
-  - Reference
-  - WebSockets
-  - Window
-  - Workers
-  - messaging
 browser-compat: api.MessageEvent
 ---
 
-{{APIRef("HTML DOM")}}
+{{APIRef("HTML DOM")}}{{AvailableInWorkers}}
 
 The **`MessageEvent`** interface represents a message received by a target object.
 
 This is used to represent messages in:
 
-- [Server-sent events](/en-US/docs/Web/API/Server-sent_events) (see {{domxref("EventSource.message_event")}}).
-- [Web sockets](/en-US/docs/Web/API/WebSockets_API) (see the `onmessage` property of the [WebSocket](/en-US/docs/Web/API/WebSocket) interface).
-- Cross-document messaging (see {{domxref("Window.postMessage()")}} and {{domxref("Window.message_event")}}).
-- [Channel messaging](/en-US/docs/Web/API/Channel_Messaging_API) (see {{domxref("MessagePort.postMessage()")}} and {{domxref("MessagePort.message_event")}}).
-- Cross-worker/document messaging (see the above two entries, but also {{domxref("Worker.postMessage()")}}, {{domxref("Worker.message_event")}}, {{domxref("ServiceWorkerGlobalScope.message_event")}}, etc.)
-- [Broadcast channels](/en-US/docs/Web/API/Broadcast_Channel_API) (see {{domxref("Broadcastchannel.postMessage()")}}) and {{domxref("BroadcastChannel.message_event")}}).
-- WebRTC data channels (see {{domxref("RTCDataChannel.message_event", "onmessage")}}).
+- [Server-sent events](/en-US/docs/Web/API/Server-sent_events) (see the {{domxref("EventSource.message_event", "message")}} event of {{domxref("EventSource")}}).
+- [Web sockets](/en-US/docs/Web/API/WebSockets_API) (see the {{domxref("WebSocket.message_event", "message")}} event of {{domxref("WebSocket")}}).
+- Cross-document messaging (see {{domxref("Window.postMessage()")}} and the {{domxref("Window.message_event", "message")}} event of {{domxref("Window")}}).
+- [Channel messaging](/en-US/docs/Web/API/Channel_Messaging_API) (see {{domxref("MessagePort.postMessage()")}} and the {{domxref("MessagePort.message_event", "message")}} event of {{domxref("MessagePort")}}).
+- Cross-worker/document messaging (see the above two entries, but also {{domxref("Worker.postMessage()")}}, the {{domxref("Worker.message_event", "message")}} event of {{domxref("Worker")}}, the {{domxref("ServiceWorkerGlobalScope.message_event", "message")}} event of {{domxref("ServiceWorkerGlobalScope")}}, etc.)
+- [Broadcast channels](/en-US/docs/Web/API/Broadcast_Channel_API) (see {{domxref("BroadcastChannel.postMessage()")}} and the {{domxref("BroadcastChannel.message_event", "message")}} event of {{domxref("BroadcastChannel")}}).
+- WebRTC data channels (see the {{domxref("RTCDataChannel.message_event", "message")}} event of {{domxref("RTCDataChannel")}}).
 
-The action triggered by this event is defined in a function set as the event handler for the relevant `message` event (e.g. using an `onmessage` handler as listed above).
+The action triggered by this event is defined in a function set as the event handler for the relevant `message` event.
 
-{{AvailableInWorkers}}
 {{InheritanceDiagram}}
 
 ## Constructor
@@ -67,7 +57,7 @@ In our [Basic shared worker example](https://github.com/mdn/dom-examples/tree/ma
 The following code snippet shows creation of a {{domxref("SharedWorker")}} object using the {{domxref("SharedWorker.SharedWorker", "SharedWorker()")}} constructor. Both scripts contain this:
 
 ```js
-const myWorker = new SharedWorker('worker.js');
+const myWorker = new SharedWorker("worker.js");
 ```
 
 Both scripts then access the worker through a {{domxref("MessagePort")}} object created using the {{domxref("SharedWorker.port")}} property. If the onmessage event is attached using addEventListener, the port is manually started using its `start()` method:
@@ -81,18 +71,18 @@ When the port is started, both scripts post messages to the worker and handle me
 ```js
 first.onchange = () => {
   myWorker.port.postMessage([first.value, second.value]);
-  console.log('Message posted to worker');
-}
+  console.log("Message posted to worker");
+};
 
 second.onchange = () => {
   myWorker.port.postMessage([first.value, second.value]);
-  console.log('Message posted to worker');
-}
+  console.log("Message posted to worker");
+};
 
 myWorker.port.onmessage = (e) => {
   result1.textContent = e.data;
-  console.log('Message received from worker');
-}
+  console.log("Message received from worker");
+};
 ```
 
 Inside the worker we use the {{domxref("SharedWorkerGlobalScope.connect_event", "onconnect")}} handler to connect to the same port discussed above. The ports associated with that worker are accessible in the {{domxref("SharedWorkerGlobalScope/connect_event", "connect")}} event's `ports` property — we then use {{domxref("MessagePort")}} `start()` method to start the port, and the `onmessage` handler to deal with messages sent from the main threads.
@@ -101,13 +91,13 @@ Inside the worker we use the {{domxref("SharedWorkerGlobalScope.connect_event", 
 onconnect = (e) => {
   const port = e.ports[0];
 
-  port.addEventListener('message', (e) => {
+  port.addEventListener("message", (e) => {
     const workerResult = `Result: ${e.data[0] * e.data[1]}`;
     port.postMessage(workerResult);
   });
 
   port.start(); // Required when using addEventListener. Otherwise called implicitly by onmessage setter.
-}
+};
 ```
 
 ## Specifications

@@ -2,13 +2,6 @@
 title: Math.trunc()
 slug: Web/JavaScript/Reference/Global_Objects/Math/trunc
 page-type: javascript-static-method
-tags:
-  - ECMAScript 2015
-  - JavaScript
-  - Math
-  - Method
-  - Reference
-  - Polyfill
 browser-compat: javascript.builtins.Math.trunc
 ---
 
@@ -57,7 +50,8 @@ Math.trunc(Infinity); // Infinity
 
 ### Using bitwise no-ops to truncate numbers
 
-> **Warning:** This is not a polyfill for `Math.trunc()` because of non-negligible edge cases.
+> [!WARNING]
+> This is not a polyfill for `Math.trunc()` because of non-negligible edge cases.
 
 Bitwise operations convert their operands to 32-bit integers, which people have historically taken advantage of to truncate float-point numbers. Common techniques include:
 

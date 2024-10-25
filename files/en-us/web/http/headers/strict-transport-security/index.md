@@ -1,12 +1,7 @@
 ---
 title: Strict-Transport-Security
 slug: Web/HTTP/Headers/Strict-Transport-Security
-tags:
-  - HSTS
-  - HTTP
-  - HTTPS
-  - Security
-  - header
+page-type: http-header
 browser-compat: http.headers.Strict-Transport-Security
 ---
 
@@ -14,7 +9,8 @@ browser-compat: http.headers.Strict-Transport-Security
 
 The HTTP **`Strict-Transport-Security`** response header (often abbreviated as {{Glossary("HSTS")}}) informs browsers that the site should only be accessed using HTTPS, and that any future attempts to access it using HTTP should automatically be converted to HTTPS.
 
-> **Note:** This is more secure than simply configuring a HTTP to HTTPS (301) redirect on your server, where the initial HTTP connection is still vulnerable to a man-in-the-middle attack.
+> [!NOTE]
+> This is more secure than simply configuring a HTTP to HTTPS (301) redirect on your server, where the initial HTTP connection is still vulnerable to a man-in-the-middle attack.
 
 <table class="properties">
   <tbody>
@@ -55,7 +51,8 @@ The redirect could be exploited to direct visitors to a malicious site instead o
 
 The HTTP Strict Transport Security header informs the browser that it should never load a site using HTTP and should automatically convert all attempts to access the site using HTTP to HTTPS requests instead.
 
-> **Note:** The `Strict-Transport-Security` header is _ignored_ by the browser when your site has only been accessed using HTTP.
+> [!NOTE]
+> The `Strict-Transport-Security` header is _ignored_ by the browser when your site has only been accessed using HTTP.
 > Once your site is accessed over HTTPS with no certificate errors, the browser knows your site is HTTPS capable and will honor the `Strict-Transport-Security` header.
 > Browsers do this as attackers may intercept HTTP connections to the site and inject or remove the header.
 
@@ -64,7 +61,7 @@ The HTTP Strict Transport Security header informs the browser that it should nev
 You log into a free Wi-Fi access point at an airport and start surfing the web, visiting your online banking service to check your balance and pay a couple of bills.
 Unfortunately, the access point you're using is actually a hacker's laptop, and they're intercepting your original HTTP request and redirecting you to a clone of your bank's site instead of the real thing. Now your private data is exposed to the hacker.
 
-Strict Transport Security resolves this problem; as long as you've accessed your bank's website once using HTTPS, and the bank's web site uses Strict Transport Security, your
+Strict Transport Security resolves this problem; as long as you've accessed your bank's website once using HTTPS, and the bank's website uses Strict Transport Security, your
 browser will know to automatically use only HTTPS, which prevents hackers from performing this sort of man-in-the-middle attack.
 
 ### How the browser handles it
@@ -83,8 +80,8 @@ By following the guidelines and successfully submitting your domain, you can ens
 While the service is hosted by Google, all browsers are using this preload list.
 However, it is not part of the HSTS specification and should not be treated as official.
 
-- Information regarding the HSTS preload list in Chrome: <https://www.chromium.org/hsts>
-- Consultation of the Firefox HSTS preload list: [nsSTSPreloadList.inc](https://hg.mozilla.org/mozilla-central/raw-file/tip/security/manager/ssl/nsSTSPreloadList.inc)
+- Information regarding the HSTS preload list in Chrome: <https://www.chromium.org/hsts/>
+- Consultation of the Firefox HSTS preload list: [nsSTSPreloadList.inc](https://searchfox.org/mozilla-central/source/security/manager/ssl/nsSTSPreloadList.inc)
 
 ## Examples
 

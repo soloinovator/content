@@ -2,23 +2,10 @@
 title: StorageArea.get()
 slug: Mozilla/Add-ons/WebExtensions/API/storage/StorageArea/get
 page-type: webextension-api-function
-tags:
-  - API
-  - Add-ons
-  - Extensions
-  - JavaScript
-  - Method
-  - Non-standard
-  - Reference
-  - Storage
-  - StorageArea
-  - Web
-  - WebExtensions
-  - get
 browser-compat: webextensions.api.storage.StorageArea.get
 ---
 
-{{AddonSidebar()}}
+{{AddonSidebar}}
 
 Retrieves one or more items from the storage area.
 
@@ -32,7 +19,7 @@ let results = browser.storage.<storageType>.get(
 )
 ```
 
-`<storageType>` will be one of the writable storage types — {{WebExtAPIRef("storage.sync", "sync")}}, {{WebExtAPIRef("storage.local", "local")}}, or {{WebExtAPIRef("storage.managed", "managed")}}.
+Where `<storageType>` is one of the storage types — {{WebExtAPIRef("storage.sync", "sync")}}, {{WebExtAPIRef("storage.local", "local")}}, {{WebExtAPIRef("storage.session", "session")}}, or {{WebExtAPIRef("storage.managed", "managed")}}.
 
 ### Parameters
 
@@ -47,7 +34,8 @@ If the operation failed, the promise is rejected with an error message.
 
 If managed storage is not set, `undefined` will be returned.
 
-> **Warning:** When used within a content script in Firefox versions prior to 52, the Promise returned by `browser.storage.local.get()` is fulfilled with an Array containing one Object. The Object in the Array contains the `keys` found in the storage area, as described above.
+> [!WARNING]
+> When used within a content script in Firefox versions prior to 52, the Promise returned by `browser.storage.local.get()` is fulfilled with an Array containing one Object. The Object in the Array contains the `keys` found in the storage area, as described above.
 >
 > The Promise is correctly fulfilled with an Object when used in the background context (background scripts, popups, options pages, etc.).
 >
@@ -65,8 +53,8 @@ Suppose storage contains two items:
 // storage contains two items,
 // "kitten" and "monster"
 browser.storage.local.set({
-  kitten:  {name:"Mog", eats:"mice"},
-  monster: {name:"Kraken", eats:"people"}
+  kitten: { name: "Mog", eats: "mice" },
+  monster: { name: "Kraken", eats: "people" },
 });
 ```
 
@@ -113,7 +101,11 @@ gettingItem.then(onGot, onError);
 With an array of object names, retrieve all matches:
 
 ```js
-let gettingItem = browser.storage.local.get(["kitten", "monster", "grapefruit"]);
+let gettingItem = browser.storage.local.get([
+  "kitten",
+  "monster",
+  "grapefruit",
+]);
 gettingItem.then(onGot, onError);
 
 // -> Object { kitten: Object, monster: Object }
@@ -127,8 +119,8 @@ let gettingItem = browser.storage.local.get({
   monster: "no monster",
   grapefruit: {
     name: "Grape Fruit",
-    eats: "Water"
-  }
+    eats: "Water",
+  },
 });
 
 // -> Object { kitten: Object, monster: Object, grapefruit: Object }
@@ -140,14 +132,6 @@ let gettingItem = browser.storage.local.get({
 
 ```js
 chrome.storage.local.get("kitten", (items) => {
-  console.log(items.kitten);  // -> {name:"Mog", eats:"mice"}
-});
-```
-
-Or with an arrow function
-
-```js
-chrome.storage.local.get("kitten", (items) => {
   console.log(items.kitten); // -> {name:"Mog", eats:"mice"}
 });
 ```
@@ -155,8 +139,11 @@ chrome.storage.local.get("kitten", (items) => {
 Or using a Promise
 
 ```js
-let gettingItem = new Promise((resolve) => chrome.storage.local.get("kitten", resolve));
+let gettingItem = new Promise((resolve) =>
+  chrome.storage.local.get("kitten", resolve),
+);
 gettingItem.then(onGot); // -> Object { kitten: Object }
 ```
 
-> **Note:** This API is based on Chromium's [`chrome.storage`](https://developer.chrome.com/docs/extensions/reference/storage/) API. This documentation is derived from [`storage.json`](https://chromium.googlesource.com/chromium/src/+/master/extensions/common/api/storage.json) in the Chromium code.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.storage`](https://developer.chrome.com/docs/extensions/reference/api/storage) API. This documentation is derived from [`storage.json`](https://chromium.googlesource.com/chromium/src/+/master/extensions/common/api/storage.json) in the Chromium code.

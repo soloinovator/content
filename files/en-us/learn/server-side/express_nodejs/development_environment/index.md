@@ -1,17 +1,7 @@
 ---
 title: Setting up a Node development environment
 slug: Learn/Server-side/Express_Nodejs/development_environment
-tags:
-  - Beginner
-  - CodingScripting
-  - Development environment
-  - Express
-  - Intro
-  - Learn
-  - Node
-  - nodejs
-  - npm
-  - server-side
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/Server-side/Express_Nodejs/Introduction", "Learn/Server-side/Express_Nodejs/Tutorial_local_library_website", "Learn/Server-side/Express_Nodejs")}}
@@ -45,13 +35,14 @@ _Node_ and the _npm_ package manager are installed together from prepared binary
 
 _npm_ can also be used to (globally) install the _Express Application Generator_, a handy tool for creating skeleton _Express_ web apps that follow the [MVC pattern](/en-US/docs/Glossary/MVC). The application generator is optional because you don't _need_ to use this tool to create apps that use Express, or construct Express apps that have the same architectural layout or dependencies. We'll be using it though, because it makes getting started a lot easier, and promotes a modular application structure.
 
-> **Note:** Unlike some other web frameworks, the development environment does not include a separate development web server. In _Node_/_Express_ a web application creates and runs its own web server!
+> [!NOTE]
+> Unlike some other web frameworks, the development environment does not include a separate development web server. In _Node_/_Express_ a web application creates and runs its own web server!
 
-There are other peripheral tools that are part of a typical development environment, including [text editors](/en-US/docs/Learn/Common_questions/Available_text_editors) or IDEs for editing code, and source control management tools like [Git](https://git-scm.com/) for safely managing different versions of your code. We are assuming that you've already got these sorts of tools installed (in particular a text editor).
+There are other peripheral tools that are part of a typical development environment, including [text editors](/en-US/docs/Learn/Common_questions/Tools_and_setup/Available_text_editors) or IDEs for editing code, and source control management tools like [Git](https://git-scm.com/) for safely managing different versions of your code. We are assuming that you've already got these sorts of tools installed (in particular a text editor).
 
 ### What operating systems are supported?
 
-_Node_ can be run on Windows, macOS, many flavors of Linux, Docker, etc. There is a full list on the Node.js [Downloads](https://nodejs.org/en/download/) page. Almost any personal computer should have the necessary performance to run Node during development. _Express_ is run in a _Node_ environment, and hence can run on any platform that runs _Node_.
+_Node_ can be run on Windows, macOS, many flavors of Linux, Docker, etc. There is a full list on the Node.js [Downloads](https://nodejs.org/en/download/package-manager) page. Almost any personal computer should have the necessary performance to run Node during development. _Express_ is run in a _Node_ environment, and hence can run on any platform that runs _Node_.
 
 In this article we provide setup instructions for Windows, macOS, and Ubuntu Linux.
 
@@ -69,46 +60,75 @@ Other dependencies, such as database drivers, template engines, authentication e
 
 ## Installing Node
 
-In order to use _Express_ you will first have to install _Nodejs_ and the [Node Package Manager (npm)](https://docs.npmjs.com/) on your operating system. The following sections explain the easiest way to install the Long Term Supported (LTS) version of Nodejs on Ubuntu Linux 20.04, macOS, and Windows 10.
+In order to use _Express_ you will have to install _Nodejs_ and the [Node Package Manager (npm)](https://docs.npmjs.com/) on your operating system.
+To make this easier we'll first install a node version manager, and then we'll use it to install the latest Long Term Supported (LTS) versions of node and npm.
 
-> **Note:** The sections below show the easiest way to install _Node_ and _npm_ on our target OS platforms. If you're using another OS or just want to see some of the other approaches for the current platforms then see [Installing Node.js via package manager](https://nodejs.org/en/download/package-manager/) (nodejs.org).
+> [!NOTE]
+> You can also install nodejs and npm with installers provide on <https://nodejs.org/en/> (select the button to download the LTS build that is "Recommended for most users"), or you can [install using the package manager for your OS](https://nodejs.org/en/download/package-manager) (nodejs.org).
+> We highly recommend using a node version manager as these make it easier to install, upgrade, and switch between any particular version of node and npm.
 
-### macOS and Windows
+### Windows
 
-Installing _Node_ and _npm_ on Windows and macOS is straightforward because you can just use the provided installer:
+There are a number of node version managers for Windows.
+Here we use [nvm-windows](https://github.com/coreybutler/nvm-windows), which is highly respected among node developers.
 
-1. Download the required installer:
-
-   1. Go to <https://nodejs.org/en/>
-   2. Select the button to download the LTS build that is "Recommended for most users".
-
-2. Install Node by double-clicking on the downloaded file and following the installation prompts.
-
-### Ubuntu 20.04
-
-The easiest way to install the most recent LTS version of Node is to use the [package manager](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions) to get it from the Ubuntu _binary distributions_ repository. This can be done by running the following two commands on your terminal:
+Install the latest version using your installer of choice from the [nvm-windows/releases](https://github.com/coreybutler/nvm-windows/releases) page.
+After `nvm-windows` has installed, open a command prompt (or PowerShell) and enter the following command to download the most recent LTS version of nodejs and npm:
 
 ```bash
-curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get install -y nodejs
+nvm install lts
 ```
 
-> **Warning:** Don't install directly from the normal Ubuntu repositories because they contain very old versions of node.
+At time of writing the LTS version of nodejs is 20.11.0.
+You can set this as the _current version_ to use with the command below:
+
+```bash
+nvm use 20.11.0
+```
+
+> [!NOTE]
+> If you get "Access Denied" warnings, you will need to run this command in a prompt with administration permissions.
+
+Use the command `nvm --help` to find out other command line options, such as listing all available node versions, and all downloaded NVM versions.
+
+### Ubuntu and macOS
+
+There are a number of node version managers for Ubuntu and macOS.
+[nvm](https://github.com/nvm-sh/nvm) is one of the more popular, and is the original version on which `nvm-windows` is based.
+See [nvm > Install & Update Script](https://github.com/nvm-sh/nvm#install--update-script) for the terminal instructions to install the latest version of nvm.
+
+After `nvm` has installed, open a terminal enter the following command to download the most recent LTS version of nodejs and npm:
+
+```bash
+nvm install --lts
+```
+
+At the time of writing, the LTS version of nodejs is 20.11.0.
+The command `nvm list` shows the downloaded set of version and the current version.
+You can set a particular version as the _current version_ with the command below (the same as for `nvm-windows`)
+
+```bash
+nvm use 20.11.0
+```
+
+Use the command `nvm --help` to find out other command line options.
+These are often similar to, or the same as, those offered by `nvm-windows`.
 
 ### Testing your Nodejs and npm installation
 
-The easiest way to test that node is installed is to run the "version" command in your terminal/command prompt and check that a version string is returned:
+Once you have set `nvm` to use a particular node version, you can test the installation.
+A good way to do this is to use the "version" command in your terminal/command prompt and check that the expected version string is returned:
 
 ```bash
 > node -v
-v16.17.1
+v20.11.0
 ```
 
 The _Nodejs_ package manager _npm_ should also have been installed, and can be tested in the same way:
 
 ```bash
 > npm -v
-8.19.2
+10.2.4
 ```
 
 As a slightly more exciting test let's create a very basic "pure node" server that prints out "Hello World" in the browser when you visit the correct URL in your browser:
@@ -137,12 +157,18 @@ As a slightly more exciting test let's create a very basic "pure node" server th
 
    The code imports the "http" module and uses it to create a server (`createServer()`) that listens for HTTP requests on port 3000. The script then prints a message to the console about what browser URL you can use to test the server. The `createServer()` function takes as an argument a callback function that will be invoked when an HTTP request is received — this returns a response with an HTTP status code of 200 ("OK") and the plain text "Hello World".
 
-   > **Note:** Don't worry if you don't understand exactly what this code is doing yet! We'll explain our code in greater detail once we start using Express!
+   > [!NOTE]
+   > Don't worry if you don't understand exactly what this code is doing yet! We'll explain our code in greater detail once we start using Express!
 
 2. Start the server by navigating into the same directory as your `hellonode.js` file in your command prompt, and calling `node` along with the script name, like so:
 
    ```bash
-   >node hellonode.js
+   node hellonode.js
+   ```
+
+   Once the server starts, you will see console output indicating the IP address the server is running on:
+
+   ```plain
    Server running at http://127.0.0.1:3000/
    ```
 
@@ -150,9 +176,11 @@ As a slightly more exciting test let's create a very basic "pure node" server th
 
 ## Using npm
 
-Next to _Node_ itself, [npm](https://docs.npmjs.com/) is the most important tool for working with _Node_ applications. npm is used to fetch any packages (JavaScript libraries) that an application needs for development, testing, and/or production, and may also be used to run tests and tools used in the development process.
+Next to _Node_ itself, [npm](https://docs.npmjs.com/) is the most important tool for working with _Node_ applications.
+`npm` is used to fetch any packages (JavaScript libraries) that an application needs for development, testing, and/or production, and may also be used to run tests and tools used in the development process.
 
-> **Note:** From Node's perspective, _Express_ is just another package that you need to install using npm and then require in your own code.
+> [!NOTE]
+> From Node's perspective, _Express_ is just another package that you need to install using npm and then require in your own code.
 
 You can manually use npm to separately fetch each needed package. Typically we instead manage dependencies using a plain-text definition file named [package.json](https://docs.npmjs.com/files/package.json/). This file lists all the dependencies for a specific JavaScript "package", including the package's name, version, description, initial file to execute, production dependencies, development dependencies, versions of _Node_ it can work with, etc. The **package.json** file should contain everything npm needs to fetch and run your application (if you were writing a reusable library you could use this definition to upload your package to the npm repository and make it available for other users).
 
@@ -160,7 +188,8 @@ You can manually use npm to separately fetch each needed package. Typically we i
 
 The following steps show how you can use npm to download a package, save it into the project dependencies, and then require it in a Node application.
 
-> **Note:** Here we show the instructions to fetch and install the _Express_ package. Later on we'll show how this package, and others, are already specified for us using the _Express Application Generator_. This section is provided because it is useful to understand how npm works and what is being created by the application generator.
+> [!NOTE]
+> Here we show the instructions to fetch and install the _Express_ package. Later on we'll show how this package, and others, are already specified for us using the _Express Application Generator_. This section is provided because it is useful to understand how npm works and what is being created by the application generator.
 
 1. First create a directory for your new application and navigate into it:
 
@@ -237,12 +266,18 @@ The following steps show how you can use npm to download a package, save it into
    This imports the "express" module using `require()` and uses it to create a server (`app`) that listens for HTTP requests on port 3000 and prints a message to the console explaining what browser URL you can use to test the server.
    The `app.get()` function only responds to HTTP `GET` requests with the specified URL path ('/'), in this case by calling a function to send our _Hello World!_ message.
 
-   > **Note:** The backticks in the `` `Example app listening on port ${port}!` `` let us interpolate the value of `$port` into the string.
+   > [!NOTE]
+   > The backticks in the `` `Example app listening on port ${port}!` `` let us interpolate the value of `$port` into the string.
 
 5. You can start the server by calling node with the script in your command prompt:
 
    ```bash
-   >node index.js
+   node index.js
+   ```
+
+   You will see the following console output:
+
+   ```plain
    Example app listening on port 3000
    ```
 
@@ -265,13 +300,15 @@ The following entry would then be added to your application's **package.json**:
   }
 ```
 
-> **Note:** "[Linters](<https://en.wikipedia.org/wiki/Lint_(software)>)" are tools that perform static analysis on software in order to recognize and report adherence/non-adherence to some set of coding best practice.
+> [!NOTE]
+> "[Linters](<https://en.wikipedia.org/wiki/Lint_(software)>)" are tools that perform static analysis on software in order to recognize and report adherence/non-adherence to some set of coding best practice.
 
 ### Running tasks
 
 In addition to defining and fetching dependencies you can also define _named_ scripts in your **package.json** files and call npm to execute them with the [run-script](https://docs.npmjs.com/cli/run-script/) command. This approach is commonly used to automate running tests and parts of the development or build toolchain (e.g., running tools to minify JavaScript, shrink images, LINT/analyze your code, etc.).
 
-> **Note:** Task runners like [Gulp](https://gulpjs.com/) and [Grunt](https://gruntjs.com/) can also be used to run tests and other external tools.
+> [!NOTE]
+> Task runners like [Gulp](https://gulpjs.com/) and [Grunt](https://gruntjs.com/) can also be used to run tests and other external tools.
 
 For example, to define a script to run the _eslint_ development dependency that we specified in the previous section we might add the following script block to our **package.json** file (assuming that our application source is in a folder /src/js):
 
@@ -303,7 +340,8 @@ The [Express Application Generator](https://expressjs.com/en/starter/generator.h
 npm install express-generator -g
 ```
 
-> **Note:** You may need to prefix this line with `sudo` on Ubuntu or macOS. The `-g` flag installs the tool globally so that you can call it from anywhere.
+> [!NOTE]
+> You may need to prefix this line with `sudo` on Ubuntu or macOS. The `-g` flag installs the tool globally so that you can call it from anywhere.
 
 To create an _Express_ app named "helloworld" with the default settings, navigate to where you want to create it and run the app as shown:
 
@@ -311,42 +349,45 @@ To create an _Express_ app named "helloworld" with the default settings, navigat
 express helloworld
 ```
 
-> **Note:** You can also specify the template library to use and a number of other settings. Use the `help` command to see all the options:
->
-> ```bash
-> express --help
-> ```
->
-> **Note:** If you're using NodeJS **version > 8.2.0 or latest**, you can skip the installation and run express-generator with `npx`:
+> [!NOTE]
+> Unless you're using an old nodejs version (< 8.2.0), you could alternatively skip the installation and run express-generator with [npx](https://github.com/npm/npx#readme).
+> This has the same effect as installing and then running `express-generator` but does not install the package on your system:
 >
 > ```bash
 > npx express-generator helloworld
 > ```
->
-> This has the same effect as installing and then running `express` but does not install the package on your system. However, this means you cannot call `express` from anywhere.
 
-npm will create the new Express app in a sub folder of your current location, displaying build progress on the console. On completion, the tool will display the commands you need to enter to install the Node dependencies and start the app.
+You can also specify the template library to use and a number of other settings.
+Use the `help` command to see all the options:
 
-> **Note:** The new app will have a **package.json** file in its root directory. You can open this to see what dependencies are installed, including Express and the template library Jade:
->
-> ```json
-> {
->   "name": "helloworld",
->   "version": "0.0.0",
->   "private": true,
->   "scripts": {
->     "start": "node ./bin/www"
->   },
->   "dependencies": {
->     "cookie-parser": "~1.4.3",
->     "debug": "~2.6.9",
->     "express": "~4.16.0",
->     "http-errors": "~1.6.2",
->     "jade": "~1.11.0",
->     "morgan": "~1.9.0"
->   }
-> }
-> ```
+```bash
+express --help
+```
+
+The generator will create the new Express app in a sub folder of your current location, displaying build progress on the console.
+On completion, the tool will display the commands you need to enter to install the Node dependencies and start the app.
+
+The new app will have a **package.json** file in its root directory.
+You can open this to see what dependencies are installed, including Express and the template library Jade:
+
+```json
+{
+  "name": "helloworld",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1"
+  }
+}
+```
 
 Install all the dependencies for the helloworld app using npm as shown:
 
@@ -368,12 +409,12 @@ SET DEBUG=helloworld:* | npm start
 DEBUG=helloworld:* npm start
 ```
 
-The DEBUG command creates useful logging, resulting in an output like that shown below.
+The DEBUG command creates useful logging, resulting in an output like the following:
 
 ```bash
 >SET DEBUG=helloworld:* & npm start
 
-> helloworld@0.0.0 start D:\GitHub\expresstests\helloworld
+> helloworld@0.0.0 start D:\GitHub\express-tests\helloworld
 > node ./bin/www
 
   helloworld:server Listening on port 3000 +0ms
@@ -393,10 +434,9 @@ In the next article we start working through a tutorial to build a complete web 
 
 ## See also
 
-- [Downloads](https://nodejs.org/en/download/) page (nodejs.org)
-- [Installing Node.js via package manager](https://nodejs.org/en/download/package-manager/) (nodejs.org)
+- [Downloads](https://nodejs.org/en/download/package-manager) page (nodejs.org)
 - [Installing Express](https://expressjs.com/en/starter/installing.html) (expressjs.com)
 - [Express Application Generator](https://expressjs.com/en/starter/generator.html) (expressjs.com)
-- [Using Node.js with Windows subsystem for Linux](https://docs.microsoft.com/windows/dev-environment/javascript/) (docs.microsoft.com)
+- [Using Node.js with Windows subsystem for Linux](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/) (docs.microsoft.com)
 
 {{PreviousMenuNext("Learn/Server-side/Express_Nodejs/Introduction", "Learn/Server-side/Express_Nodejs/Tutorial_local_library_website", "Learn/Server-side/Express_Nodejs")}}

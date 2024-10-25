@@ -1,26 +1,8 @@
 ---
-title: RTCRtpStreamStats.qpSum
+title: "RTCRtpStreamStats: qpSum property"
+short-title: qpSum
 slug: Web/API/RTCRtpStreamStats/qpSum
 page-type: web-api-instance-property
-tags:
-  - API
-  - Media
-  - Parameter
-  - Property
-  - QP
-  - Quantization
-  - Quantization Parameter
-  - RTCRtpStreamStats
-  - RTP
-  - Reference
-  - Statistics
-  - Stats
-  - Video
-  - WebRTC
-  - WebRTC API
-  - compression
-  - qpSum
-  - rtc
 browser-compat: api.RTCRtpStreamStats.qpSum
 ---
 
@@ -43,7 +25,8 @@ An unsigned 64-bit integer value which indicates the sum of the quantization par
 indicate higher compression factors, the larger this sum is, the more heavily compressed
 the stream generally has been.
 
-> **Note:** This value is only available for video media.
+> [!NOTE]
+> This value is only available for video media.
 
 ## Usage notes
 
@@ -80,7 +63,7 @@ describe an RTP stream.
 function calculateAverageQP(stats) {
   let frameCount = 0;
 
-  switch(stats.type) {
+  switch (stats.type) {
     case "inbound-rtp":
     case "remote-inbound-rtp":
       frameCount = stats.framesDecoded;

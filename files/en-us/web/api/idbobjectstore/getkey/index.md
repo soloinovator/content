@@ -1,18 +1,12 @@
 ---
-title: IDBObjectStore.getKey()
+title: "IDBObjectStore: getKey() method"
+short-title: getKey()
 slug: Web/API/IDBObjectStore/getKey
 page-type: web-api-instance-method
-tags:
-  - IDBObjectStore
-  - IndexedDB
-  - Method
-  - Reference
-  - Storage
-  - Web API
 browser-compat: api.IDBObjectStore.getKey
 ---
 
-{{ APIRef("IndexedDB") }}
+{{ APIRef("IndexedDB") }} {{AvailableInWorkers}}
 
 The **`getKey()`** method of the
 {{domxref("IDBObjectStore")}} interface returns an {{domxref("IDBRequest")}} object,
@@ -21,8 +15,6 @@ for retrieving specific records from an object store.
 
 If a key is successfully found, then a structured clone of it is created and set as the
 result of the request object.
-
-{{AvailableInWorkers}}
 
 ## Syntax
 

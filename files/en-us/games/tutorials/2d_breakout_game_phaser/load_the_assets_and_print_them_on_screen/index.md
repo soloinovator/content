@@ -1,16 +1,7 @@
 ---
 title: Load the assets and print them on screen
-slug: >-
-  Games/Tutorials/2D_breakout_game_Phaser/Load_the_assets_and_print_them_on_screen
-tags:
-  - 2D
-  - Beginner
-  - Canvas
-  - Games
-  - JavaScript
-  - Phaser
-  - Sprites
-  - Tutorial
+slug: Games/Tutorials/2D_breakout_game_Phaser/Load_the_assets_and_print_them_on_screen
+page-type: guide
 ---
 
 {{GamesSidebar}}
@@ -29,7 +20,8 @@ Let's start by creating a JavaScript variable to represent our ball. Add the fol
 let ball;
 ```
 
-> **Note:** For the sake of this tutorial, we will use global variables. The purpose of the tutorial is to teach Phaser-specific approaches to game development rather than dwelling on subjective best approaches.
+> [!NOTE]
+> For the sake of this tutorial, we will use global variables. The purpose of the tutorial is to teach Phaser-specific approaches to game development rather than dwelling on subjective best approaches.
 
 ## Loading the ball sprite
 

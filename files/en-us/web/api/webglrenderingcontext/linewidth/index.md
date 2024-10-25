@@ -1,22 +1,18 @@
 ---
-title: WebGLRenderingContext.lineWidth()
+title: "WebGLRenderingContext: lineWidth() method"
+short-title: lineWidth()
 slug: Web/API/WebGLRenderingContext/lineWidth
 page-type: web-api-instance-method
-tags:
-  - API
-  - Method
-  - Reference
-  - WebGL
-  - WebGLRenderingContext
 browser-compat: api.WebGLRenderingContext.lineWidth
 ---
 
-{{APIRef("WebGL")}}
+{{APIRef("WebGL")}}{{AvailableInWorkers}}
 
 The **`WebGLRenderingContext.lineWidth()`** method of the [WebGL API](/en-US/docs/Web/API/WebGL_API) sets the line width of rasterized
 lines.
 
-> **Warning:** The webgl spec, based on the OpenGL ES 2.0/3.0 specs points out that the minimum and
+> [!WARNING]
+> The webgl spec, based on the OpenGL ES 2.0/3.0 specs points out that the minimum and
 > maximum width for a line is implementation defined. The maximum minimum width is
 > allowed to be 1.0. The minimum maximum width is also allowed to be 1.0. Because of
 > these implementation defined limits it is not recommended to use line widths other

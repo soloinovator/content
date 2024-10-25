@@ -2,24 +2,16 @@
 title: cookies.CookieStore
 slug: Mozilla/Add-ons/WebExtensions/API/cookies/CookieStore
 page-type: webextension-api-type
-tags:
-  - API
-  - Add-ons
-  - CookieStore
-  - Cookies
-  - Extensions
-  - Non-standard
-  - Reference
-  - Type
-  - WebExtensions
 browser-compat: webextensions.api.cookies.CookieStore
 ---
 
-{{AddonSidebar()}}
+{{AddonSidebar}}
 
 The `CookieStore` type of the {{WebExtAPIRef("cookies")}} API represents a cookie store in the browser.
 
-Windows in different browsing modes may use different cookie stores — a private browsing/incognito mode window, for instance, will use a separate cookie store from a non-incognito/private window.
+Windows in different browsing modes may use different cookie stores. For example, a private browsing/incognito mode window uses a separate cookie store from a non-incognito/private window. Also, a window may have several cookie stores when using [container tabs](https://wiki.mozilla.org/Security/Contextual_Identity_Project/Containers) in Firefox.
+
+See [Work with the Cookies API](/en-US/docs/Mozilla/Add-ons/WebExtensions/Work_with_the_Cookies_API#cookie_stores) for more information about cookie stores.
 
 ## Type
 
@@ -27,8 +19,9 @@ Values of this type are objects, which can contain the following properties:
 
 - `id`
   - : A `string` representing the unique identifier for the cookie store.
-- `incognito`
+- `incognito` {{optional_inline}}
   - : A boolean value that indicates whether this is an incognito cookie store.
+    This property is not supported in Chrome or Safari. However, you can identify incognito cookie stores in Chrome because their `id` is always "1".
 - `tabIds`
   - : An `array` of `integers`, which identifies all of the browser tabs that share this cookie store.
 
@@ -55,13 +48,16 @@ The following code snippet gets all cookie stores and then logs the total number
 ```js
 browser.cookies.getAllCookieStores().then((stores) => {
   const incognitoStores = stores.map((store) => store.incognito);
-  console.log(`Of ${stores.length} cookie stores, ${incognitoStores.length} are incognito.`);
+  console.log(
+    `Of ${stores.length} cookie stores, ${incognitoStores.length} are incognito.`,
+  );
 });
 ```
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.cookies`](https://developer.chrome.com/docs/extensions/reference/cookies/#type-CookieStore) API. This documentation is derived from [`cookies.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/cookies.json) in the Chromium code.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.cookies`](https://developer.chrome.com/docs/extensions/reference/api/cookies#type-CookieStore) API. This documentation is derived from [`cookies.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/cookies.json) in the Chromium code.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

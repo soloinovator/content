@@ -1,25 +1,9 @@
 ---
-title: RTCIceCandidatePairStats.totalRoundTripTime
+title: "RTCIceCandidatePairStats: totalRoundTripTime property"
+short-title: totalRoundTripTime
 slug: Web/API/RTCIceCandidatePairStats/totalRoundTripTime
 page-type: web-api-instance-property
-tags:
-  - API
-  - Candidate
-  - ICE
-  - Networking
-  - Property
-  - RTCIceCandidatePairStats
-  - Reference
-  - Statistics
-  - Stats
-  - Time
-  - WebRTC
-  - WebRTC API
-  - round-trip
-  - round trip time
-  - rtt
-  - totalRoundTripTime
-browser-compat: api.RTCIceCandidatePairStats.totalRoundTripTime
+browser-compat: api.RTCStatsReport.type_candidate-pair.totalRoundTripTime
 ---
 
 {{APIRef("WebRTC")}}
@@ -43,8 +27,9 @@ of the {{domxref("RTCIceCandidatePairStats.responsesReceived", "responsesReceive
 property:
 
 ```js
-rtt = rtcIceCandidatePairStats.totalRoundTripTime /
-        rtcIceCandidatePairStats.responsesReceived;
+rtt =
+  rtcIceCandidatePairStats.totalRoundTripTime /
+  rtcIceCandidatePairStats.responsesReceived;
 ```
 
 ## Specifications

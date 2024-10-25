@@ -1,10 +1,7 @@
 ---
 title: What is a web server?
 slug: Learn/Common_questions/Web_mechanics/What_is_a_web_server
-tags:
-  - Beginner
-  - Infrastructure
-  - needsSchema
+page-type: learn-faq
 ---
 
 {{QuicklinksWithSubPages("Learn/Common_questions")}}
@@ -77,7 +74,7 @@ Once you have web hosting service, you must [upload your files to your web serve
 
 ### Communicating through HTTP
 
-Second, a web server provides support for {{Glossary("HTTP")}} (**H**yper**t**ext **T**ransfer **P**rotocol). As its name implies, HTTP specifies how to transfer hypertext (linked web documents) between two computers.
+Second, a web server provides support for {{Glossary("HTTP")}} (Hypertext Transfer Protocol). As its name implies, HTTP specifies how to transfer hypertext (linked web documents) between two computers.
 
 A {{Glossary("Protocol")}} is a set of rules for communication between two computers. HTTP is a textual, stateless protocol.
 
@@ -86,9 +83,11 @@ A {{Glossary("Protocol")}} is a set of rules for communication between two compu
 - Stateless
   - : Neither the server nor the client remember previous communications. For example, relying on HTTP alone, a server can't remember a password you typed or remember your progress on an incomplete transaction. You need an application server for tasks like that. (We'll cover that sort of technology in other articles.)
 
-HTTP provides clear rules for how a client and server communicate. We'll cover HTTP itself in a [technical article](/en-US/docs/Web/HTTP) later. For now, just be aware of these things:
+HTTP provides clear rules for how a client and server communicate.
+If you want to learn more, you can read the [HTTP documentation](/en-US/docs/Web/HTTP).
+For now, there are a few things to keep in mind:
 
-- Usually only _clients_ make HTTP requests, and only to _servers_. Servers _respond_ to a _client_'s HTTP request. A server can also populate data into a client cache, in advance of it being requested, through a mechanism called [server push](https://en.wikipedia.org/wiki/HTTP/2_Server_Push).
+- _Clients_ make HTTP requests to _servers_. Servers _respond_ to a _client_'s HTTP request.
 - When requesting a file via HTTP, clients must provide the file's {{Glossary("URL")}}.
 - The web server _must answer_ every HTTP request, at least with an error message.
 
@@ -98,7 +97,7 @@ On a web server, the HTTP server is responsible for processing and answering inc
 2. If so, the web server sends the file content back to the browser. If not, the server will check if it should generate a file dynamically for the request (see [Static vs. dynamic content](#static_vs._dynamic_content)).
 3. If neither of these options are possible, the web server returns an error message to the browser, most commonly {{HTTPStatus("404", "404 Not Found")}}.
    The 404 error is so common that some web designers devote considerable time and effort to designing 404 error pages.
-   [![The MDN 404 page as an example of such error page](mdn-404.jpg)](/en-US/docs/Web/HTTP/Status/404)
+   ![The MDN 404 page as an example of such error page](mdn-404.jpg)
 
 ### Static vs. dynamic content
 
@@ -106,7 +105,12 @@ Roughly speaking, a server can serve either static or dynamic content. Remember 
 
 The term _dynamic_ means that the server processes the content or even generates it on the fly from a database. This approach provides more flexibility, but the technical stack is more complex, making it dramatically more challenging to build a website.
 
-There are so many application server technologies that it's difficult to suggest a particular one. Some application servers cater to specific website categories like blogs, wikis, or e-commerce; others are more generic. If you're building a dynamic website, take the time to choose technology that fits your needs. Unless you want to learn web server programming (which is an exciting area in itself!), you don't need to create your own application server. That's just [reinventing the wheel](https://en.wikipedia.org/wiki/Reinventing_the_wheel).
+It is impossible to suggest a single off-the-shelf application server that will be the right solution for every possible use case. Some application servers are designed to host and manage blogs, wikis, or e-commerce solutions, while others are more generic. If you're building a dynamic website, take the time to research your requirements and find the technology that best fits your needs.
+
+Most website developers won't need to create an application server from scratch, because there are so many off-the-shelf solutions, many of which are highly configurable.
+But if you do need to create your own server, then you will probably want to use a server framework, leveraging its existing code and libraries, and extending just the parts that you need in order to meet your use case.
+Only a relatively small number of developers should need to develop a server completely from scratch: for example, in order to meet tight resource constraints on an embedded system.
+If you'd like to experiment with building a server, take a look through the resources in the [Server-side website programming](/en-US/docs/Learn/Server-side) learning pathway.
 
 ## Next steps
 

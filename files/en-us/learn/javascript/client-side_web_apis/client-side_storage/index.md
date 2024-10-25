@@ -1,16 +1,7 @@
 ---
 title: Client-side storage
 slug: Learn/JavaScript/Client-side_web_APIs/Client-side_storage
-tags:
-  - API
-  - Article
-  - Beginner
-  - CodingScripting
-  - Guide
-  - IndexedDB
-  - JavaScript
-  - Learn
-  - Storage
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}
@@ -58,7 +49,8 @@ Client-side storage works on similar principles, but has different uses. It cons
 
 Often client-side and server-side storage are used together. For example, you could download a batch of music files (perhaps used by a web game or music player application), store them inside a client-side database, and play them as needed. The user would only have to download the music files once — on subsequent visits they would be retrieved from the database instead.
 
-> **Note:** There are limits to the amount of data you can store using client-side storage APIs (possibly both per individual API and cumulatively); the exact limit varies depending on the browser and possibly based on user settings. See [Browser storage limits and eviction criteria](/en-US/docs/Web/API/IndexedDB_API/Browser_storage_limits_and_eviction_criteria) for more information.
+> [!NOTE]
+> There are limits to the amount of data you can store using client-side storage APIs (possibly both per individual API and cumulatively); the exact limit varies depending on the browser and possibly based on user settings. See [Browser storage quotas and eviction criteria](/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria) for more information.
 
 ### Old school: Cookies
 
@@ -241,9 +233,11 @@ Let's build up the example, so you can understand how it works.
 
 Your example is finished — well done! All that remains now is to save your code and test your HTML page in a browser. You can see our [finished version running live here](https://mdn.github.io/learning-area/javascript/apis/client-side-storage/web-storage/personal-greeting.html).
 
-> **Note:** There is another, slightly more complex example to explore at [Using the Web Storage API](/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API).
+> [!NOTE]
+> There is another, slightly more complex example to explore at [Using the Web Storage API](/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API).
 
-> **Note:** In the line `<script src="index.js" defer></script>` of the source for our finished version, the `defer` attribute specifies that the contents of the {{htmlelement("script")}} element will not execute until the page has finished loading.
+> [!NOTE]
+> In the line `<script src="index.js" defer></script>` of the source for our finished version, the `defer` attribute specifies that the contents of the {{htmlelement("script")}} element will not execute until the page has finished loading.
 
 ## Storing complex data — IndexedDB
 
@@ -296,14 +290,15 @@ Now let's look at what we have to do in the first place, to actually set up a da
 
    To handle this in IndexedDB, you create a request object (which can be called anything you like — we called it `openRequest` here, so it is obvious what it is for). You then use event handlers to run code when the request completes, fails, etc., which you'll see in use below.
 
-   > **Note:** The version number is important. If you want to upgrade your database (for example, by changing the table structure), you have to run your code again with an increased version number, different schema specified inside the `upgradeneeded` handler (see below), etc. We won't cover upgrading databases in this tutorial.
+   > [!NOTE]
+   > The version number is important. If you want to upgrade your database (for example, by changing the table structure), you have to run your code again with an increased version number, different schema specified inside the `upgradeneeded` handler (see below), etc. We won't cover upgrading databases in this tutorial.
 
 3. Now add the following event handlers just below your previous addition:
 
    ```js
    // error handler signifies that the database didn't open successfully
    openRequest.addEventListener("error", () =>
-     console.error("Database failed to open")
+     console.error("Database failed to open"),
    );
 
    // success handler signifies that the database opened successfully
@@ -407,7 +402,7 @@ function addData(e) {
   });
 
   transaction.addEventListener("error", () =>
-    console.log("Transaction not opened due to error")
+    console.log("Transaction not opened due to error"),
   );
 }
 ```
@@ -578,7 +573,7 @@ Let's walk through the most interesting parts of the example. We won't look at i
            displayVideo(
              request.result.mp4,
              request.result.webm,
-             request.result.name
+             request.result.name,
            );
          } else {
            // Fetch the videos from the network
@@ -589,7 +584,7 @@ Let's walk through the most interesting parts of the example. We won't look at i
    }
    ```
 
-3. The following snippet is taken from inside `fetchVideoFromNetwork()` — here we fetch MP4 and WebM versions of the video using two separate {{domxref("fetch()")}} requests. We then use the {{domxref("Response.blob()")}} method to extract each response's body as a blob, giving us an object representation of the videos that can be stored and displayed later on.
+3. The following snippet is taken from inside `fetchVideoFromNetwork()` — here we fetch MP4 and WebM versions of the video using two separate {{domxref("Window/fetch", "fetch()")}} requests. We then use the {{domxref("Response.blob()")}} method to extract each response's body as a blob, giving us an object representation of the videos that can be stored and displayed later on.
 
    We have a problem here though — these two requests are both asynchronous, but we only want to try to display or store the video when both promises have fulfilled. Fortunately there is a built-in method that handles such a problem — {{jsxref("Promise.all()")}}. This takes one argument — references to all the individual promises you want to check for fulfillment placed in an array — and returns a promise which is fulfilled when all the individual promises are fulfilled.
 
@@ -599,10 +594,10 @@ Let's walk through the most interesting parts of the example. We won't look at i
    // Fetch the MP4 and WebM versions of the video using the fetch() function,
    // then expose their response bodies as blobs
    const mp4Blob = fetch(`videos/${video.name}.mp4`).then((response) =>
-     response.blob()
+     response.blob(),
    );
    const webmBlob = fetch(`videos/${video.name}.webm`).then((response) =>
-     response.blob()
+     response.blob(),
    );
 
    // Only run the next code when both promises have fulfilled
@@ -628,13 +623,13 @@ Let's walk through the most interesting parts of the example. We won't look at i
      const request = objectStore.add({ mp4, webm, name });
 
      request.addEventListener("success", () =>
-       console.log("Record addition attempt finished")
+       console.log("Record addition attempt finished"),
      );
      request.addEventListener("error", () => console.error(request.error));
    }
    ```
 
-5. Finally, we have `displayVideo()`, which creates the DOM elements needed to insert the video in the UI and then appends them to the page. The most interesting parts of this are those shown below — to actually display our video blobs in a `<video>` element, we need to create object URLs (internal URLs that point to the video blobs stored in memory) using the {{domxref("URL.createObjectURL()")}} method. Once that is done, we can set the object URLs to be the values of our {{htmlelement("source")}} element's `src` attributes, and it works fine.
+5. Finally, we have `displayVideo()`, which creates the DOM elements needed to insert the video in the UI and then appends them to the page. The most interesting parts of this are those shown below — to actually display our video blobs in a `<video>` element, we need to create object URLs (internal URLs that point to the video blobs stored in memory) using the {{domxref("URL/createObjectURL_static", "URL.createObjectURL()")}} method. Once that is done, we can set the object URLs to be the values of our {{htmlelement("source")}} element's `src` attributes, and it works fine.
 
    ```js
    // Define the displayVideo() function
@@ -694,13 +689,14 @@ The first thing to note is that there's an extra bit of code placed in the main 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register(
-      "/learning-area/javascript/apis/client-side-storage/cache-sw/video-store-offline/sw.js"
+      "/learning-area/javascript/apis/client-side-storage/cache-sw/video-store-offline/sw.js",
     )
     .then(() => console.log("Service Worker Registered"));
 }
 ```
 
-> **Note:** The given path to the `sw.js` file is relative to the site origin, not the JavaScript file that contains the code. The service worker is at `https://mdn.github.io/learning-area/javascript/apis/client-side-storage/cache-sw/video-store-offline/sw.js`. The origin is `https://mdn.github.io`, and therefore the given path has to be `/learning-area/javascript/apis/client-side-storage/cache-sw/video-store-offline/sw.js`. If you wanted to host this example on your own server, you'd have to change this accordingly. This is rather confusing, but it has to work this way for security reasons.
+> [!NOTE]
+> The given path to the `sw.js` file is relative to the site origin, not the JavaScript file that contains the code. The service worker is at `https://mdn.github.io/learning-area/javascript/apis/client-side-storage/cache-sw/video-store-offline/sw.js`. The origin is `https://mdn.github.io`, and therefore the given path has to be `/learning-area/javascript/apis/client-side-storage/cache-sw/video-store-offline/sw.js`. If you wanted to host this example on your own server, you'd have to change this accordingly. This is rather confusing, but it has to work this way for security reasons.
 
 #### Installing the service worker
 
@@ -723,8 +719,8 @@ self.addEventListener("install", (e) => {
           "/learning-area/javascript/apis/client-side-storage/cache-sw/video-store-offline/index.html",
           "/learning-area/javascript/apis/client-side-storage/cache-sw/video-store-offline/index.js",
           "/learning-area/javascript/apis/client-side-storage/cache-sw/video-store-offline/style.css",
-        ])
-      )
+        ]),
+      ),
   );
 });
 ```
@@ -741,13 +737,13 @@ Inside the handler, we first log the URL of the requested asset. We then provide
 
 Inside this block, we use {{domxref("CacheStorage.match()")}} to check whether a matching request (i.e. matches the URL) can be found in any cache. This promise fulfills with the matching response if a match is found, or `undefined` if it isn't.
 
-If a match is found, we return it as the custom response. If not, we [fetch()](/en-US/docs/Web/API/fetch) the response from the network and return that instead.
+If a match is found, we return it as the custom response. If not, we [fetch()](/en-US/docs/Web/API/Window/fetch) the response from the network and return that instead.
 
 ```js
 self.addEventListener("fetch", (e) => {
   console.log(e.request.url);
   e.respondWith(
-    caches.match(e.request).then((response) => response || fetch(e.request))
+    caches.match(e.request).then((response) => response || fetch(e.request)),
   );
 });
 ```
@@ -778,13 +774,3 @@ That's it for now. We hope you've found our rundown of client-side storage techn
 - [Service worker API](/en-US/docs/Web/API/Service_Worker_API)
 
 {{PreviousMenu("Learn/JavaScript/Client-side_web_APIs/Video_and_audio_APIs", "Learn/JavaScript/Client-side_web_APIs")}}
-
-## In this module
-
-- [Introduction to web APIs](/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction)
-- [Manipulating documents](/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)
-- [Fetching data from the server](/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data)
-- [Third party APIs](/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Third_party_APIs)
-- [Drawing graphics](/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics)
-- [Video and audio APIs](/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Video_and_audio_APIs)
-- **Client-side storage**

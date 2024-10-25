@@ -1,19 +1,7 @@
 ---
 title: Making decisions in your code — conditionals
 slug: Learn/JavaScript/Building_blocks/conditionals
-tags:
-  - Article
-  - Beginner
-  - CodingScripting
-  - Conditionals
-  - JavaScript
-  - Learn
-  - Switch
-  - conditions
-  - else
-  - if
-  - "l10n:priority"
-  - ternary
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{NextMenu("Learn/JavaScript/Building_blocks/Looping_code", "Learn/JavaScript/Building_blocks")}}
@@ -25,7 +13,7 @@ In any programming language, the code needs to make decisions and carry out acti
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy, a basic understanding of HTML and CSS,
+        A basic understanding of HTML, CSS, and
         <a href="/en-US/docs/Learn/JavaScript/First_steps"
           >JavaScript first steps</a
         >.
@@ -110,7 +98,8 @@ if (shoppingDone === true) {
 
 This code as shown always results in the `shoppingDone` variable returning `false`, meaning disappointment for our poor child. It'd be up to us to provide a mechanism for the parent to set the `shoppingDone` variable to `true` if the child did the shopping.
 
-> **Note:** You can see a more [complete version of this example on GitHub](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/allowance-updater.html) (also see it [running live](https://mdn.github.io/learning-area/javascript/building-blocks/allowance-updater.html).)
+> [!NOTE]
+> You can see a more [complete version of this example on GitHub](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/allowance-updater.html) (also see it [running live](https://mdn.github.io/learning-area/javascript/building-blocks/allowance-updater.html).)
 
 ### else if
 
@@ -132,24 +121,28 @@ There is a way to chain on extra choices/outcomes to your `if...else` — using 
 ```
 
 ```js
-const select = document.querySelector('select');
-const para = document.querySelector('p');
+const select = document.querySelector("select");
+const para = document.querySelector("p");
 
-select.addEventListener('change', setWeather);
+select.addEventListener("change", setWeather);
 
 function setWeather() {
   const choice = select.value;
 
-  if (choice === 'sunny') {
-    para.textContent = 'It is nice and sunny outside today. Wear shorts! Go to the beach, or the park, and get an ice cream.';
-  } else if (choice === 'rainy') {
-    para.textContent = 'Rain is falling outside; take a rain coat and an umbrella, and don\'t stay out for too long.';
-  } else if (choice === 'snowing') {
-    para.textContent = 'The snow is coming down — it is freezing! Best to stay in with a cup of hot chocolate, or go build a snowman.';
-  } else if (choice === 'overcast') {
-    para.textContent = 'It isn\'t raining, but the sky is grey and gloomy; it could turn any minute, so take a rain coat just in case.';
+  if (choice === "sunny") {
+    para.textContent =
+      "It is nice and sunny outside today. Wear shorts! Go to the beach, or the park, and get an ice cream.";
+  } else if (choice === "rainy") {
+    para.textContent =
+      "Rain is falling outside; take a rain coat and an umbrella, and don't stay out for too long.";
+  } else if (choice === "snowing") {
+    para.textContent =
+      "The snow is coming down — it is freezing! Best to stay in with a cup of hot chocolate, or go build a snowman.";
+  } else if (choice === "overcast") {
+    para.textContent =
+      "It isn't raining, but the sky is grey and gloomy; it could turn any minute, so take a rain coat just in case.";
   } else {
-    para.textContent = '';
+    para.textContent = "";
   }
 }
 ```
@@ -161,7 +154,8 @@ function setWeather() {
 3. When this function is run, we first set a variable called `choice` to the current value selected in the `<select>` element. We then use a conditional statement to show different text inside the paragraph depending on what the value of `choice` is. Notice how all the conditions are tested in `else if () { }` blocks, except for the first one, which is tested in an `if () { }` block.
 4. The very last choice, inside the `else { }` block, is basically a "last resort" option — the code inside it will be run if none of the conditions are `true`. In this case, it serves to empty the text out of the paragraph if nothing is selected, for example, if a user decides to re-select the "--Make a choice--" placeholder option shown at the beginning.
 
-> **Note:** You can also [find this example on GitHub](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/simple-else-if.html) ([see it running live](https://mdn.github.io/learning-area/javascript/building-blocks/simple-else-if.html) on there also.)
+> [!NOTE]
+> You can also [find this example on GitHub](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/simple-else-if.html) ([see it running live](https://mdn.github.io/learning-area/javascript/building-blocks/simple-else-if.html) on there also.)
 
 ### A note on comparison operators
 
@@ -174,12 +168,12 @@ Comparison operators are used to test the conditions inside our conditional stat
 We wanted to make a special mention of testing boolean (`true`/`false`) values, and a common pattern you'll come across again and again. Any value that is not `false`, `undefined`, `null`, `0`, `NaN`, or an empty string (`''`) actually returns `true` when tested as a conditional statement, therefore you can use a variable name on its own to test whether it is `true`, or even that it exists (that is, it is not undefined.) So for example:
 
 ```js
-let cheese = 'Cheddar';
+let cheese = "Cheddar";
 
 if (cheese) {
-  console.log('Yay! Cheese available for making cheese on toast.');
+  console.log("Yay! Cheese available for making cheese on toast.");
 } else {
-  console.log('No cheese on toast for you today.');
+  console.log("No cheese on toast for you today.");
 }
 ```
 
@@ -202,7 +196,7 @@ if (shoppingDone) {
 It is perfectly OK to put one `if...else` statement inside another one — to nest them. For example, we could update our weather forecast application to show a further set of choices depending on what the temperature is:
 
 ```js
-if (choice === 'sunny') {
+if (choice === "sunny") {
   if (temperature < 86) {
     para.textContent = `It is ${temperature} degrees outside — nice and sunny. Let's go out to the beach, or the park, and get an ice cream.`;
   } else if (temperature >= 86) {
@@ -223,9 +217,9 @@ If you want to test multiple conditions without writing nested `if...else` state
 To give you an AND example, the previous example snippet can be rewritten to this:
 
 ```js
-if (choice === 'sunny' && temperature < 86) {
+if (choice === "sunny" && temperature < 86) {
   para.textContent = `It is ${temperature} degrees outside — nice and sunny. Let's go out to the beach, or the park, and get an ice cream.`;
-} else if (choice === 'sunny' && temperature >= 86) {
+} else if (choice === "sunny" && temperature >= 86) {
   para.textContent = `It is ${temperature} degrees outside — REALLY HOT! If you want to go outside, make sure to put some sunscreen on.`;
 }
 ```
@@ -235,20 +229,20 @@ So for example, the first code block will only be run if `choice === 'sunny'` _a
 Let's look at a quick OR example:
 
 ```js
-if (iceCreamVanOutside || houseStatus === 'on fire') {
-  console.log('You should leave the house quickly.');
+if (iceCreamVanOutside || houseStatus === "on fire") {
+  console.log("You should leave the house quickly.");
 } else {
-  console.log('Probably should just stay in then.');
+  console.log("Probably should just stay in then.");
 }
 ```
 
 The last type of logical operator, NOT, expressed by the `!` operator, can be used to negate an expression. Let's combine it with OR in the above example:
 
 ```js
-if (!(iceCreamVanOutside || houseStatus === 'on fire')) {
-  console.log('Probably should just stay in then.');
+if (!(iceCreamVanOutside || houseStatus === "on fire")) {
+  console.log("Probably should just stay in then.");
 } else {
-  console.log('You should leave the house quickly.');
+  console.log("You should leave the house quickly.");
 }
 ```
 
@@ -257,7 +251,7 @@ In this snippet, if the OR statement returns `true`, the NOT operator will negat
 You can combine as many logical statements together as you want, in whatever structure. The following example executes the code inside only if both OR statements return true, meaning that the overall AND statement will return true:
 
 ```js
-if ((x === 5 || y > 3 || z <= 10) && (loggedIn || userName === 'Steve')) {
+if ((x === 5 || y > 3 || z <= 10) && (loggedIn || userName === "Steve")) {
   // run the code
 }
 ```
@@ -284,20 +278,21 @@ if (x === 5 || x === 7 || x === 10 || x === 20) {
 
 In such a case, [`switch` statements](/en-US/docs/Web/JavaScript/Reference/Statements/switch) are your friend — they take a single expression/value as an input, and then look through several choices until they find one that matches that value, executing the corresponding code that goes along with it. Here's some more pseudocode, to give you an idea:
 
-```
+```js
 switch (expression) {
   case choice1:
-    run this code
+    // run this code
     break;
 
   case choice2:
-    run this code instead
+    // run this code instead
     break;
 
   // include as many cases as you like
 
   default:
-    actually, just run this code
+    // actually, just run this code
+    break;
 }
 ```
 
@@ -311,7 +306,8 @@ Here we've got:
 6. As many other cases (bullets 3–5) as you like.
 7. The keyword `default`, followed by exactly the same code pattern as one of the cases (bullets 3–5), except that `default` does not have a choice after it, and you don't need the `break` statement as there is nothing to run after this in the block anyway. This is the default option that runs if none of the choices match.
 
-> **Note:** You don't have to include the `default` section — you can safely omit it if there is no chance that the expression could end up equaling an unknown value. If there is a chance of this, however, you need to include it to handle unknown cases.
+> [!NOTE]
+> You don't have to include the `default` section — you can safely omit it if there is no chance that the expression could end up equaling an unknown value. If there is a chance of this, however, you need to include it to handle unknown cases.
 
 ### A switch example
 
@@ -331,42 +327,47 @@ Let's have a look at a real example — we'll rewrite our weather forecast appli
 ```
 
 ```js
-const select = document.querySelector('select');
-const para = document.querySelector('p');
+const select = document.querySelector("select");
+const para = document.querySelector("p");
 
-select.addEventListener('change', setWeather);
+select.addEventListener("change", setWeather);
 
 function setWeather() {
   const choice = select.value;
 
   switch (choice) {
-    case 'sunny':
-      para.textContent = 'It is nice and sunny outside today. Wear shorts! Go to the beach, or the park, and get an ice cream.';
+    case "sunny":
+      para.textContent =
+        "It is nice and sunny outside today. Wear shorts! Go to the beach, or the park, and get an ice cream.";
       break;
-    case 'rainy':
-      para.textContent = 'Rain is falling outside; take a rain coat and an umbrella, and don\'t stay out for too long.';
+    case "rainy":
+      para.textContent =
+        "Rain is falling outside; take a rain coat and an umbrella, and don't stay out for too long.";
       break;
-    case 'snowing':
-      para.textContent = 'The snow is coming down — it is freezing! Best to stay in with a cup of hot chocolate, or go build a snowman.';
+    case "snowing":
+      para.textContent =
+        "The snow is coming down — it is freezing! Best to stay in with a cup of hot chocolate, or go build a snowman.";
       break;
-    case 'overcast':
-      para.textContent = 'It isn\'t raining, but the sky is grey and gloomy; it could turn any minute, so take a rain coat just in case.';
+    case "overcast":
+      para.textContent =
+        "It isn't raining, but the sky is grey and gloomy; it could turn any minute, so take a rain coat just in case.";
       break;
     default:
-      para.textContent = '';
+      para.textContent = "";
   }
 }
 ```
 
 {{ EmbedLiveSample('A_switch_example', '100%', 100, "", "") }}
 
-> **Note:** You can also [find this example on GitHub](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/simple-switch.html) (see it [running live](https://mdn.github.io/learning-area/javascript/building-blocks/simple-switch.html) on there also.)
+> [!NOTE]
+> You can also [find this example on GitHub](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/simple-switch.html) (see it [running live](https://mdn.github.io/learning-area/javascript/building-blocks/simple-switch.html) on there also.)
 
 ## Ternary operator
 
-There is one final bit of syntax we want to introduce you to before we get you to play with some examples. The [ternary or conditional operator](/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) is a small bit of syntax that tests a condition and returns one value/expression if it is `true`, and another if it is `false` — this can be useful in some situations, and can take up a lot less code than an `if...else` block if you have two choices that are chosen between via a `true`/`false` condition. The pseudocode looks like this:
+There is one final bit of syntax we want to introduce you to before we get you to play with some examples. The [ternary or conditional operator](/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator) is a small bit of syntax that tests a condition and returns one value/expression if it is `true`, and another if it is `false` — this can be useful in some situations, and can take up a lot less code than an `if...else` block if you have two choices that are chosen between via a `true`/`false` condition. The pseudocode looks like this:
 
-```
+```js-nolint
 condition ? run this code : run this code instead
 ```
 
@@ -374,8 +375,8 @@ So let's look at a simple example:
 
 ```js
 const greeting = isBirthday
-  ? 'Happy birthday Mrs. Smith — we hope you have a great day!'
-  : 'Good morning Mrs. Smith.';
+  ? "Happy birthday Mrs. Smith — we hope you have a great day!"
+  : "Good morning Mrs. Smith.";
 ```
 
 Here we have a variable called `isBirthday` — if this is `true`, we give our guest a happy birthday message; if not, we give her the standard daily greeting.
@@ -395,28 +396,30 @@ The ternary operator is not just for setting variable values; you can also run f
 ```
 
 ```js
-const select = document.querySelector('select');
-const html = document.querySelector('html');
-document.body.style.padding = '10px';
+const select = document.querySelector("select");
+const html = document.querySelector("html");
+document.body.style.padding = "10px";
 
 function update(bgColor, textColor) {
   html.style.backgroundColor = bgColor;
   html.style.color = textColor;
 }
 
-select.addEventListener('change', () => select.value === 'black'
-  ? update('black', 'white')
-  : update('white', 'black')
+select.addEventListener("change", () =>
+  select.value === "black"
+    ? update("black", "white")
+    : update("white", "black"),
 );
 ```
 
 {{ EmbedLiveSample('Ternary_operator_example', '100%', 300, "", "") }}
 
-Here we've got a {{htmlelement('select')}} element to choose a theme (black or white), plus a simple {{htmlelement('h1')}} to display a website title. We also have a function called `update()`, which takes two colors as parameters (inputs). The website's background color is set to the first provided color, and its text color is set to the second provided color.
+Here we've got a {{htmlelement('select')}} element to choose a theme (black or white), plus a simple {{htmlelement("Heading_Elements", "h1")}} to display a website title. We also have a function called `update()`, which takes two colors as parameters (inputs). The website's background color is set to the first provided color, and its text color is set to the second provided color.
 
 Finally, we've also got an [onchange](/en-US/docs/Web/API/HTMLElement/change_event) event listener that serves to run a function containing a ternary operator. It starts with a test condition — `select.value === 'black'`. If this returns `true`, we run the `update()` function with parameters of black and white, meaning that we end up with a background color of black and a text color of white. If it returns `false`, we run the `update()` function with parameters of white and black, meaning that the site colors are inverted.
 
-> **Note:** You can also [find this example on GitHub](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/simple-ternary.html) (see it [running live](https://mdn.github.io/learning-area/javascript/building-blocks/simple-ternary.html) on there also.)
+> [!NOTE]
+> You can also [find this example on GitHub](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/simple-ternary.html) (see it [running live](https://mdn.github.io/learning-area/javascript/building-blocks/simple-ternary.html) on there also.)
 
 ## Active learning: A simple calendar
 
@@ -424,12 +427,12 @@ In this example, you are going to help us finish a simple calendar application. 
 
 - A {{htmlelement("select")}} element to allow the user to choose between different months.
 - An `onchange` event handler to detect when the value selected in the `<select>` menu is changed.
-- A function called `createCalendar()` that draws the calendar and displays the correct month in the {{htmlelement("h1")}} element.
+- A function called `createCalendar()` that draws the calendar and displays the correct month in the {{htmlelement("Heading_Elements", "h1")}} element.
 
-We need you to write a conditional statement inside the `onchange` handler function, just below the `// ADD CONDITIONAL HERE` comment. It should:
+We need you to write a conditional statement inside the `createCalendar()` function, just below the `// ADD CONDITIONAL HERE` comment. It should:
 
 1. Look at the selected month (stored in the `choice` variable. This will be the `<select>` element value after the value changes, so "January" for example.)
-2. Set a variable called `days` to be equal to the number of days in the selected month. To do this you'll have to look up the number of days in each month of the year. You can ignore leap years for the purposes of this example.
+2. Assign the `days` variable to be equal to the number of days in the selected month. To do this you'll have to look up the number of days in each month of the year. You can ignore leap years for the purposes of this example.
 
 Hints:
 
@@ -440,27 +443,7 @@ If you make a mistake, you can always reset the example with the "Reset" button.
 
 ```html hidden
 <h2>Live output</h2>
-<div class="output" style="height: 500px;overflow: auto;">
-  <label for="month">Select month: </label>
-  <select id="month">
-    <option value="January">January</option>
-    <option value="February">February</option>
-    <option value="March">March</option>
-    <option value="April">April</option>
-    <option value="May">May</option>
-    <option value="June">June</option>
-    <option value="July">July</option>
-    <option value="August">August</option>
-    <option value="September">September</option>
-    <option value="October">October</option>
-    <option value="November">November</option>
-    <option value="December">December</option>
-  </select>
-
-  <h1></h1>
-
-  <ul></ul>
-</div>
+<iframe id="output" width="100%" height="600px"></iframe>
 
 <h2>Editable code</h2>
 <p class="a11y-label">
@@ -468,29 +451,31 @@ If you make a mistake, you can always reset the example with the "Reset" button.
 </p>
 
 <textarea id="code" class="playable-code" style="height: 400px;width: 95%">
-const select = document.querySelector('select');
-const list = document.querySelector('ul');
-const h1 = document.querySelector('h1');
+const select = document.querySelector("select");
+const list = document.querySelector("ul");
+const h1 = document.querySelector("h1");
 
-select.addEventListener('change', () => {
+select.addEventListener("change", () => {
   const choice = select.value;
+  createCalendar(choice);
+});
+
+function createCalendar(month) {
+  let days = 31;
 
   // ADD CONDITIONAL HERE
 
-  createCalendar(days, choice);
-});
-
-function createCalendar(days, choice) {
-  list.innerHTML = '';
-  h1.textContent = choice;
+  list.textContent = "";
+  h1.textContent = month;
   for (let i = 1; i <= days; i++) {
-    const listItem = document.createElement('li');
+    const listItem = document.createElement("li");
     listItem.textContent = i;
     list.appendChild(listItem);
   }
 }
 
-createCalendar(31,'January');
+select.value = "January";
+createCalendar("January");
 </textarea>
 
 <div class="playable-buttons">
@@ -500,25 +485,6 @@ createCalendar(31,'January');
 ```
 
 ```css hidden
-.output * {
-  box-sizing: border-box;
-}
-
-.output ul {
-  padding-left: 0;
-}
-
-.output li {
-  display: block;
-  float: left;
-  width: 25%;
-  border: 2px solid white;
-  padding: 5px;
-  height: 40px;
-  background-color: #4a2db6;
-  color: white;
-}
-
 html {
   font-family: sans-serif;
 }
@@ -541,79 +507,149 @@ body {
 ```
 
 ```js hidden
-const textarea = document.getElementById('code');
-const reset = document.getElementById('reset');
-const solution = document.getElementById('solution');
-let code = textarea.value;
-let userEntry = textarea.value;
+const reset = document.getElementById("reset");
+const solution = document.getElementById("solution");
+const outputIFrame = document.querySelector("#output");
+const textarea = document.getElementById("code");
+const initialCode = textarea.value;
+let userCode = textarea.value;
 
-function updateCode() {
-  eval(textarea.value);
-}
+const solutionCode = `const select = document.querySelector("select");
+const list = document.querySelector("ul");
+const h1 = document.querySelector("h1");
 
-reset.addEventListener('click', function() {
-  textarea.value = code;
-  userEntry = textarea.value;
-  solutionEntry = jsSolution;
-  solution.value = 'Show solution';
-  updateCode();
-});
-
-solution.addEventListener('click', function() {
-  if (solution.value === 'Show solution') {
-    textarea.value = solutionEntry;
-    solution.value = 'Hide solution';
-  } else {
-    textarea.value = userEntry;
-    solution.value = 'Show solution';
-  }
-  updateCode();
-});
-
-const jsSolution = `const select = document.querySelector('select');
-const list = document.querySelector('ul');
-const h1 = document.querySelector('h1');
-
-select.addEventListener('change', () => {
+select.addEventListener("change", () => {
   const choice = select.value;
+  createCalendar(choice);
+});
 
+function createCalendar(month) {
   let days = 31;
-  if (choice === 'February') {
+
+  if (month === "February") {
     days = 28;
-  } else if (choice === 'April' || choice === 'June' || choice === 'September'|| choice === 'November') {
+  } else if (
+    month === "April" ||
+    month === "June" ||
+    month === "September" ||
+    month === "November"
+  ) {
     days = 30;
   }
 
-  createCalendar(days, choice);
-});
-
-function createCalendar(days, choice) {
-  list.innerHTML = '';
-  h1.textContent = choice;
+  list.textContent = "";
+  h1.textContent = month;
   for (let i = 1; i <= days; i++) {
-    const listItem = document.createElement('li');
+    const listItem = document.createElement("li");
     listItem.textContent = i;
     list.appendChild(listItem);
   }
 }
 
-createCalendar(31,'January');`
+select.value = "January";
+createCalendar("January");`;
 
-let solutionEntry = jsSolution;
+function outputDocument(code) {
+  const outputBody = `
+<div class="output" style="height: 500px; overflow: auto">
+  <label for="month">Select month: </label>
+  <select id="month">
+    <option value="January">January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option>
+  </select>
 
-textarea.addEventListener('input', updateCode);
-window.addEventListener('load', updateCode);
+  <h1></h1>
+
+  <ul></ul>
+</div>`;
+
+  const outputStyle = `
+.output * {
+  box-sizing: border-box;
+}
+
+.output ul {
+  padding-left: 0;
+}
+
+.output li {
+  display: block;
+  float: left;
+  width: 25%;
+  border: 2px solid white;
+  padding: 5px;
+  height: 40px;
+  background-color: #4a2db6;
+  color: white;
+}
+html {
+  font-family: sans-serif;
+}
+
+h2 {
+  font-size: 16px;
+}`;
+  return `
+<!doctype html>
+<html>
+  <head>
+    <style>${outputStyle}</style>
+  </head>
+  <body>
+    ${outputBody}
+    <script>${code}</script>
+  </body>
+</html>`;
+}
+
+function update() {
+  output.setAttribute("srcdoc", outputDocument(textarea.value));
+}
+
+update();
+
+textarea.addEventListener("input", update);
+
+reset.addEventListener("click", () => {
+  textarea.value = initialCode;
+  userEntry = textarea.value;
+  solution.value = "Show solution";
+  update();
+});
+
+solution.addEventListener("click", () => {
+  if (solution.value === "Show solution") {
+    // remember the state of the user's code
+    // so we can restore it
+    userCode = textarea.value;
+    textarea.value = solutionCode;
+    solution.value = "Hide solution";
+  } else {
+    textarea.value = userCode;
+    solution.value = "Show solution";
+  }
+  update();
+});
 
 // stop tab key tabbing out of textarea and
 // make it write a tab at the caret position instead
-
-textarea.onkeydown = function(e){
-  if (e.keyCode === 9) {
+textarea.onkeydown = (e) => {
+  if (e.code === "Tab") {
     e.preventDefault();
-    insertAtCaret('\t');
+    insertAtCaret("\t");
   }
 
-  if (e.keyCode === 27) {
+  if (e.code === "Escape") {
     textarea.blur();
   }
 };
@@ -622,7 +658,10 @@ function insertAtCaret(text) {
   const scrollPos = textarea.scrollTop;
   let caretPos = textarea.selectionStart;
   const front = textarea.value.substring(0, caretPos);
-  const back = textarea.value.substring(textarea.selectionEnd, textarea.value.length);
+  const back = textarea.value.substring(
+    textarea.selectionEnd,
+    textarea.value.length,
+  );
 
   textarea.value = front + text + back;
   caretPos += text.length;
@@ -631,55 +670,30 @@ function insertAtCaret(text) {
   textarea.focus();
   textarea.scrollTop = scrollPos;
 }
-
-// Update the saved userCode every time the user updates the text area code
-
-textarea.onkeyup = function(){
-  // We only want to save the state when the user code is being shown,
-  // not the solution, so that solution is not saved over the user code
-  if (solution.value === 'Show solution') {
-    userEntry = textarea.value;
-  } else {
-    solutionEntry = textarea.value;
-  }
-
-  updateCode();
-};
 ```
 
-{{ EmbedLiveSample('Active_learning_A_simple_calendar', '100%', 1110) }}
+{{ EmbedLiveSample('Active_learning_A_simple_calendar', '100%', 1210) }}
 
 ## Active learning: More color choices
 
 In this example, you are going to take the ternary operator example we saw earlier and convert the ternary operator into a switch statement to allow us to apply more choices to the simple website. Look at the {{htmlelement("select")}} — this time you'll see that it has not two theme options, but five. You need to add a switch statement just underneath the `// ADD SWITCH STATEMENT` comment:
 
 - It should accept the `choice` variable as its input expression.
-- For each case, the choice should equal one of the possible `<option> value`s that can be selected, that is, `white`, `black`, `purple`, `yellow`, or `psychedelic`.
+- For each case, the choice should equal one of the possible `<option>` values that can be selected, that is, `white`, `black`, `purple`, `yellow`, or `psychedelic`. Note that the option values are lowercase, while the option _labels_, as displayed in the live output, are capitalized. You should use the lowercase values in your code.
 - For each case, the `update()` function should be run, and be passed two color values, the first one for the background color, and the second one for the text color. Remember that color values are strings, so they need to be wrapped in quotes.
 
 If you make a mistake, you can always reset the example with the "Reset" button. If you get really stuck, press "Show solution" to see a solution.
 
 ```html hidden
 <h2>Live output</h2>
-<div class="output" style="height: 300px;">
-  <label for="theme">Select theme: </label>
-  <select id="theme">
-    <option value="white">White</option>
-    <option value="black">Black</option>
-    <option value="purple">Purple</option>
-    <option value="yellow">Yellow</option>
-    <option value="psychedelic">Psychedelic</option>
-  </select>
-
-  <h1>This is my website</h1>
-</div>
+<iframe id="output" width="100%" height="350px"></iframe>
 
 <h2>Editable code</h2>
 <p class="a11y-label">
   Press Esc to move focus away from the code area (Tab inserts a tab character).
 </p>
 
-<textarea id="code" class="playable-code" style="height: 450px;width: 95%">
+<textarea id="code" class="playable-code" style="height: 400px;width: 95%">
 const select = document.querySelector('select');
 const html = document.querySelector('.output');
 
@@ -724,36 +738,14 @@ body {
 ```
 
 ```js hidden
-const textarea = document.getElementById('code');
-const reset = document.getElementById('reset');
-const solution = document.getElementById('solution');
-let code = textarea.value;
-let userEntry = textarea.value;
+const reset = document.getElementById("reset");
+const solution = document.getElementById("solution");
+const outputIFrame = document.querySelector("#output");
+const textarea = document.getElementById("code");
+const initialCode = textarea.value;
+let userCode = textarea.value;
 
-function updateCode() {
-  eval(textarea.value);
-}
-
-reset.addEventListener('click', function() {
-  textarea.value = code;
-  userEntry = textarea.value;
-  solutionEntry = jsSolution;
-  solution.value = 'Show solution';
-  updateCode();
-});
-
-solution.addEventListener('click', function() {
-  if (solution.value === 'Show solution') {
-    textarea.value = solutionEntry;
-    solution.value = 'Hide solution';
-  } else {
-    textarea.value = userEntry;
-    solution.value = 'Show solution';
-  }
-  updateCode();
-});
-
-const jsSolution = `const select = document.querySelector('select');
+const solutionCode = `const select = document.querySelector('select');
 const html = document.querySelector('.output');
 
 select.addEventListener('change', () => {
@@ -770,7 +762,7 @@ select.addEventListener('change', () => {
       update('purple','white');
       break;
     case 'yellow':
-      update('yellow','darkgray');
+      update('yellow','purple');
       break;
     case 'psychedelic':
       update('lime','purple');
@@ -783,21 +775,71 @@ function update(bgColor, textColor) {
   html.style.color = textColor;
 }`;
 
-let solutionEntry = jsSolution;
+function outputDocument(code) {
+  const outputBody = `
+<div class="output" style="height: 300px;">
+  <label for="theme">Select theme: </label>
+  <select id="theme">
+    <option value="white">White</option>
+    <option value="black">Black</option>
+    <option value="purple">Purple</option>
+    <option value="yellow">Yellow</option>
+    <option value="psychedelic">Psychedelic</option>
+  </select>
 
-textarea.addEventListener('input', updateCode);
-window.addEventListener('load', updateCode);
+  <h1>This is my website</h1>
+</div>`;
+
+  return `
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    ${outputBody}
+    <script>${code}</script>
+  </body>
+</html>`;
+}
+
+function update() {
+  output.setAttribute("srcdoc", outputDocument(textarea.value));
+}
+
+update();
+
+textarea.addEventListener("input", update);
+
+reset.addEventListener("click", () => {
+  textarea.value = initialCode;
+  userEntry = textarea.value;
+  solution.value = "Show solution";
+  update();
+});
+
+solution.addEventListener("click", () => {
+  if (solution.value === "Show solution") {
+    // remember the state of the user's code
+    // so we can restore it
+    userCode = textarea.value;
+    textarea.value = solutionCode;
+    solution.value = "Hide solution";
+  } else {
+    textarea.value = userCode;
+    solution.value = "Show solution";
+  }
+  update();
+});
 
 // stop tab key tabbing out of textarea and
 // make it write a tab at the caret position instead
-
-textarea.onkeydown = function(e){
-  if (e.keyCode === 9) {
+textarea.onkeydown = (e) => {
+  if (e.code === "Tab") {
     e.preventDefault();
-    insertAtCaret('\t');
+    insertAtCaret("\t");
   }
 
-  if (e.keyCode === 27) {
+  if (e.code === "Escape") {
     textarea.blur();
   }
 };
@@ -806,7 +848,10 @@ function insertAtCaret(text) {
   const scrollPos = textarea.scrollTop;
   let caretPos = textarea.selectionStart;
   const front = textarea.value.substring(0, caretPos);
-  const back = textarea.value.substring(textarea.selectionEnd, textarea.value.length);
+  const back = textarea.value.substring(
+    textarea.selectionEnd,
+    textarea.value.length,
+  );
 
   textarea.value = front + text + back;
   caretPos += text.length;
@@ -815,20 +860,6 @@ function insertAtCaret(text) {
   textarea.focus();
   textarea.scrollTop = scrollPos;
 }
-
-// Update the saved userCode every time the user updates the text area code
-
-textarea.onkeyup = function(){
-  // We only want to save the state when the user code is being shown,
-  // not the solution, so that solution is not saved over the user code
-  if (solution.value === 'Show solution') {
-    userEntry = textarea.value;
-  } else {
-    solutionEntry = textarea.value;
-  }
-
-  updateCode();
-};
 ```
 
 {{ EmbedLiveSample('Active_learning_More_color_choices', '100%', 950) }}
@@ -846,16 +877,6 @@ And that's all you really need to know about conditional structures in JavaScrip
 - [Comparison operators](/en-US/docs/Learn/JavaScript/First_steps/Math#comparison_operators)
 - [Conditional statements in detail](/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#conditional_statements)
 - [if...else reference](/en-US/docs/Web/JavaScript/Reference/Statements/if...else)
-- [Conditional (ternary) operator reference](/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
+- [Conditional (ternary) operator reference](/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator)
 
 {{NextMenu("Learn/JavaScript/Building_blocks/Looping_code", "Learn/JavaScript/Building_blocks")}}
-
-## In this module
-
-- **Making decisions in your code — conditionals**
-- [Looping code](/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code)
-- [Functions — reusable blocks of code](/en-US/docs/Learn/JavaScript/Building_blocks/Functions)
-- [Build your own function](/en-US/docs/Learn/JavaScript/Building_blocks/Build_your_own_function)
-- [Function return values](/en-US/docs/Learn/JavaScript/Building_blocks/Return_values)
-- [Introduction to events](/en-US/docs/Learn/JavaScript/Building_blocks/Events)
-- [Image gallery](/en-US/docs/Learn/JavaScript/Building_blocks/Image_gallery)

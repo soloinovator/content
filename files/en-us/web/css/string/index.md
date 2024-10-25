@@ -2,13 +2,6 @@
 title: <string>
 slug: Web/CSS/string
 page-type: css-type
-tags:
-  - CSS
-  - CSS Data Type
-  - Data Type
-  - Layout
-  - Reference
-  - Web
 browser-compat: css.types.string
 ---
 
@@ -28,7 +21,7 @@ To output new lines, you must escape them with a line feed character such as `\A
 
 However, to get new lines, you must also set the {{cssxref("white-space")}} property to appropriate value.
 
-> **Note:** [HTML entities](/en-US/docs/Glossary/Entity) (such as `&nbsp;` or `&#8212;`) cannot be used in a CSS `<string>`.
+> **Note:** {{glossary("character reference", "Character references")}} (such as `&nbsp;` or `&#8212;`) cannot be used in a CSS `<string>`.
 
 ## Examples
 

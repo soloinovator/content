@@ -2,18 +2,12 @@
 title: SVGTextContentElement
 slug: Web/API/SVGTextContentElement
 page-type: web-api-interface
-tags:
-  - API
-  - NeedsExample
-  - Reference
-  - SVG
-  - SVG DOM
 browser-compat: api.SVGTextContentElement
 ---
 
 {{APIRef("SVG")}}
 
-The **`SVGTextContentElement`** interface is implemented by elements that support rendering child text content. It is inherited by various text-related interfaces, such as {{domxref("SVGTextElement")}}, {{domxref("SVGTSpanElement")}}, {{domxref("SVGTRefElement")}}, {{domxref("SVGAltGlyphElement")}} and {{domxref("SVGTextPathElement")}}.
+The **`SVGTextContentElement`** interface is implemented by elements that support rendering child text content. It is inherited by various text-related interfaces, such as {{domxref("SVGTextElement")}}, {{domxref("SVGTSpanElement")}}, {{domxref("SVGTRefElement")}}, and {{domxref("SVGTextPathElement")}}.
 
 {{InheritanceDiagram}}
 
@@ -67,13 +61,15 @@ _This interface also inherits methods from its parent, {{domxref("SVGGraphicsEle
 
   - : Returns a {{domxref("DOMPoint")}} representing the position of a typographic character after text layout has been performed.
 
-    > **Note:** In SVG 1.1 this method returned an {{domxref("SVGPoint")}}.
+    > [!NOTE]
+    > In SVG 1.1 this method returned an {{domxref("SVGPoint")}}.
 
 - {{domxref("SVGTextContentElement.getEndPositionOfChar()")}}
 
   - : Returns a {{domxref("DOMPoint")}} representing the trailing position of a typographic character after text layout has been performed.
 
-    > **Note:** In SVG 1.1 this method returned an {{domxref("SVGPoint")}}.
+    > [!NOTE]
+    > In SVG 1.1 this method returned an {{domxref("SVGPoint")}}.
 
 - {{domxref("SVGTextContentElement.getExtentOfChar()")}}
   - : Returns a {{domxref("DOMRect")}} representing the computed tight bounding box of the glyph cell that corresponds to a given typographic character.

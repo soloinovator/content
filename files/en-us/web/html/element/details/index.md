@@ -1,16 +1,7 @@
 ---
-title: '<details>: The Details disclosure element'
+title: "<details>: The Details disclosure element"
 slug: Web/HTML/Element/details
 page-type: html-element
-tags:
-  - Disclosure Box
-  - Disclosure Widget
-  - Element
-  - HTML
-  - HTML interactive elements
-  - Reference
-  - Web
-  - details
 browser-compat: html.elements.details
 ---
 
@@ -18,7 +9,7 @@ browser-compat: html.elements.details
 
 The **`<details>`** [HTML](/en-US/docs/Web/HTML) element creates a disclosure widget in which information is visible only when the widget is toggled into an "open" state. A summary or label must be provided using the {{HTMLElement("summary")}} element.
 
-A disclosure widget is typically presented onscreen using a small triangle which rotates (or twists) to indicate open/closed status, with a label next to the triangle. The contents of the `<summary>` element are used as the label for the disclosure widget.
+A disclosure widget is typically presented onscreen using a small triangle that rotates (or twists) to indicate open/closed status, with a label next to the triangle. The contents of the `<summary>` element are used as the label for the disclosure widget. The contents of the `<details>` provide the {{glossary("accessible description")}} for the `<summary>`.
 
 {{EmbedInteractiveExample("pages/tabbed/details.html", "tabbed-shorter")}}
 
@@ -26,7 +17,7 @@ A `<details>` widget can be in one of two states. The default _closed_ state dis
 
 When the user clicks on the widget or focuses it then presses the space bar, it "twists" open, revealing its contents. The common use of a triangle which rotates or twists around to represent opening or closing the widget is why these are sometimes called "twisty".
 
-You can use CSS to style the disclosure widget, and you can programmatically open and close the widget by setting/removing its {{htmlattrxref("open", "details")}} attribute. Unfortunately, at this time there's no built-in way to animate the transition between open and closed.
+You can use CSS to style the disclosure widget, and you can programmatically open and close the widget by setting/removing its [`open`](#open) attribute. Unfortunately, at this time, there's no built-in way to animate the transition between open and closed.
 
 By default when closed, the widget is only tall enough to display the disclosure triangle and summary. When open, it expands to display the details contained within.
 
@@ -36,11 +27,20 @@ Fully standards-compliant implementations automatically apply the CSS `{{cssxref
 
 This element includes the [global attributes](/en-US/docs/Web/HTML/Global_attributes).
 
-- {{htmlattrdef("open")}}
+- `open`
 
   - : This Boolean attribute indicates whether the details — that is, the contents of the `<details>` element — are currently visible. The details are shown when this attribute exists, or hidden when this attribute is absent. By default this attribute is absent which means the details are not visible.
 
-    > **Note:** You have to remove this attribute entirely to make the details hidden. `open="false"` makes the details visible because this attribute is Boolean.
+    > [!NOTE]
+    > You have to remove this attribute entirely to make the details hidden. `open="false"` makes the details visible because this attribute is Boolean.
+
+- `name`
+
+  - : This attribute enables multiple `<details>` elements to be connected, with only one open at a time. This allows developers to easily create UI features such as accordions without scripting.
+
+    The `name` attribute specifies a group name — give multiple `<details>` elements the same `name` value to group them. Only one of the grouped `<details>` elements can be open at a time — opening one will cause another to close. If multiple grouped `<details>` elements are given the `open` attribute, only the first one in the source order will be rendered open.
+
+    > **Note:** `<details>` elements don't have to be adjacent to one another in the source to be part of the same group.
 
 ## Events
 
@@ -75,7 +75,7 @@ This example shows a simple `<details>` element with a `<summary>`.
 </details>
 ```
 
-The result of this HTML is:
+#### Result
 
 {{EmbedLiveSample("A_simple_disclosure_example", 650, 150)}}
 
@@ -94,9 +94,45 @@ To start the `<details>` box in its open state, add the Boolean `open` attribute
 </details>
 ```
 
-This results in:
+#### Result
 
 {{EmbedLiveSample("Creating_an_open_disclosure_box", 650, 150)}}
+
+### Multiple named disclosure boxes
+
+We include several `<details>` boxes, all with the same name so only one can be open at a time:
+
+```html
+<details name="reqs">
+  <summary>Graduation Requirements</summary>
+  <p>
+    Requires 40 credits, including a passing grade in health, geography,
+    history, economics, and wood shop.
+  </p>
+</details>
+<details name="reqs">
+  <summary>System Requirements</summary>
+  <p>
+    Requires a computer running an operating system. The computer must have some
+    memory and ideally some kind of long-term storage. An input device as well
+    as some form of output device is recommended.
+  </p>
+</details>
+<details name="reqs">
+  <summary>Job Requirements</summary>
+  <p>
+    Requires knowledge of HTML, CSS, JavaScript, accessibility, web performance,
+    privacy, security, and internationalization, as well as a dislike of
+    broccoli.
+  </p>
+</details>
+```
+
+#### Result
+
+{{EmbedLiveSample("Multiple named disclosure boxes", 650, 150)}}
+
+Try opening all the disclosure widgets. When you open one, all the others automatically close.
 
 ### Customizing the appearance
 
@@ -106,7 +142,10 @@ Now let's apply some CSS to customize the appearance of the disclosure box.
 
 ```css
 details {
-  font: 16px "Open Sans", Calibri, sans-serif;
+  font:
+    16px "Open Sans",
+    Calibri,
+    sans-serif;
   width: 620px;
 }
 
@@ -163,7 +202,10 @@ The {{HTMLElement("summary")}} element supports the {{cssxref("list-style")}} sh
 
 ```css
 details {
-  font: 16px "Open Sans", Calibri, sans-serif;
+  font:
+    16px "Open Sans",
+    Calibri,
+    sans-serif;
   width: 620px;
 }
 
@@ -211,12 +253,12 @@ This CSS creates a look similar to a tabbed interface, where activating the tab 
   <tbody>
     <tr>
       <th scope="row">
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories"
+        <a href="/en-US/docs/Web/HTML/Content_categories"
           >Content categories</a
         >
       </th>
       <td>
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#flow_content"
+        <a href="/en-US/docs/Web/HTML/Content_categories#flow_content"
           >Flow content</a
         >, sectioning root, interactive content, palpable content.
       </td>
@@ -225,20 +267,20 @@ This CSS creates a look similar to a tabbed interface, where activating the tab 
       <th scope="row">Permitted content</th>
       <td>
         One {{HTMLElement("summary")}} element followed by
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#flow_content"
+        <a href="/en-US/docs/Web/HTML/Content_categories#flow_content"
           >flow content</a
         >.
       </td>
     </tr>
     <tr>
       <th scope="row">Tag omission</th>
-      <td>{{no_tag_omission}}</td>
+      <td>None, both the starting and ending tag are mandatory.</td>
     </tr>
     <tr>
       <th scope="row">Permitted parents</th>
       <td>
         Any element that accepts
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#flow_content"
+        <a href="/en-US/docs/Web/HTML/Content_categories#flow_content"
           >flow content</a
         >.
       </td>

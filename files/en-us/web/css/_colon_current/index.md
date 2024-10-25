@@ -2,7 +2,7 @@
 title: ":current"
 slug: Web/CSS/:current
 page-type: css-pseudo-class
-browser-compat: css.selectors.current
+spec-urls: https://drafts.csswg.org/selectors/#the-current-pseudo
 ---
 
 {{CSSRef}}
@@ -17,7 +17,15 @@ The **`:current`** [CSS](/en-US/docs/Web/CSS) [pseudo-class](/en-US/docs/Web/CSS
 
 ## Syntax
 
-{{csssyntax}}
+```css-nolint
+:current {
+  /* ... */
+}
+
+:current(<compound-selector-list>) {
+  /* ... */
+}
+```
 
 ## Examples
 
@@ -46,7 +54,7 @@ The **`:current`** [CSS](/en-US/docs/Web/CSS) [pseudo-class](/en-US/docs/Web/CSS
 
 ### WebVTT
 
-```
+```plain
 WEBVTT FILE
 
 1
@@ -68,7 +76,7 @@ This is the third caption
 
 ## Browser compatibility
 
-{{Compat}}
+There is no browser implementing this feature.
 
 ## See also
 

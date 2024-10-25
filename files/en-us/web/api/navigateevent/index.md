@@ -2,18 +2,8 @@
 title: NavigateEvent
 slug: Web/API/NavigateEvent
 page-type: web-api-interface
-tags:
-  - API
-  - Experimental
-  - History
-  - Interface
-  - Landing
-  - Navigate
-  - NavigateEvent
-  - Navigation API
-  - Reference
-  - Scroll
-  - Traversal
+status:
+  - experimental
 browser-compat: api.NavigateEvent
 ---
 
@@ -65,18 +55,18 @@ _Inherits methods from its parent, {{DOMxRef("Event")}}._
 ### Handling a navigation using `intercept()`
 
 ```js
-navigation.addEventListener('navigate', event => {
-  // Exit early if this navigation shouldn't be intercepted, 
+navigation.addEventListener("navigate", (event) => {
+  // Exit early if this navigation shouldn't be intercepted,
   // e.g. if the navigation is cross-origin, or a download request
   if (shouldNotIntercept(event)) return;
 
   const url = new URL(event.destination.url);
 
-  if (url.pathname.startsWith('/articles/')) {
+  if (url.pathname.startsWith("/articles/")) {
     event.intercept({
       async handler() {
         // The URL has already changed, so show a placeholder while
-        //fetching the new content, such as a spinner or loading page
+        // fetching the new content, such as a spinner or loading page
         renderArticlePagePlaceholder();
 
         // Fetch the new content and display when ready
@@ -88,18 +78,19 @@ navigation.addEventListener('navigate', event => {
 });
 ```
 
-> **Note:** Before the Navigation API was available, to do something similar you'd have to listen for all click events on links, run `e.preventDefault()`, perform the appropriate {{domxref("History.pushState()")}} call, then set up the page view based on the new URL. And this wouldn't handle all navigations — only user-initiated link clicks.
+> [!NOTE]
+> Before the Navigation API was available, to do something similar you'd have to listen for all click events on links, run `e.preventDefault()`, perform the appropriate {{domxref("History.pushState()")}} call, then set up the page view based on the new URL. And this wouldn't handle all navigations — only user-initiated link clicks.
 
 ### Handling scrolling using `scroll()`
 
 In this example of intercepting a navigation, the `handler()` function starts by fetching and rendering some article content, but then fetches and renders some secondary content afterwards. It makes sense to scroll the page to the main article content as soon as it is available so the user can interact with it, rather than waiting until the secondary content is also rendered. To achieve this, we have added a {{domxref("NavigateEvent.scroll", "scroll()")}} call between the two.
 
 ```js
-navigation.addEventListener('navigate', event => {
+navigation.addEventListener("navigate", (event) => {
   if (shouldNotIntercept(navigateEvent)) return;
   const url = new URL(event.destination.url);
 
-  if (url.pathname.startsWith('/articles/')) {
+  if (url.pathname.startsWith("/articles/")) {
     event.intercept({
       async handler() {
         const articleContent = await getArticleContent(url.pathname);

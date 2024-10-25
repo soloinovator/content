@@ -1,14 +1,7 @@
 ---
 title: Ember resources and troubleshooting
 slug: Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Ember_resources
-tags:
-  - Beginner
-  - Ember
-  - Frameworks
-  - JavaScript
-  - Learn
-  - client-side
-  - resources
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}
@@ -54,7 +47,7 @@ Our final Ember article provides you with a list of resources that you can use t
 
   - [Tutorial: Super Rentals](https://guides.emberjs.com/release/tutorial/part-1/)
 
-- [Ember.JS API Documentation](https://api.emberjs.com/ember/release)
+- [Ember.JS API Documentation](https://api.emberjs.com/ember/release/)
 - [Ember.JS Discord Server](https://discord.com/invite/emberjs) — a forum/chat server where you can meet the Ember community, ask for help, and help others!
 
 ## General troubleshooting, gotchas, and misconceptions
@@ -121,7 +114,7 @@ See also: [ReactiveConf 2017: Secrets of the Glimmer VM](https://www.youtube.com
 
 More concretely, using `mut` allows for template-only settings functions to be declared:
 
-```html
+```hbs-nolint
 <Checkbox
   @value=\{{this.someData}}
   @onToggle=\{{fn (mut this.someData) (not this.someData)}}
@@ -147,28 +140,26 @@ export default class Example extends Component {
 
 Which would then be called in the template like so:
 
-```html
+```hbs-nolint
 <Checkbox @data=\{{this.someData}} @onChange=\{{this.setData}} />
 ```
 
 Due to the conciseness of using `mut`, it may be desirable to reach for it. However, `mut` has unnatural semantics and has caused much confusion over the term of its existence.
 
-There have been a couple of new ideas put together into the form of addons that use the public APIs, [`ember-set-helper`](https://github.com/pzuraq/ember-set-helper) and [`ember-box`](https://github.com/pzuraq/ember-box). Both of these try to solve the problems of `mut`
+There have been a couple of new ideas put together into the form of addons that use the public APIs, [`ember-set-helper`](https://github.com/adopted-ember-addons/ember-set-helper) and [`ember-box`](https://github.com/pzuraq/ember-box). Both of these try to solve the problems of `mut`
 by introducing more obvious / "less magic" concepts, avoiding build-time transforms and
 implicit Glimmer VM behavior.
 
 With `ember-set-helper`:
 
-```html
-<Checkbox
-  @value=\{{this.someData}}
-  @onToggle=\{{set this "someData" (not this.someData)}}
-/>
+```hbs
+<Checkbox @value=\{{this.someData}} @onToggle=\{{set this "someData" (not
+this.someData)}} />
 ```
 
 With `ember-box`:
 
-```html
+```hbs-nolint
 \{{#let (box this.someData) as |someData|}}
   <Checkbox
     @value=\{{unwrap someData}}
@@ -209,6 +200,6 @@ Last, a Route has the ability to handle common events resulting from configuring
 
 Both `loading` and `error` can render default templates as well as customized templates defined elsewhere in the application, unifying loading/error states.
 
-More information on [everything a Route can do is found in the API documentation](https://api.emberjs.com/ember/release/classes/Route/).
+More information on [everything a Route can do is found in the API documentation](https://api.emberjs.com/ember/release/classes/route/).
 
 {{PreviousMenuNext("Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Ember_routing","Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Vue_getting_started", "Learn/Tools_and_testing/Client-side_JavaScript_frameworks")}}

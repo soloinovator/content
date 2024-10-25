@@ -1,26 +1,16 @@
 ---
-title: IDBRequest.error
+title: "IDBRequest: error property"
+short-title: error
 slug: Web/API/IDBRequest/error
 page-type: web-api-instance-property
-tags:
-  - API
-  - Database
-  - Error
-  - IDBRequest
-  - IndexedDB
-  - Property
-  - Reference
-  - Storage
 browser-compat: api.IDBRequest.error
 ---
 
-{{ APIRef("IndexedDB") }}
+{{ APIRef("IndexedDB") }} {{AvailableInWorkers}}
 
 The **`error`** read-only property of the
 {{domxref("IDBRequest")}} interface returns the error in the event of an unsuccessful
 request.
-
-{{AvailableInWorkers}}
 
 ## Value
 
@@ -60,7 +50,9 @@ For a full working example, see our [To-do Notifications](https://github.com/mdn
 const title = "Walk dog";
 
 // Open up a transaction as usual
-const objectStore = db.transaction(['toDoList'], "readwrite").objectStore('toDoList');
+const objectStore = db
+  .transaction(["toDoList"], "readwrite")
+  .objectStore("toDoList");
 
 // Get the to-do list with the specified title
 const objectStoreTitleRequest = objectStore.get(title);
@@ -85,7 +77,9 @@ objectStoreTitleRequest.onsuccess = () => {
 
 objectStoreTitleRequest.onerror = () => {
   // If an error occurs with the request, log what it is
-  console.log(`There has been an error with retrieving your data: ${objectStoreTitleRequest.error}`);
+  console.log(
+    `There has been an error with retrieving your data: ${objectStoreTitleRequest.error}`,
+  );
 };
 ```
 

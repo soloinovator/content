@@ -1,11 +1,7 @@
 ---
 title: Use JavaScript within a webpage
 slug: Learn/HTML/Howto/Use_JavaScript_within_a_webpage
-tags:
-  - Beginner
-  - HTML
-  - JavaScript
-  - OpenPractices
+page-type: learn-faq
 ---
 
 {{QuickLinksWithSubpages("/en-US/docs/Learn/HTML/Howto")}}
@@ -37,7 +33,8 @@ Take your webpages to the next level by harnessing JavaScript. Learn in this art
 
 {{Glossary("JavaScript")}} is a programming language mostly used client-side to make webpages interactive. You _can_ create amazing webpages without JavaScript, but JavaScript opens up a whole new level of possibilities.
 
-> **Note:** In this article we're going over the HTML code you need to make JavaScript take effect. If you want to learn JavaScript itself, you can start with our [JavaScript basics](/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) article. If you already know something about JavaScript or if you have a background with other programming languages, we suggest you jump directly into our [JavaScript Guide](/en-US/docs/Web/JavaScript/Guide).
+> [!NOTE]
+> In this article we're going over the HTML code you need to make JavaScript take effect. If you want to learn JavaScript itself, you can start with our [JavaScript basics](/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) article. If you already know something about JavaScript or if you have a background with other programming languages, we suggest you jump directly into our [JavaScript Guide](/en-US/docs/Web/JavaScript/Guide).
 
 ## How to trigger JavaScript from HTML
 
@@ -45,7 +42,7 @@ Within a browser, JavaScript doesn't do anything by itself. You run JavaScript f
 
 ### Linking an external script
 
-Usually, you'll be writing scripts in their own .js files. If you want to execute a .js script from your webpage, just use {{HTMLElement ('script')}} with an `src` attribute pointing to the script file, using its [URL](/en-US/docs/Learn/Common_questions/What_is_a_URL):
+Usually, you'll be writing scripts in their own .js files. If you want to execute a .js script from your webpage, just use {{HTMLElement ('script')}} with an `src` attribute pointing to the script file, using its [URL](/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL):
 
 ```html
 <script src="path/to/my/script.js"></script>

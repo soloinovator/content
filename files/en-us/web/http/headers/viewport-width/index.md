@@ -1,14 +1,10 @@
 ---
 title: Viewport-Width
 slug: Web/HTTP/Headers/Viewport-Width
-tags:
-  - Viewport-Width
-  - Client hints
-  - HTTP
-  - HTTP Header
-  - Request header
-  - Deprecated
-  - Non-standard
+page-type: http-header
+status:
+  - deprecated
+  - non-standard
 browser-compat: http.headers.Viewport-Width
 ---
 
@@ -36,7 +32,7 @@ The hint can be used with other screen-specific hints to deliver images optimize
 
 If the `Viewport-Width` header appears more than once in a message the last occurrence is used.
 
-> **Note:**
+> [!NOTE]
 >
 > - Client Hints are accessible only on secure origins (via TLS).
 > - A server has to opt in to receive the `Viewport-Width` header from the client, by sending the {{HTTPHeader("Accept-CH")}} response header.
@@ -74,7 +70,7 @@ Viewport-Width: 320
 
 ## See also
 
-- [Improving user privacy and developer experience with User-Agent Client Hints](https://web.dev/user-agent-client-hints/) (web.dev)
+- [Improving user privacy and developer experience with User-Agent Client Hints](https://developer.chrome.com/docs/privacy-security/user-agent-client-hints) (developer.chrome.com)
 - Device client hints
 
   - {{HTTPHeader("Content-DPR")}}
@@ -83,4 +79,4 @@ Viewport-Width: 320
   - {{HTTPHeader("Width")}}
 
 - {{HTTPHeader("Accept-CH")}}
-- [HTTP Caching > Varying responses](/en-US/docs/Web/HTTP/Caching#varying_responses) and {{HTTPHeader("Vary")}}
+- [HTTP Caching > Vary](/en-US/docs/Web/HTTP/Caching#vary) and {{HTTPHeader("Vary")}}

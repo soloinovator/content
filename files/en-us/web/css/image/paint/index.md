@@ -2,14 +2,6 @@
 title: paint()
 slug: Web/CSS/image/paint
 page-type: css-function
-tags:
-  - CSS
-  - CSS Function
-  - CSS images
-  - Function
-  - Houdini
-  - Reference
-  - Web
 browser-compat: css.types.image.paint
 ---
 
@@ -34,7 +26,7 @@ where:
 
 ### Basic usage example
 
-In JavaScript, we register the [paint worklet](/en-US/docs/Web/API/PaintWorklet):
+In JavaScript, we register the [paint worklet](/en-US/docs/Web/API/PaintWorkletGlobalScope):
 
 ```js
 CSS.paintWorklet.addModule("boxbg.js");
@@ -45,14 +37,14 @@ CSS.paintWorklet.addModule("boxbg.js");
 ```css
 li {
   background-image: paint(boxbg);
-  --boxColor: hsl(55 90% 60% / 1);
+  --boxColor: hsl(55 90% 60% / 100%);
 }
 li:nth-of-type(3n) {
-  --boxColor: hsl(155 90% 60% / 1);
+  --boxColor: hsl(155 90% 60% / 100%);
   --widthSubtractor: 20;
 }
 li:nth-of-type(3n + 1) {
-  --boxColor: hsl(255 90% 60% / 1);
+  --boxColor: hsl(255 90% 60% / 100%);
   --widthSubtractor: 40;
 }
 ```
@@ -92,23 +84,23 @@ You can pass additional arguments via the CSS paint() function. In this example,
 
 ```js hidden
 CSS.paintWorklet.addModule(
-  "https://mdn.github.io/houdini-examples/cssPaint/intro/worklets/hilite.js"
+  "https://mdn.github.io/houdini-examples/cssPaint/intro/worklets/hilite.js",
 );
 ```
 
 ```css
 li {
-  --boxColor: hsl(55 90% 60% / 1);
+  --boxColor: hsl(55 90% 60% / 100%);
   background-image: paint(hollowHighlights, stroke, 2px);
 }
 
 li:nth-of-type(3n) {
-  --boxColor: hsl(155 90% 60% / 1);
+  --boxColor: hsl(155 90% 60% / 100%);
   background-image: paint(hollowHighlights, filled, 3px);
 }
 
 li:nth-of-type(3n + 1) {
-  --boxColor: hsl(255 90% 60% / 1);
+  --boxColor: hsl(255 90% 60% / 100%);
   background-image: paint(hollowHighlights, stroke, 1px);
 }
 ```
@@ -127,8 +119,8 @@ We've included a custom property in the selector block defining a boxColor. Cust
 
 ## See also
 
-- {{domxref('PaintWorklet')}}
+- {{domxref('PaintWorkletGlobalScope')}}
 - [CSS Painting API](/en-US/docs/Web/API/CSS_Painting_API)
 - [Using the CSS Painting API](/en-US/docs/Web/API/CSS_Painting_API/Guide)
 - {{cssxref("&lt;image&gt;")}}
-- {{domxref("canvas")}}
+- [Canvas API](/en-US/docs/Web/API/Canvas_API)

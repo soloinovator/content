@@ -2,11 +2,6 @@
 title: SVGAnimatedPreserveAspectRatio
 slug: Web/API/SVGAnimatedPreserveAspectRatio
 page-type: web-api-interface
-tags:
-  - API
-  - Reference
-  - SVG
-  - SVG DOM
 browser-compat: api.SVGAnimatedPreserveAspectRatio
 ---
 
@@ -59,6 +54,10 @@ The `SVGAnimatedPreserveAspectRatio` interface is used for attributes of type {{
 ## Instance methods
 
 The `SVGAnimatedPreserveAspectRatio` interface do not provide any specific methods.
+
+## Specifications
+
+{{Specifications}}
 
 ## Browser compatibility
 

@@ -2,11 +2,6 @@
 title: SVGTransform
 slug: Web/API/SVGTransform
 page-type: web-api-interface
-tags:
-  - API
-  - Reference
-  - SVG
-  - SVG DOM
 browser-compat: api.SVGTransform
 ---
 
@@ -250,7 +245,7 @@ An `SVGTransform` object can be designated as read only, which means that attemp
     <tr>
       <td>
         <code
-          ><strong>setTranslate</strong>(in float <em>tx</em> , in float
+          ><strong>setTranslate</strong>(in float <em>tx</em>, in float
           <em>ty</em>)</code
         >
       </td>
@@ -275,7 +270,7 @@ An `SVGTransform` object can be designated as read only, which means that attemp
     <tr>
       <td>
         <code
-          ><strong>setScale</strong>(in float <em>sx</em> , in float
+          ><strong>setScale</strong>(in float <em>sx</em>, in float
           <em>sy</em>)</code
         >
       </td>
@@ -301,7 +296,7 @@ An `SVGTransform` object can be designated as read only, which means that attemp
       <td>
         <code
           ><strong>setRotate</strong>(in float <em>angle</em>, in float
-          <em>cx</em> , in float <em>cy</em>)</code
+          <em>cx</em>, in float <em>cy</em>)</code
         >
       </td>
       <td><em>void</em></td>
@@ -367,6 +362,10 @@ An `SVGTransform` object can be designated as read only, which means that attemp
     </tr>
   </tbody>
 </table>
+
+## Specifications
+
+{{Specifications}}
 
 ## Browser compatibility
 

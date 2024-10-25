@@ -2,10 +2,6 @@
 title: Getting started with MDN Web Docs
 slug: MDN/Community/Contributing/Getting_started
 page-type: mdn-community-guide
-tags:
-  - meta
-  - community-guidelines
-  - governance
 ---
 
 {{MDNSidebar}}
@@ -19,7 +15,7 @@ We are an open community of developers, technical writers, and learners building
 There are multiple avenues you can take to contribute to MDN, depending on your skill set and interests. Therefore, along with each task, we provide a short description and an approximate time each type of task typically takes.
 
 > If you're unsure what to do, you can always ask for help in one of [our communication channels](/en-US/docs/MDN/Community/Communication_channels).
-> Also note that our small, but mighty docs team maintains this repo, to preserve our bandwidth, off-topic conversations will be closed.
+> Also note that our small but mighty docs team maintains this repo. To preserve our bandwidth, off-topic conversations will be closed.
 
 ## Primary contribution types
 
@@ -32,8 +28,8 @@ To contribute, you will need a GitHub account. If you do not already have one, g
 > NOTE: Do not feel overwhelmed or like you have to read through and complete _all_ of the course work. With the knowledge gained from the "Introduction to GitHub" course, you will be well on your way.
 
 - [Introduction to GitHub](https://github.com/skills/introduction-to-github)
-- [Setting up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
-- [GitHub workflow](https://docs.github.com/en/get-started/quickstart/github-flow)
+- [Setting up Git](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git)
+- [GitHub workflow](https://docs.github.com/en/get-started/using-github/github-flow)
 - [Using Markdown](https://github.com/skills/communicate-using-markdown)
 
 ### Additional reading and learning material
@@ -50,6 +46,6 @@ This ensures that two people do not work on the same issue, and you will know wh
 
 ### Contributions
 
-When contributing, you agree to make your contributions available under the [Attribution-ShareAlike license](https://creativecommons.org/licenses/by-sa/4.0/) (or an alternative license already specified by the page you are editing). In addition, code samples are available under [Creative Commons CC-0](https://creativecommons.org/share-your-work/public-domain/cc0/) (a Public Domain dedication).
+When contributing, you agree to make your contributions available under the [Attribution-ShareAlike license](https://creativecommons.org/licenses/by-sa/4.0/) (or an alternative license already specified by the page you are editing). In addition, code samples are available under [Creative Commons CC-0](https://creativecommons.org/public-domain/cc0/) (a Public Domain dedication).
 
 > If you have any questions or concerns about anything discussed here, please [contact us](/en-US/docs/MDN/Community/Communication_channels).

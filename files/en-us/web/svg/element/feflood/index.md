@@ -2,10 +2,6 @@
 title: <feFlood>
 slug: Web/SVG/Element/feFlood
 page-type: svg-element
-tags:
-  - Element
-  - SVG
-  - SVG Filter
 browser-compat: svg.elements.feFlood
 ---
 
@@ -19,16 +15,6 @@ The **`<feFlood>`** SVG filter primitive fills the filter subregion with the col
 
 ## Attributes
 
-### Global attributes
-
-- [Core attributes](/en-US/docs/Web/SVG/Attribute#core_attributes)
-- [Presentation attributes](/en-US/docs/Web/SVG/Attribute#presentation_attributes)
-- [Filter primitive attributes](/en-US/docs/Web/SVG/Attribute#filter_primitive_attributes)
-- {{SVGAttr("class")}}
-- {{SVGAttr("style")}}
-
-### Specific attributes
-
 - {{SVGAttr("flood-color")}}
 - {{SVGAttr("flood-opacity")}}
 
@@ -38,7 +24,7 @@ This element implements the {{domxref("SVGFEFloodElement")}} interface.
 
 ## Example
 
-### HTML Content
+### HTML
 
 ```html
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
@@ -72,9 +58,9 @@ This element implements the {{domxref("SVGFEFloodElement")}} interface.
 
 ## See also
 
+- [SVG Filter primitive attributes](/en-US/docs/Web/SVG/Attribute#filters_attributes)
 - {{SVGElement("filter")}}
 - {{SVGElement("animate")}}
-- {{SVGElement("animateColor")}}
 - {{SVGElement("set")}}
 - {{SVGElement("feBlend")}}
 - {{SVGElement("feColorMatrix")}}

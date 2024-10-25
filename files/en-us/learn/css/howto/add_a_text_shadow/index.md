@@ -1,13 +1,7 @@
 ---
 title: How to add a shadow to text
 slug: Learn/CSS/Howto/Add_a_text_shadow
-tags:
-  - Basic
-  - Beginner
-  - CSS
-  - CSS:Getting_Started
-  - Guide
-  - Web
+page-type: learn-faq
 ---
 
 {{LearnSidebar}}
@@ -29,4 +23,5 @@ In the example below we have set the x-axis offset to 2px, the y-axis offset to 
 
 {{EmbedGHLiveSample("css-examples/howto/text-shadow.html", '100%', 500)}}
 
-> **Note:** It can be quite easy to make text hard to read with text shadows. Make sure that the choices you make still leave your text readable and provide enough [color contrast](/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast) for visitors who have difficulty with low-contrast text.
+> [!NOTE]
+> It can be quite easy to make text hard to read with text shadows. Make sure that the choices you make still leave your text readable and provide enough [color contrast](/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast) for visitors who have difficulty with low-contrast text.

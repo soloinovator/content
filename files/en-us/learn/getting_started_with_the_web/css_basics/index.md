@@ -1,14 +1,7 @@
 ---
 title: CSS basics
 slug: Learn/Getting_started_with_the_web/CSS_basics
-tags:
-  - Beginner
-  - CSS
-  - CodingScripting
-  - Learn
-  - Styling
-  - Web
-  - "l10n:priority"
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/Getting_started_with_the_web/HTML_basics", "Learn/Getting_started_with_the_web/JavaScript_basics", "Learn/Getting_started_with_the_web")}}
@@ -37,7 +30,9 @@ To make the code work, we still need to apply this CSS (above) to your HTML docu
 
 2. Save `index.html` and load it in your browser. You should see something like this:
 
-![A Mozilla logo and some paragraphs. The paragraph text has been styled red by our css.](website-screenshot-styled.png)If your paragraph text is red, congratulations! Your CSS is working.
+![A Mozilla logo and some paragraphs. The paragraph text has been styled red by our css.](website-screenshot-styled.png)
+
+If your paragraph text is red, congratulations! Your CSS is working.
 
 ### Anatomy of a CSS ruleset
 
@@ -130,7 +125,7 @@ There are many different types of selectors. The examples above use **element se
       <td>The element(s) on the page with the specified attribute.</td>
       <td>
         <code>img[src]</code><br />selects
-        <code>&#x3C;img src="myimage.png"></code> but not
+        <code>&#x3C;img src="my-image.png"></code> but not
         <code>&#x3C;img></code>
       </td>
     </tr>
@@ -174,9 +169,10 @@ Now that we've explored some CSS fundamentals, let's improve the appearance of t
    }
    ```
 
-   > **Note:** Anything in CSS between `/*` and `*/` is a **CSS comment**. The browser ignores comments as it renders the code. CSS comments are a way for you to write helpful notes about your code or logic.
+   > [!NOTE]
+   > Anything in CSS between `/*` and `*/` is a **CSS comment**. The browser ignores comments as it renders the code. CSS comments are a way for you to write helpful notes about your code or logic.
 
-4. Now let's set font sizes for elements that will have text inside the HTML body ({{htmlelement("h1")}}, {{htmlelement("li")}}, and {{htmlelement("p")}}). We'll also center the heading. Finally, let's expand the second ruleset (below) with settings for line height and letter spacing to make body content more readable.
+4. Now let's set font sizes for elements that will have text inside the HTML body ({{htmlelement("Heading_Elements", "&lt;h1&gt;")}}, {{htmlelement("li")}}, and {{htmlelement("p")}}). We'll also center the heading. Finally, let's expand the second ruleset (below) with settings for line height and letter spacing to make body content more readable.
 
    ```css
    h1 {
@@ -263,7 +259,7 @@ h1 {
 }
 ```
 
-You may have noticed there's a horrible gap at the top of the body. That happens because browsers apply default styling to the {{htmlelement("h1")}} element (among others). That might seem like a bad idea, but the intent is to provide basic readability for unstyled pages. To eliminate the gap, we overwrite the browser's default styling with the setting `margin: 0;`.
+You may have noticed there's a horrible gap at the top of the body. That happens because browsers apply default styling to the {{htmlelement("Heading_Elements", "h1")}} element (among others). That might seem like a bad idea, but the intent is to provide basic readability for unstyled pages. To eliminate the gap, we overwrite the browser's default styling with the setting `margin: 0;`.
 
 Next, we set the heading's top and bottom padding to 20 pixels.
 
@@ -291,9 +287,11 @@ Next, we center the image to make it look better. We could use the `margin: 0 au
 
 The {{htmlelement("body")}} is a **block** element, meaning it takes up space on the page. The margin applied to a block element will be respected by other elements on the page. In contrast, images are **inline** elements, for the auto margin trick to work on this image, we must give it block-level behavior using `display: block;`.
 
-> **Note:** The instructions above assume that you're using an image smaller than the width set on the body. (600 pixels) If your image is larger, it will overflow the body, spilling into the rest of the page. To fix this, you can either: 1) reduce the image width using a [graphics editor](https://en.wikipedia.org/wiki/Raster_graphics_editor), or 2) use CSS to size the image by setting the {{cssxref("width")}} property on the `<img>` element with a smaller value.
+> [!NOTE]
+> The instructions above assume that you're using an image smaller than the width set on the body. (600 pixels) If your image is larger, it will overflow the body, spilling into the rest of the page. To fix this, you can either: 1) reduce the image width using a [graphics editor](https://en.wikipedia.org/wiki/Raster_graphics_editor), or 2) use CSS to size the image by setting the {{cssxref("width")}} property on the `<img>` element with a smaller value.
 
-> **Note:** Don't be too concerned if you don't completely understand `display: block;` or the differences between a block element and an inline element. It will make more sense as you continue your study of CSS. You can find more information about different display values on MDN's [display reference page](/en-US/docs/Web/CSS/display).
+> [!NOTE]
+> Don't be too concerned if you don't completely understand `display: block;` or the differences between a block element and an inline element. It will make more sense as you continue your study of CSS. You can find more information about different display values on MDN's [display reference page](/en-US/docs/Web/CSS/display).
 
 ## Conclusion
 

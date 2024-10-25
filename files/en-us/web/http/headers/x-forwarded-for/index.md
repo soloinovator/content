@@ -1,20 +1,17 @@
 ---
 title: X-Forwarded-For
 slug: Web/HTTP/Headers/X-Forwarded-For
-tags:
-  - HTTP
-  - HTTP Header
-  - Non-standard
-  - Reference
-  - Request header
-  - header
+page-type: http-header
+status:
+  - non-standard
 ---
 
 {{HTTPSidebar}}
 
 The **`X-Forwarded-For`** (XFF) request header is a de-facto standard header for identifying the originating IP address of a client connecting to a web server through a proxy server.
 
-> **Warning:** Improper use of this header can be a security risk. For details, see the [Security and privacy concerns](#security_and_privacy_concerns) section.
+> [!WARNING]
+> Improper use of this header can be a security risk. For details, see the [Security and privacy concerns](#security_and_privacy_concerns) section.
 
 When a client connects directly to a server, the
 client's IP address is sent to the server (and is often written to server
@@ -93,7 +90,7 @@ X-Forwarded-For: 203.0.113.195
 
 X-Forwarded-For: 203.0.113.195, 2001:db8:85a3:8d3:1319:8a2e:370:7348
 
-X-Forwarded-For: 203.0.113.195,2001:db8:85a3:8d3:1319:8a2e:370:7348,150.172.238.178
+X-Forwarded-For: 203.0.113.195,2001:db8:85a3:8d3:1319:8a2e:370:7348,198.51.100.178
 ```
 
 ## Parsing

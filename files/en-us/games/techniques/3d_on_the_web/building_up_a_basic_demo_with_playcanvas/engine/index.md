@@ -1,19 +1,7 @@
 ---
 title: Building up a basic demo with the PlayCanvas engine
 slug: Games/Techniques/3D_on_the_web/Building_up_a_basic_demo_with_PlayCanvas/engine
-tags:
-  - 3D
-  - Animation
-  - Beginner
-  - Canvas
-  - Games
-  - PlayCanvas
-  - Tutorial
-  - WebGL
-  - camera
-  - engine
-  - lighting
-  - rendering
+page-type: guide
 ---
 
 {{GamesSidebar}}
@@ -40,7 +28,7 @@ To start developing with PlayCanvas, you don't need much. You should start off b
 Here's the HTML structure we will use.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
   <head>
     <meta charset="utf-8" />
@@ -105,11 +93,13 @@ camera.setPosition(0, 0, 7);
 
 The code above will create a new `Entity`.
 
-> **Note:** An Entity is any object used in the scene — it can be an object like a box, cylinder or cone, but it can also be a camera, light or sound source.
+> [!NOTE]
+> An Entity is any object used in the scene — it can be an object like a box, cylinder or cone, but it can also be a camera, light or sound source.
 
 Then it adds a `camera` component to it with the light gray `clearColor` — the color will be visible as the background. Next, the `camera` object is added to the root of our application and positioned to be 7 units away from the center of the scene on the `z` axis. This allows us to make some space to visualize the objects that we will create later on.
 
-> **Note:** The distance values (e.g. for the camera z position) are unitless, and can basically be anything you deem suitable for your scene — millimeters, meters, feet, or miles — it's up to you.
+> [!NOTE]
+> The distance values (e.g. for the camera z position) are unitless, and can basically be anything you deem suitable for your scene — millimeters, meters, feet, or miles — it's up to you.
 
 Try saving the file and loading it in your browser. You should now see a gray window. Congratulations!
 
@@ -149,7 +139,8 @@ The code above assign a dark grey ambient light for the whole scene. The box loo
 
 ## Material
 
-The basic PlayCanvas material is called [PhongMaterial](https://developer.playcanvas.com/en/user-manual/assets/materials/phong-material/) — add the following lines below the previous code.
+This example uses an older [material](https://developer.playcanvas.com/user-manual/assets/types/material/) called "Phong Material" (supported as of PlayCanvas Engine v1.65.0).
+To use `PhongMaterial`, add the following lines below the previous code:
 
 ```js
 const boxMaterial = new pc.PhongMaterial();
@@ -160,7 +151,8 @@ box.model.model.meshInstances[0].material = boxMaterial;
 
 By diffusing the light on the object, we can give it its own color — we'll choose a nice familiar blue.
 
-> **Note:** In PlayCanvas, the color channel values are provided as floats in the range `0-1`, instead of integers of `0-255` as you might be used to using on the Web.
+> [!NOTE]
+> In PlayCanvas, the color channel values are provided as floats in the range `0-1`, instead of integers of `0-255` as you might be used to using on the Web.
 
 After the material is created and its color is set, it has to be updated so our changes are going to be applied. Then all we need to do is set the `box`'s material to the newly created `boxMaterial`.
 

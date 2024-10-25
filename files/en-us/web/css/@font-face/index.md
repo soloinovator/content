@@ -2,15 +2,6 @@
 title: "@font-face"
 slug: Web/CSS/@font-face
 page-type: css-at-rule
-tags:
-  - "@font-face"
-  - At-rule
-  - CSS
-  - CSS Fonts
-  - Fonts
-  - Nick Names
-  - Reference
-  - typography
 browser-compat: css.at-rules.font-face
 ---
 
@@ -23,9 +14,11 @@ The **`@font-face`** [CSS](/en-US/docs/Web/CSS) [at-rule](/en-US/docs/Web/CSS/At
 ```css
 @font-face {
   font-family: "Trickster";
-  src: local("Trickster"),
-    url("trickster-COLRv1.otf") format("opentype") tech(color-COLRv1), url("trickster-outline.otf")
-      format("opentype"), url("trickster-outline.woff") format("woff");
+  src:
+    local("Trickster"),
+    url("trickster-COLRv1.otf") format("opentype") tech(color-COLRv1),
+    url("trickster-outline.otf") format("opentype"),
+    url("trickster-outline.woff") format("woff");
 }
 ```
 
@@ -47,9 +40,10 @@ The **`@font-face`** [CSS](/en-US/docs/Web/CSS) [at-rule](/en-US/docs/Web/CSS/At
 
   - : A {{cssxref("font-weight")}} value. Accepts two values to specify a range that is supported by a font-face, for example `font-weight: 100 400;`
 
-    > **Note:** The font-variant descriptor was removed from the specification in 2018. The {{cssxref("font-variant")}} value property is supported, but there is no descriptor equivalent.
+    > [!NOTE]
+    > The font-variant descriptor was removed from the specification in 2018. The {{cssxref("font-variant")}} value property is supported, but there is no descriptor equivalent.
 
-- {{cssxref("font-feature-settings", "font-feature-settings")}}
+- {{cssxref("@font-face/font-feature-settings", "font-feature-settings")}}
   - : Allows control over advanced typographic features in OpenType fonts.
 - {{cssxref("@font-face/font-variation-settings", "font-variation-settings")}}
   - : Allows low-level control over OpenType or TrueType font variations, by specifying the four letter axis names of the features to vary, along with their variation values.
@@ -73,9 +67,10 @@ If a more specific fonts with `format()` or `tech()` values are desired, these s
 
 By allowing authors to provide their own fonts, `@font-face` makes it possible to design content without being limited to the so-called "web-safe" fonts (that is, the fonts which are so common that they're considered to be universally available). The ability to specify the name of a locally-installed font to look for and use makes it possible to customize the font beyond the basics while making it possible to do so without relying on an internet connection.
 
-> **Note:** Fallback strategies for loading fonts on older browsers are described in the [`src` descriptor page](/en-US/docs/Web/CSS/@font-face/src#fallbacks_for_older_browsers).
+> [!NOTE]
+> Fallback strategies for loading fonts on older browsers are described in the [`src` descriptor page](/en-US/docs/Web/CSS/@font-face/src#specifying_fallbacks_for_older_browsers).
 
-The `@font-face` at-rule may be used not only at the top level of a CSS, but also inside any [CSS conditional-group at-rule](/en-US/docs/Web/CSS/At-rule#conditional_group_rules).
+The `@font-face` at-rule may be used not only at the top level of a CSS, but also inside any [CSS conditional-group at-rule](/en-US/docs/Web/CSS/CSS_conditional_rules#at-rules).
 
 ### Font MIME Types
 
@@ -113,7 +108,7 @@ The `@font-face` at-rule may be used not only at the top level of a CSS, but als
 This example specifies a downloadable font to use, applying it to the entire body of the document:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
@@ -163,7 +158,7 @@ In this example, the user's local copy of "Helvetica Neue Bold" is used; if the 
 
 ## See also
 
-- [About WOFF](/en-US/docs/Web/Guide/WOFF)
+- [About WOFF](/en-US/docs/Web/CSS/CSS_fonts/WOFF)
 - [FontSquirrel @font-face generator](https://www.fontsquirrel.com/tools/webfont-generator)
 - [Beautiful fonts with @font-face](https://hacks.mozilla.org/2009/06/beautiful-fonts-with-font-face/)
 - [Font Library](https://fontlibrary.org/)

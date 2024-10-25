@@ -2,23 +2,18 @@
 title: CSS Painting API
 slug: Web/API/CSS_Painting_API
 page-type: web-api-overview
-tags:
-  - API
-  - CSS
-  - CSS Paint API
-  - Houdini
-  - Painting
-  - Reference
+status:
+  - experimental
 browser-compat: api.PaintWorkletGlobalScope
 ---
 
-{{DefaultAPISidebar("CSS Painting API")}}
+{{DefaultAPISidebar("CSS Painting API")}}{{SeeCompatTable}}
 
-The CSS Painting API — part of the [CSS Houdini](/en-US/docs/Web/Guide/Houdini) umbrella of APIs — allows developers to write JavaScript functions that can draw directly into an element's background, border, or content.
+The CSS Painting API — part of the [CSS Houdini](/en-US/docs/Web/API/Houdini_APIs) umbrella of APIs — allows developers to write JavaScript functions that can draw directly into an element's background, border, or content.
 
 ## Concepts and usage
 
-Essentially, the CSS Painting API contains functionality allowing developers to create custom values for {{cssxref('paint()', 'paint()')}}, a CSS [`<image>`](/en-US/docs/Web/CSS/image) function. You can then apply these values to properties like {{cssxref("background-image")}} to set complex custom backgrounds on an element.
+Essentially, the CSS Painting API contains functionality allowing developers to create custom values for {{cssxref('image/paint', 'paint()')}}, a CSS [`<image>`](/en-US/docs/Web/CSS/image) function. You can then apply these values to properties like {{cssxref("background-image")}} to set complex custom backgrounds on an element.
 
 For example:
 
@@ -28,23 +23,16 @@ aside {
 }
 ```
 
-The API defines {{domxref('PaintWorklet')}}, a {{domxref('worklet')}} that can be used to programmatically generate an image that responds to computed style changes. To find out more about how this is used, consult [Using the CSS Painting API](/en-US/docs/Web/API/CSS_Painting_API/Guide).
+The API defines a {{domxref('worklet')}} that can be used to programmatically generate an image that responds to computed style changes. To find out more about how this is used, consult [Using the CSS Painting API](/en-US/docs/Web/API/CSS_Painting_API/Guide).
 
 ## Interfaces
 
-- {{domxref('PaintWorklet')}}
-  - : Programmatically generates an image where a CSS property expects a file. Access this interface through [`CSS.paintWorklet`](/en-US/docs/Web/API/CSS/paintWorklet).
 - {{domxref('PaintWorkletGlobalScope')}}
-  - : The global execution context of the `paintWorklet`.
+  - : The global execution context of the paint worklet.
 - {{domxref('PaintRenderingContext2D')}}
-  - : Implements a subset of the [CanvasRenderingContext2D API](/en-US/docs/Web/API/CanvasRenderingContext2D). It has an output bitmap that is the size of the object it is rendering to.
+  - : Implements a subset of the [`CanvasRenderingContext2D`](/en-US/docs/Web/API/CanvasRenderingContext2D) API. It has an output bitmap that is the size of the object it is rendering to.
 - {{domxref('PaintSize')}}
   - : Returns the read-only values of the output bitmap's width and height.
-
-## Dictionaries
-
-- {{domxref('PaintRenderingContext2DSettings')}}
-  - : A dictionary providing a subset of [CanvasRenderingContext2D](/en-US/docs/Web/API/CanvasRenderingContext2D) settings.
 
 ## Examples
 
@@ -86,10 +74,10 @@ registerPaint(
         0,
         size.height / 3,
         size.width * 0.4 - props.get("--widthSubtractor"),
-        size.height * 0.6
+        size.height * 0.6,
       );
     }
-  }
+  },
 );
 ```
 
@@ -129,16 +117,16 @@ In our CSS, we define the `--boxColor` and `--widthSubtractor` custom properties
 ```css
 li {
   background-image: paint(boxbg);
-  --boxColor: hsl(55 90% 60% / 1);
+  --boxColor: hsl(55 90% 60% / 100%);
 }
 
 li:nth-of-type(3n) {
-  --boxColor: hsl(155 90% 60% / 1);
+  --boxColor: hsl(155 90% 60% / 100%);
   --widthSubtractor: 20;
 }
 
 li:nth-of-type(3n + 1) {
-  --boxColor: hsl(255 90% 60% / 1);
+  --boxColor: hsl(255 90% 60% / 100%);
   --widthSubtractor: 40;
 }
 ```
@@ -169,4 +157,4 @@ While you can't play with the worklet's script, you can alter the custom propert
 
 - [Using the CSS Painting API](/en-US/docs/Web/API/CSS_Painting_API/Guide)
 - [CSS Typed Object Model API](/en-US/docs/Web/API/CSS_Typed_OM_API)
-- [CSS Houdini](/en-US/docs/Web/Guide/Houdini)
+- [Houdini APIs](/en-US/docs/Web/API/Houdini_APIs)

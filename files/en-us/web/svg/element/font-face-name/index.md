@@ -2,13 +2,8 @@
 title: <font-face-name>
 slug: Web/SVG/Element/font-face-name
 page-type: svg-element
-tags:
-  - Deprecated
-  - Element
-  - NeedsExample
-  - Reference
-  - SVG
-  - SVG Font
+status:
+  - deprecated
 browser-compat: svg.elements.font-face-name
 ---
 
@@ -21,12 +16,6 @@ The **`<font-face-name>`** element points to a locally installed copy of this fo
 {{svginfo}}
 
 ## Attributes
-
-### Global attributes
-
-- [Core attributes](/en-US/docs/Web/SVG/Attribute#core_attributes)
-
-### Specific attributes
 
 - {{SVGATTR("name")}} {{Deprecated_Inline}}
 

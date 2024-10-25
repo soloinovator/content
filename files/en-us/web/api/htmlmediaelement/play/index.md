@@ -1,17 +1,8 @@
 ---
-title: HTMLMediaElement.play()
+title: "HTMLMediaElement: play() method"
+short-title: play()
 slug: Web/API/HTMLMediaElement/play
 page-type: web-api-instance-method
-tags:
-  - API
-  - Audio
-  - HTMLMediaElement
-  - Interface
-  - Media
-  - Method
-  - Reference
-  - Video
-  - play
 browser-compat: api.HTMLMediaElement.play
 ---
 
@@ -40,7 +31,8 @@ None.
 A {{jsxref("Promise")}} which is resolved when playback has been started, or is
 rejected if for any reason playback cannot be started.
 
-> **Note:** Browsers released before 2019 may not return a value from
+> [!NOTE]
+> Browsers released before 2019 may not return a value from
 > `play()`.
 
 ### Exceptions
@@ -69,13 +61,14 @@ apply to any script-initiated playback of media, including calls to `play()`.
 
 If the {{Glossary("user agent")}} is configured not to allow automatic or
 script-initiated playback of media, calling `play()` will cause the returned
-promise to be immediately rejected with a `NotAllowedError`. Web sites should
+promise to be immediately rejected with a `NotAllowedError`. Websites should
 be prepared to handle this situation. For example, a site should not present a user
 interface that assumes playback has begun automatically, but should instead update their
 UI based on whether the returned promise is fulfilled or rejected. See the
 [example](#examples) below for more information.
 
-> **Note:** The `play()` method may cause the user to be asked
+> [!NOTE]
+> The `play()` method may cause the user to be asked
 > to grant permission to play the media, resulting in a possible delay before the
 > returned promise is resolved. Be sure your code doesn't expect an immediate response.
 
@@ -89,7 +82,7 @@ handle blocked automatic playback:
 
 ```js
 let videoElem = document.getElementById("video");
-let playButton = document.getElementById("playbutton");
+let playButton = document.getElementById("play-button");
 
 playButton.addEventListener("click", handlePlayButton, false);
 playVideo();

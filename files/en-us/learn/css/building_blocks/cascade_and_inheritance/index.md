@@ -1,15 +1,7 @@
 ---
 title: Cascade, specificity, and inheritance
 slug: Learn/CSS/Building_blocks/Cascade_and_inheritance
-tags:
-  - Beginner
-  - CSS
-  - Cascade
-  - Inheritance
-  - Learn
-  - rules
-  - source order
-  - specificity
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/CSS/Building_blocks/Selectors/Combinators", "Learn/CSS/Building_blocks/Cascade_layers", "Learn/CSS/Building_blocks")}}
@@ -23,10 +15,9 @@ While working through this lesson may seem less relevant immediately and a littl
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy,
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
-          >basic software installed</a
+          >Basic software installed</a
         >, basic knowledge of
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
@@ -89,7 +80,8 @@ For example, if you set a `color` and `font-family` on an element, every element
 
 Some properties do not inherit — for example, if you set a {{cssxref("width")}} of 50% on an element, all of its descendants do not get a width of 50% of their parent's width. If this was the case, CSS would be very frustrating to use!
 
-> **Note:** On MDN CSS property reference pages, you can find a technical information box called "Formal definition", which lists a number of data points about that property, including whether it is inherited or not. See the [color property Formal definition section](/en-US/docs/Web/CSS/color#formal_definition) as an example.
+> [!NOTE]
+> On MDN CSS property reference pages, you can find a technical information box called "Formal definition", which lists a number of data points about that property, including whether it is inherited or not. See the [color property Formal definition section](/en-US/docs/Web/CSS/color#formal_definition) as an example.
 
 ## Understanding how the concepts work together
 
@@ -126,7 +118,8 @@ CSS provides five special universal property values for controlling inheritance.
 - {{cssxref("unset")}}
   - : Resets the property to its natural value, which means that if the property is naturally inherited it acts like `inherit`, otherwise it acts like `initial`.
 
-> **Note:** See [Origin types](/en-US/docs/Web/CSS/Cascade#origin_types) for more information on each of these and how they work.
+> [!NOTE]
+> See [Origin types](/en-US/docs/Web/CSS/Cascade#origin_types) for more information on each of these and how they work.
 
 We can look at a list of links and explore how universal values work. The live example below allows you to play with the CSS and see what happens when you make changes. Playing with code really is the best way to better understand HTML and CSS.
 
@@ -187,11 +180,12 @@ The amount of specificity a selector has is measured using three different value
 - **Classes**: Score one in this column for each class selector, attribute selector, or pseudo-class contained inside the overall selector.
 - **Elements**: Score one in this column for each element selector or pseudo-element contained inside the overall selector.
 
-> **Note:** The universal selector ([`*`](/en-US/docs/Web/CSS/Universal_selectors)), [combinators](/en-US/docs/Learn/CSS/Building_blocks//selectors/combinators) (`+`, `>`, `~`, ' '), and specificity adjustment selector ([`:where()`](/en-US/docs/Web/CSS/:where)) along with its parameters, have no effect on specificity.
+> [!NOTE]
+> The universal selector ([`*`](/en-US/docs/Web/CSS/Universal_selectors)), [combinators](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators) (`+`, `>`, `~`, ' '), and specificity adjustment selector ([`:where()`](/en-US/docs/Web/CSS/:where)) along with its parameters, have no effect on specificity.
 
-The negation ([`:not()`](/en-US/docs/Web/CSS/:not)), relational selector ([`:has()`](/en-US/docs/Web/CSS/:has)), and the matches-any ([`:is()`](/en-US/docs/Web/CSS/:is)) pseudo-classes themselves don't have effect on specificity, but their parameters do. The specificity that each contributes to the specificity algorithm is the specificity of the selector in the parameter that has the greatest weight.
+The negation ([`:not()`](/en-US/docs/Web/CSS/:not)), relational selector ([`:has()`](/en-US/docs/Web/CSS/:has)), the matches-any ([`:is()`](/en-US/docs/Web/CSS/:is)) pseudo-classes, and [CSS nesting](/en-US/docs/Web/CSS/CSS_nesting/Nesting_and_specificity) themselves don't add to specificity, but their parameters or nested rules do. The specificity weight that each contributes to the specificity algorithm is the specificity weight of the selector in the parameter or nested rule with the greatest weight.
 
-The following table shows a few isolated examples to get you in the mood. Try going through these, and make sure you understand why they have the specificity that we have given them. We've not covered selectors in detail yet, but you can find details of each selector on the MDN [selectors reference](/en-US/docs/Web/CSS/CSS_Selectors).
+The following table shows a few isolated examples to get you in the mood. Try going through these, and make sure you understand why they have the specificity that we have given them. We've not covered selectors in detail yet, but you can find details of each selector on the MDN [selectors reference](/en-US/docs/Web/CSS/CSS_selectors/Selectors_and_combinators).
 
 | Selector                                  | Identifiers | Classes | Elements | Total specificity |
 | ----------------------------------------- | ----------- | ------- | -------- | ----------------- |
@@ -211,19 +205,21 @@ So what's going on here? First of all, we are only interested in the first seven
 - Selectors 3 and 4 are competing over the styling of the link's text color. The second one wins and makes the text white because although it has one less element selector, the missing selector is swapped out for a class selector, which has more weight than infinity element selectors. The winning specificity is 1-1-3 vs. 1-0-4.
 - Selectors 5–7 are competing over the styling of the link's border when hovered. Selector 6 clearly loses to selector 5 with a specificity of 0-2-3 vs. 0-2-4; it has one fewer element selectors in the chain. Selector 7, however, beats both selectors 5 and 6 because it has the same number of sub-selectors in the chain as selector 5, but an element has been swapped out for a class selector. So the winning specificity is 0-3-3 vs. 0-2-3 and 0-2-4.
 
-> **Note:** Each selector type has its own level of specificity that cannot be overwritten by selectors with a lower specificity level. For example, a _million_ **class** selectors combined would not be able to overwrite the specificity of _one_ **id** selector.
+> [!NOTE]
+> Each selector type has its own level of specificity that cannot be overwritten by selectors with a lower specificity level. For example, a _million_ **class** selectors combined would not be able to overwrite the specificity of _one_ **id** selector.
 >
 > The best way to evaluate specificity is to score the specificity levels individually starting from the highest and moving on to the lowest when necessary. Only when there is a tie between selector scores within a specificity column do you need to evaluate the next column down; otherwise, you can disregard the lower specificity selectors since they can never overwrite the higher specificity selectors.
 
 ### Inline styles
 
-Inline styles, that is, the style declaration inside a {{htmlattrxref("style")}} attribute, take precedence over all normal styles, no matter the specificity. Such declarations don't have selectors, but their specificity can be construed as 1-0-0-0; always more than any other specificity weight no matter how many IDs are in the selectors.
+Inline styles, that is, the style declaration inside a [`style`](/en-US/docs/Web/HTML/Global_attributes/style) attribute, take precedence over all normal styles, no matter the specificity. Such declarations don't have selectors, but their specificity can be construed as 1-0-0-0; always more than any other specificity weight no matter how many IDs are in the selectors.
 
 ### !important
 
 There is a special piece of CSS that you can use to overrule all of the above calculations, even inline styles - the `!important` flag. However, you should be very careful while using it. This flag is used to make an individual property and value pair the most specific rule, thereby overriding the normal rules of the cascade, including normal inline styles.
 
-> **Note:** It is useful to know that the `!important` flag exists so that you know what it is when you come across it in other people's code. **However, we strongly recommend that you never use it unless you absolutely have to.** The `!important` flag changes the way the cascade normally works, so it can make debugging CSS problems really hard to work out, especially in a large stylesheet.
+> [!NOTE]
+> It is useful to know that the `!important` flag exists so that you know what it is when you come across it in other people's code. **However, we strongly recommend that you never use it unless you absolutely have to.** The `!important` flag changes the way the cascade normally works, so it can make debugging CSS problems really hard to work out, especially in a large stylesheet.
 
 Take a look at this example where we have two paragraphs, one of which has an ID.
 
@@ -233,10 +229,11 @@ Let's walk through this to see what's happening — try removing some of the pro
 
 1. You'll see that the third rule's {{cssxref("color")}} and {{cssxref("padding")}} values have been applied, but the {{cssxref("background-color")}} hasn't. Why? Really, all three should surely apply because rules later in the source order generally override earlier rules.
 2. However, the rules above it win because class selectors have higher specificity than element selectors.
-3. Both elements have a {{htmlattrxref("class")}} of `better`, but the 2nd one has an {{htmlattrxref("id")}} of `winning` too. Since IDs have an _even higher_ specificity than classes (you can only have one element with each unique ID on a page, but many elements with the same class — ID selectors are _very specific_ in what they target), the red background color and the 1px black border should both be applied to the 2nd element, with the first element getting the gray background color, and no border, as specified by the class.
+3. Both elements have a [`class`](/en-US/docs/Web/HTML/Global_attributes/class) of `better`, but the 2nd one has an [`id`](/en-US/docs/Web/HTML/Global_attributes/id) of `winning` too. Since IDs have an _even higher_ specificity than classes (you can only have one element with each unique ID on a page, but many elements with the same class — ID selectors are _very specific_ in what they target), the red background color and the 1px black border should both be applied to the 2nd element, with the first element getting the gray background color, and no border, as specified by the class.
 4. The 2nd element _does_ get the red background color, but no border. Why? Because of the `!important` flag in the second rule. Adding the `!important` flag after `border: none` means that this declaration will win over the `border` value in the previous rule, even though the ID selector has higher specificity.
 
-> **Note:** The only way to override an important declaration is to include another important declaration with the _same specificity_ later in the source order, or one with higher specificity, or to include an important declaration in a prior cascade layer (we haven't covered cascade layers yet).
+> [!NOTE]
+> The only way to override an important declaration is to include another important declaration with the _same specificity_ later in the source order, or one with higher specificity, or to include an important declaration in a prior cascade layer (we haven't covered cascade layers yet).
 
 One situation in which you may have to use the `!important` flag is when you are working on a CMS where you can't edit the core CSS modules, and you really want to override an inline style or an important declaration that can't be overridden in any other way. But really, don't use it if you can avoid it.
 
@@ -259,15 +256,16 @@ Conflicting declarations will be applied in the following order, with later ones
 5. Important declarations in user style sheets.
 6. Important declarations in user agent style sheets.
 
-> **Note:** The order of precedence is inverted for styles flagged with `!important`. It makes sense for web developers' stylesheets to override user stylesheets, so the design can be kept as intended; however, sometimes users have good reasons to override web developer styles, as mentioned above, and this can be achieved by using `!important` in their rules.
+> [!NOTE]
+> The order of precedence is inverted for styles flagged with `!important`. It makes sense for web developers' stylesheets to override user stylesheets, so the design can be kept as intended; however, sometimes users have good reasons to override web developer styles, as mentioned above, and this can be achieved by using `!important` in their rules.
 
 ### Order of cascade layers
 
-Even though [cascade layers](/en-US/docs/Web/CSS/@layer) is an advanced topic and you may not use this feature right away, it's important to understand how layers cascade.
+Even though [cascade layers](/en-US/docs/Web/CSS/@layer) is an advanced topic and you might not use this feature right away, it's important to understand how layers cascade.
 
 When you declare CSS in cascade layers, the order of precedence is determined by the order in which the layers are declared. CSS styles declared outside of any layer are combined together, in the order in which those styles are declared, into an unnamed layer, as if it were the last declared layer. With competing normal (not important) styles, later layers take precedence over earlier defined layers. For styles flagged with `!important`, however, the order is reversed, with important styles in earlier layers taking precedence over important styles declared in subsequent layers or outside of any layer. Inline styles take precedence over all author styles, no matter the layer.
 
-When you have multiple style blocks in different layers providing competing values for a property on a single element, the layer in which the styles are declared determine the precedence. Specificity between layers doesn't matter, but specificity within a single layer still does.
+When you have multiple style blocks in different layers providing competing values for a property on a single element, the order in which the layers are declared determines the precedence. Specificity between layers doesn't matter, but specificity within a single layer still does.
 
 {{EmbedGHLiveSample("css-examples/learn/cascade/cascade-layers.html", '100%', 800)}}
 
@@ -275,40 +273,34 @@ Let's discuss a few things from the above example to understand what's happening
 
 If you change the first line of CSS in this example to read `@layer secondLayer, firstLayer;`, you will change the layer declaration order, and all the important styles from `firstLayer` will be changed to their respective values in `secondLayer`.
 
+### Scoping proximity
+
+Another advanced topic that you might not use right away but may need to understand in the future is {{CSSxRef("@scope")}}. This is an [at-rule](/en-US/docs/Web/CSS/At-rule) that enables you to create a block of rules that will only apply to a specific subsection of the HTML on your page. For example, you can specify styles that will only apply to {{htmlelement("img")}} elements when they're nested inside elements that have a `feature` class:
+
+```css
+@scope (.feature) {
+  img {
+    border: 2px solid black;
+    display: block;
+  }
+}
+```
+
+**Scoping proximity** is the mechanism that resolves conflicts between scoped elements. Scoping proximity states that when two scopes have conflicting styles, the style with the smallest number of hops up the DOM tree hierarchy to the scope root wins. See [How `@scope` conflicts are resolved](/en-US/docs/Web/CSS/@scope#how_scope_conflicts_are_resolved) for more details and an example.
+
+> [!NOTE]
+> Scoping proximity overrules source order but is itself overridden by other, higher-priority criteria such as [importance](/en-US/docs/Web/CSS/important), [layers](/en-US/docs/Learn/CSS/Building_blocks/Cascade_layers), and [specificity](/en-US/docs/Web/CSS/Specificity).
+
 ## Test your skills!
 
 You've reached the end of this article, but can you remember the most important information? You can find some further tests to verify that you've retained this information before you move on — see [Test your skills: The Cascade](/en-US/docs/Learn/CSS/Building_blocks/Cascade_tasks).
 
 ## Summary
 
-If you understood most of this article, then well done — you've started getting familiar with the fundamental mechanics of CSS. Next up, we'll look at [the box model](/en-US/docs/Learn/CSS/Building_blocks/The_box_model) in detail.
+If you understood most of this article, then well done — you've started getting familiar with the fundamental mechanics of CSS. Next up, we'll take a deeper look at [Cascade Layers](/en-US/docs/Learn/CSS/Building_blocks/Cascade_layers).
 
 If you didn't fully understand the cascade, specificity, and inheritance, then don't worry! This is definitely the most complicated thing we've covered so far in the course and is something that even professional web developers sometimes find tricky. We'd advise that you return to this article a few times as you continue through the course, and keep thinking about it.
 
 Refer back here if you start to come across strange issues with styles not applying as expected. It could be a specificity issue.
 
 {{PreviousMenuNext("Learn/CSS/Building_blocks/Selectors/Combinators", "Learn/CSS/Building_blocks/Cascade_layers", "Learn/CSS/Building_blocks")}}
-
-## In this module
-
-- [Cascade, specificity, and inheritance](/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)
-- [CSS selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors)
-
-  - [Type, class, and ID selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors)
-  - [Attribute selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors)
-  - [Pseudo-classes and pseudo-elements](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements)
-  - [Combinators](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators)
-
-- [The box model](/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
-- [Backgrounds and borders](/en-US/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders)
-- [Handling different text directions](/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions)
-- [Overflowing content](/en-US/docs/Learn/CSS/Building_blocks/Overflowing_content)
-- [Values and units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
-- [Sizing items in CSS](/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS)
-- [Images, media, and form elements](/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements)
-- [Styling tables](/en-US/docs/Learn/CSS/Building_blocks/Styling_tables)
-- [Debugging CSS](/en-US/docs/Learn/CSS/Building_blocks/Debugging_CSS)
-- [Organizing your CSS](/en-US/docs/Learn/CSS/Building_blocks/Organizing)
-- [Fundamental CSS comprehension](/en-US/docs/Learn/CSS/Building_blocks/Fundamental_CSS_comprehension)
-- [Creating fancy letterheaded paper](/en-US/docs/Learn/CSS/Building_blocks/Creating_fancy_letterheaded_paper)
-- [A cool-looking box](/en-US/docs/Learn/CSS/Building_blocks/A_cool_looking_box)

@@ -1,17 +1,7 @@
 ---
-title: '<summary>: The Disclosure Summary element'
+title: "<summary>: The Disclosure Summary element"
 slug: Web/HTML/Element/summary
 page-type: html-element
-tags:
-  - Disclosure Box
-  - Disclosure Control
-  - Disclosure Summary
-  - Element
-  - HTML
-  - HTML interactive elements
-  - Reference
-  - Summary
-  - Web
 browser-compat: html.elements.summary
 ---
 
@@ -30,6 +20,8 @@ This element only includes the [global attributes](/en-US/docs/Web/HTML/Global_a
 The `<summary>` element's contents can be any heading content, plain text, or HTML that can be used within a paragraph.
 
 A `<summary>` element may _only_ be used as the first child of a `<details>` element. When the user clicks on the summary, the parent `<details>` element is toggled open or closed, and then a {{domxref("HTMLDetailsElement/toggle_event", "toggle")}} event is sent to the `<details>` element, which can be used to let you know when this state change occurs.
+
+The content of the `<details>` provides the {{glossary("accessible description")}} for the `<summary>`.
 
 ### Default label text
 
@@ -64,6 +56,8 @@ A simple example showing the use of `<summary>` in a {{HTMLElement("details")}} 
 </details>
 ```
 
+#### Result
+
 {{EmbedLiveSample("Basic_example", 650, 120)}}
 
 ### Summaries as headings
@@ -81,11 +75,14 @@ You can use heading elements in `<summary>`, like this:
 </details>
 ```
 
+#### Result
+
 {{EmbedLiveSample("Summaries_as_headings", 650, 120)}}
 
 This currently has some spacing issues that could be addressed using CSS.
 
-> **Warning:** Because the `<summary>` element has a default role of [button](/en-US/docs/Web/Accessibility/ARIA/Roles/button_role) (which strips all roles from child elements), this example will not work for users of assistive technologies such as screen readers. The `<h4>` will have its role removed and thus will not be treated as a heading for these users.
+> [!WARNING]
+> Because the `<summary>` element has a default role of [button](/en-US/docs/Web/Accessibility/ARIA/Roles/button_role) (which strips all roles from child elements), this example will not work for users of assistive technologies such as screen readers. The `<h4>` will have its role removed and thus will not be treated as a heading for these users.
 
 ### HTML in summaries
 
@@ -102,20 +99,31 @@ This example adds some semantics to the `<summary>` element to indicate the labe
 </details>
 ```
 
+#### Result
+
 {{EmbedLiveSample("HTML_in_summaries", 650, 120)}}
 
 ## Technical summary
 
 <table class="properties">
   <tbody>
+     <tr>
+      <th scope="row">
+        <a href="/en-US/docs/Web/HTML/Content_categories"
+          >Content categories</a
+        >
+      </th>
+      <td>
+        none
+      </td>
+    </tr>
     <tr>
       <th scope="row">Permitted content</th>
       <td>
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content"
+        <a href="/en-US/docs/Web/HTML/Content_categories#phrasing_content"
           >Phrasing content</a
-        >
-        or one element of
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#heading_content"
+        >, optionally intermixed with
+        <a href="/en-US/docs/Web/HTML/Content_categories#heading_content"
           >Heading content</a
         >
       </td>
@@ -130,13 +138,7 @@ This example adds some semantics to the `<summary>` element to indicate the labe
     </tr>
     <tr>
       <th scope="row">Implicit ARIA role</th>
-      <td>
-        <code
-          ><a href="/en-US/docs/Web/Accessibility/ARIA/Roles/button_role"
-            >button</a
-          ></code
-        >
-      </td>
+      <td> <a href="https://www.w3.org/TR/html-aria/#dfn-no-corresponding-role">No corresponding role</a></td>
     </tr>
     <tr>
       <th scope="row">Permitted ARIA roles</th>

@@ -1,15 +1,8 @@
 ---
-title: BaseAudioContext.createDelay()
+title: "BaseAudioContext: createDelay() method"
+short-title: createDelay()
 slug: Web/API/BaseAudioContext/createDelay
 page-type: web-api-instance-method
-tags:
-  - API
-  - AudioContext
-  - BaseAudioContext
-  - Method
-  - Reference
-  - Web Audio API
-  - createDelay
 browser-compat: api.BaseAudioContext.createDelay
 ---
 
@@ -19,7 +12,8 @@ The `createDelay()` method of the
 {{domxref("BaseAudioContext")}} Interface is used to create a {{domxref("DelayNode")}},
 which is used to delay the incoming audio signal by a certain amount of time.
 
-> **Note:** The {{domxref("DelayNode.DelayNode", "DelayNode()")}}
+> [!NOTE]
+> The {{domxref("DelayNode.DelayNode", "DelayNode()")}}
 > constructor is the recommended way to create a {{domxref("DelayNode")}}; see
 > [Creating an AudioNode](/en-US/docs/Web/API/AudioNode#creating_an_audionode).
 

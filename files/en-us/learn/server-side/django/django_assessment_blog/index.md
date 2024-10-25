@@ -1,15 +1,7 @@
 ---
-title: 'Assessment: DIY Django mini blog'
+title: "Assessment: DIY Django mini blog"
 slug: Learn/Server-side/Django/django_assessment_blog
-tags:
-  - Assessment
-  - Beginner
-  - CodingScripting
-  - Learn
-  - Server-side programming
-  - blog
-  - django
-  - server-side
+page-type: learn-module-assessment
 ---
 
 {{LearnSidebar}}{{PreviousMenu("Learn/Server-side/Django/web_application_security", "Learn/Server-side/Django")}}
@@ -200,7 +192,8 @@ In addition you should write some basic tests to verify:
 - The BlogListView (all-blog page) uses the expected template (e.g. the default)
 - The BlogListView paginates records by 5 (at least on the first page)
 
-> **Note:** There are of course many other tests you can run. Use your discretion, but we'll expect you to do at least the tests above.
+> [!NOTE]
+> There are of course many other tests you can run. Use your discretion, but we'll expect you to do at least the tests above.
 
 The following section shows [screenshots](#screenshots) of a site that implements the requirements above.
 
@@ -281,7 +274,7 @@ Some general hints:
 4. The _add comment_ form can be created using a function-based view (and associated model and form) or using a generic `CreateView`. If you use a `CreateView` (recommended) then:
 
    - You will also need to pass the name of the blog post to the comment page in the context (implement `get_context_data()` as discussed below).
-   - The form should only display the comment "description" for user entry (date and associated blog post should not be editable). Since they won't be in the form itself, your code will need to set the comment's author in the `form_valid()` function so it can be saved into the model ([as described here](https://docs.djangoproject.com/en/4.0/topics/class-based-views/generic-editing/#models-and-request-user) — Django docs). In that same function we set the associated blog. A possible implementation is shown below (`pk` is a blog id passed in from the URL/URL configuration).
+   - The form should only display the comment "description" for user entry (date and associated blog post should not be editable). Since they won't be in the form itself, your code will need to set the comment's author in the `form_valid()` function so it can be saved into the model ([as described here](https://docs.djangoproject.com/en/5.0/topics/class-based-views/generic-editing/#models-and-request-user) — Django docs). In that same function we set the associated blog. A possible implementation is shown below (`pk` is a blog id passed in from the URL/URL configuration).
 
      ```python
          def form_valid(self, form):
@@ -314,7 +307,7 @@ class SomeView(generic.ListView):
 
 ## Assessment
 
-The assessment for this task is [available on Github here](https://github.com/mdn/django-diy-blog/blob/main/MarkingGuide.md). This assessment is primarily based on how well your application meets the requirements we listed above, though there are some parts of the assessment that check your code uses appropriate models, and that you have written at least some test code.
+The assessment for this task is [available on GitHub here](https://github.com/mdn/django-diy-blog/blob/main/MarkingGuide.md). This assessment is primarily based on how well your application meets the requirements we listed above, though there are some parts of the assessment that check your code uses appropriate models, and that you have written at least some test code.
 When you're done, you can check out [the finished example](https://github.com/mdn/django-diy-blog) which reflects a "full marks" project.
 
 Once you've completed this module you've also finished all the MDN content for learning basic Django server-side website programming! We hope you enjoyed this module and feel you have a good grasp of the basics!

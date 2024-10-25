@@ -2,17 +2,12 @@
 title: margin-top
 slug: Web/CSS/margin-top
 page-type: css-property
-tags:
-  - CSS
-  - CSS Property
-  - Reference
-  - recipe:css-property
 browser-compat: css.properties.margin-top
 ---
 
 {{CSSRef}}
 
-The **`margin-top`** [CSS](/en-US/docs/Web/CSS) property sets the [margin area](/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#margin_area) on the top of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+The **`margin-top`** [CSS](/en-US/docs/Web/CSS) property sets the [margin area](/en-US/docs/Web/CSS/CSS_box_model/Introduction_to_the_CSS_box_model#margin_area) on the top of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
 
 {{EmbedInteractiveExample("pages/css/margin-top.html")}}
 
@@ -64,7 +59,7 @@ The `margin-top` property is specified as the keyword `auto`, or a `<length>`, o
 .content {
   margin-top: 5%;
 }
-.sidebox {
+.side-box {
   margin-top: 10px;
 }
 .logo {
@@ -85,5 +80,8 @@ The `margin-top` property is specified as the keyword `auto`, or a `<length>`, o
 
 ## See also
 
-- {{cssxref("margin-right")}}, {{cssxref("margin-bottom")}}, and {{cssxref("margin-left")}} and the {{cssxref("margin")}} shorthand
-- The mapped logical properties: {{cssxref("margin-block-start")}}, {{cssxref("margin-block-end")}}, {{cssxref("margin-inline-start")}}, and {{cssxref("margin-inline-end")}} and the shorthands {{cssxref("margin-block")}} and {{cssxref("margin-inline")}}
+- {{cssxref("margin-right")}}, {{cssxref("margin-bottom")}}, and {{cssxref("margin-left")}}
+- {{cssxref("margin")}} shorthand
+- {{cssxref("margin-block-start")}}, {{cssxref("margin-block-end")}}, {{cssxref("margin-inline-start")}}, and {{cssxref("margin-inline-end")}}
+- {{cssxref("margin-block")}} and {{cssxref("margin-inline")}} shorthands
+- [CSS box model](/en-US/docs/Web/CSS/CSS_box_model) module

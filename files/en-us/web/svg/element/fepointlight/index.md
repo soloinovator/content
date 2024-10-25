@@ -2,12 +2,6 @@
 title: <fePointLight>
 slug: Web/SVG/Element/fePointLight
 page-type: svg-element
-tags:
-  - Element
-  - Reference
-  - SVG
-  - SVG Filter
-  - SVG Light Source
 browser-compat: svg.elements.fePointLight
 ---
 
@@ -20,12 +14,6 @@ The **`<fePointLight>`** filter primitive defines a light source which allows to
 {{svginfo}}
 
 ## Attributes
-
-### Global attributes
-
-- [Core attributes](/en-US/docs/Web/SVG/Attribute#core_attributes)
-
-### Specific attributes
 
 - {{SVGAttr("x")}}
 - {{SVGAttr("y")}}
@@ -66,7 +54,7 @@ This element implements the {{domxref("SVGFEPointLightElement")}} interface.
   </defs>
 
   <image
-    xlink:href="mdn_logo_only_color.png"
+    href="mdn_logo_only_color.png"
     x="10%"
     y="10%"
     width="80%"

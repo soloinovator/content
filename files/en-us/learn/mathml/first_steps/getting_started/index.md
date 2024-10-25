@@ -1,10 +1,7 @@
 ---
 title: Getting started with MathML
 slug: Learn/MathML/First_steps/Getting_started
-tags:
-  - Beginner
-  - MathML
-  - Landing
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{NextMenu("Learn/MathML/First_steps/Text_containers", "Learn/MathML/First_steps")}}
@@ -16,10 +13,9 @@ In this article, we will take a simple HTML document and see how to add MathML f
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy,
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
-          >basic software installed</a
+          >Basic software installed</a
         >, basic knowledge of
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
@@ -45,7 +41,7 @@ In this article, we will take a simple HTML document and see how to add MathML f
 MathML uses the same syntax as HTML to represent a tree of elements and attributes. In particular, each mathematical formula is represented by an element `<math>` which can be placed inside an HTML page. In the following document, it is inside a paragraph of text:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
   <head>
     <title>My first math page</title>
@@ -69,14 +65,15 @@ The `<mfrac>` element specifies a fraction with a numerator (its first child) an
 
 {{ EmbedLiveSample('Inserting_formulas_in_HTML', 700, 100, "", "") }}
 
-> **Warning:** If you just see "1 3" instead of a fraction, then your browser may not support MathML. Check out the [browser compatibility table](/en-US/docs/Web/MathML/Element/math#browser_compatibility) for further details.
+> [!WARNING]
+> If you just see "1 3" instead of a fraction, then your browser may not support MathML. Check out the [browser compatibility table](/en-US/docs/Web/MathML/Element/math#browser_compatibility) for further details.
 
 ### The display attribute
 
 Note that in the previous example, the formula is on the same line as the text of the paragraph. However, it is quite common to instead render large mathematical formulas centered on their own line as shown below. To achieve that, you need to attach a `display="block"` attribute on the `<math>` element.
 
 ```html hidden
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
   <head>
     <title>My first math page</title>
@@ -100,9 +97,11 @@ Note that in the previous example, the formula is on the same line as the text o
 
 You may also notice some subtle change in the appearance: the text and vertical spacing of the fraction becomes a bit bigger. Without the `display="block"` attribute, the height is minimized to avoid disturbing the flow of the surrounding text. With the `display="block"` attribute, priority is instead put on legibility of the mathematical formula.
 
-> **Note:** This corresponds to the LaTeX's concept of _inline_ formulas (delimited by dollar signs `$...$`) and _display_ formulas (delimited by `\[...\]`).
+> [!NOTE]
+> This corresponds to the LaTeX's concept of _inline_ formulas (delimited by dollar signs `$...$`) and _display_ formulas (delimited by `\[...\]`).
 
-> **Note:** The appearance change mentioned above is actually controlled by the [`math-style`](/en-US/docs/Web/CSS/math-style) property which is initially `normal` for `<math display="block">` and `compact` otherwise. In some MathML subtrees, this property can then automatically become `compact` but we will ignore this subtlety for this introductory tutorial. Again, this is similar to LaTeX.
+> [!NOTE]
+> The appearance change mentioned above is actually controlled by the [`math-style`](/en-US/docs/Web/CSS/math-style) property which is initially `normal` for `<math display="block">` and `compact` otherwise. In some MathML subtrees, this property can then automatically become `compact` but we will ignore this subtlety for this introductory tutorial. Again, this is similar to LaTeX.
 
 ## Grouping with the \<mrow> element
 

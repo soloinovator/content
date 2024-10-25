@@ -2,23 +2,16 @@
 title: font-weight
 slug: Web/CSS/@font-face/font-weight
 page-type: css-at-rule-descriptor
-tags:
-  - "@font-face"
-  - At-rule descriptor
-  - CSS
-  - Reference
-  - descriptor
-  - font-weight
 browser-compat: css.at-rules.font-face.font-weight
 ---
 
 {{CSSRef}}
 
-The **`font-weight`** CSS descriptor allows authors to specify font weights for the fonts specified in the {{cssxref("@font-face")}} rule. The {{cssxref("font-weight")}} property can separately be used to set how thick or thin characters in text should be displayed.
+The **`font-weight`** CSS descriptor allows authors to specify font weights for the fonts specified in the {{cssxref("@font-face")}} at-rule. The {{cssxref("font-weight")}} property can separately be used to set how thick or thin characters in text should be displayed.
 
 For a particular font family, authors can download various font faces which correspond to the different styles of the same font family, and then use the `font-weight` descriptor to explicitly specify the font face's weights. The values for the CSS descriptor is same as that of its corresponding font property.
 
-There are generally limited weights available for a particular font family. When a specified weight doesn't exist, a nearby weight is used. Fonts lacking bold are often synthesized by the user agent. To prevent this, use {{cssxref('font-synthesis')}} property.
+There are generally limited weights available for a particular font family. When a specified weight doesn't exist, a nearby weight is used. Fonts lacking bold typeface are often synthesized by the user agent. To prevent this, use the {{cssxref('font-synthesis')}} shorthand property.
 
 ## Syntax
 
@@ -70,9 +63,9 @@ Most fonts have a particular weight which corresponds to one of the numbers in [
 
 For TrueType or OpenType variable fonts, the "wght" variation is used to implement varying weights.
 
-## Accessibility concerns
+## Accessibility
 
-People experiencing low vision conditions may have difficulty reading text set with a `font-weight` value of `100` (Thin/Hairline) or `200` (Extra Light), especially if the font has a [low contrast color ratio](/en-US/docs/Web/CSS/color#accessibility_concerns).
+People experiencing low vision conditions may have difficulty reading text set with a `font-weight` value of `100` (Thin/Hairline) or `200` (Extra Light), especially if the font has a [low contrast color ratio](/en-US/docs/Web/CSS/color#accessibility).
 
 - [MDN Understanding WCAG, Guideline 1.4 explanations](/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable#guideline_1.4_make_it_easier_for_users_to_see_and_hear_content_including_separating_foreground_from_background)
 - [Understanding Success Criterion 1.4.8 | W3C Understanding WCAG 2.0](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-visual-presentation.html)
@@ -94,8 +87,9 @@ The following finds a local Open Sans font or imports it, and allows using the f
 ```css
 @font-face {
   font-family: "Open Sans";
-  src: local("Open Sans") format("woff2"), url("/fonts/OpenSans-Regular-webfont.woff")
-      format("woff");
+  src:
+    local("Open Sans") format("woff2"),
+    url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
   font-weight: 400;
 }
 ```
@@ -117,4 +111,4 @@ The following finds a local Open Sans font or imports it, and allows using the f
 - {{cssxref("font-feature-settings", "font-feature-settings")}}
 - {{cssxref("@font-face/font-variation-settings", "font-variation-settings")}}
 - {{cssxref("@font-face/src", "src")}}
-- {{cssxref("@font-face/unicode-range", "unicode-range descriptor")}}
+- {{cssxref("@font-face/unicode-range", "unicode-range")}} descriptor

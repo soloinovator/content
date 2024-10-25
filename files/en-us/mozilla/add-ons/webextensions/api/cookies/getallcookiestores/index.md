@@ -2,20 +2,10 @@
 title: cookies.getAllCookieStores()
 slug: Mozilla/Add-ons/WebExtensions/API/cookies/getAllCookieStores
 page-type: webextension-api-function
-tags:
-  - API
-  - Add-ons
-  - Cookies
-  - Extensions
-  - Method
-  - Non-standard
-  - Reference
-  - WebExtensions
-  - getAllCookieStores
 browser-compat: webextensions.api.cookies.getAllCookieStores
 ---
 
-{{AddonSidebar()}}
+{{AddonSidebar}}
 
 The **`getAllCookieStores()`** method of the {{WebExtAPIRef("cookies")}} API returns a list of all cookie stores.
 
@@ -57,7 +47,8 @@ Each member of the `cookieStores` array is a {{WebExtAPIRef("cookies.CookieStore
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.cookies`](https://developer.chrome.com/docs/extensions/reference/cookies/#method-getAllCookieStores) API. This documentation is derived from [`cookies.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/cookies.json) in the Chromium code.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.cookies`](https://developer.chrome.com/docs/extensions/reference/api/cookies#method-getAllCookieStores) API. This documentation is derived from [`cookies.json`](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/cookies.json) in the Chromium code.
 
 <!--
 // Copyright 2015 The Chromium Authors. All rights reserved.

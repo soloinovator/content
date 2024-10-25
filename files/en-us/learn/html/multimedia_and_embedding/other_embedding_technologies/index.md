@@ -1,19 +1,7 @@
 ---
 title: From object to iframe — other embedding technologies
 slug: Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies
-tags:
-  - Article
-  - Beginner
-  - CodingScripting
-  - Embedding
-  - Flash
-  - Guide
-  - HTML
-  - Learn
-  - Multimedia and embedding
-  - Object
-  - embed
-  - iframe
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/HTML/Multimedia_and_embedding/Video_and_audio_content", "Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web", "Learn/HTML/Multimedia_and_embedding")}}
@@ -25,10 +13,9 @@ By now you should really be getting the hang of embedding things into your web p
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy,
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
-          >basic software installed</a
+          >Basic software installed</a
         >, basic knowledge of
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
@@ -62,7 +49,7 @@ With the history lesson out of the way, let's move on and see how to use some of
 
 ## Active learning: classic embedding uses
 
-In this article we are going to jump straight into an active learning section, to immediately give you a real idea of just what embedding technologies are useful for. The online world is very familiar with [YouTube](https://www.youtube.com), but many people don't know about some of the sharing facilities it has available. Let's look at how YouTube allows us to embed a video in any page we like using an {{htmlelement("iframe")}}.
+In this article we are going to jump straight into an active learning section, to immediately give you a real idea of just what embedding technologies are useful for. The online world is very familiar with [YouTube](https://www.youtube.com/), but many people don't know about some of the sharing facilities it has available. Let's look at how YouTube allows us to embed a video in any page we like using an {{htmlelement("iframe")}}.
 
 1. First, go to YouTube and find a video you like.
 2. Below the video, you'll find a _Share_ button — select this to display the sharing options.
@@ -164,12 +151,12 @@ window.addEventListener("load", updateCode);
 // make it write a tab at the caret position instead
 
 textarea.onkeydown = function (e) {
-  if (e.keyCode === 9) {
+  if (e.code === "Tab") {
     e.preventDefault();
     insertAtCaret("\t");
   }
 
-  if (e.keyCode === 27) {
+  if (e.code === "Escape") {
     textarea.blur();
   }
 };
@@ -181,7 +168,7 @@ function insertAtCaret(text) {
   const front = textarea.value.substring(0, caretPos);
   const back = textarea.value.substring(
     textarea.selectionEnd,
-    textarea.value.length
+    textarea.value.length,
   );
   textarea.value = front + text + back;
   caretPos += text.length;
@@ -214,7 +201,7 @@ So, that was easy and fun, right? {{htmlelement("iframe")}} elements are designe
 
 Before diving into using `<iframe>` elements, there are some security concerns to be aware of.
 Say you wanted to include the MDN glossary on one of your web pages using the {{htmlelement("iframe")}} element, you might try something like the next code example.
-If you were to do add the code below into one of your pages, you might be surprised to see an error message instead of the glossary page:
+If you were to add the code below into one of your pages, you might be surprised to see an error message instead of the glossary page:
 
 ```html
 <head>
@@ -242,7 +229,7 @@ If you were to do add the code below into one of your pages, you might be surpri
 
 If you have a look at your browser's console, you'll see an error message like the following:
 
-```
+```plain
 Refused to display 'https://developer.mozilla.org/' in a frame because it set 'X-Frame-Options' to 'deny'.
 ```
 
@@ -252,18 +239,17 @@ The example includes the bare essentials needed to use an `<iframe>`:
 
 - [`border: none`](/en-US/docs/Web/CSS/border)
   - : If used, the `<iframe>` is displayed without a surrounding border. Otherwise, by default, browsers display the `<iframe>` with a surrounding border (which is generally undesirable).
-- {{htmlattrxref('allowfullscreen','iframe')}}
-  - : If set, the `<iframe>` is able to be placed in fullscreen mode using the [Fullscreen API](/en-US/docs/Web/API/Fullscreen_API) (somewhat beyond the scope of this article.)
-- {{htmlattrxref('src','iframe')}}
+- [`allowfullscreen`](/en-US/docs/Web/HTML/Element/iframe#allowfullscreen)
+  - : If set, the `<iframe>` is able to be placed in fullscreen mode using the [Fullscreen API](/en-US/docs/Web/API/Fullscreen_API) (somewhat beyond the scope of this article).
+- [`src`](/en-US/docs/Web/HTML/Element/iframe#src)
   - : This attribute, as with {{htmlelement("video")}}/{{htmlelement("img")}}, contains a path pointing to the URL of the document to be embedded.
-- {{htmlattrxref('width','iframe')}} and {{htmlattrxref('height','iframe')}}
+- [`width`](/en-US/docs/Web/HTML/Element/iframe#width) and [`height`](/en-US/docs/Web/HTML/Element/iframe#height)
   - : These attributes specify the width and height you want the iframe to be.
-- Fallback content
-  - : In the same way as other similar elements like {{htmlelement("video")}}, you can include fallback content between the opening and closing `<iframe></iframe>` tags that will appear if the browser doesn't support the `<iframe>`. In this case, we have included a link to the page instead. It is unlikely that you'll come across any browser that doesn't support `<iframe>`s these days.
-- {{htmlattrxref('sandbox','iframe')}}
+- [`sandbox`](/en-US/docs/Web/HTML/Element/iframe#sandbox)
   - : This attribute, which works in slightly more modern browsers than the rest of the `<iframe>` features (e.g. IE 10 and above) requests heightened security settings; we'll say more about this in the next section.
 
-> **Note:** In order to improve speed, it's a good idea to set the iframe's `src` attribute with JavaScript after the main content is done with loading. This makes your page usable sooner and decreases your official page load time (an important {{glossary("SEO")}} metric.)
+> [!NOTE]
+> In order to improve speed, it's a good idea to set the iframe's `src` attribute with JavaScript after the main content is done with loading. This makes your page usable sooner and decreases your official page load time (an important {{glossary("SEO")}} metric.)
 
 ### Security concerns
 
@@ -273,7 +259,7 @@ Browser makers and Web developers have learned the hard way that iframes are a c
 
 > **Note:** [Clickjacking](/en-US/docs/Glossary/Clickjacking) is one kind of common iframe attack where hackers embed an invisible iframe into your document (or embed your document into their own malicious website) and use it to capture users' interactions. This is a common way to mislead users or steal sensitive data.
 
-A quick example first though — try loading the previous example we showed above into your browser — you can [find it live on GitHub](https://mdn.github.io/learning-area/html/multimedia-and-embedding/other-embedding-technologies/iframe-detail.html) ([see the source code](https://github.com/mdn/learning-area/blob/main/html/multimedia-and-embedding/other-embedding-technologies/iframe-detail.html) too.) Instead of the page you expected, you'll probably see some kind of message to the effect of "I can't open this page", and if you look at the _Console_ in the [browser developer tools](/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), you'll see a message telling you why. In Firefox, you'll get told something like _The loading of "https\://developer.mozilla.org/en-US/docs/Glossary" in a frame is denied by "X-Frame-Options" directive set to "DENY"_. This is because the developers that built MDN have included a setting on the server that serves the website pages to disallow them from being embedded inside `<iframe>`s (see [Configure CSP directives](#configure_csp_directives), below.) This makes sense — an entire MDN page doesn't really make sense to be embedded in other pages unless you want to do something like embed them on your site and claim them as your own — or attempt to steal data via [clickjacking](/en-US/docs/Glossary/Clickjacking), which are both really bad things to do. Plus if everybody started to do this, all the additional bandwidth would start to cost Mozilla a lot of money.
+A quick example first though — try loading the previous example we showed above into your browser — you can [find it live on GitHub](https://mdn.github.io/learning-area/html/multimedia-and-embedding/other-embedding-technologies/iframe-detail.html) ([see the source code](https://github.com/mdn/learning-area/blob/main/html/multimedia-and-embedding/other-embedding-technologies/iframe-detail.html) too.) Instead of the page you expected, you'll probably see some kind of message to the effect of "I can't open this page", and if you look at the _Console_ in the [browser developer tools](/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools), you'll see a message telling you why. In Firefox, you'll get told something like _The loading of "https\://developer.mozilla.org/en-US/docs/Glossary" in a frame is denied by "X-Frame-Options" directive set to "DENY"_. This is because the developers that built MDN have included a setting on the server that serves the website pages to disallow them from being embedded inside `<iframe>`s (see [Configure CSP directives](#configure_csp_directives), below.) This makes sense — an entire MDN page doesn't really make sense to be embedded in other pages unless you want to do something like embed them on your site and claim them as your own — or attempt to steal data via [clickjacking](/en-US/docs/Glossary/Clickjacking), which are both really bad things to do. Plus if everybody started to do this, all the additional bandwidth would start to cost Mozilla a lot of money.
 
 #### Only embed when necessary
 
@@ -287,12 +273,13 @@ If the content is licensed, you must obey the license terms. For example, the co
 
 {{Glossary("HTTPS")}} is the encrypted version of {{Glossary("HTTP")}}. You should serve your websites using HTTPS whenever possible:
 
-1. HTTPS reduces the chance that remote content has been tampered with in transit,
+1. HTTPS reduces the chance that remote content has been tampered with in transit.
 2. HTTPS prevents embedded content from accessing content in your parent document, and vice versa.
 
 HTTPS-enabling your site requires a special security certificate to be installed. Many hosting providers offer HTTPS-enabled hosting without you needing to do any setup on your own to put a certificate in place. But if you _do_ need to set up HTTPS support for your site on your own, [Let's Encrypt](https://letsencrypt.org/) provides tools and instructions you can use for automatically creating and installing the necessary certificate — with built-in support for the most widely-used web servers, including the Apache web server, Nginx, and others. The Let's Encrypt tooling is designed to make the process as easy as possible, so there's really no good reason to avoid using it or other available means to HTTPS-enable your site.
 
-> **Note:** [GitHub pages](/en-US/docs/Learn/Common_questions/Using_Github_pages) allow content to be served via HTTPS by default, so it is useful for hosting content. If you are using a different hosting provider and are not sure, ask them about it.
+> **Note:** [GitHub pages](/en-US/docs/Learn/Common_questions/Tools_and_setup/Using_GitHub_pages) allow content to be served via HTTPS by default.
+> If you are using a different hosting provider you should check what support they provide for serving content with HTTPS.
 
 #### Always use the `sandbox` attribute
 
@@ -300,15 +287,17 @@ You want to give attackers as little power as you can to do bad things on your w
 
 Content that's not sandboxed may be able to execute JavaScript, submit forms, trigger popup windows, etc. By default, you should impose all available restrictions by using the `sandbox` attribute with no parameters, as shown in our previous example.
 
-If absolutely required, you can add permissions back one by one (inside the `sandbox=""` attribute value) — see the {{htmlattrxref('sandbox','iframe')}} reference entry for all the available options. One important note is that you should _never_ add both `allow-scripts` and `allow-same-origin` to your `sandbox` attribute — in that case, the embedded content could bypass the [Same-origin policy](/en-US/docs/Glossary/Same-origin_policy) that stops sites from executing scripts, and use JavaScript to turn off sandboxing altogether.
+If absolutely required, you can add permissions back one by one (inside the `sandbox=""` attribute value) — see the [`sandbox`](/en-US/docs/Web/HTML/Element/iframe#sandbox) reference entry for all the available options. One important note is that you should _never_ add both `allow-scripts` and `allow-same-origin` to your `sandbox` attribute — in that case, the embedded content could bypass the [Same-origin policy](/en-US/docs/Glossary/Same-origin_policy) that stops sites from executing scripts, and use JavaScript to turn off sandboxing altogether.
 
-> **Note:** Sandboxing provides no protection if attackers can fool people into visiting malicious content directly (outside an `iframe`). If there's any chance that certain content may be malicious (e.g., user-generated content), please serve it from a different {{glossary("domain")}} to your main site.
+> [!NOTE]
+> Sandboxing provides no protection if attackers can fool people into visiting malicious content directly (outside an `iframe`). If there's any chance that certain content may be malicious (e.g., user-generated content), please serve it from a different {{glossary("domain")}} to your main site.
 
 #### Configure CSP directives
 
 {{Glossary("CSP")}} stands for **[content security policy](/en-US/docs/Web/HTTP/CSP)** and provides [a set of HTTP Headers](/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) (metadata sent along with your web pages when they are served from a web server) designed to improve the security of your HTML document. When it comes to securing `<iframe>`s, you can _[configure your server to send an appropriate `X-Frame-Options` header.](/en-US/docs/Web/HTTP/Headers/X-Frame-Options)_ This can prevent other websites from embedding your content in their web pages (which would enable [clickjacking](/en-US/docs/Glossary/Clickjacking) and a host of other attacks), which is exactly what the MDN developers have done, as we saw earlier on.
 
-> **Note:** You can read Frederik Braun's post [On the X-Frame-Options Security Header](https://blog.mozilla.org/security/2013/12/12/on-the-x-frame-options-security-header/) for more background information on this topic. Obviously, it's rather out of scope for a full explanation in this article.
+> [!NOTE]
+> You can read Frederik Braun's post [On the X-Frame-Options Security Header](https://blog.mozilla.org/security/2013/12/12/on-the-x-frame-options-security-header/) for more background information on this topic. Obviously, it's rather out of scope for a full explanation in this article.
 
 ## The \<embed> and \<object> elements
 
@@ -331,42 +320,34 @@ If you find yourself needing to embed plugin content, this is the kind of inform
   <tbody>
     <tr>
       <td>{{glossary("URL")}} of the embedded content</td>
-      <td>{{htmlattrxref('src','embed')}}</td>
-      <td>{{htmlattrxref('data','object')}}</td>
+      <td><a href="/en-US/docs/Web/HTML/Element/embed#src"><code>src</code></a></td>
+      <td><a href="/en-US/docs/Web/HTML/Element/object#data"><code>data</code></a></td>
     </tr>
     <tr>
       <td>
-        <em>accurate </em>{{glossary("MIME type", 'media type')}}
+        <em>Accurate </em>{{glossary("MIME type", "media type")}}
         of the embedded content
       </td>
-      <td>{{htmlattrxref('type','embed')}}</td>
-      <td>{{htmlattrxref('type','object')}}</td>
+      <td><a href="/en-US/docs/Web/HTML/Element/embed#type"><code>type</code></a></td>
+      <td><a href="/en-US/docs/Web/HTML/Element/object#type"><code>type</code></a></td>
     </tr>
     <tr>
       <td>
-        height and width (in CSS pixels) of the box controlled by the plugin
+        Height and width (in CSS pixels) of the box controlled by the plugin
       </td>
       <td>
-        {{htmlattrxref('height','embed')}}<br />{{htmlattrxref('width','embed')}}
+         <a href="/en-US/docs/Web/HTML/Element/embed#height"><code>height</code></a><br /><a href="/en-US/docs/Web/HTML/Element/embed#width"><code>width</code></a>
       </td>
       <td>
-        {{htmlattrxref('height','object')}}<br />{{htmlattrxref('width','object')}}
-      </td>
-    </tr>
-    <tr>
-      <td>names and values, to feed the plugin as parameters</td>
-      <td>ad hoc attributes with those names and values</td>
-      <td>
-        single-tag {{htmlelement("param")}} elements, contained within
-        <code>&#x3C;object></code>
+         <a href="/en-US/docs/Web/HTML/Element/object#height"><code>height</code></a><br /><a href="/en-US/docs/Web/HTML/Element/object#width"><code>width</code></a>
       </td>
     </tr>
     <tr>
-      <td>independent HTML content as fallback for an unavailable resource</td>
-      <td>not supported (<code>&#x3C;noembed></code> is obsolete)</td>
+      <td>Independent HTML content as a fallback for an unavailable resource</td>
+      <td>Not supported (<code>&#x3C;noembed></code> is obsolete)</td>
       <td>
-        contained within <code>&#x3C;object></code>, after
-        <code>&#x3C;param></code> elements
+        Contained within the opening and closing
+        <code>&#x3C;object></code> tags
       </td>
     </tr>
   </tbody>
@@ -375,10 +356,10 @@ If you find yourself needing to embed plugin content, this is the kind of inform
 Let's look at an `<object>` example that embeds a PDF into a page (see the [live example](https://mdn.github.io/learning-area/html/multimedia-and-embedding/other-embedding-technologies/object-pdf.html) and the [source code](https://github.com/mdn/learning-area/blob/main/html/multimedia-and-embedding/other-embedding-technologies/object-pdf.html)):
 
 ```html
-<object data="mypdf.pdf" type="application/pdf" width="800" height="1200">
+<object data="my-pdf.pdf" type="application/pdf" width="800" height="1200">
   <p>
     You don't have a PDF plugin, but you can
-    <a href="mypdf.pdf">download the PDF file. </a>
+    <a href="my-pdf.pdf">download the PDF file. </a>
   </p>
 </object>
 ```
@@ -396,12 +377,3 @@ The topic of embedding other content in web documents can quickly become very co
 There are many other technologies that involve embedding external content besides the ones we discussed here. We saw some in earlier articles, such as {{htmlelement("video")}}, {{htmlelement("audio")}}, and {{htmlelement("img")}}, but there are others to discover, such as {{htmlelement("canvas")}} for JavaScript-generated 2D and 3D graphics, and {{SVGElement("svg")}} for embedding vector graphics. We'll look at [SVG](/en-US/docs/Web/SVG) in the next article of the module.
 
 {{PreviousMenuNext("Learn/HTML/Multimedia_and_embedding/Video_and_audio_content", "Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web", "Learn/HTML/Multimedia_and_embedding")}}
-
-## In this module
-
-- [Images in HTML](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML)
-- [Video and audio content](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content)
-- [From \<object> to \<iframe> — other embedding technologies](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies)
-- [Adding vector graphics to the Web](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web)
-- [Responsive images](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
-- [Mozilla splash page](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Mozilla_splash_page)

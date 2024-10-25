@@ -1,14 +1,7 @@
 ---
 title: Images, media, and form elements
 slug: Learn/CSS/Building_blocks/Images_media_form_elements
-tags:
-  - Beginner
-  - CSS
-  - Forms
-  - Images
-  - Learn
-  - Media
-  - replaced content
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/CSS/Building_blocks/Sizing_items_in_CSS", "Learn/CSS/Building_blocks/Styling_tables", "Learn/CSS/Building_blocks")}}
@@ -20,10 +13,9 @@ In this lesson we will take a look at how certain special elements are treated i
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy,
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
-          >basic software installed</a
+          >Basic software installed</a
         >, basic knowledge of
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
@@ -49,7 +41,7 @@ In this lesson we will take a look at how certain special elements are treated i
 
 Images and video are described as **[replaced elements](/en-US/docs/Web/CSS/Replaced_element)**. This means that CSS cannot affect the internal layout of these elements — only their position on the page amongst other elements. As we will see however, there are various things that CSS can do with an image.
 
-Certain replaced elements, such as images and video, are also described as having an **aspect ratio**. This means that it has a size in both the horizontal (x) and vertical (y) dimensions, and will be displayed using the intrinsic dimensions of the file by default.
+Certain replaced elements, such as images and video, are also described as having an **{{glossary("aspect ratio")}}**. This means that it has a size in both the horizontal (x) and vertical (y) dimensions, and will be displayed using the intrinsic dimensions of the file by default.
 
 ## Sizing images
 
@@ -57,7 +49,7 @@ As you already know from following these lessons, everything in CSS generates a 
 
 In the example below we have two boxes, both 200 pixels in size:
 
-- One contains an image which is smaller than 200 pixels — it is smaller than the box and doesn't stretch to fill it.
+- One contains an image that is smaller than 200 pixels — it is smaller than the box and doesn't stretch to fill it.
 - The other is larger than 200 pixels and overflows the box.
 
 {{EmbedGHLiveSample("css-examples/learn/images/size.html", '100%', 1000)}}
@@ -82,7 +74,7 @@ You could also try the value of `fill`, which will fill the box but not maintain
 
 ## Replaced elements in layout
 
-When using various CSS layout techniques on replaced elements, you may well find that they behave slightly differently from other elements. For example, in a flex or grid layout elements are stretched by default to fill the entire area. Images will not stretch, and instead will be aligned to the start of the grid area or flex container.
+When using various CSS layout techniques on replaced elements, you may well find that they behave slightly differently from other elements. For example, in a grid layout, elements are stretched by default to fill their entire [grid areas](/en-US/docs/Glossary/Grid_Areas). Images do not stretch; instead, they are aligned to the start of their grid areas.
 
 You can see this happening in the example below where we have a two column, two row grid container, which has four items in it. All of the `<div>` elements have a background color and stretch to fill the row and column. The image, however, does not stretch.
 
@@ -117,9 +109,10 @@ In the example below we have styled some text inputs using CSS — you can see t
 
 {{EmbedGHLiveSample("css-examples/learn/images/form.html", '100%', 1000)}}
 
-> **Warning:** You should take care when changing the styling of form elements to make sure it is still obvious to the user they are form elements. You could create a form input with no borders and background that is almost indistinguishable from the content around it, but this would make it very hard to recognize and fill in.
+> [!WARNING]
+> You should take care when changing the styling of form elements to make sure it is still obvious to the user they are form elements. You could create a form input with no borders and background that is almost indistinguishable from the content around it, but this would make it very hard to recognize and fill in.
 
-As explained in the lessons on [form styling](/en-US/docs/Learn/Forms/Styling_web_forms) in the HTML part of this course, many of the more complex input types are rendered by the operating system and are inaccessible to styling. You should therefore always assume that forms are going to look quite different for different visitors and test complex forms in a number of browsers.
+As explained in the lessons on [styling web forms](/en-US/docs/Learn/Forms/Styling_web_forms), many of the more complex input types are rendered by the operating system and are inaccessible to styling. You should, therefore, always assume that forms are going to look quite different for different visitors and test complex forms in a number of browsers.
 
 ### Inheritance and form elements
 
@@ -183,7 +176,8 @@ textarea {
 }
 ```
 
-> **Note:** Normalizing stylesheets are used by many developers to create a set of baseline styles to use on all projects. Typically these do similar things to those described above, making sure that anything different across browsers is set to a consistent default before you do your own work on the CSS. They are not as important as they once were, as browsers are typically more consistent than in the past. However if you want to take a look at one example, check out [Normalize.css](https://necolas.github.io/normalize.css/), which is a very popular stylesheet used as a base by many projects.
+> [!NOTE]
+> Normalizing stylesheets are used by many developers to create a set of baseline styles to use on all projects. Typically these do similar things to those described above, making sure that anything different across browsers is set to a consistent default before you do your own work on the CSS. They are not as important as they once were, as browsers are typically more consistent than in the past. However if you want to take a look at one example, check out [Normalize.css](https://necolas.github.io/normalize.css/), which is a very popular stylesheet used as a base by many projects.
 
 For further information on styling forms, take a look at the two articles in the HTML section of these guides.
 
@@ -201,27 +195,3 @@ This lesson has highlighted some of the differences you will encounter when work
 In the next article, we'll learn how to [style HTML tables](/en-US/docs/Learn/CSS/Building_blocks/Styling_tables).
 
 {{PreviousMenuNext("Learn/CSS/Building_blocks/Sizing_items_in_CSS", "Learn/CSS/Building_blocks/Styling_tables", "Learn/CSS/Building_blocks")}}
-
-## In this module
-
-- [Cascade, specificity, and inheritance](/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)
-- [CSS selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors)
-
-  - [Type, class, and ID selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors)
-  - [Attribute selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors)
-  - [Pseudo-classes and pseudo-elements](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements)
-  - [Combinators](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators)
-
-- [The box model](/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
-- [Backgrounds and borders](/en-US/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders)
-- [Handling different text directions](/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions)
-- [Overflowing content](/en-US/docs/Learn/CSS/Building_blocks/Overflowing_content)
-- [Values and units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
-- [Sizing items in CSS](/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS)
-- [Images, media, and form elements](/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements)
-- [Styling tables](/en-US/docs/Learn/CSS/Building_blocks/Styling_tables)
-- [Debugging CSS](/en-US/docs/Learn/CSS/Building_blocks/Debugging_CSS)
-- [Organizing your CSS](/en-US/docs/Learn/CSS/Building_blocks/Organizing)
-- [Fundamental CSS comprehension](/en-US/docs/Learn/CSS/Building_blocks/Fundamental_CSS_comprehension)
-- [Creating fancy letterheaded paper](/en-US/docs/Learn/CSS/Building_blocks/Creating_fancy_letterheaded_paper)
-- [A cool-looking box](/en-US/docs/Learn/CSS/Building_blocks/A_cool_looking_box)

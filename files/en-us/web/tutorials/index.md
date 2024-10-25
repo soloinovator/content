@@ -1,20 +1,7 @@
 ---
 title: Tutorials
 slug: Web/Tutorials
-tags:
-  - Beginner
-  - Browser
-  - CSS
-  - Code
-  - Coding
-  - GitHub
-  - Guide
-  - HTML
-  - JavaScript
-  - MDN
-  - Tutorial
-  - Web Article
-  - Web Development
+page-type: landing-page
 ---
 
 The links on this page lead to a variety of tutorials and training materials. Whether you are just starting, learning the basics, or are an old hand at web development, you can find helpful resources here for best practices.
@@ -36,7 +23,7 @@ These resources are created by forward-thinking companies and web developers who
   - : A comprehensive reference for HTML elements, and how the different browsers support them.
 - [Creating a Simple Web Page with HTML](https://www.theblogstarter.com/html-for-beginners/)
   - : An HTML guide for beginners that includes explanations of common tags, including HTML tags. Also includes a step-by-step guide to creating a basic web page with code examples.
-- [HTML Challenges](https://wikiversity.org/wiki/Web_Design/HTML_Challenges)
+- [HTML Challenges](https://en.wikiversity.org/wiki/Web_Design/HTML_Challenges)
   - : Use these challenges to hone your HTML skills (for example, "Should I use an \<h2> element or a \<strong> element?"), focusing on meaningful markup.
 
 ### Intermediate level
@@ -97,9 +84,9 @@ These resources are created by forward-thinking companies and web developers who
 
 ### Advanced level
 
-- [Using CSS transforms](/en-US/docs/Web/CSS/CSS_Transforms/Using_CSS_transforms)
+- [Using CSS transforms](/en-US/docs/Web/CSS/CSS_transforms/Using_CSS_transforms)
   - : Apply rotation, skewing, scaling, and translation using CSS.
-- [CSS transitions](/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)
+- [CSS transitions](/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions)
   - : CSS transitions provide a way to animate changes to CSS properties, instead of having the changes take effect instantly.
 - [Canvas tutorial](/en-US/docs/Web/API/Canvas_API/Tutorial)
   - : Learn how to draw graphics using scripting using the canvas element.
@@ -125,8 +112,6 @@ These resources are created by forward-thinking companies and web developers who
   - : In JavaScript, most things are objects, from core JavaScript features like strings and arrays to the browser APIs built on top of JavaScript. You can even create your own objects to encapsulate related functions and variables into efficient packages. The object-oriented nature of JavaScript is important to understand if you want to go further with your knowledge of the language and write more efficient code, therefore we've provided this module to help you. Here we teach object theory and syntax in detail, look at how to create your own objects, and explain what JSON data is and how to work with it.
 - [Client-side web APIs](/en-US/docs/Learn/JavaScript/Client-side_web_APIs)
   - : When writing client-side JavaScript for websites or applications, you won't go very far before you start to use APIs — interfaces for manipulating different aspects of the browser and operating system the site is running on, or even data from other websites or services. In this module, we will explore what APIs are, and how to use some of the most common APIs you'll come across often in your development work.
-- [A re-Introduction to JavaScript](/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
-  - : A recap of the JavaScript programming language aimed at intermediate-level developers.
 - [Eloquent JavaScript](https://eloquentjavascript.net/)
   - : A comprehensive guide to intermediate and advanced JavaScript methodologies.
 - [Speaking JavaScript](https://exploringjs.com/es5/)
@@ -146,9 +131,9 @@ These resources are created by forward-thinking companies and web developers who
   - : Documentation of the most quirky parts of JavaScript.
 - [Exploring ES6](https://exploringjs.com/es6/)
   - : Reliable and in-depth information on ECMAScript 2015.
-- [JavaScript Patterns](https://shichuan.github.io/javascript-patterns/)
+- [JavaScript Patterns](https://github.com/chuanxshi/javascript-patterns)
   - : A JavaScript pattern and anti-pattern collection that covers function patterns, jQuery patterns, jQuery plugin patterns, design patterns, general patterns, literals and constructor patterns, object creation patterns, code reuse patterns, DOM.
-- [How browsers work](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)
+- [How browsers work](https://web.dev/articles/howbrowserswork)
   - : A detailed research article describing different modern browsers, their engines, page rendering etc.
 - [JavaScript Videos](https://github.com/bolshchikov/js-must-watch)
   - : A collection of JavaScript videos to watch.
@@ -156,4 +141,4 @@ These resources are created by forward-thinking companies and web developers who
 ### Extension Development
 
 - [WebExtensions](/en-US/docs/Mozilla/Add-ons/WebExtensions)
-  - : WebExtensions is a cross-browser system for developing browser add-ons. To a large extent, the system is compatible with the [extension API](https://developer.chrome.com/docs/extensions/reference/) supported by Google Chrome and Opera. Extensions written for these browsers will in most cases run in Firefox or [Microsoft Edge](https://docs.microsoft.com/archive/microsoft-edge/legacy/developer/) with [just a few changes](https://extensionworkshop.com/documentation/develop/porting-a-google-chrome-extension/). The API is also fully compatible with [multiprocess Firefox](https://wiki.mozilla.org/Firefox/multiprocess).
+  - : WebExtensions is a cross-browser system for developing browser add-ons. To a large extent, the system is compatible with the [extension API](https://developer.chrome.com/docs/extensions/reference/) supported by Google Chrome and Opera. Extensions written for these browsers will in most cases run in Firefox or [Microsoft Edge](https://learn.microsoft.com/en-us/archive/microsoft-edge/legacy/developer/) with [just a few changes](https://extensionworkshop.com/documentation/develop/porting-a-google-chrome-extension/). The API is also fully compatible with [multiprocess Firefox](https://wiki.mozilla.org/Firefox/multiprocess).

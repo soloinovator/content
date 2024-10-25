@@ -1,20 +1,13 @@
 ---
 title: Working with Svelte stores
 slug: Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Svelte_stores
-tags:
-  - Beginner
-  - Frameworks
-  - JavaScript
-  - Learn
-  - Stores
-  - Svelte
-  - client-side
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}
 {{PreviousMenuNext("Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Svelte_reactivity_lifecycle_accessibility","Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Svelte_TypeScript", "Learn/Tools_and_testing/Client-side_JavaScript_frameworks")}}
 
-In the last article we completed the development of our app, finished organizing it into components, and discussed some advanced techniques for dealing with reactivity, working with DOM nodes, and exposing component functionality. In this article we will show another way to handle state management in Svelte: [Stores](https://svelte.dev/tutorial/writable-stores). Stores are global data repositories that hold values. Components can subscribe to stores and receive notifications when their values change.
+In the last article we completed the development of our app, finished organizing it into components, and discussed some advanced techniques for dealing with reactivity, working with DOM nodes, and exposing component functionality. In this article we will show another way to handle state management in Svelte: [Stores](https://learn.svelte.dev/tutorial/writable-stores). Stores are global data repositories that hold values. Components can subscribe to stores and receive notifications when their values change.
 
 <table>
   <tbody>
@@ -89,11 +82,11 @@ Sometimes, your app state will need to be accessed by multiple components that a
 
 Moreover, when your app becomes complicated and your component hierarchy gets complex, it might become too difficult for components to relay data between each other. In that case, moving to a global data store might be a good option. If you've already worked with [Redux](https://redux.js.org/) or [Vuex](https://vuex.vuejs.org/), then you'll be familiar with how this kind of store works. Svelte stores offer similar features for state management.
 
-A store is an object with a `subscribe()` method that allows interested parties to be notified whenever the store value changes, and an optional `set()` method that allows you to set new values for the store. This minimal API is known as the [store contract](https://svelte.dev/docs#component-format-script-4-prefix-stores-with-$-to-access-their-values-store-contract).
+A store is an object with a `subscribe()` method that allows interested parties to be notified whenever the store value changes and an optional `set()` method that allows you to set new values for the store. This minimal API is known as the [store contract](https://svelte.dev/docs/svelte-components#script-4-prefix-stores-with-$-to-access-their-values-store-contract).
 
-Svelte provides functions for creating [readable](https://svelte.dev/docs#run-time-svelte-store-readable), [writable](https://svelte.dev/docs#run-time-svelte-store-writable), and [derived](https://svelte.dev/docs#run-time-svelte-store-derived) stores in the `svelte/store` module.
+Svelte provides functions for creating [readable](https://svelte.dev/docs/svelte-store#readable), [writable](https://svelte.dev/docs/svelte-store#writable), and [derived](https://svelte.dev/docs/svelte-store#derived) stores in the `svelte/store` module.
 
-Svelte also provides a very intuitive way to integrate stores into its reactivity system using the [reactive `$store` syntax](https://svelte.dev/docs#component-format-script-4-prefix-stores-with-$-to-access-their-values). If you create your own stores honoring the store contract, you get this reactivity syntactic sugar for free.
+Svelte also provides a very intuitive way to integrate stores into its reactivity system using the [reactive `$store` syntax](https://svelte.dev/docs/svelte-components#script-4-prefix-stores-with-$-to-access-their-values). If you create your own stores honoring the store contract, you get this reactivity syntactic sugar for free.
 
 ## Creating the Alert component
 
@@ -109,12 +102,13 @@ Let's start by creating a writable store. Any component will be able to write to
 2. Give it the following content:
 
    ```js
-   import { writable } from 'svelte/store'
+   import { writable } from "svelte/store";
 
-   export const alert = writable('Welcome to the to-do list app!')
+   export const alert = writable("Welcome to the to-do list app!");
    ```
 
-> **Note:** Stores can be defined and used outside Svelte components, so you can organize them in any way you please.
+> [!NOTE]
+> Stores can be defined and used outside Svelte components, so you can organize them in any way you please.
 
 In the above code we import the `writable()` function from `svelte/store` and use it to create a new store called `alert` with an initial value of "Welcome to the to-do list app!". We then `export` the store.
 
@@ -125,7 +119,7 @@ Let's now create our `Alert` component and see how we can read values from the s
 1. Create another new file named `src/components/Alert.svelte`.
 2. Give it the following content:
 
-   ```html
+   ```svelte
    <script>
      import { alert } from '../stores.js'
      import { onDestroy } from 'svelte'
@@ -193,12 +187,12 @@ Let's now use our component.
 1. In `App.svelte` we'll import the component. Add the following import statement below the existing one:
 
    ```js
-   import Alert from './components/Alert.svelte'
+   import Alert from "./components/Alert.svelte";
    ```
 
 2. Then call the `Alert` component just above the `Todos` call, like this:
 
-   ```html
+   ```svelte
    <Alert />
    <Todos {todos} />
    ```
@@ -211,7 +205,7 @@ Let's now use our component.
 
 This works, but you'll have to copy and paste all this code every time you want to subscribe to a store:
 
-```html
+```svelte
 <script>
   import myStore from "./stores.js";
   import { onDestroy } from "svelte";
@@ -228,7 +222,7 @@ This works, but you'll have to copy and paste all this code every time you want 
 
 That's too much boilerplate for Svelte! Being a compiler, Svelte has more resources to make our lives easier. In this case Svelte provides the reactive `$store` syntax, also known as auto-subscription. In simple terms, you just prefix the store with the `$` sign and Svelte will generate the code to make it reactive automatically. So our previous code block can be replaced with this:
 
-```html
+```svelte
 <script>
   import myStore from "./stores.js";
 </script>
@@ -240,7 +234,7 @@ And `$myStore` will be fully reactive. This also applies to your own custom stor
 
 1. Let's apply this to our `Alert` component. Update the `<script>` and markup sections of `Alert.svelte` as follows:
 
-   ```html
+   ```svelte
    <script>
      import { alert } from '../stores.js'
    </script>
@@ -267,15 +261,15 @@ Writing to our store is just a matter of importing it and executing `$store = 'n
 1. Add the following `import` statement below the existing ones:
 
    ```js
-   import { alert } from '../stores.js'
+   import { alert } from "../stores.js";
    ```
 
 2. Update your `addTodo()` function like so:
 
    ```js
    function addTodo(name) {
-     todos = [...todos, { id: newTodoId, name, completed: false }]
-     $alert = `Todo '${name}' has been added`
+     todos = [...todos, { id: newTodoId, name, completed: false }];
+     $alert = `Todo '${name}' has been added`;
    }
    ```
 
@@ -283,9 +277,9 @@ Writing to our store is just a matter of importing it and executing `$store = 'n
 
    ```js
    function removeTodo(todo) {
-     todos = todos.filter((t) => t.id !== todo.id)
-     todosStatus.focus()             // give focus to status heading
-     $alert = `Todo '${todo.name}' has been deleted`
+     todos = todos.filter((t) => t.id !== todo.id);
+     todosStatus.focus(); // give focus to status heading
+     $alert = `Todo '${todo.name}' has been deleted`;
    }
    ```
 
@@ -293,10 +287,14 @@ Writing to our store is just a matter of importing it and executing `$store = 'n
 
    ```js
    function updateTodo(todo) {
-     const i = todos.findIndex((t) => t.id === todo.id)
-     if (todos[i].name !== todo.name)            $alert = `todo '${todos[i].name}' has been renamed to '${todo.name}'`
-     if (todos[i].completed !== todo.completed)  $alert = `todo '${todos[i].name}' marked as ${todo.completed ? 'completed' : 'active'}`
-     todos[i] = { ...todos[i], ...todo }
+     const i = todos.findIndex((t) => t.id === todo.id);
+     if (todos[i].name !== todo.name)
+       $alert = `todo '${todos[i].name}' has been renamed to '${todo.name}'`;
+     if (todos[i].completed !== todo.completed)
+       $alert = `todo '${todos[i].name}' marked as ${
+         todo.completed ? "completed" : "active"
+       }`;
+     todos[i] = { ...todos[i], ...todo };
    }
    ```
 
@@ -304,12 +302,12 @@ Writing to our store is just a matter of importing it and executing `$store = 'n
 
    ```js
    $: {
-     if (filter === 'all') {
-       $alert = 'Browsing all to-dos';
-     } else if (filter === 'active') {
-       $alert = 'Browsing active to-dos';
-     } else if (filter === 'completed') {
-       $alert = 'Browsing completed to-dos';
+     if (filter === "all") {
+       $alert = "Browsing all to-dos";
+     } else if (filter === "active") {
+       $alert = "Browsing active to-dos";
+     } else if (filter === "completed") {
+       $alert = "Browsing completed to-dos";
      }
    }
    ```
@@ -318,13 +316,13 @@ Writing to our store is just a matter of importing it and executing `$store = 'n
 
    ```js
    const checkAllTodos = (completed) => {
-     todos = todos.map((t) => ({...t, completed}))
-     $alert = `${completed ? 'Checked' : 'Unchecked'} ${todos.length} to-dos`
-   }
+     todos = todos.map((t) => ({ ...t, completed }));
+     $alert = `${completed ? "Checked" : "Unchecked"} ${todos.length} to-dos`;
+   };
    const removeCompletedTodos = () => {
-     $alert = `Removed ${todos.filter((t) => t.completed).length} to-dos`
-     todos = todos.filter((t) => !t.completed)
-   }
+     $alert = `Removed ${todos.filter((t) => t.completed).length} to-dos`;
+     todos = todos.filter((t) => !t.completed);
+   };
    ```
 
 7. So basically, we've imported the store and updated it on every event, which causes a new alert to show each time. Have a look at your app again, and try adding/deleting/updating a few to-dos!
@@ -333,7 +331,8 @@ As soon as we execute `$alert = …`, Svelte will run `alert.set()`. Our `Alert`
 
 We could do the same within any component or `.js` file.
 
-> **Note:** Outside Svelte components you cannot use the `$store` syntax. That's because the Svelte compiler won't touch anything outside Svelte components. In that case you'll have to rely on the `store.subscribe()` and `store.set()` methods.
+> [!NOTE]
+> Outside Svelte components you cannot use the `$store` syntax. That's because the Svelte compiler won't touch anything outside Svelte components. In that case you'll have to rely on the `store.subscribe()` and `store.set()` methods.
 
 ## Improving our Alert component
 
@@ -344,30 +343,31 @@ Let's see how to do that. We'll specify a prop with the milliseconds to wait bef
 1. Update the `<script>` section of your `Alert.svelte` component like so:
 
    ```js
-   import { onDestroy } from 'svelte'
-   import { alert } from '../stores.js'
+   import { onDestroy } from "svelte";
+   import { alert } from "../stores.js";
 
-   export let ms = 3000
-   let visible
-   let timeout
+   export let ms = 3000;
+   let visible;
+   let timeout;
 
    const onMessageChange = (message, ms) => {
-     clearTimeout(timeout)
-     if (!message) {               // hide Alert if message is empty
-       visible = false
+     clearTimeout(timeout);
+     if (!message) {
+       // hide Alert if message is empty
+       visible = false;
      } else {
-       visible = true                                              // show alert
-       if (ms > 0) timeout = setTimeout(() => visible = false, ms) // and hide it after ms milliseconds
+       visible = true; // show alert
+       if (ms > 0) timeout = setTimeout(() => (visible = false), ms); // and hide it after ms milliseconds
      }
-   }
-   $: onMessageChange($alert, ms)      // whenever the alert store or the ms props changes run onMessageChange
+   };
+   $: onMessageChange($alert, ms); // whenever the alert store or the ms props changes run onMessageChange
 
-   onDestroy(() => clearTimeout(timeout))           // make sure we clean-up the timeout
+   onDestroy(() => clearTimeout(timeout)); // make sure we clean-up the timeout
    ```
 
 2. And update the `Alert.svelte` markup section like so:
 
-   ```html
+   ```svelte
    {#if visible}
    <div on:click={() => visible = false}>
      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
@@ -394,7 +394,7 @@ For common situations, you also have several predefined specialized `role` value
 
 In our case, just adding a `role="alert"` to the `<div>` container will do the trick, like this:
 
-```html
+```svelte
 <div role="alert" on:click={() => visible = false}>
 ```
 
@@ -411,12 +411,12 @@ First we need some way for our `Todos` component to give back the updated to-dos
 1. First, add the following line below your `todos` array:
 
    ```js
-   $: console.log('todos', todos)
+   $: console.log("todos", todos);
    ```
 
 2. Next, update your `Todos` component call as follows:
 
-   ```html
+   ```svelte
    <Todos bind:todos />
    ```
 
@@ -434,14 +434,14 @@ So let's start by using a regular writable store to save our to-dos.
 1. Open the file `stores.js` and add the following store below the existing one:
 
    ```js
-   export const todos = writable([])
+   export const todos = writable([]);
    ```
 
 2. That was easy. Now we need to import the store and use it in `App.svelte`. Just remember that to access the to-dos now we have to use the `$todos` reactive `$store` syntax.
 
    Update your `App.svelte` file like this:
 
-   ```html
+   ```svelte
    <script>
      import Todos from "./components/Todos.svelte";
      import Alert from "./components/Alert.svelte";
@@ -472,8 +472,8 @@ You can create your own stores without relying on `svelte/store` by implementing
 First, let's add the following `console.log()` statements to our `App.svelte` component to see the `todos` store and its content in action. Add these lines below the `todos` array:
 
 ```js
-console.log('todos store - todos:', todos)
-console.log('todos store content - $todos:', $todos)
+console.log("todos store - todos:", todos);
+console.log("todos store content - $todos:", $todos);
 ```
 
 When you run the app now, you'll see something like this in your web console:
@@ -486,43 +486,42 @@ Just for reference, here's a basic working store implemented from scratch:
 
 ```js
 export const writable = (initial_value = 0) => {
-
-  let value = initial_value         // content of the store
-  let subs = []                     // subscriber's handlers
+  let value = initial_value; // content of the store
+  let subs = []; // subscriber's handlers
 
   const subscribe = (handler) => {
-    subs = [...subs, handler]                                 // add handler to the array of subscribers
-    handler(value)                                            // call handler with current value
-    return () => subs = subs.filter((sub) => sub !== handler)   // return unsubscribe function
-  }
+    subs = [...subs, handler]; // add handler to the array of subscribers
+    handler(value); // call handler with current value
+    return () => (subs = subs.filter((sub) => sub !== handler)); // return unsubscribe function
+  };
 
   const set = (new_value) => {
-    if (value === new_value) return         // same value, exit
-    value = new_value                       // update value
-    subs.forEach((sub) => sub(value))         // update subscribers
-  }
+    if (value === new_value) return; // same value, exit
+    value = new_value; // update value
+    subs.forEach((sub) => sub(value)); // update subscribers
+  };
 
-  const update = (update_fn) => set(update_fn(value))   // update function
+  const update = (update_fn) => set(update_fn(value)); // update function
 
-  return { subscribe, set, update }       // store contract
-}
+  return { subscribe, set, update }; // store contract
+};
 ```
 
 Here we declare `subs`, which is an array of subscribers. In the `subscribe()` method we add the handler to the `subs` array and return a function that, when executed, will remove the handler from the array.
 
 When we call `set()`, we update the value of the store and call each handler, passing the new value as a parameter.
 
-Usually you don't implement stores from scratch; instead you'd use the writable store to create [custom stores](https://svelte.dev/tutorial/custom-stores) with domain-specific logic. In the following example we create a counter store, which will only allow us to add one to the counter or reset its value:
+Usually you don't implement stores from scratch; instead you'd use the writable store to create [custom stores](https://learn.svelte.dev/tutorial/custom-stores) with domain-specific logic. In the following example we create a counter store, which will only allow us to add one to the counter or reset its value:
 
 ```js
-import { writable } from 'svelte/store';
+import { writable } from "svelte/store";
 function myStore() {
   const { subscribe, set, update } = writable(0);
 
   return {
     subscribe,
     addOne: () => update((n) => n + 1),
-    reset: () => set(0)
+    reset: () => set(0),
   };
 }
 ```
@@ -535,7 +534,8 @@ Svelte won't force you to organize your state management in a specific way; it j
 
 Our to-do list app is not particularly complex, so we won't move all our modification methods into a central place. We'll just leave them as they are, and instead concentrate on persisting our to-dos.
 
-> **Note:** If you are following this guide working from the Svelte REPL, you won't be able to complete this step. For security reasons the Svelte REPL works in a sandboxed environment which will not let you access web storage, and you will get a "The operation is insecure" error. In order to follow this section, you'll have to clone the repo and go to the `mdn-svelte-tutorial/06-stores` folder, or you can directly download the folder's content with `npx degit opensas/mdn-svelte-tutorial/06-stores`.
+> [!NOTE]
+> If you are following this guide working from the Svelte REPL, you won't be able to complete this step. For security reasons the Svelte REPL works in a sandboxed environment which will not let you access web storage, and you will get a "The operation is insecure" error. In order to follow this section, you'll have to clone the repo and go to the `mdn-svelte-tutorial/06-stores` folder, or you can directly download the folder's content with `npx degit opensas/mdn-svelte-tutorial/06-stores`.
 
 To implement a custom store that saves its content to web storage, we will need a writable store that does the following:
 
@@ -548,30 +548,32 @@ Moreover, because web storage only supports saving string values, we will have t
 2. Give it the following content:
 
    ```js
-   import { writable } from 'svelte/store';
+   import { writable } from "svelte/store";
 
-   export const localStore = (key, initial) => {                 // receives the key of the local storage and an initial value
+   export const localStore = (key, initial) => {
+     // receives the key of the local storage and an initial value
 
-     const toString = (value) => JSON.stringify(value, null, 2)  // helper function
-     const toObj = JSON.parse                                    // helper function
+     const toString = (value) => JSON.stringify(value, null, 2); // helper function
+     const toObj = JSON.parse; // helper function
 
-     if (localStorage.getItem(key) === null) {                   // item not present in local storage
-       localStorage.setItem(key, toString(initial))              // initialize local storage with initial value
+     if (localStorage.getItem(key) === null) {
+       // item not present in local storage
+       localStorage.setItem(key, toString(initial)); // initialize local storage with initial value
      }
 
-     const saved = toObj(localStorage.getItem(key))              // convert to object
+     const saved = toObj(localStorage.getItem(key)); // convert to object
 
-     const { subscribe, set, update } = writable(saved)          // create the underlying writable store
+     const { subscribe, set, update } = writable(saved); // create the underlying writable store
 
      return {
        subscribe,
        set: (value) => {
-         localStorage.setItem(key, toString(value))              // save also to local storage as a string
-         return set(value)
+         localStorage.setItem(key, toString(value)); // save also to local storage as a string
+         return set(value);
        },
-       update
-     }
-   }
+       update,
+     };
+   };
    ```
 
    - Our `localStore` will be a function that when executed initially reads its content from web storage, and returns an object with three methods: `subscribe()`, `set()`, and `update()`.
@@ -587,24 +589,24 @@ Moreover, because web storage only supports saving string values, we will have t
    Update `stores.js` like so:
 
    ```js
-   import { writable } from 'svelte/store'
-   import { localStore } from './localStore.js'
+   import { writable } from "svelte/store";
+   import { localStore } from "./localStore.js";
 
-   export const alert = writable('Welcome to the to-do list app!')
+   export const alert = writable("Welcome to the to-do list app!");
 
    const initialTodos = [
-     { id: 1, name: 'Visit MDN web docs', completed: true },
-     { id: 2, name: 'Complete the Svelte Tutorial', completed: false },
-   ]
+     { id: 1, name: "Visit MDN web docs", completed: true },
+     { id: 2, name: "Complete the Svelte Tutorial", completed: false },
+   ];
 
-   export const todos = localStore('mdn-svelte-todo', initialTodos)
+   export const todos = localStore("mdn-svelte-todo", initialTodos);
    ```
 
    Using `localStore('mdn-svelte-todo', initialTodos)`, we are configuring the store to save the data in web storage under the key `mdn-svelte-todo`. We also set a couple of todos as initial values.
 
 4. Now let's get rid of the hardcoded to-dos in `App.svelte`. Update its contents as follows. We are basically just deleting the `$todos` array and the `console.log()` statements:
 
-   ```html
+   ```svelte
    <script>
      import Todos from './components/Todos.svelte'
      import Alert from './components/Alert.svelte'
@@ -616,32 +618,33 @@ Moreover, because web storage only supports saving string values, we will have t
    <Todos bind:todos={$todos} />
    ```
 
-   > **Note:** This is the only change we have to make in order to use our custom store. `App.svelte` is completely transparent in terms of what kind of store we are using.
+   > [!NOTE]
+   > This is the only change we have to make in order to use our custom store. `App.svelte` is completely transparent in terms of what kind of store we are using.
 
 5. Go ahead and try your app again. Create a few to-dos and then close the browser. You may even stop the Svelte server and restart it. Upon revisiting the URL, your to-dos will still be there.
 6. You can also inspect it in the DevTools console. In the web console, enter the command `localStorage.getItem('mdn-svelte-todo')`. Make some changes to your app, like pressing the _Uncheck All_ button, and check the web storage content once more. You will get something like this:
 
    ![to-do app with web console view alongside it, showing that when a to-do is changed in the app, the corresponding entry is changed in web storage](03-persisting-todos-to-local-storage.png)
 
-Svelte stores provide a very simple and lightweight, but extremely powerful, way to handle complex app state from a global data store in a reactive way. And because Svelte compiles our code, it can provide the [`$store` auto-subscription syntax](https://svelte.dev/docs#4_Prefix_stores_with_%24_to_access_their_values) that allows us to work with stores in the same way as local variables. Because stores have a minimal API, it's very simple to create our custom stores to abstract away the inner workings of the store itself.
+Svelte stores provide a very simple and lightweight, but extremely powerful, way to handle complex app state from a global data store in a reactive way. And because Svelte compiles our code, it can provide the [`$store` auto-subscription syntax](https://svelte.dev/docs/svelte-components#script-4-prefix-stores-with-$-to-access-their-values) that allows us to work with stores in the same way as local variables. Because stores have a minimal API, it's very simple to create our custom stores to abstract away the inner workings of the store itself.
 
 ## Bonus track: Transitions
 
-Let's change the subject now and do something fun and different: add an animation to our alerts. Svelte provides a whole module to define [transitions](https://svelte.dev/tutorial/transition) and [animations](https://svelte.dev/tutorial/animate) so we can make our user interfaces more appealing.
+Let's change the subject now and do something fun and different: add an animation to our alerts. Svelte provides a whole module to define [transitions](https://learn.svelte.dev/tutorial/transition) and [animations](https://learn.svelte.dev/tutorial/animate) so we can make our user interfaces more appealing.
 
-A transition is applied with the [transition:fn](https://svelte.dev/docs#transition_fn) directive, and is triggered by an element entering or leaving the DOM as a result of a state change. The `svelte/transition` module exports seven functions: `fade`, `blur`, `fly`, `slide`, `scale`, `draw`, and `crossfade`.
+A transition is applied with the [transition:fn](https://svelte.dev/docs/element-directives#transition-fn) directive, and is triggered by an element entering or leaving the DOM as a result of a state change. The `svelte/transition` module exports seven functions: `fade`, `blur`, `fly`, `slide`, `scale`, `draw`, and `crossfade`.
 
 Let's give our `Alert` component a fly `transition`. We'll open the `Alert.svelte` file and import the `fly` function from the `svelte/transition` module.
 
 1. Put the following `import` statement below the existing ones:
 
    ```js
-   import { fly } from 'svelte/transition'
+   import { fly } from "svelte/transition";
    ```
 
 2. To use it, update your opening `<div>` tag like so:
 
-   ```html
+   ```svelte
    <div role="alert" on:click={() => visible = false}
      transition:fly
    >
@@ -649,19 +652,21 @@ Let's give our `Alert` component a fly `transition`. We'll open the `Alert.svelt
 
    Transitions can also receive parameters, like this:
 
-   ```html
+   ```svelte
    <div role="alert" on:click={() => visible = false}
      transition:fly="\{{delay: 250, duration: 300, x: 0, y: -100, opacity: 0.5}}"
    >
    ```
 
-   > **Note:** The double curly braces are not special Svelte syntax. It's just a literal JavaScript object being passed as a parameter to the fly transition.
+   > [!NOTE]
+   > The double curly braces are not special Svelte syntax. It's just a literal JavaScript object being passed as a parameter to the fly transition.
 
 3. Try your app out again, and you'll see that the notifications now look a bit more appealing.
 
-> **Note:** Being a compiler allows Svelte to optimize the size of our bundle by excluding features that are not used. In this case, if we compile our app for production with `npm run build`, our `public/build/bundle.js` file will weight a little less than 22 KB. If we remove the `transitions:fly` directive Svelte is smart enough to realize the fly function is not being used and the `bundle.js` file size will drop down to just 18 KB.
+> [!NOTE]
+> Being a compiler allows Svelte to optimize the size of our bundle by excluding features that are not used. In this case, if we compile our app for production with `npm run build`, our `public/build/bundle.js` file will weight a little less than 22 KB. If we remove the `transitions:fly` directive Svelte is smart enough to realize the fly function is not being used and the `bundle.js` file size will drop down to just 18 KB.
 
-This is just the tip of the iceberg. Svelte has lots of options for dealing with animations and transitions. Svelte also supports specifying different transitions to apply when the element is added or removed from the DOM with the `in:fn`/`out:fn` directives, and it also allows you to define your [custom CSS](https://svelte.dev/tutorial/custom-css-transitions) and [JavaScript](https://svelte.dev/tutorial/custom-js-transitions) transitions. It also has several easing functions to specify the rate of change over time. Have a look at the [ease visualizer](https://svelte.dev/examples/easing) to explore the various ease functions available.
+This is just the tip of the iceberg. Svelte has lots of options for dealing with animations and transitions. Svelte also supports specifying different transitions to apply when the element is added or removed from the DOM with the `in:fn`/`out:fn` directives, and it also allows you to define your [custom CSS](https://learn.svelte.dev/tutorial/custom-css-transitions) and [JavaScript](https://learn.svelte.dev/tutorial/custom-js-transitions) transitions. It also has several easing functions to specify the rate of change over time. Have a look at the [ease visualizer](https://svelte.dev/examples/easing) to explore the various ease functions available.
 
 ## The code so far
 

@@ -1,16 +1,7 @@
 ---
 title: Sizing items in CSS
 slug: Learn/CSS/Building_blocks/Sizing_items_in_CSS
-tags:
-  - Beginner
-  - CSS
-  - Intrinsic size
-  - Learn
-  - max size
-  - min size
-  - percentage
-  - sizing
-  - viewport units
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/CSS/Building_blocks/Values_and_units", "Learn/CSS/Building_blocks/Images_media_form_elements", "Learn/CSS/Building_blocks")}}
@@ -22,10 +13,9 @@ In the various lessons so far, you have come across a number of ways to size ite
     <tr>
       <th scope="row">Prerequisites:</th>
       <td>
-        Basic computer literacy,
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
-          >basic software installed</a
+          >Basic software installed</a
         >, basic knowledge of
         <a
           href="/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
@@ -76,7 +66,7 @@ This is because percentages resolve against the size of the containing block. Wi
 
 ### Percentage margins and padding
 
-If you set `margins` and `padding` as a percentage, you may notice some strange behavior. In the below example we have a box. We have given the inner box a {{cssxref("margin")}} of 10% and a {{cssxref("padding")}} of 10%. The padding and margin on the top and bottom of the box are the same size as the margin on the left and right.
+If you set `margins` and `padding` as a percentage, you may notice some strange behavior. In the below example we have a box. We have given the inner box a {{cssxref("margin")}} of 10% and a {{cssxref("padding")}} of 10%. The padding and margin on the top and bottom of the box are the same size as the padding and margin on the left and right.
 
 {{EmbedGHLiveSample("css-examples/learn/sizing/percent-mp.html", '100%', 800)}}
 
@@ -106,7 +96,8 @@ In the example below, we have used the same image three times. The first image h
 
 This technique is used to make images _responsive_, so that when viewed on a smaller device they scale down appropriately. You should, however, not use this technique to load really large images and then scale them down in the browser. Images should be appropriately sized to be no larger than they need to be for the largest size they are displayed in the design. Downloading overly large images will cause your site to become slow, and it can cost users more money if they are on a metered connection.
 
-> **Note:** Find out more about [responsive image techniques](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
+> [!NOTE]
+> Find out more about [responsive image techniques](/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
 
 ## Viewport units
 
@@ -131,27 +122,3 @@ This lesson has given you a rundown of some key issues that you might run into w
 In the next article, we'll take a look at how [images, media, and form elements](/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements) are treated in CSS.
 
 {{PreviousMenuNext("Learn/CSS/Building_blocks/Values_and_units", "Learn/CSS/Building_blocks/Images_media_form_elements", "Learn/CSS/Building_blocks")}}
-
-## In this module
-
-- [Cascade, specificity, and inheritance](/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)
-- [CSS selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors)
-
-  - [Type, class, and ID selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors)
-  - [Attribute selectors](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors)
-  - [Pseudo-classes and pseudo-elements](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements)
-  - [Combinators](/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators)
-
-- [The box model](/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
-- [Backgrounds and borders](/en-US/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders)
-- [Handling different text directions](/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions)
-- [Overflowing content](/en-US/docs/Learn/CSS/Building_blocks/Overflowing_content)
-- [Values and units](/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
-- [Sizing items in CSS](/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS)
-- [Images, media, and form elements](/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements)
-- [Styling tables](/en-US/docs/Learn/CSS/Building_blocks/Styling_tables)
-- [Debugging CSS](/en-US/docs/Learn/CSS/Building_blocks/Debugging_CSS)
-- [Organizing your CSS](/en-US/docs/Learn/CSS/Building_blocks/Organizing)
-- [Fundamental CSS comprehension](/en-US/docs/Learn/CSS/Building_blocks/Fundamental_CSS_comprehension)
-- [Creating fancy letterheaded paper](/en-US/docs/Learn/CSS/Building_blocks/Creating_fancy_letterheaded_paper)
-- [A cool-looking box](/en-US/docs/Learn/CSS/Building_blocks/A_cool_looking_box)

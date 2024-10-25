@@ -1,15 +1,7 @@
 ---
 title: Debugging HTML
 slug: Learn/HTML/Introduction_to_HTML/Debugging_HTML
-tags:
-  - Beginner
-  - CodingScripting
-  - Debugging
-  - Error
-  - Guide
-  - HTML
-  - Validation
-  - validator
+page-type: learn-module-chapter
 ---
 
 {{LearnSidebar}}{{PreviousMenuNext("Learn/HTML/Introduction_to_HTML/Document_and_website_structure", "Learn/HTML/Introduction_to_HTML/Marking_up_a_letter", "Learn/HTML/Introduction_to_HTML")}}
@@ -48,7 +40,9 @@ Writing HTML is fine, but what if something goes wrong, and you can't work out w
 
 When writing code of some kind, everything is usually fine, until that dreaded moment when an error occurs — you've done something wrong, so your code doesn't work — either not at all, or not quite how you wanted it to. For example, the following shows an error reported when trying to {{glossary("compile")}} a simple program written in the [Rust](https://www.rust-lang.org/) language.
 
-![A console window showing the result of trying to compile a rust program with a missing quote around a string in a print statement. The error message reported is error: unterminated double quote string.](error-message.png)Here, the error message is relatively easy to understand — "unterminated double quote string". If you look at the listing, you can probably see how `println!(Hello, world!");` might logically be missing a double quote. However, error messages can quickly get more complicated and less easy to interpret as programs get bigger, and even simple cases can look a little intimidating to someone who doesn't know anything about Rust.
+![A console window showing the result of trying to compile a rust program with a missing quote around a string in a print statement. The error message reported is error: unterminated double quote string.](error-message.png)
+
+Here, the error message is relatively easy to understand — "unterminated double quote string". If you look at the listing, you can probably see how `println!(Hello, world!");` might logically be missing a double quote. However, error messages can quickly get more complicated and less easy to interpret as programs get bigger, and even simple cases can look a little intimidating to someone who doesn't know anything about Rust.
 
 Debugging doesn't have to be scary though — the key to being comfortable with writing and debugging any programming language or code is familiarity with both the language and the tools.
 
@@ -65,7 +59,8 @@ So what do we mean by permissive? Well, generally when you do something wrong in
 
 HTML itself doesn't suffer from syntax errors because browsers parse it permissively, meaning that the page still displays even if there are syntax errors. Browsers have built-in rules to state how to interpret incorrectly written markup, so you'll get something running, even if it is not what you expected. This, of course, can still be a problem!
 
-> **Note:** HTML is parsed permissively because when the web was first created, it was decided that allowing people to get their content published was more important than making sure the syntax was absolutely correct. The web would probably not be as popular as it is today, if it had been more strict from the very beginning.
+> [!NOTE]
+> HTML is parsed permissively because when the web was first created, it was decided that allowing people to get their content published was more important than making sure the syntax was absolutely correct. The web would probably not be as popular as it is today, if it had been more strict from the very beginning.
 
 ### Active learning: Studying permissive code
 
@@ -99,9 +94,9 @@ It's time to study the permissive nature of HTML code.
    - The {{htmlelement("p","paragraph")}} and {{htmlelement("li","list item")}} elements have no closing tags. Looking at the image above, this doesn't seem to have affected the markup rendering too badly, as it is easy to infer where one element should end and another should begin.
    - The first {{htmlelement("strong")}} element has no closing tag. This is a bit more problematic, as it isn't easy to tell where the element is supposed to end. In fact, the whole of the rest of the text has been strongly emphasized.
    - This section is badly nested: `<strong>strong <em>strong emphasized?</strong> what is this?</em>`. It is not easy to tell how this has been interpreted because of the previous problem.
-   - The {{htmlattrxref("href","a")}} attribute value is missing a closing double quote. This seems to have caused the biggest problem — the link has not rendered at all.
+   - The [`href`](/en-US/docs/Web/HTML/Element/a#href) attribute value is missing a closing double quote. This seems to have caused the biggest problem — the link has not rendered at all.
 
-5. Now let's look at the markup the browser has rendered, as opposed to the markup in the source code. To do this, we can use the browser developer tools. If you are not familiar with how to use your browser's developer tools, take a few minutes to review [Discover browser developer tools](/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools).
+5. Now let's look at the markup the browser has rendered, as opposed to the markup in the source code. To do this, we can use the browser developer tools. If you are not familiar with how to use your browser's developer tools, take a few minutes to review [Discover browser developer tools](/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools).
 6. In the DOM inspector, you can see what the rendered markup looks like: ![The HTML inspector in Firefox, with our example's paragraph highlighted, showing the text "What causes errors in HTML?" Here you can see that the paragraph element has been closed by the browser.](html-inspector.png)
 7. Using the DOM inspector, let's explore our code in detail to see how the browser has tried to fix our HTML errors (we did the review in Firefox; other modern browsers _should_ give the same result):
 
@@ -110,7 +105,8 @@ It's time to study the permissive nature of HTML code.
    - The incorrect nesting has been fixed by the browser as shown here:
 
      ```html
-     <strong>strong
+     <strong>
+       strong
        <em>strong emphasized?</em>
      </strong>
      <em> what is this?</em>
@@ -121,8 +117,8 @@ It's time to study the permissive nature of HTML code.
      ```html
      <li>
        <strong>
-         Unclosed attributes: Another common source of HTML problems. Let's
-         look at an example:
+         Unclosed attributes: Another common source of HTML problems. Let's look
+         at an example:
        </strong>
      </li>
      ```
@@ -160,11 +156,12 @@ The error messages are usually helpful, but sometimes they are not so helpful; w
 - "End of file reached when inside an attribute value. Ignoring tag": This one is rather cryptic; it refers to the fact that there is an attribute value not properly formed somewhere, possibly near the end of the file because the end of the file appears inside the attribute value. The fact that the browser doesn't render the link should give us a good clue as to what element is at fault.
 - "End of file seen and there were open elements": This is a bit ambiguous, but basically refers to the fact there are open elements that need to be properly closed. The line numbers point to the last few lines of the file, and this error message comes with a line of code that points out an example of an open element:
 
-  ```
+  ```plain
   example: <a href="https://www.mozilla.org/>link to Mozilla homepage</a> ↩ </ul>↩ </body>↩</html>
   ```
 
-  > **Note:** An attribute missing a closing quote can result in an open element because the rest of the document is interpreted as the attribute's content.
+  > [!NOTE]
+  > An attribute missing a closing quote can result in an open element because the rest of the document is interpreted as the attribute's content.
 
 - "Unclosed element `ul`": This is not very helpful, as the {{htmlelement("ul")}} element _is_ closed correctly. This error comes up because the {{htmlelement("a")}} element is not closed, due to the missing closing quote mark.
 
@@ -179,15 +176,3 @@ You will know when all your errors are fixed when you see the following banner i
 So there we have it, an introduction to debugging HTML, which should give you some useful skills to count on when you start to debug CSS, JavaScript, and other types of code later on in your career. This also marks the end of the Introduction to HTML module learning articles — now you can go on to testing yourself with our assessments: the first one is linked below.
 
 {{PreviousMenuNext("Learn/HTML/Introduction_to_HTML/Document_and_website_structure", "Learn/HTML/Introduction_to_HTML/Marking_up_a_letter", "Learn/HTML/Introduction_to_HTML")}}
-
-## In this module
-
-- [Getting started with HTML](/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started)
-- [What's in the head? Metadata in HTML](/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML)
-- [HTML text fundamentals](/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals)
-- [Creating hyperlinks](/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks)
-- [Advanced text formatting](/en-US/docs/Learn/HTML/Introduction_to_HTML/Advanced_text_formatting)
-- [Document and website structure](/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure)
-- [Debugging HTML](/en-US/docs/Learn/HTML/Introduction_to_HTML/Debugging_HTML)
-- [Marking up a letter](/en-US/docs/Learn/HTML/Introduction_to_HTML/Marking_up_a_letter)
-- [Structuring a page of content](/en-US/docs/Learn/HTML/Introduction_to_HTML/Structuring_a_page_of_content)
